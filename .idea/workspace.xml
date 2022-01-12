@@ -7,125 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d670b996-fe98-4411-bff6-a4b840a220a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/GoalFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/GoalFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/JoinEventController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/JoinEventController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/JoinEventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/JoinEventController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/MainDesktop.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/MainDesktop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ManageGoalController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ManageGoalController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ManageGoalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ManageGoalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/barcode/BarcodeScanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/barcode/BarcodeScanner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/bean/AnswerAdviceGoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/bean/AnswerAdviceGoalBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/bean/BarcodeBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/bean/BarcodeBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/bean/EventBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/bean/EventBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/bean/GoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/bean/GoalBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/bean/LoginBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/bean/LoginBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/bean/UpdateStepsBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/bean/UpdateStepsBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/dao/AdviceGoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/dao/AdviceGoalDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/dao/EventDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/dao/EventDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/dao/EventGoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/dao/EventGoalDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/dao/GoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/dao/GoalDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/entity/AdviceGoal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/entity/AdviceGoal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/entity/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/entity/Event.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/entity/EventGoal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/entity/EventGoal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/entity/Goal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/entity/Goal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/enumeration/EventRequestState.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/enumeration/EventRequestState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/enumeration/EventType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/enumeration/EventType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/enumeration/GoalType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/enumeration/GoalType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/enumeration/Pages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/enumeration/Pages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/enumeration/ProductType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/enumeration/ProductType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/enumeration/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/enumeration/UserRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/exception/DatabaseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/exception/DatabaseException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/exception/EmptyResultSetException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/exception/EmptyResultSetException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/exception/InvalidDataException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/exception/InvalidDataException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/exception/NoTransitionException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/exception/NoTransitionException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/exception/NotEnoughPermissionsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/exception/NotEnoughPermissionsException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/exception/UserNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/exception/UserNotFoundException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/AdviceCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/AdviceCell.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/EventItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/EventItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/EventParticipationItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/EventParticipationItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/Events.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/Events.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/GiveAdvice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/GiveAdvice.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/GoalCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/GoalCell.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/ManageEventParticipation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/ManageEventParticipation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/Navbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/Navbar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/NewGoal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/NewGoal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/fxml/Profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/fxml/Profile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/AcceptedState.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/AcceptedState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/ConcreteStateMachine$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/ConcreteStateMachine$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/ConcreteStateMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/ConcreteStateMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/JoinEventState$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/JoinEventState$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/JoinEventState.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/JoinEventState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/PendingState.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/PendingState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/RejectedState.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/RejectedState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/StartingState.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/joinEventStateMachine/StartingState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/mail/SendMail.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/mail/SendMail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/observer/Observer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/observer/Observer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/observer/Subject.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/observer/Subject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/persistance/DatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/persistance/DatabaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/persistance/queries/CRUDQueries.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/persistance/queries/CRUDQueries.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/persistance/queries/SimpleQueries.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/persistance/queries/SimpleQueries.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/servlet/EventsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/servlet/EventsServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/servlet/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/servlet/LoginServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/FxUtilities$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/FxUtilities$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/FxUtilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/FxUtilities.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/AdviceCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/AdviceCellGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/AdviceGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/AdviceGoalGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/EventCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/EventCellGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/EventGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/EventGoalGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/EventParticipationItemGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/EventParticipationItemGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/EventsGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/EventsGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/GiveAdviceGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/GiveAdviceGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/GoalCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/GoalCellGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/LoginGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/LoginGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/ManageEventParticipationGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/ManageEventParticipationGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/NavbarGraphicalController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/NavbarGraphicalController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/NavbarGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/NavbarGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/NewGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/NewGoalGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/ui/controller/ProfileGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/ui/controller/ProfileGraphicalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/util/DaoUtils$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/util/DaoUtils$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/util/DaoUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/util/DaoUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/util/DataValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/util/DataValidation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/util/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/util/Session.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/logic/util/WebURLs.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/logic/util/WebURLs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/Pages/About.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/Pages/About.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/Pages/Events.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/Pages/Events.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/Pages/GiveAdvice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/Pages/GiveAdvice.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/Pages/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/Pages/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/Pages/ManageEventParticipations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/Pages/ManageEventParticipations.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/Pages/Navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/Pages/Navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/Pages/NewGoal.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/Pages/NewGoal.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/Pages/Profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/Pages/Profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-grid.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-grid.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-reboot.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-reboot.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-utilities.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-utilities.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-utilities.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap-utilities.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/bootstrap.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/images/bell.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/images/bell.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/images/calendar-plus.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/images/calendar-plus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/images/cup@3x.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/images/cup@3x.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/images/impostazioni.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/images/impostazioni.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.esm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.esm.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.esm.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.esm.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.esm.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/webapp/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/apache-tomcat-10.0.14/webapps/docs/appdev/sample/web/hello.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/apache-tomcat-10.0.14/webapps/docs/appdev/sample/web/hello.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ui/controller/AdviceGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/controller/AdviceGoalGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/util/DataValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/util/DataValidation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -684,7 +567,7 @@
       <workItem from="1642013145469" duration="1627000" />
       <workItem from="1642026411884" duration="430000" />
       <workItem from="1642026888807" duration="669000" />
-      <workItem from="1642027884092" duration="124000" />
+      <workItem from="1642027884092" duration="648000" />
     </task>
     <servers />
   </component>
