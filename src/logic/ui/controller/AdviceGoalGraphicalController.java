@@ -66,7 +66,7 @@ public class AdviceGoalGraphicalController implements Initializable {
         goalItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
 
         temp = item.getAdvice();
-        if (temp != "" & item.getAdviceActivist() != null) {
+        if (!temp.equals("") & item.getAdviceActivist() != null) {
             adviceGoalAdvice.setText(temp);
             adviceGoalActivist.setText(item.getAdviceActivist().getUsername());
         } else {
@@ -77,7 +77,7 @@ public class AdviceGoalGraphicalController implements Initializable {
         adviceGoalProductType.setText(item.getType().toString());
 
         temp = item.getProductBarcode();
-        if (temp != "") {
+        if (!temp.equals("")) {
             adviceGoalProductBarcode.setText(temp);
         } else {
             adviceGoalProductBarcode.setText("");
