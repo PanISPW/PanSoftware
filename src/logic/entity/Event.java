@@ -1,76 +1,76 @@
 package logic.entity;
 
-import java.time.LocalDate;
-
 import logic.enumeration.EventType;
 import logic.interfaces.UserContent;
 
+import java.time.LocalDate;
+
 // @author Danilo D'Amico
 
-public class Event implements UserContent{
-	
-	private int id;
-	private User user; // utente in grado di organizzare eventi: Activist o Brand Manager quindi EventOrganizer
-	private String name;
-	private LocalDate startingDate;
-	private LocalDate endingDate;
-	private EventType type; // private or public event
+public class Event implements UserContent {
 
-	public LocalDate getStartingDate() {
-		return startingDate;
-	}
+    private int id;
+    private User user; // utente in grado di organizzare eventi: Activist o Brand Manager quindi EventOrganizer
+    private String name;
+    private LocalDate startingDate;
+    private LocalDate endingDate;
+    private EventType type; // private or public event
 
-	public void setStartingDate(LocalDate startingDate) {
-		this.startingDate = startingDate;
-	}
+    public Event(User user, String name, LocalDate startingDate, LocalDate endingDate, EventType type, int id) {
+        this.user = user;
+        this.name = name;
+        this.startingDate = startingDate;
+        this.endingDate = endingDate;
+        this.type = type;
+        this.id = id;
+    }
 
-	public LocalDate getEndingDate() {
-		return endingDate;
-	}
+    public LocalDate getStartingDate() {
+        return startingDate;
+    }
 
-	public void setEndingDate(LocalDate endingDate) {
-		this.endingDate = endingDate;
-	}
+    public void setStartingDate(LocalDate startingDate) {
+        this.startingDate = startingDate;
+    }
 
-	public EventType getType() {
-		return type;
-	}
+    public LocalDate getEndingDate() {
+        return endingDate;
+    }
 
-	public void setType(EventType type) {
-		this.type = type;
-	}
+    public void setEndingDate(LocalDate endingDate) {
+        this.endingDate = endingDate;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public EventType getType() {
+        return type;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setType(EventType type) {
+        this.type = type;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public String getName() {
-		return name;
-	}
-	
-	public Event(User user, String name, LocalDate startingDate, LocalDate endingDate, EventType type, int id) {
-		this.user = user;
-		this.name = name;
-		this.startingDate = startingDate;
-		this.endingDate = endingDate;
-		this.type = type;
-		this.id = id;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }

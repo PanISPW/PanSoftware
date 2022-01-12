@@ -1,17 +1,16 @@
 package logic.servlet;
 
-import java.io.IOException;
 import jakarta.servlet.ServletException;
-
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import logic.LoginController;
 import logic.bean.LoginBean;
 import logic.enumeration.UserRole;
 import logic.util.Session;
 import logic.util.WebURLs;
+
+import java.io.IOException;
 
 /**
  * Servlet implementation class LoginServlet
@@ -20,38 +19,38 @@ import logic.util.WebURLs;
 // @author Danilo D'Amico
 
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public LoginServlet() {
-		super();
-	}
+    public LoginServlet() {
+        super();
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		response.setContentType("text/html");
+        response.setContentType("text/html");
 
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
-		LoginBean bean = new LoginBean(username, password);
-		LoginController controller = new LoginController();
+        LoginBean bean = new LoginBean(username, password);
+        LoginController controller = new LoginController();
 
-		UserRole type;
+        UserRole type;
 
-		try {
-			type = controller.loginUser(bean);
+        try {
+            type = controller.loginUser(bean);
 
-			Session.getSession().setCurrUser(username);
-			Session.getSession().setRole(type);
+            Session.getSession().setCurrUser(username);
+            Session.getSession().setRole(type);
 
-			response.sendRedirect(WebURLs.getEvents());
+            response.sendRedirect(WebURLs.getEvents());
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			// username o password errati
-		}
+        } catch (Exception e) {
+            e.printStackTrace();
+            // username o password errati
+        }
 
-	}
+    }
 
 }

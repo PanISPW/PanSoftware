@@ -8,57 +8,56 @@ import logic.interfaces.StateMachine;
 // @author Danilo D'Amico
 
 public class ConcreteStateMachine implements StateMachine {
-	
-	private Event event;
-	private EventGoal goal;
-	
-	public EventGoal getGoal() {
-		return goal;
-	}
 
-	public void setGoal(EventGoal goal) {
-		this.goal = goal;
-	}
+    private Event event;
+    private EventGoal goal;
+    private JoinEventState currentState; // abstract state
 
-	public void setEvent(Event event) {
-		this.event = event;
-	}
+    public ConcreteStateMachine(Event event, EventGoal goal, EventRequestState state) throws Exception {
+        this.event = event;
+        this.goal = goal;
 
-	private JoinEventState currentState; // abstract state
-	
-	public ConcreteStateMachine(Event event, EventGoal goal, EventRequestState state) throws Exception {
-		this.event = event;
-		this.goal = goal;
+        currentState = JoinEventState.getMachineState(this, state, event);
+    }
 
-		currentState = JoinEventState.getMachineState(this, state, event);
-	}
+    public EventGoal getGoal() {
+        return goal;
+    }
 
-	@Override
-	public void answerRequest(EventRequestState state) throws Exception {
-		
-		switch(state) {
-		case REJECTED:
-			currentState.reject();
-			break;
-		default:
-			currentState.accept();
-		}
-	}
+    public void setGoal(EventGoal goal) {
+        this.goal = goal;
+    }
 
-	@Override
-	public void changeState(JoinEventState state) {
-		currentState = state;
-	}
+    @Override
+    public void answerRequest(EventRequestState state) throws Exception {
 
-	@Override
-	public EventRequestState getState() {
-		return this.currentState.getState();
-	}
+        switch (state) {
+            case REJECTED:
+                currentState.reject();
+                break;
+            default:
+                currentState.accept();
+        }
+    }
 
-	@Override
-	public Event getEvent() {
-		return event;
-	}
+    @Override
+    public void changeState(JoinEventState state) {
+        currentState = state;
+    }
 
-	
+    @Override
+    public EventRequestState getState() {
+        return this.currentState.getState();
+    }
+
+    @Override
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+
 }

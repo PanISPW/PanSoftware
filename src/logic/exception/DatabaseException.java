@@ -4,10 +4,10 @@ package logic.exception;
 
 public class DatabaseException extends Exception {
 
-	private static final long serialVersionUID = 8308910018191726934L;
-	
-	public DatabaseException(String explanation) {
-		super(explanation);
-	}
+    private static final long serialVersionUID = 8308910018191726934L;
+
+    public DatabaseException(String explanation) {
+        super(explanation);
+    }
 
 }

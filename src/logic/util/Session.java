@@ -8,45 +8,45 @@ import logic.enumeration.UserRole;
 // @author Danilo D'Amico
 
 public class Session {
-	
-	private static Session instance = null;
-	private String username;
-	private Pages page;
-	private UserRole role;
 
-	public UserRole getRole() {
-		return role;
-	}
+    private static Session instance = null;
+    private String username;
+    private Pages page;
+    private UserRole role;
 
-	public void setRole(UserRole role) {
-		this.role = role;
-	}
+    private Session() {
+        username = "";
+    }
 
-	public Pages getPage() {
-		return page;
-	}
+    public static Session getSession() {
+        if (instance == null)
+            instance = new Session();
 
-	public void setPage(Pages page) {
-		this.page = page;
-	}
+        return instance;
+    }
 
-	private Session() {
-		username = "";
-	}
-	
-	public static Session getSession() {
-		if (instance == null) 
-			instance = new Session();
-			
-		return instance;
-	}
-	
-	public String getUser() {
-		return username;
-	}
-	
-	public void setCurrUser(String currUser) {
-		this.username = currUser;
-	}
-	
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    public Pages getPage() {
+        return page;
+    }
+
+    public void setPage(Pages page) {
+        this.page = page;
+    }
+
+    public String getUser() {
+        return username;
+    }
+
+    public void setCurrUser(String currUser) {
+        this.username = currUser;
+    }
+
 }

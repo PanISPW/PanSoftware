@@ -10,9 +10,12 @@ import logic.joinEventStateMachine.JoinEventState;
 
 public interface StateMachine {
 
-	public void answerRequest(EventRequestState state) throws DatabaseException, NoTransitionException, Exception;
-	public void changeState(JoinEventState state);
-	public EventRequestState getState();
-	public Event getEvent();
+    public void answerRequest(EventRequestState state) throws DatabaseException, NoTransitionException, Exception;
+
+    public void changeState(JoinEventState state);
+
+    public EventRequestState getState();
+
+    public Event getEvent();
 
 }

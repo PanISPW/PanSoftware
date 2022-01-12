@@ -1,91 +1,91 @@
 package logic.entity;
 
-import java.time.LocalDate;
-
 import logic.dao.GoalDao;
 import logic.exception.UserNotFoundException;
 import logic.interfaces.UserContent;
 
+import java.time.LocalDate;
+
 // @author Danilo D'Amico
 
-public class Goal implements UserContent{
-	
-	private String name;
-	private String description;
-	private int numberOfSteps;
-	private int stepsCompleted;
-	private LocalDate deadline;
-	private int id;
-	private User user;
+public class Goal implements UserContent {
 
-	public int getId() {
-		return id;
-	}
+    private String name;
+    private String description;
+    private int numberOfSteps;
+    private int stepsCompleted;
+    private LocalDate deadline;
+    private int id;
+    private User user;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Goal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, User user, int id) {
+        this.name = name;
+        this.description = description;
+        this.numberOfSteps = numberOfSteps;
+        this.stepsCompleted = stepsCompleted;
+        this.deadline = deadline;
+        this.user = user;
+        this.id = id;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public static Goal getGoal(String user, int id) throws UserNotFoundException, Exception {
+        return GoalDao.getGoal(user, id);
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getNumberOfSteps() {
-		return numberOfSteps;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setNumberOfSteps(int numberOfSteps) {
-		this.numberOfSteps = numberOfSteps;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public int getStepsCompleted() {
-		return stepsCompleted;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setStepsCompleted(int stepsCompleted) {
-		this.stepsCompleted = stepsCompleted;
-	}
+    public int getNumberOfSteps() {
+        return numberOfSteps;
+    }
 
-	public LocalDate getDeadline() {
-		return deadline;
-	}
+    public void setNumberOfSteps(int numberOfSteps) {
+        this.numberOfSteps = numberOfSteps;
+    }
 
-	public void setDeadline(LocalDate deadline) {
-		this.deadline = deadline;
-	}
-	
-	public static Goal getGoal(String user, int id) throws UserNotFoundException, Exception {
-		return GoalDao.getGoal(user, id);
-	}
+    public int getStepsCompleted() {
+        return stepsCompleted;
+    }
 
-	public Goal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, User user, int id) {
-		this.name = name;
-		this.description = description;
-		this.numberOfSteps = numberOfSteps;
-		this.stepsCompleted = stepsCompleted;
-		this.deadline = deadline;
-		this.user = user;
-		this.id = id;
-	}
+    public void setStepsCompleted(int stepsCompleted) {
+        this.stepsCompleted = stepsCompleted;
+    }
+
+    public LocalDate getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
+    }
 
 }

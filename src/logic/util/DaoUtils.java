@@ -1,147 +1,147 @@
 package logic.util;
 
-import java.time.LocalDate;
-
 import logic.enumeration.EventRequestState;
 import logic.enumeration.EventType;
 import logic.enumeration.ProductType;
 import logic.enumeration.UserRole;
 
+import java.time.LocalDate;
+
 // @author Danilo D'Amico
 
 public class DaoUtils {
-	
-	public static ProductType DatabaseIntToProductType(int databaseInt) {
 
-		switch (databaseInt) {
+    public static ProductType DatabaseIntToProductType(int databaseInt) {
 
-		case 0:
-			return ProductType.MAKEUP;
+        switch (databaseInt) {
 
-		case 1:
-			return ProductType.FOOD;
+            case 0:
+                return ProductType.MAKEUP;
 
-		case 2:
-			return ProductType.LIFESTYLE;
-			
-		case 3:
-			return ProductType.OTHER;
+            case 1:
+                return ProductType.FOOD;
 
-		default:
-			return ProductType.NOTSPECIFIED;
-		}
-	}
-	
-	public static int ProductTypeToDatabaseInt(ProductType type) {
-		
-		switch (type) {
+            case 2:
+                return ProductType.LIFESTYLE;
 
-		case MAKEUP:
-			return 0;
+            case 3:
+                return ProductType.OTHER;
 
-		case FOOD:
-			return 1;
+            default:
+                return ProductType.NOTSPECIFIED;
+        }
+    }
 
-		case LIFESTYLE:
-			return 2;
-			
-		case OTHER:
-			return 3;
+    public static int ProductTypeToDatabaseInt(ProductType type) {
 
-		default:
-			return 4;
-		}
-		
-	}
-	
-	public static java.sql.Date LocalDateToSqlDateOrDefault(LocalDate localDate){
-		java.sql.Date date;
-		try {
-			date = java.sql.Date.valueOf(localDate);
-		} catch (NullPointerException e){
-			return java.sql.Date.valueOf(DataValidation.setDefaultDate());
-		}
-		
-		return date;
-	}
-	
-	public static UserRole DatabaseIntToUserRole(int databaseInt) {
-		
-		switch (databaseInt) {
+        switch (type) {
 
-		case 1:
-			return UserRole.ACTIVIST;
+            case MAKEUP:
+                return 0;
 
-		case 2:
-			return UserRole.BRANDMANAGER;
+            case FOOD:
+                return 1;
 
-		default:
-			return UserRole.USER;
-		}
-	}
-	
-	public static int UserRoleToDatabaseInt(UserRole role) {
-		switch(role) {
-		case ACTIVIST:
-			return 1;
-		case BRANDMANAGER:
-			return 2;
-		default:
-			return 0;
-		}
-	}
-	
-	public static EventType DatabaseIntToEventType(int databaseInt) {
-		switch(databaseInt) {
-		case 1:
-			return EventType.PRIVATE;
-		
-		default:
-			return EventType.PUBLIC;
-		}
-	}
-	
-	public static int EventTypeToDatabaseInt(EventType type) {
-		switch(type) {
-		case PRIVATE:
-			return 1;
-		default:
-			return 0;
-		}
-	}
-	
-	public static EventRequestState DatabaseIntToEventRequestState(int databaseInt) {
-		switch (databaseInt) {
-		
-		case 0:
-			return EventRequestState.PENDING;
+            case LIFESTYLE:
+                return 2;
 
-		case 1:
-			return EventRequestState.ACCEPTED;
+            case OTHER:
+                return 3;
 
-		case 2:
-			return EventRequestState.REJECTED;
+            default:
+                return 4;
+        }
 
-		default:
-			return EventRequestState.STARTING;
-		}
-	}
-	
-	public static int EventRequestStateToDatabaseInt(EventRequestState requestState) {
-		switch (requestState) {
-		
-		case PENDING:
-			return 0;
+    }
 
-		case ACCEPTED:
-			return 1;
+    public static java.sql.Date LocalDateToSqlDateOrDefault(LocalDate localDate) {
+        java.sql.Date date;
+        try {
+            date = java.sql.Date.valueOf(localDate);
+        } catch (NullPointerException e) {
+            return java.sql.Date.valueOf(DataValidation.setDefaultDate());
+        }
 
-		case REJECTED:
-			return 2;
+        return date;
+    }
 
-		default: // starting
-			return 4;
-		}
-	}
+    public static UserRole DatabaseIntToUserRole(int databaseInt) {
+
+        switch (databaseInt) {
+
+            case 1:
+                return UserRole.ACTIVIST;
+
+            case 2:
+                return UserRole.BRANDMANAGER;
+
+            default:
+                return UserRole.USER;
+        }
+    }
+
+    public static int UserRoleToDatabaseInt(UserRole role) {
+        switch (role) {
+            case ACTIVIST:
+                return 1;
+            case BRANDMANAGER:
+                return 2;
+            default:
+                return 0;
+        }
+    }
+
+    public static EventType DatabaseIntToEventType(int databaseInt) {
+        switch (databaseInt) {
+            case 1:
+                return EventType.PRIVATE;
+
+            default:
+                return EventType.PUBLIC;
+        }
+    }
+
+    public static int EventTypeToDatabaseInt(EventType type) {
+        switch (type) {
+            case PRIVATE:
+                return 1;
+            default:
+                return 0;
+        }
+    }
+
+    public static EventRequestState DatabaseIntToEventRequestState(int databaseInt) {
+        switch (databaseInt) {
+
+            case 0:
+                return EventRequestState.PENDING;
+
+            case 1:
+                return EventRequestState.ACCEPTED;
+
+            case 2:
+                return EventRequestState.REJECTED;
+
+            default:
+                return EventRequestState.STARTING;
+        }
+    }
+
+    public static int EventRequestStateToDatabaseInt(EventRequestState requestState) {
+        switch (requestState) {
+
+            case PENDING:
+                return 0;
+
+            case ACCEPTED:
+                return 1;
+
+            case REJECTED:
+                return 2;
+
+            default: // starting
+                return 4;
+        }
+    }
 
 }

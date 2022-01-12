@@ -1,13 +1,5 @@
 package logic.dao;
 
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import logic.entity.Event;
 import logic.entity.EventGoal;
 import logic.entity.User;
@@ -20,386 +12,394 @@ import logic.persistance.queries.CRUDQueries;
 import logic.persistance.queries.SimpleQueries;
 import logic.util.DaoUtils;
 
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 // @author Danilo D'Amico
 
 public class EventGoalDao {
 
-	private EventGoalDao() {
-	}
+    private EventGoalDao() {
+    }
 
-	public static List<EventGoal> getEventGoalList(String user) throws UserNotFoundException, Exception {
+    public static List<EventGoal> getEventGoalList(String user) throws UserNotFoundException, Exception {
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		List<EventGoal> goalList;
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        List<EventGoal> goalList;
 
-		try {
+        try {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-			resultSet = SimpleQueries.getEventGoalList(statement, user);
+            resultSet = SimpleQueries.getEventGoalList(statement, user);
 
-			if (!resultSet.first()) {
-				Exception e = new Exception("No Event Goal related to the User was found");
-				throw e;
-			}
+            if (!resultSet.first()) {
+                Exception e = new Exception("No Event Goal related to the User was found");
+                throw e;
+            }
 
-			goalList = new ArrayList<>();
-			
-			resultSet.beforeFirst();
+            goalList = new ArrayList<>();
 
-			while (resultSet.next()) {
+            resultSet.beforeFirst();
 
-				User userEntity = UserDao.getUser(user);
-				Event event;
-				
-				EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
-				int eventId = resultSet.getInt("eventId");
-				if(eventId == -1) {
-					event = null;
-				} else {
-					event = EventDao.getEvent(eventId, resultSet.getString("eventOrganizer"));
-				}
-				
+            while (resultSet.next()) {
 
-				EventGoal singleGoal = new EventGoal(resultSet.getString("name"), resultSet.getString("description"), resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"), resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("id"), userEntity, event, state);
-				goalList.add(singleGoal);
-			}
+                User userEntity = UserDao.getUser(user);
+                Event event;
 
-			return goalList;
+                EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
+                int eventId = resultSet.getInt("eventId");
+                if (eventId == -1) {
+                    event = null;
+                } else {
+                    event = EventDao.getEvent(eventId, resultSet.getString("eventOrganizer"));
+                }
 
-		} catch (SQLException | ClassNotFoundException e) {
 
-			throw new DatabaseException("Can't retrieve data from database");
+                EventGoal singleGoal = new EventGoal(resultSet.getString("name"), resultSet.getString("description"), resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"), resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("id"), userEntity, event, state);
+                goalList.add(singleGoal);
+            }
 
-		} finally {
+            return goalList;
 
-			if(databaseConnection!=null) {
-				databaseConnection.closeResultSet(resultSet);
-				databaseConnection.closeStatement(statement);
-			}
-		}
+        } catch (SQLException | ClassNotFoundException e) {
 
-	}
-	
-	public static List<EventGoal> getPendingEventGoalList(String user) throws UserNotFoundException, Exception {
+            throw new DatabaseException("Can't retrieve data from database");
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		List<EventGoal> goalList;
+        } finally {
 
-		try {
+            if (databaseConnection != null) {
+                databaseConnection.closeResultSet(resultSet);
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
+    }
 
-			resultSet = SimpleQueries.getPendingEventApprovalList(statement, user);
+    public static List<EventGoal> getPendingEventGoalList(String user) throws UserNotFoundException, Exception {
 
-			if (!resultSet.first()) {
-				Exception e = new Exception("No Pending Event Goal related to the User was found");
-				throw e;
-			}
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        List<EventGoal> goalList;
 
-			goalList = new ArrayList<>();
-			
-			resultSet.beforeFirst();
+        try {
 
-			while (resultSet.next()) {
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-				User userEntity = UserDao.getUser(resultSet.getString("user"));
+            resultSet = SimpleQueries.getPendingEventApprovalList(statement, user);
 
-				EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
+            if (!resultSet.first()) {
+                Exception e = new Exception("No Pending Event Goal related to the User was found");
+                throw e;
+            }
 
-				Event event = EventDao.getEvent(resultSet.getInt("eventId"), resultSet.getString("eventOrganizer"));
+            goalList = new ArrayList<>();
 
-				EventGoal singleGoal = new EventGoal(resultSet.getString("name"), resultSet.getString("description"),
-						resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-						resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("id"), userEntity, event, state);
-				goalList.add(singleGoal);
-			}
+            resultSet.beforeFirst();
 
-			return goalList;
+            while (resultSet.next()) {
 
-		} catch (SQLException | ClassNotFoundException e) {
+                User userEntity = UserDao.getUser(resultSet.getString("user"));
 
-			throw new DatabaseException("Can't retrieve data from database");
+                EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
 
-		} finally {
+                Event event = EventDao.getEvent(resultSet.getInt("eventId"), resultSet.getString("eventOrganizer"));
 
-			if(databaseConnection!=null) {
-				databaseConnection.closeResultSet(resultSet);
-				databaseConnection.closeStatement(statement);
-			}
-		}
+                EventGoal singleGoal = new EventGoal(resultSet.getString("name"), resultSet.getString("description"),
+                        resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+                        resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("id"), userEntity, event, state);
+                goalList.add(singleGoal);
+            }
 
-	}
+            return goalList;
 
-	public static EventGoal getEventGoal(String user, int id) throws UserNotFoundException, Exception {
+        } catch (SQLException | ClassNotFoundException e) {
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		EventGoal goal;
-		Event event;
+            throw new DatabaseException("Can't retrieve data from database");
 
-		try {
+        } finally {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getEventGoal(statement, user, id);
+            if (databaseConnection != null) {
+                databaseConnection.closeResultSet(resultSet);
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-			if (!resultSet.first()) {
-				Exception e = new Exception("The Event Goal was not found");
-				throw e;
-			}
+    }
 
-			User userEntity = UserDao.getUser(user);
-			
-			EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
-			
-			
-			event = EventDao.getEvent(resultSet.getInt("eventId"), resultSet.getString("eventOrganizer"));
+    public static EventGoal getEventGoal(String user, int id) throws UserNotFoundException, Exception {
 
-			goal = new EventGoal(resultSet.getString("name"), resultSet.getString("description"),
-					resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-					resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("id"), userEntity, event,
-					 state);
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        EventGoal goal;
+        Event event;
 
-			return goal;
+        try {
 
-		} catch (SQLException |
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
+            resultSet = SimpleQueries.getEventGoal(statement, user, id);
 
-				ClassNotFoundException e) {
+            if (!resultSet.first()) {
+                Exception e = new Exception("The Event Goal was not found");
+                throw e;
+            }
 
-			throw new DatabaseException("Can't retrieve data from database");
+            User userEntity = UserDao.getUser(user);
 
-		} finally {
+            EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
 
-			if(databaseConnection!=null) {
-				databaseConnection.closeResultSet(resultSet);
-				databaseConnection.closeStatement(statement);
-			}
-		}
 
-	}
+            event = EventDao.getEvent(resultSet.getInt("eventId"), resultSet.getString("eventOrganizer"));
 
-	public static int getLastUserEventGoalId(String user) throws UserNotFoundException, Exception {
+            goal = new EventGoal(resultSet.getString("name"), resultSet.getString("description"),
+                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+                    resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("id"), userEntity, event,
+                    state);
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		int lastId;
+            return goal;
 
-		try {
+        } catch (SQLException |
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getLastUserEventGoalId(statement, user);
+                ClassNotFoundException e) {
 
-			if (!resultSet.first()) {
-				EmptyResultSetException e = new EmptyResultSetException("No Goal related to the User was found");
-				throw e;
-			}
+            throw new DatabaseException("Can't retrieve data from database");
 
-			lastId = resultSet.getInt("maxId");
+        } finally {
 
-			return lastId;
+            if (databaseConnection != null) {
+                databaseConnection.closeResultSet(resultSet);
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-		} catch (SQLException e) {
+    }
 
-			throw new DatabaseException("Can't retrieve data from database");
+    public static int getLastUserEventGoalId(String user) throws UserNotFoundException, Exception {
 
-		} finally {
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        int lastId;
 
-			if(databaseConnection!=null) {
-				databaseConnection.closeResultSet(resultSet);
-				databaseConnection.closeStatement(statement);
-			}
-		}
+        try {
 
-	}
-	
-	public static EventRequestState getEventParticipationState(String user, int id) throws UserNotFoundException, Exception {
-		
-		EventGoal goal = getEventGoal(user, id);
-		EventRequestState currentState = goal.getState();
-		
-		return currentState;
-	}
-	
-	public static int addEventGoal(String user, String name, String description, int numberOfSteps, int stepsCompleted,
-			LocalDate deadline, int id, String eventOrganizer, int eventId, EventRequestState requestState) throws Exception {
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
+            resultSet = SimpleQueries.getLastUserEventGoalId(statement, user);
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int stateInt;
-		int result;
+            if (!resultSet.first()) {
+                EmptyResultSetException e = new EmptyResultSetException("No Goal related to the User was found");
+                throw e;
+            }
 
-		try {
+            lastId = resultSet.getInt("maxId");
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			
-			stateInt = DaoUtils.EventRequestStateToDatabaseInt(requestState);
-			Date sqlDeadline = DaoUtils.LocalDateToSqlDateOrDefault(deadline);
-			result = CRUDQueries.addEventGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user, eventOrganizer, eventId, stateInt);
+            return lastId;
 
-			return result;
+        } catch (SQLException e) {
 
-		} catch (SQLException e) {
+            throw new DatabaseException("Can't retrieve data from database");
 
-			throw new DatabaseException("Can't insert new Event Goal in database");
+        } finally {
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+            if (databaseConnection != null) {
+                databaseConnection.closeResultSet(resultSet);
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-	}
+    }
 
-	public static int updateStepsEventGoal(int stepsCompleted, int id, String user) throws Exception {
+    public static EventRequestState getEventParticipationState(String user, int id) throws UserNotFoundException, Exception {
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result;
+        EventGoal goal = getEventGoal(user, id);
+        EventRequestState currentState = goal.getState();
 
-		try {
+        return currentState;
+    }
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			result = CRUDQueries.updateStepsEventGoal(statement, stepsCompleted, id, user);
+    public static int addEventGoal(String user, String name, String description, int numberOfSteps, int stepsCompleted,
+                                   LocalDate deadline, int id, String eventOrganizer, int eventId, EventRequestState requestState) throws Exception {
 
-			return result;
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int stateInt;
+        int result;
 
-		} catch (SQLException e) {
+        try {
 
-			throw new DatabaseException("Can't update Event Goal in database");
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+            stateInt = DaoUtils.EventRequestStateToDatabaseInt(requestState);
+            Date sqlDeadline = DaoUtils.LocalDateToSqlDateOrDefault(deadline);
+            result = CRUDQueries.addEventGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user, eventOrganizer, eventId, stateInt);
 
-	}
-	
-	public static int joinEvent(Event event, EventRequestState requestState, int id, String user) throws Exception {
+            return result;
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result;
-		int requestStateInt;
+        } catch (SQLException e) {
 
-		try {
+            throw new DatabaseException("Can't insert new Event Goal in database");
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			
-			requestStateInt = DaoUtils.EventRequestStateToDatabaseInt(requestState);
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-			result = CRUDQueries.joinEvent(statement, event.getId(), event.getUser().getUsername(), requestStateInt, id, user);
+    }
 
-			return result;
+    public static int updateStepsEventGoal(int stepsCompleted, int id, String user) throws Exception {
 
-		} catch (SQLException e) {
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result;
 
-			throw new DatabaseException("Can't update Event Goal in database");
+        try {
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
+            result = CRUDQueries.updateStepsEventGoal(statement, stepsCompleted, id, user);
 
-	}
-	
-	public static int acceptEventGoal(int id, String user) throws Exception {
+            return result;
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result = 0;
-			
-		try {
+        } catch (SQLException e) {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			
-			System.out.println(String.valueOf(id) + " " + user);
+            throw new DatabaseException("Can't update Event Goal in database");
 
-			result = CRUDQueries.acceptEventParticipation(statement, id, user);
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-			return result;
+    }
 
-		} catch (SQLException e) {
+    public static int joinEvent(Event event, EventRequestState requestState, int id, String user) throws Exception {
 
-			throw new DatabaseException("Can't update Event Goal in database");
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result;
+        int requestStateInt;
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+        try {
 
-	}
-	
-	public static int rejectEventGoal(int id, String user) throws Exception {
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result = 0;
-		
-		if(!EventGoalDao.getEventParticipationState(user, id).equals(EventRequestState.PENDING)) {
-			throw new Exception("Only EventGoals in a pending state can be rejected");
-		}
-			
-		try {
+            requestStateInt = DaoUtils.EventRequestStateToDatabaseInt(requestState);
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			
-			result = CRUDQueries.rejectEventParticipation(statement, id, user);
+            result = CRUDQueries.joinEvent(statement, event.getId(), event.getUser().getUsername(), requestStateInt, id, user);
 
-			return result;
+            return result;
 
-		} catch (SQLException e) {
+        } catch (SQLException e) {
 
-			throw new DatabaseException("Can't update Event Goal in database");
+            throw new DatabaseException("Can't update Event Goal in database");
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-	}
-	
-	public static int pendingEventGoal(int id, String user) throws Exception {
+    }
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result = 0;
-			
-		try {
+    public static int acceptEventGoal(int id, String user) throws Exception {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			result = CRUDQueries.pendingEventParticipation(statement, id, user);
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result = 0;
 
-			return result;
+        try {
 
-		} catch (SQLException e) {
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-			throw new DatabaseException("Can't update Event Goal in database");
+            System.out.println(String.valueOf(id) + " " + user);
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+            result = CRUDQueries.acceptEventParticipation(statement, id, user);
 
-	}
+            return result;
+
+        } catch (SQLException e) {
+
+            throw new DatabaseException("Can't update Event Goal in database");
+
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
+
+    }
+
+    public static int rejectEventGoal(int id, String user) throws Exception {
+
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result = 0;
+
+        if (!EventGoalDao.getEventParticipationState(user, id).equals(EventRequestState.PENDING)) {
+            throw new Exception("Only EventGoals in a pending state can be rejected");
+        }
+
+        try {
+
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
+
+            result = CRUDQueries.rejectEventParticipation(statement, id, user);
+
+            return result;
+
+        } catch (SQLException e) {
+
+            throw new DatabaseException("Can't update Event Goal in database");
+
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
+
+    }
+
+    public static int pendingEventGoal(int id, String user) throws Exception {
+
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result = 0;
+
+        try {
+
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
+            result = CRUDQueries.pendingEventParticipation(statement, id, user);
+
+            return result;
+
+        } catch (SQLException e) {
+
+            throw new DatabaseException("Can't update Event Goal in database");
+
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
+
+    }
 }

@@ -7,24 +7,24 @@ import logic.exception.NoTransitionException;
 
 // @author Danilo D'Amico
 
-public class AcceptedState extends JoinEventState{
-	
-	public AcceptedState(Event event) throws Exception {
-	}
+public class AcceptedState extends JoinEventState {
 
-	@Override
-	protected void accept() throws DatabaseException, NoTransitionException {
-		throw new NoTransitionException();
-	}
+    public AcceptedState(Event event) throws Exception {
+    }
 
-	@Override
-	protected void reject() throws DatabaseException, NoTransitionException {
-		throw new NoTransitionException();
-	}
+    @Override
+    protected void accept() throws DatabaseException, NoTransitionException {
+        throw new NoTransitionException();
+    }
 
-	@Override
-	protected EventRequestState getState() {
-		return EventRequestState.ACCEPTED;	
-	}
+    @Override
+    protected void reject() throws DatabaseException, NoTransitionException {
+        throw new NoTransitionException();
+    }
+
+    @Override
+    protected EventRequestState getState() {
+        return EventRequestState.ACCEPTED;
+    }
 
 }

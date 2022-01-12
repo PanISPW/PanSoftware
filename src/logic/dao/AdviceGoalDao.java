@@ -1,12 +1,5 @@
 package logic.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import logic.entity.AdviceGoal;
 import logic.entity.User;
 import logic.enumeration.ProductType;
@@ -19,63 +12,70 @@ import logic.persistance.queries.SimpleQueries;
 import logic.util.DaoUtils;
 import logic.util.DataValidation;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 // @author Danilo D'Amico
 
 public class AdviceGoalDao {
 
-	private AdviceGoalDao() {
-	}
+    private AdviceGoalDao() {
+    }
 
-	public static List<AdviceGoal> getAdviceGoalList(String user) throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getAdviceGoalList(String user) throws UserNotFoundException, Exception {
 
-		Statement statement = null;
-		ResultSet resultSet = null;
-		DatabaseConnection databaseConnection = null;
-		List<AdviceGoal> goalList;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection = null;
+        List<AdviceGoal> goalList;
 
-		//try {
+        //try {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getAdviceGoalList(statement, user);
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+        resultSet = SimpleQueries.getAdviceGoalList(statement, user);
 
-			if (!resultSet.first()) {
-				Exception e = new Exception("No Goal related to the User was found");
-				throw e;
-			}
+        if (!resultSet.first()) {
+            Exception e = new Exception("No Goal related to the User was found");
+            throw e;
+        }
 
-			goalList = new ArrayList<>();
-			
-			resultSet.beforeFirst();
+        goalList = new ArrayList<>();
 
-			while (resultSet.next()) {
+        resultSet.beforeFirst();
 
-				User userEntity = UserDao.getUser(user);
-				ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
-				LocalDate deadline;
-				
-				// activist null
-				//User activistEntity = UserDao.getUser(resultSet.getString("adviceActivist")); //?
-				try {
-					deadline = resultSet.getDate("deadline").toLocalDate();
-				} catch(Exception e) { // generalizzare ogni volta che chiamo una data
-					deadline = DataValidation.setDefaultDate();
-				}
+        while (resultSet.next()) {
 
-				AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-						resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-						deadline, resultSet.getInt("Id"), userEntity, productType,
-						resultSet.getString("advice"), null /*activist*/);
-				goalList.add(singleGoal);
-			}
+            User userEntity = UserDao.getUser(user);
+            ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
+            LocalDate deadline;
 
-			return goalList;
+            // activist null
+            //User activistEntity = UserDao.getUser(resultSet.getString("adviceActivist")); //?
+            try {
+                deadline = resultSet.getDate("deadline").toLocalDate();
+            } catch (Exception e) { // generalizzare ogni volta che chiamo una data
+                deadline = DataValidation.setDefaultDate();
+            }
 
-		//} catch (SQLException | ClassNotFoundException e) {
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
+                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+                    deadline, resultSet.getInt("Id"), userEntity, productType,
+                    resultSet.getString("advice"), null /*activist*/);
+            goalList.add(singleGoal);
+        }
 
-		//	throw new DatabaseException("Can't retrieve data from database");
+        return goalList;
 
-		//} finally {
+        //} catch (SQLException | ClassNotFoundException e) {
+
+        //	throw new DatabaseException("Can't retrieve data from database");
+
+        //} finally {
 //			if(databaseConnection!=null) {
 //				databaseConnection.closeResultSet(resultSet);
 //				databaseConnection.closeStatement(statement);
@@ -83,42 +83,42 @@ public class AdviceGoalDao {
 //
 //		}
 
-	}
+    }
 
-	public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, Exception {
+    public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, Exception {
 
-		Statement statement = null;
-		ResultSet resultSet = null;
-		DatabaseConnection databaseConnection = null;
-		AdviceGoal goal;
-		User activistEntity;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection = null;
+        AdviceGoal goal;
+        User activistEntity;
 
-		//try {
+        //try {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getAdviceGoal(statement, user, id);
-			
-			if (!resultSet.first()) {
-				Exception e = new Exception("Advice Goal not found");
-				throw e;
-			}
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+        resultSet = SimpleQueries.getAdviceGoal(statement, user, id);
 
-			ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
-			User userEntity = UserDao.getUser(user);
-			
-			try {
-				activistEntity = UserDao.getUser(resultSet.getString("adviceActivist"));
-			} catch(Exception e) {
-				activistEntity = null;
-			}
+        if (!resultSet.first()) {
+            Exception e = new Exception("Advice Goal not found");
+            throw e;
+        }
 
-			goal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-						resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-						resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("Id"), userEntity, productType,
-						resultSet.getString("advice"), activistEntity);
+        ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
+        User userEntity = UserDao.getUser(user);
 
-			return goal;
+        try {
+            activistEntity = UserDao.getUser(resultSet.getString("adviceActivist"));
+        } catch (Exception e) {
+            activistEntity = null;
+        }
+
+        goal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
+                resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+                resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("Id"), userEntity, productType,
+                resultSet.getString("advice"), activistEntity);
+
+        return goal;
 
 //		}catch(SQLException|
 //
@@ -136,173 +136,173 @@ public class AdviceGoalDao {
 //		}
 //	}
 
-	}
+    }
 
-	public static int getLastUserAdviceGoalId(String user) throws UserNotFoundException, Exception {
+    public static int getLastUserAdviceGoalId(String user) throws UserNotFoundException, Exception {
 
-		Statement statement = null;
-		ResultSet resultSet = null;
-		DatabaseConnection databaseConnection = null;
-		int lastId;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection = null;
+        int lastId;
 
-		try {
-			
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getLastUserAdviceGoalId(statement, user);
-			
-			if (!resultSet.first()) {
-				EmptyResultSetException e = new EmptyResultSetException("No Goal related to the User was found");
-				throw e;
-			}
+        try {
 
-			lastId = resultSet.getInt("maxId");
-			return lastId;
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
+            resultSet = SimpleQueries.getLastUserAdviceGoalId(statement, user);
 
-		} catch (SQLException e) {
+            if (!resultSet.first()) {
+                EmptyResultSetException e = new EmptyResultSetException("No Goal related to the User was found");
+                throw e;
+            }
 
-			throw new DatabaseException("Can't retrieve data from database");
+            lastId = resultSet.getInt("maxId");
+            return lastId;
 
-		} finally {
+        } catch (SQLException e) {
 
-			if(databaseConnection!=null) {
-				databaseConnection.closeResultSet(resultSet);
-				databaseConnection.closeStatement(statement);
-			}
-		}
+            throw new DatabaseException("Can't retrieve data from database");
 
-	}
+        } finally {
 
-	public static int addAdviceGoal(String user, String name, String description, int numberOfSteps, int stepsCompleted,
-			java.time.LocalDate deadline, int id, ProductType type) throws Exception {
+            if (databaseConnection != null) {
+                databaseConnection.closeResultSet(resultSet);
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result;
-		java.sql.Date sqlDeadline;
+    }
 
-		try {
+    public static int addAdviceGoal(String user, String name, String description, int numberOfSteps, int stepsCompleted,
+                                    java.time.LocalDate deadline, int id, ProductType type) throws Exception {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			
-			int typeInt = DaoUtils.ProductTypeToDatabaseInt(type);
-			
-			sqlDeadline = DaoUtils.LocalDateToSqlDateOrDefault(deadline);
-			
-			result = CRUDQueries.addAdviceGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user, typeInt);
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result;
+        java.sql.Date sqlDeadline;
 
-			return result;
+        try {
 
-		} catch (SQLException e) {
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-			throw new DatabaseException("Can't insert new Goal in database");
+            int typeInt = DaoUtils.ProductTypeToDatabaseInt(type);
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+            sqlDeadline = DaoUtils.LocalDateToSqlDateOrDefault(deadline);
 
-	}
+            result = CRUDQueries.addAdviceGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user, typeInt);
 
-	public static int updateStepsAdviceGoal(int stepsCompleted, int id, String user) throws Exception {
+            return result;
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result;
+        } catch (SQLException e) {
 
-		try {
-			
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			
-			result = CRUDQueries.updateStepsAdviceGoal(statement, stepsCompleted, id, user);
+            throw new DatabaseException("Can't insert new Goal in database");
 
-			return result;
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-		} catch (SQLException e) {
+    }
 
-			throw new DatabaseException("Can't update Advice Goal in database");
+    public static int updateStepsAdviceGoal(int stepsCompleted, int id, String user) throws Exception {
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result;
 
-	}
-	
-	public static int insertBarcode(String barcode, int id, String user) throws Exception {
+        try {
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result;
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-		try {
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
+            result = CRUDQueries.updateStepsAdviceGoal(statement, stepsCompleted, id, user);
 
-			result = CRUDQueries.insertBarcodeAdviceGoal(statement, barcode, id, user);
+            return result;
 
-			return result;
+        } catch (SQLException e) {
 
-		} catch (SQLException e) {
+            throw new DatabaseException("Can't update Advice Goal in database");
 
-			throw new DatabaseException("Can't update Advice Goal in database");
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+    }
 
-	}
-	
-	public static int updateProductTypeAdviceGoal(ProductType type, int id, String user) throws Exception {
+    public static int insertBarcode(String barcode, int id, String user) throws Exception {
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result;
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result;
 
-		try {
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			
-			int typeInt = DaoUtils.ProductTypeToDatabaseInt(type);
-			
-			result = CRUDQueries.updateProductTypeAdviceGoal(statement, typeInt, id, user);
+        try {
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-			return result;
+            result = CRUDQueries.insertBarcodeAdviceGoal(statement, barcode, id, user);
 
-		} catch (SQLException e) {
+            return result;
 
-			throw new DatabaseException("Can't update Advice Goal in database");
+        } catch (SQLException e) {
 
-		} finally {
-			if(databaseConnection!=null) {
-				databaseConnection.closeStatement(statement);
-			}
-		}
+            throw new DatabaseException("Can't update Advice Goal in database");
 
-	}
-	
-	public static int answerAdviceGoal(int id, String user, String activist, String advice) throws Exception {
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
 
-		DatabaseConnection databaseConnection = null;
-		Statement statement = null;
-		int result;
+    }
 
-		//try {
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			result = CRUDQueries.answerAdviceGoal(statement, advice, activist, id, user);
+    public static int updateProductTypeAdviceGoal(ProductType type, int id, String user) throws Exception {
 
-			return result;
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result;
 
-		//} catch (SQLException e) {
+        try {
+            databaseConnection = new DatabaseConnection();
+            statement = databaseConnection.createStatement();
 
-			//throw new DatabaseException("Can't update Advice Goal in database");
+            int typeInt = DaoUtils.ProductTypeToDatabaseInt(type);
+
+            result = CRUDQueries.updateProductTypeAdviceGoal(statement, typeInt, id, user);
+
+            return result;
+
+        } catch (SQLException e) {
+
+            throw new DatabaseException("Can't update Advice Goal in database");
+
+        } finally {
+            if (databaseConnection != null) {
+                databaseConnection.closeStatement(statement);
+            }
+        }
+
+    }
+
+    public static int answerAdviceGoal(int id, String user, String activist, String advice) throws Exception {
+
+        DatabaseConnection databaseConnection = null;
+        Statement statement = null;
+        int result;
+
+        //try {
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+        result = CRUDQueries.answerAdviceGoal(statement, advice, activist, id, user);
+
+        return result;
+
+        //} catch (SQLException e) {
+
+        //throw new DatabaseException("Can't update Advice Goal in database");
 
 //		} finally {
 //			if(databaseConnection!=null) {
@@ -310,58 +310,58 @@ public class AdviceGoalDao {
 //			}
 //		}
 
-	}
-	
-	
-	// MAKEUP
-	public static List<AdviceGoal> getUnansweredMakeupAdvice() throws UserNotFoundException, Exception {
-		
-		Statement statement = null;
-		ResultSet resultSet = null;
-		DatabaseConnection databaseConnection = null;
-		List<AdviceGoal> goalList;
+    }
 
-		//try {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getUnansweredMakeupAdvice(statement);
+    // MAKEUP
+    public static List<AdviceGoal> getUnansweredMakeupAdvice() throws UserNotFoundException, Exception {
 
-			if (!resultSet.first()) {
-				Exception e = new Exception("No unanswered makeup advice was found");
-				throw e;
-			}
+        Statement statement = null;
+        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection = null;
+        List<AdviceGoal> goalList;
 
-			goalList = new ArrayList<>();
-			
-			resultSet.beforeFirst();
+        //try {
 
-			while (resultSet.next()) {
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+        resultSet = SimpleQueries.getUnansweredMakeupAdvice(statement);
 
-				User userEntity = UserDao.getUser(resultSet.getString("user"));
-				ProductType productType = ProductType.MAKEUP;
-				LocalDate deadline;
-				
-				try {
-					deadline = resultSet.getDate("deadline").toLocalDate();
-				} catch(Exception e) { // generalizzare ogni volta che chiamo una data
-					deadline = DataValidation.setDefaultDate();
-				}
+        if (!resultSet.first()) {
+            Exception e = new Exception("No unanswered makeup advice was found");
+            throw e;
+        }
 
-				AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-						resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-						deadline, resultSet.getInt("Id"), userEntity, productType,
-						null, null);
-				goalList.add(singleGoal);
-			}
+        goalList = new ArrayList<>();
 
-			return goalList;
+        resultSet.beforeFirst();
 
-		//} catch (SQLException | ClassNotFoundException e) {
+        while (resultSet.next()) {
 
-		//	throw new DatabaseException("Can't retrieve data from database");
+            User userEntity = UserDao.getUser(resultSet.getString("user"));
+            ProductType productType = ProductType.MAKEUP;
+            LocalDate deadline;
 
-		//} finally {
+            try {
+                deadline = resultSet.getDate("deadline").toLocalDate();
+            } catch (Exception e) { // generalizzare ogni volta che chiamo una data
+                deadline = DataValidation.setDefaultDate();
+            }
+
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
+                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+                    deadline, resultSet.getInt("Id"), userEntity, productType,
+                    null, null);
+            goalList.add(singleGoal);
+        }
+
+        return goalList;
+
+        //} catch (SQLException | ClassNotFoundException e) {
+
+        //	throw new DatabaseException("Can't retrieve data from database");
+
+        //} finally {
 //			if(databaseConnection!=null) {
 //				databaseConnection.closeResultSet(resultSet);
 //				databaseConnection.closeStatement(statement);
@@ -369,57 +369,57 @@ public class AdviceGoalDao {
 //
 //		}
 
-	}
-	
-	// FOOD
-	public static List<AdviceGoal> getUnansweredFoodAdvice() throws UserNotFoundException, Exception {
-		
-		Statement statement = null;
-		ResultSet resultSet = null;
-		DatabaseConnection databaseConnection = null;
-		List<AdviceGoal> goalList;
+    }
 
-		//try {
+    // FOOD
+    public static List<AdviceGoal> getUnansweredFoodAdvice() throws UserNotFoundException, Exception {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getUnansweredFoodAdvice(statement);
+        Statement statement = null;
+        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection = null;
+        List<AdviceGoal> goalList;
 
-			if (!resultSet.first()) {
-				Exception e = new Exception("No unanswered food advice was found");
-				throw e;
-			}
+        //try {
 
-			goalList = new ArrayList<>();
-			
-			resultSet.beforeFirst();
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+        resultSet = SimpleQueries.getUnansweredFoodAdvice(statement);
 
-			while (resultSet.next()) {
+        if (!resultSet.first()) {
+            Exception e = new Exception("No unanswered food advice was found");
+            throw e;
+        }
 
-				User userEntity = UserDao.getUser(resultSet.getString("user"));
-				ProductType productType = ProductType.FOOD;
-				LocalDate deadline;
-				
-				try {
-					deadline = resultSet.getDate("deadline").toLocalDate();
-				} catch(Exception e) { // generalizzare ogni volta che chiamo una data
-					deadline = DataValidation.setDefaultDate();
-				}
+        goalList = new ArrayList<>();
 
-				AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-						resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-						deadline, resultSet.getInt("Id"), userEntity, productType,
-						null, null);
-				goalList.add(singleGoal);
-			}
+        resultSet.beforeFirst();
 
-			return goalList;
+        while (resultSet.next()) {
 
-		//} catch (SQLException | ClassNotFoundException e) {
+            User userEntity = UserDao.getUser(resultSet.getString("user"));
+            ProductType productType = ProductType.FOOD;
+            LocalDate deadline;
 
-		//	throw new DatabaseException("Can't retrieve data from database");
+            try {
+                deadline = resultSet.getDate("deadline").toLocalDate();
+            } catch (Exception e) { // generalizzare ogni volta che chiamo una data
+                deadline = DataValidation.setDefaultDate();
+            }
 
-		//} finally {
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
+                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+                    deadline, resultSet.getInt("Id"), userEntity, productType,
+                    null, null);
+            goalList.add(singleGoal);
+        }
+
+        return goalList;
+
+        //} catch (SQLException | ClassNotFoundException e) {
+
+        //	throw new DatabaseException("Can't retrieve data from database");
+
+        //} finally {
 //			if(databaseConnection!=null) {
 //				databaseConnection.closeResultSet(resultSet);
 //				databaseConnection.closeStatement(statement);
@@ -427,57 +427,57 @@ public class AdviceGoalDao {
 //
 //		}
 
-	}
-	
-	// LIFESTYLE
-	public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws UserNotFoundException, Exception {
-		
-		Statement statement = null;
-		ResultSet resultSet = null;
-		DatabaseConnection databaseConnection = null;
-		List<AdviceGoal> goalList;
+    }
 
-		//try {
+    // LIFESTYLE
+    public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws UserNotFoundException, Exception {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getUnansweredLifestyleAdvice(statement);
+        Statement statement = null;
+        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection = null;
+        List<AdviceGoal> goalList;
 
-			if (!resultSet.first()) {
-				Exception e = new Exception("No unanswered lifestyle advice was found");
-				throw e;
-			}
+        //try {
 
-			goalList = new ArrayList<>();
-			
-			resultSet.beforeFirst();
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+        resultSet = SimpleQueries.getUnansweredLifestyleAdvice(statement);
 
-			while (resultSet.next()) {
+        if (!resultSet.first()) {
+            Exception e = new Exception("No unanswered lifestyle advice was found");
+            throw e;
+        }
 
-				User userEntity = UserDao.getUser(resultSet.getString("user"));
-				ProductType productType = ProductType.LIFESTYLE;
-				LocalDate deadline;
-				
-				try {
-					deadline = resultSet.getDate("deadline").toLocalDate();
-				} catch(Exception e) { // generalizzare ogni volta che chiamo una data
-					deadline = DataValidation.setDefaultDate();
-				}
+        goalList = new ArrayList<>();
 
-				AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-						resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-						deadline, resultSet.getInt("Id"), userEntity, productType,
-						null, null);
-				goalList.add(singleGoal);
-			}
+        resultSet.beforeFirst();
 
-			return goalList;
+        while (resultSet.next()) {
 
-		//} catch (SQLException | ClassNotFoundException e) {
+            User userEntity = UserDao.getUser(resultSet.getString("user"));
+            ProductType productType = ProductType.LIFESTYLE;
+            LocalDate deadline;
 
-		//	throw new DatabaseException("Can't retrieve data from database");
+            try {
+                deadline = resultSet.getDate("deadline").toLocalDate();
+            } catch (Exception e) { // generalizzare ogni volta che chiamo una data
+                deadline = DataValidation.setDefaultDate();
+            }
 
-		//} finally {
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
+                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+                    deadline, resultSet.getInt("Id"), userEntity, productType,
+                    null, null);
+            goalList.add(singleGoal);
+        }
+
+        return goalList;
+
+        //} catch (SQLException | ClassNotFoundException e) {
+
+        //	throw new DatabaseException("Can't retrieve data from database");
+
+        //} finally {
 //			if(databaseConnection!=null) {
 //				databaseConnection.closeResultSet(resultSet);
 //				databaseConnection.closeStatement(statement);
@@ -485,59 +485,59 @@ public class AdviceGoalDao {
 //
 //		}
 
-	}
-	
-	// OTHER & NOTSPECIFIED
-	public static List<AdviceGoal> getUnansweredOtherAdvice() throws UserNotFoundException, Exception {
-		
-		Statement statement = null;
-		ResultSet resultSet = null;
-		DatabaseConnection databaseConnection = null;
-		List<AdviceGoal> goalList;
+    }
 
-		//try {
+    // OTHER & NOTSPECIFIED
+    public static List<AdviceGoal> getUnansweredOtherAdvice() throws UserNotFoundException, Exception {
 
-			databaseConnection = new DatabaseConnection();
-			statement = databaseConnection.createStatement();
-			resultSet = SimpleQueries.getUnansweredOtherAdvice(statement);
+        Statement statement = null;
+        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection = null;
+        List<AdviceGoal> goalList;
 
-			if (!resultSet.first()) {
-				Exception e = new Exception("No unanswered other advice was found");
-				throw e;
-			}
+        //try {
 
-			goalList = new ArrayList<>();
-			
-			resultSet.beforeFirst();
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+        resultSet = SimpleQueries.getUnansweredOtherAdvice(statement);
 
-			while (resultSet.next()) {
+        if (!resultSet.first()) {
+            Exception e = new Exception("No unanswered other advice was found");
+            throw e;
+        }
 
-				User userEntity = UserDao.getUser(resultSet.getString("user"));
-				ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
-				LocalDate deadline;
-				
-				// activist null
-				//User activistEntity = UserDao.getUser(resultSet.getString("adviceActivist")); //?
-				try {
-					deadline = resultSet.getDate("deadline").toLocalDate();
-				} catch(Exception e) { // generalizzare ogni volta che chiamo una data
-					deadline = DataValidation.setDefaultDate();
-				}
+        goalList = new ArrayList<>();
 
-				AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-						resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-						deadline, resultSet.getInt("Id"), userEntity, productType,
-						resultSet.getString("advice"), null /*activist*/);
-				goalList.add(singleGoal);
-			}
+        resultSet.beforeFirst();
 
-			return goalList;
+        while (resultSet.next()) {
 
-		//} catch (SQLException | ClassNotFoundException e) {
+            User userEntity = UserDao.getUser(resultSet.getString("user"));
+            ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
+            LocalDate deadline;
 
-		//	throw new DatabaseException("Can't retrieve data from database");
+            // activist null
+            //User activistEntity = UserDao.getUser(resultSet.getString("adviceActivist")); //?
+            try {
+                deadline = resultSet.getDate("deadline").toLocalDate();
+            } catch (Exception e) { // generalizzare ogni volta che chiamo una data
+                deadline = DataValidation.setDefaultDate();
+            }
 
-		//} finally {
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
+                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+                    deadline, resultSet.getInt("Id"), userEntity, productType,
+                    resultSet.getString("advice"), null /*activist*/);
+            goalList.add(singleGoal);
+        }
+
+        return goalList;
+
+        //} catch (SQLException | ClassNotFoundException e) {
+
+        //	throw new DatabaseException("Can't retrieve data from database");
+
+        //} finally {
 //			if(databaseConnection!=null) {
 //				databaseConnection.closeResultSet(resultSet);
 //				databaseConnection.closeStatement(statement);
@@ -545,8 +545,7 @@ public class AdviceGoalDao {
 //
 //		}
 
-	}
-	
-	
-	
+    }
+
+
 }
