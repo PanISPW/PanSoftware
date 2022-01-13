@@ -40,8 +40,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getAdviceGoalList(statement, user);
 
         if (!resultSet.first()) {
-            Exception e = new Exception("No Goal related to the User was found");
-            throw e;
+            throw new Exception("No Goal related to the User was found");
         }
 
         goalList = new ArrayList<>();
@@ -100,8 +99,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getAdviceGoal(statement, user, id);
 
         if (!resultSet.first()) {
-            Exception e = new Exception("Advice Goal not found");
-            throw e;
+            throw new Exception("No Goal related to the User was found");
         }
 
         ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
@@ -152,8 +150,7 @@ public class AdviceGoalDao {
             resultSet = SimpleQueries.getLastUserAdviceGoalId(statement, user);
 
             if (!resultSet.first()) {
-                EmptyResultSetException e = new EmptyResultSetException("No Goal related to the User was found");
-                throw e;
+                throw new EmptyResultSetException("No Goal related to the User was found");
             }
 
             lastId = resultSet.getInt("maxId");
@@ -328,8 +325,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getUnansweredMakeupAdvice(statement);
 
         if (!resultSet.first()) {
-            Exception e = new Exception("No unanswered makeup advice was found");
-            throw e;
+            throw new Exception("No unanswered makeup advice was found");
         }
 
         goalList = new ArrayList<>();
@@ -386,8 +382,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getUnansweredFoodAdvice(statement);
 
         if (!resultSet.first()) {
-            Exception e = new Exception("No unanswered food advice was found");
-            throw e;
+            throw new Exception("No unanswered food advice was found");
         }
 
         goalList = new ArrayList<>();
@@ -444,8 +439,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getUnansweredLifestyleAdvice(statement);
 
         if (!resultSet.first()) {
-            Exception e = new Exception("No unanswered lifestyle advice was found");
-            throw e;
+            throw new Exception("No unanswered lifestyle advice was found");
         }
 
         goalList = new ArrayList<>();
@@ -502,8 +496,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getUnansweredOtherAdvice(statement);
 
         if (!resultSet.first()) {
-            Exception e = new Exception("No unanswered other advice was found");
-            throw e;
+            throw new Exception("No unanswered other advice was found");
         }
 
         goalList = new ArrayList<>();

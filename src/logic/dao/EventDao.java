@@ -40,8 +40,7 @@ public class EventDao {
             resultSet = SimpleQueries.getEventList(statement);
 
             if (!resultSet.first()) {
-                Exception e = new Exception("No Event Found");
-                throw e;
+                throw new Exception("No Event Found");
             }
 
             eventList = new ArrayList<>();
@@ -87,13 +86,12 @@ public class EventDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            System.out.println("getEvent " + String.valueOf(id) + " " + organizer);
+            //System.out.println("getEvent " + String.valueOf(id) + " " + organizer);
 
             resultSet = SimpleQueries.getEvent(statement, id, organizer);
 
             if (!resultSet.first()) {
-                Exception e = new Exception("Event not found");
-                throw e;
+                throw new Exception("Event not found");
             }
 
             User userEntity = UserDao.getUser(resultSet.getString("organizer"));
