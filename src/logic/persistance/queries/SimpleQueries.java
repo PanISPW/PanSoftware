@@ -29,7 +29,6 @@ public class SimpleQueries {
     }
 
     public static ResultSet getGoalList(Statement stmt, String username) throws SQLException {
-        System.out.println("user: " + username); //
         String sql = String.format("SELECT * FROM goal WHERE user = '%s';", username);
         return stmt.executeQuery(sql);
     }

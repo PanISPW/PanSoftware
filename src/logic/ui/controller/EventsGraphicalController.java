@@ -31,9 +31,7 @@ public class EventsGraphicalController implements Initializable {
 
             List<Event> events = ManageGoalController.getEventList();
 
-            System.out.println("fuori dal loop");
             for (Event item : events) {
-                System.out.println("loop: " + item.getName());
                 EventCellGraphicalController cell = new EventCellGraphicalController(item);
 
                 FXMLLoader loader = FxUtilities.loadFxml(Pages.EVENTITEM);
@@ -45,7 +43,6 @@ public class EventsGraphicalController implements Initializable {
                 eventsList.getChildren().add(vbox);
             }
         } catch (Exception e) {
-            System.out.println("errore");
             Platform.exit();
         }
 

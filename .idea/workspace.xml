@@ -8,11 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d670b996-fe98-4411-bff6-a4b840a220a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ManageGoalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ManageGoalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dao/AdviceGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/AdviceGoalDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/persistance/queries/CRUDQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persistance/queries/CRUDQueries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ui/FxUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/FxUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ui/controller/EventCellGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/controller/EventCellGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/entity/EventGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/entity/EventGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persistance/queries/SimpleQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persistance/queries/SimpleQueries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ui/controller/AdviceGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/controller/AdviceGoalGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ui/controller/EventsGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/controller/EventsGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ui/controller/GiveAdviceGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/controller/GiveAdviceGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ui/controller/ManageEventParticipationGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/controller/ManageEventParticipationGraphicalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/ui/controller/ProfileGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/controller/ProfileGraphicalController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -590,7 +591,7 @@
       <workItem from="1642156572398" duration="595000" />
       <workItem from="1642174871720" duration="595000" />
       <workItem from="1642257813953" duration="1188000" />
-      <workItem from="1642350316781" duration="5942000" />
+      <workItem from="1642350316781" duration="6490000" />
     </task>
     <servers />
   </component>

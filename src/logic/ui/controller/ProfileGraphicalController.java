@@ -61,7 +61,6 @@ public class ProfileGraphicalController implements Initializable {
         List<Goal> goals = ManageGoalController.getGoalList();
         goalList.getChildren().clear();
 
-        System.out.println("goal loop");//
         for (Goal item : goals) {
 
             GoalCellGraphicalController cell = new GoalCellGraphicalController(item);
@@ -86,9 +85,7 @@ public class ProfileGraphicalController implements Initializable {
         List<AdviceGoal> goals = ManageGoalController.getAdviceGoalList();
         adviceGoalList.getChildren().clear();
 
-        System.out.println("advice goal loop");//
         for (AdviceGoal item : goals) {
-            System.out.println("loop: " + item.getName());//
 
             AdviceGoalGraphicalController cell = new AdviceGoalGraphicalController(item);
 
@@ -111,9 +108,7 @@ public class ProfileGraphicalController implements Initializable {
         List<EventGoal> goals = ManageGoalController.getEventGoalList();
         eventGoalList.getChildren().clear();
 
-        System.out.println("advice goal loop");//
         for (EventGoal item : goals) {
-            System.out.println("loop: " + item.getName());//
 
             EventGoalGraphicalController cell = new EventGoalGraphicalController(item);
 
@@ -138,11 +133,8 @@ public class ProfileGraphicalController implements Initializable {
 
         try {
             user = ManageGoalController.getCurrentUser();
-        } catch (UserNotFoundException e) {
-            System.out.println("could not find user");
-            e.printStackTrace();
         } catch (Exception e) {
-            System.out.println("could not retrieve user");
+            e.printStackTrace();
         }
 
         nameLabel.setText(user.getName() + " " + user.getSurname());
@@ -150,11 +142,7 @@ public class ProfileGraphicalController implements Initializable {
 
         try {
             goalRadio();
-        } catch (UserNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

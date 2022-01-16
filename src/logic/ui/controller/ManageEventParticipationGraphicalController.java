@@ -24,13 +24,10 @@ public class ManageEventParticipationGraphicalController implements Initializabl
     public void initialize(URL arg0, ResourceBundle arg1) {
         eventsParticipationList.getChildren().clear();
 
-        System.out.println("Event Participation aperto");//
-
         try {
             List<EventGoal> goals = ManageGoalController.getPendingEventGoalList();
 
             for (EventGoal item : goals) {
-                System.out.println("loop: " + item.getName());
                 EventParticipationItemGraphicalController cell = new EventParticipationItemGraphicalController(item);
 
                 FXMLLoader loader = FxUtilities.loadFxml(Pages.EVENTPARTICIPATIONITEM);

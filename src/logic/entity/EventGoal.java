@@ -30,7 +30,6 @@ public class EventGoal extends Goal {
         }
 
         this.stateMachine = new ConcreteStateMachine(event, this, state);
-        System.out.println("State to be returned " + stateMachine.getState().toString()); //
     }
 
     public static EventGoal getEventGoal(String user, int id) throws UserNotFoundException, Exception {

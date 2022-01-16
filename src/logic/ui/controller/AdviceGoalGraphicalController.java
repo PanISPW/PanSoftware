@@ -83,8 +83,6 @@ public class AdviceGoalGraphicalController implements Initializable {
             adviceGoalProductBarcode.setText("");
         }
 
-        System.out.println("advice initialized");
-
     }
 
     @FXML

@@ -41,10 +41,7 @@ public class GiveAdviceGraphicalController implements Initializable {
 
     public void populateBox(List<AdviceGoal> goals) throws IOException {
 
-
-        System.out.println("goal loop");//
         for (AdviceGoal item : goals) {
-            System.out.println("loop: " + item.getName());//
 
             AdviceCellGraphicalController cell = new AdviceCellGraphicalController(item);
 
