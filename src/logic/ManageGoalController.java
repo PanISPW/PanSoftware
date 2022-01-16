@@ -163,7 +163,7 @@ public class ManageGoalController {
 
         EventGoal goal = new EventGoal(bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), bean.getId(), userEntity, eventEntity, bean.getState());
 
-        System.out.println("rejectEventGoal " + bean.getEventOrganizer() + " " + String.valueOf(bean.getEventId()));
+        //System.out.println("rejectEventGoal " + bean.getEventOrganizer() + " " + String.valueOf(bean.getEventId()));
 
         goal.rejectJoinRequest();
 
@@ -179,7 +179,7 @@ public class ManageGoalController {
 
     public void createGoal(GoalBean bean) throws Exception {
         User user = UserDao.getUser(Session.getSession().getUser());
-        GoalFactory.getGoalFactory().createGoal(bean, user);
+        GoalFactory.getGoalFactory().createGoal(bean);
 
         if (bean.isReminder()) {
             addReminder(user.getEmail(), bean.getDeadline());

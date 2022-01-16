@@ -6,6 +6,9 @@ import logic.bean.BarcodeBean;
 
 public class BarcodeScanner {
 
+    private BarcodeScanner() {
+    }
+
     // classe dummy
 
     public static BarcodeBean getBarcode() {

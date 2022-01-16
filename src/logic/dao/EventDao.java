@@ -87,8 +87,6 @@ public class EventDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            //System.out.println("getEvent " + String.valueOf(id) + " " + organizer);
-
             resultSet = SimpleQueries.getEvent(statement, id, organizer);
 
             if (!resultSet.first()) {
@@ -143,9 +141,7 @@ public class EventDao {
             throw new DatabaseException("Can't insert new Goal in database");
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -171,10 +167,8 @@ public class EventDao {
             throw new DatabaseException("Can't update Goal in database");
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeResultSet(resultSet);
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeResultSet(resultSet);
+            databaseConnection.closeStatement(statement);
         }
 
     }

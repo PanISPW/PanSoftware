@@ -29,8 +29,6 @@ public class GoalDao {
         ResultSet resultSet = null;
         List<Goal> goalList;
 
-        //try {
-
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
         resultSet = SimpleQueries.getGoalList(statement, user);
@@ -54,19 +52,6 @@ public class GoalDao {
 
         return goalList;
 
-
-        //} catch (SQLException | ClassNotFoundException e) {
-
-        //	throw new DatabaseException("Can't retrieve data from database");
-
-        //} finally {
-
-        //if(databaseConnection!=null) {
-//				databaseConnection.closeResultSet(resultSet);
-//				databaseConnection.closeStatement(statement);
-//			}
-        //}
-
     }
 
     public static Goal getGoal(String user, int id) throws UserNotFoundException, Exception {
@@ -76,8 +61,6 @@ public class GoalDao {
         ResultSet resultSet = null;
         Goal goal;
 
-        //try {
-
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
         resultSet = SimpleQueries.getGoal(statement, user, id);
@@ -86,25 +69,10 @@ public class GoalDao {
             throw new Exception("Goal not found");
         }
 
-        //resultSet.beforeFirst();
-
         User userEntity = UserDao.getUser(user);
         goal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
 
         return goal;
-
-
-//		} catch (SQLException | ClassNotFoundException e) {
-//
-//			throw new DatabaseException("Can't retrieve data from database");
-//
-//		} finally {
-//
-//			if(databaseConnection!=null) {
-//				databaseConnection.closeResultSet(resultSet);
-//				databaseConnection.closeStatement(statement);
-//			}
-//		}
 
     }
 
@@ -158,11 +126,6 @@ public class GoalDao {
             result = CRUDQueries.addGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user);
 
             return result;
-
-
-            //} catch (SQLException e) {
-
-            //throw new DatabaseException("Can't insert new Goal in database");
 
         } finally {
             if (databaseConnection != null) {

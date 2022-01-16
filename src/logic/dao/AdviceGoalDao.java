@@ -71,18 +71,6 @@ public class AdviceGoalDao {
 
         return goalList;
 
-        //} catch (SQLException | ClassNotFoundException e) {
-
-        //	throw new DatabaseException("Can't retrieve data from database");
-
-        //} finally {
-//			if(databaseConnection!=null) {
-//				databaseConnection.closeResultSet(resultSet);
-//				databaseConnection.closeStatement(statement);
-//			}
-//
-//		}
-
     }
 
     public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, Exception {
@@ -118,22 +106,6 @@ public class AdviceGoalDao {
                 resultSet.getString(Constants.ADVICE), activistEntity);
 
         return goal;
-
-//		}catch(SQLException|
-//
-//	ClassNotFoundException e)
-//	{
-//
-//		throw new DatabaseException("Can't retrieve data from database");
-//
-//	}finally
-//	{
-//
-//		if(databaseConnection!=null) {
-//			databaseConnection.closeResultSet(resultSet);
-//			databaseConnection.closeStatement(statement);
-//		}
-//	}
 
     }
 
@@ -291,22 +263,11 @@ public class AdviceGoalDao {
         Statement statement = null;
         int result;
 
-        //try {
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
         result = CRUDQueries.answerAdviceGoal(statement, advice, activist, id, user);
 
         return result;
-
-        //} catch (SQLException e) {
-
-        //throw new DatabaseException("Can't update Advice Goal in database");
-
-//		} finally {
-//			if(databaseConnection!=null) {
-//				databaseConnection.closeStatement(statement);
-//			}
-//		}
 
     }
 
@@ -318,8 +279,6 @@ public class AdviceGoalDao {
         ResultSet resultSet = null;
         DatabaseConnection databaseConnection = null;
         List<AdviceGoal> goalList;
-
-        //try {
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
@@ -353,19 +312,6 @@ public class AdviceGoalDao {
         }
 
         return goalList;
-
-        //} catch (SQLException | ClassNotFoundException e) {
-
-        //	throw new DatabaseException("Can't retrieve data from database");
-
-        //} finally {
-//			if(databaseConnection!=null) {
-//				databaseConnection.closeResultSet(resultSet);
-//				databaseConnection.closeStatement(statement);
-//			}
-//
-//		}
-
     }
 
     // FOOD
@@ -375,8 +321,6 @@ public class AdviceGoalDao {
         ResultSet resultSet = null;
         DatabaseConnection databaseConnection = null;
         List<AdviceGoal> goalList;
-
-        //try {
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
@@ -410,19 +354,6 @@ public class AdviceGoalDao {
         }
 
         return goalList;
-
-        //} catch (SQLException | ClassNotFoundException e) {
-
-        //	throw new DatabaseException("Can't retrieve data from database");
-
-        //} finally {
-//			if(databaseConnection!=null) {
-//				databaseConnection.closeResultSet(resultSet);
-//				databaseConnection.closeStatement(statement);
-//			}
-//
-//		}
-
     }
 
     // LIFESTYLE
@@ -432,8 +363,6 @@ public class AdviceGoalDao {
         ResultSet resultSet = null;
         DatabaseConnection databaseConnection = null;
         List<AdviceGoal> goalList;
-
-        //try {
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
@@ -468,18 +397,6 @@ public class AdviceGoalDao {
 
         return goalList;
 
-        //} catch (SQLException | ClassNotFoundException e) {
-
-        //	throw new DatabaseException("Can't retrieve data from database");
-
-        //} finally {
-//			if(databaseConnection!=null) {
-//				databaseConnection.closeResultSet(resultSet);
-//				databaseConnection.closeStatement(statement);
-//			}
-//
-//		}
-
     }
 
     // OTHER & NOTSPECIFIED
@@ -489,8 +406,6 @@ public class AdviceGoalDao {
         ResultSet resultSet = null;
         DatabaseConnection databaseConnection = null;
         List<AdviceGoal> goalList;
-
-        //try {
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
@@ -526,19 +441,6 @@ public class AdviceGoalDao {
         }
 
         return goalList;
-
-        //} catch (SQLException | ClassNotFoundException e) {
-
-        //	throw new DatabaseException("Can't retrieve data from database");
-
-        //} finally {
-//			if(databaseConnection!=null) {
-//				databaseConnection.closeResultSet(resultSet);
-//				databaseConnection.closeStatement(statement);
-//			}
-//
-//		}
-
     }
 
 

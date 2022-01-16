@@ -38,17 +38,6 @@ public class UserDao {
 
         return DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
 
-        //} catch (SQLException | ClassNotFoundException e) {
-
-        //throw new DatabaseException("Can't retrieve data from database");
-
-        //} finally {
-
-        //if(databaseConnection!=null) {
-        //	databaseConnection.closeResultSet(resultSet);
-        //	databaseConnection.closeStatement(statement);
-        //}
-        //}
     }
 
 

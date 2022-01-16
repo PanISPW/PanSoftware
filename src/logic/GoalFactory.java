@@ -4,7 +4,6 @@ import logic.bean.GoalBean;
 import logic.dao.*;
 import logic.entity.Event;
 import logic.entity.EventGoal;
-import logic.entity.User;
 import logic.enumeration.EventRequestState;
 import logic.enumeration.GoalType;
 import logic.enumeration.ProductType;
@@ -51,7 +50,7 @@ public class GoalFactory {
         return instance;
     }
 
-    public int createGoal(GoalBean bean, User user) throws Exception {
+    public int createGoal(GoalBean bean) throws Exception {
 
         this.name = bean.getName();
         this.description = bean.getDescription();
