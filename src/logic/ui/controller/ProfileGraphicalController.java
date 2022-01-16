@@ -63,7 +63,7 @@ public class ProfileGraphicalController implements Initializable {
 
         System.out.println("goal loop");//
         for (Goal item : goals) {
-            System.out.println("loop: " + item.getName());//
+            //System.out.println("loop: " + item.getName());//
 
             GoalCellGraphicalController cell = new GoalCellGraphicalController(item);
 

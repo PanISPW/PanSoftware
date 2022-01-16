@@ -54,7 +54,7 @@ public class Entries {
     public void processRequest(HttpServletRequest request, String tm) {
         int index = getIndex(tm);
         if (index >= 0) {
-            String descr = request.getParameter("description");
+            String descr = request.getParameter(Constants.DESCRIPTION);
             entries.get(time[index]).setDescription(descr);
         }
     }

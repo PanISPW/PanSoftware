@@ -6,11 +6,12 @@ import java.time.LocalDate;
 
 public class SendMail {
 
-    // classe dummy
 
     public static void send(String text, String email) {
+        // classe dummy
     }
 
     public static void sendOnDay(String email, LocalDate day) {
+        // classe dummy
     }
 }

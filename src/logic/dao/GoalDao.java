@@ -8,6 +8,7 @@ import logic.exception.UserNotFoundException;
 import logic.persistance.DatabaseConnection;
 import logic.persistance.queries.CRUDQueries;
 import logic.persistance.queries.SimpleQueries;
+import logic.util.Constants;
 import logic.util.DaoUtils;
 
 import java.sql.Date;
@@ -35,7 +36,7 @@ public class GoalDao {
         resultSet = SimpleQueries.getGoalList(statement, user);
 
         if (!resultSet.first()) {
-            throw new Exception("No Goal related to the User was found");
+            throw new Exception(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
         }
 
 
@@ -47,7 +48,7 @@ public class GoalDao {
 
             User userEntity = UserDao.getUser(user);
 
-            Goal singleGoal = new Goal(resultSet.getString("name"), resultSet.getString("description"), resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"), resultSet.getDate("deadline").toLocalDate(), userEntity, resultSet.getInt("Id"));
+            Goal singleGoal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
             goalList.add(singleGoal);
         }
 
@@ -88,7 +89,7 @@ public class GoalDao {
         //resultSet.beforeFirst();
 
         User userEntity = UserDao.getUser(user);
-        goal = new Goal(resultSet.getString("name"), resultSet.getString("description"), resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"), resultSet.getDate("deadline").toLocalDate(), userEntity, resultSet.getInt("Id"));
+        goal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
 
         return goal;
 
@@ -122,7 +123,7 @@ public class GoalDao {
             resultSet = SimpleQueries.getLastUserGoalId(statement, user);
 
             if (!resultSet.first()) {
-                throw new EmptyResultSetException("No Goal related to the User was found");
+                throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
             }
 
             lastId = resultSet.getInt("maxId");
@@ -132,7 +133,7 @@ public class GoalDao {
 
         } catch (SQLException e) {
 
-            throw new DatabaseException("Can't retrieve data from database");
+            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
             if (databaseConnection != null) {

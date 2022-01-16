@@ -10,6 +10,7 @@ import logic.enumeration.GoalType;
 import logic.enumeration.ProductType;
 import logic.exception.DatabaseException;
 import logic.exception.EmptyResultSetException;
+import logic.util.Constants;
 import logic.util.Session;
 
 import java.time.LocalDate;
@@ -77,7 +78,7 @@ public class GoalFactory {
             if (e instanceof EmptyResultSetException)
                 goalId = 0;
             else
-                throw new DatabaseException("could not retrieve new id");
+                throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
         }
 
         goalId = goalId + 1;
@@ -95,7 +96,7 @@ public class GoalFactory {
             if (e instanceof EmptyResultSetException)
                 goalId = 0;
             else
-                throw new DatabaseException("could not retrieve new id");
+                throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
         }
 
         adviceGoalId = adviceGoalId + 1;
@@ -113,7 +114,7 @@ public class GoalFactory {
             if (e instanceof EmptyResultSetException)
                 goalId = 0;
             else
-                throw new DatabaseException("could not retrieve new id");
+                throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
         }
 
         eventGoalId = eventGoalId + 1;

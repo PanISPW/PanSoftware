@@ -17,7 +17,7 @@ public class DatabaseConnection {
         connection = DriverManager.getConnection(url, dbUser, dbPassword);
     }
 
-    public void closeConnection() throws SQLException {
+    public static void closeConnection() throws SQLException {
         if (connection != null) {
             connection.close();
             connection = null;

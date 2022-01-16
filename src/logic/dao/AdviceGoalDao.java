@@ -9,6 +9,7 @@ import logic.exception.UserNotFoundException;
 import logic.persistance.DatabaseConnection;
 import logic.persistance.queries.CRUDQueries;
 import logic.persistance.queries.SimpleQueries;
+import logic.util.Constants;
 import logic.util.DaoUtils;
 import logic.util.DataValidation;
 
@@ -40,7 +41,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getAdviceGoalList(statement, user);
 
         if (!resultSet.first()) {
-            throw new Exception("No Goal related to the User was found");
+            throw new Exception(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
         }
 
         goalList = new ArrayList<>();
@@ -50,21 +51,21 @@ public class AdviceGoalDao {
         while (resultSet.next()) {
 
             User userEntity = UserDao.getUser(user);
-            ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt("productType"));
+            ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
             LocalDate deadline;
 
             // activist null
             //User activistEntity = UserDao.getUser(resultSet.getString("adviceActivist")); //?
             try {
-                deadline = resultSet.getDate("deadline").toLocalDate();
+                deadline = resultSet.getDate(Constants.DEADLINE).toLocalDate();
             } catch (Exception e) { // generalizzare ogni volta che chiamo una data
                 deadline = DataValidation.setDefaultDate();
             }
 
-            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
+                    resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
                     deadline, resultSet.getInt("Id"), userEntity, productType,
-                    resultSet.getString("advice"), null /*activist*/);
+                    resultSet.getString(Constants.ADVICE), null /*activist*/);
             goalList.add(singleGoal);
         }
 
@@ -99,10 +100,10 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getAdviceGoal(statement, user, id);
 
         if (!resultSet.first()) {
-            throw new Exception("No Goal related to the User was found");
+            throw new Exception(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
         }
 
-        ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt("productType"));
+        ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
         User userEntity = UserDao.getUser(user);
 
         try {
@@ -111,10 +112,10 @@ public class AdviceGoalDao {
             activistEntity = null;
         }
 
-        goal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-                resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
-                resultSet.getDate("deadline").toLocalDate(), resultSet.getInt("Id"), userEntity, productType,
-                resultSet.getString("advice"), activistEntity);
+        goal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
+                resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
+                resultSet.getDate(Constants.DEADLINE).toLocalDate(), resultSet.getInt("Id"), userEntity, productType,
+                resultSet.getString(Constants.ADVICE), activistEntity);
 
         return goal;
 
@@ -150,7 +151,7 @@ public class AdviceGoalDao {
             resultSet = SimpleQueries.getLastUserAdviceGoalId(statement, user);
 
             if (!resultSet.first()) {
-                throw new EmptyResultSetException("No Goal related to the User was found");
+                throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
             }
 
             lastId = resultSet.getInt("maxId");
@@ -158,7 +159,7 @@ public class AdviceGoalDao {
 
         } catch (SQLException e) {
 
-            throw new DatabaseException("Can't retrieve data from database");
+            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
 
@@ -220,7 +221,7 @@ public class AdviceGoalDao {
 
         } catch (SQLException e) {
 
-            throw new DatabaseException("Can't update Advice Goal in database");
+            throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
         } finally {
             if (databaseConnection != null) {
@@ -246,7 +247,7 @@ public class AdviceGoalDao {
 
         } catch (SQLException e) {
 
-            throw new DatabaseException("Can't update Advice Goal in database");
+            throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
         } finally {
             if (databaseConnection != null) {
@@ -274,7 +275,7 @@ public class AdviceGoalDao {
 
         } catch (SQLException e) {
 
-            throw new DatabaseException("Can't update Advice Goal in database");
+            throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
         } finally {
             if (databaseConnection != null) {
@@ -339,13 +340,13 @@ public class AdviceGoalDao {
             LocalDate deadline;
 
             try {
-                deadline = resultSet.getDate("deadline").toLocalDate();
+                deadline = resultSet.getDate(Constants.DEADLINE).toLocalDate();
             } catch (Exception e) { // generalizzare ogni volta che chiamo una data
                 deadline = DataValidation.setDefaultDate();
             }
 
-            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
+                    resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
                     deadline, resultSet.getInt("Id"), userEntity, productType,
                     null, null);
             goalList.add(singleGoal);
@@ -396,13 +397,13 @@ public class AdviceGoalDao {
             LocalDate deadline;
 
             try {
-                deadline = resultSet.getDate("deadline").toLocalDate();
+                deadline = resultSet.getDate(Constants.DEADLINE).toLocalDate();
             } catch (Exception e) { // generalizzare ogni volta che chiamo una data
                 deadline = DataValidation.setDefaultDate();
             }
 
-            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
+                    resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
                     deadline, resultSet.getInt("Id"), userEntity, productType,
                     null, null);
             goalList.add(singleGoal);
@@ -453,13 +454,13 @@ public class AdviceGoalDao {
             LocalDate deadline;
 
             try {
-                deadline = resultSet.getDate("deadline").toLocalDate();
+                deadline = resultSet.getDate(Constants.DEADLINE).toLocalDate();
             } catch (Exception e) { // generalizzare ogni volta che chiamo una data
                 deadline = DataValidation.setDefaultDate();
             }
 
-            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
+                    resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
                     deadline, resultSet.getInt("Id"), userEntity, productType,
                     null, null);
             goalList.add(singleGoal);
@@ -506,21 +507,21 @@ public class AdviceGoalDao {
         while (resultSet.next()) {
 
             User userEntity = UserDao.getUser(resultSet.getString("user"));
-            ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt("productType"));
+            ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
             LocalDate deadline;
 
             // activist null
             //User activistEntity = UserDao.getUser(resultSet.getString("adviceActivist")); //?
             try {
-                deadline = resultSet.getDate("deadline").toLocalDate();
+                deadline = resultSet.getDate(Constants.DEADLINE).toLocalDate();
             } catch (Exception e) { // generalizzare ogni volta che chiamo una data
                 deadline = DataValidation.setDefaultDate();
             }
 
-            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString("description"),
-                    resultSet.getInt("numberOfSteps"), resultSet.getInt("stepsCompleted"),
+            AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
+                    resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
                     deadline, resultSet.getInt("Id"), userEntity, productType,
-                    resultSet.getString("advice"), null /*activist*/);
+                    resultSet.getString(Constants.ADVICE), null /*activist*/);
             goalList.add(singleGoal);
         }
 

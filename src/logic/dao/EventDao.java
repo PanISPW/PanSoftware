@@ -8,6 +8,7 @@ import logic.exception.UserNotFoundException;
 import logic.persistance.DatabaseConnection;
 import logic.persistance.queries.CRUDQueries;
 import logic.persistance.queries.SimpleQueries;
+import logic.util.Constants;
 import logic.util.DaoUtils;
 
 import java.sql.Date;
@@ -50,7 +51,7 @@ public class EventDao {
             while (resultSet.next()) {
 
                 User userEntity = UserDao.getUser(resultSet.getString("organizer"));
-                EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt("private"));
+                EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
 
                 Event singleEvent = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
@@ -62,7 +63,7 @@ public class EventDao {
 
         } catch (SQLException | ClassNotFoundException e) {
 
-            throw new DatabaseException("Can't retrieve data from database");
+            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
 
@@ -95,7 +96,7 @@ public class EventDao {
             }
 
             User userEntity = UserDao.getUser(resultSet.getString("organizer"));
-            EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt("private"));
+            EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
             event = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
 
@@ -104,7 +105,7 @@ public class EventDao {
 
         } catch (SQLException | ClassNotFoundException e) {
 
-            throw new DatabaseException("Can't retrieve data from database");
+            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
 
@@ -163,7 +164,7 @@ public class EventDao {
 
             resultSet = SimpleQueries.getEvent(statement, id, organizer);
 
-            return DaoUtils.databaseIntToEventType(resultSet.getInt("private"));
+            return DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
         } catch (SQLException e) {
 

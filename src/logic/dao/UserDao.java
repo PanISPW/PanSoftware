@@ -7,6 +7,7 @@ import logic.exception.UserNotFoundException;
 import logic.persistance.DatabaseConnection;
 import logic.persistance.queries.CRUDQueries;
 import logic.persistance.queries.SimpleQueries;
+import logic.util.Constants;
 import logic.util.DaoUtils;
 
 import java.sql.ResultSet;
@@ -77,7 +78,7 @@ public class UserDao {
 
         } catch (SQLException | ClassNotFoundException e) {
 
-            throw new DatabaseException("Can't retrieve data from database");
+            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
 
