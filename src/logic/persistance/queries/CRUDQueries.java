@@ -51,7 +51,7 @@ public class CRUDQueries {
 
     public static int addEventGoal(Statement stmt, String name, String description, int numberOfSteps, int stepsCompleted, Date deadline, int id, String user, String eventOrganizer, int eventId, int requestState) throws SQLException {
         //
-        System.out.println("state: " + String.valueOf(requestState)); //
+        //System.out.println("state: " + String.valueOf(requestState)); //
 
         String insertStatement = String.format("INSERT INTO eventgoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState) VALUES ('%s','%s',%s,%s,'%s',%s,'%s','%s',%s,%s);", name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState);
         return stmt.executeUpdate(insertStatement);
