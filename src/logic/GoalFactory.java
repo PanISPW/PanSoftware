@@ -43,13 +43,6 @@ public class GoalFactory {
         return instance;
     }
 
-    public static GoalFactory getFactory() {
-        if (instance == null)
-            instance = new GoalFactory();
-
-        return instance;
-    }
-
     public int createGoal(GoalBean bean) throws Exception {
 
         this.name = bean.getName();
