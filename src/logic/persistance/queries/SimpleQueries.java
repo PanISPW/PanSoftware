@@ -51,8 +51,7 @@ public class SimpleQueries {
     }
 
     public static ResultSet getEventList(Statement stmt) throws SQLException {
-        String sql = String.format("SELECT * FROM event;");
-        return stmt.executeQuery(sql);
+        return stmt.executeQuery(String.format("SELECT * FROM event;"));
     }
 
     public static ResultSet getEvent(Statement stmt, int id, String organizer) throws SQLException {
@@ -83,26 +82,22 @@ public class SimpleQueries {
 
     public static ResultSet getUnansweredMakeupAdvice(Statement stmt) throws SQLException {
         // 0 = MAKEUP
-        String sql = String.format("SELECT * FROM advicegoal WHERE advice is null AND productType=0;");
-        return stmt.executeQuery(sql);
+        return stmt.executeQuery(String.format("SELECT * FROM event;"));
     }
 
     public static ResultSet getUnansweredFoodAdvice(Statement stmt) throws SQLException {
         // 1 = FOOD
-        String sql = String.format("SELECT * FROM advicegoal WHERE advice is null AND productType=1;");
-        return stmt.executeQuery(sql);
+        return stmt.executeQuery(String.format("SELECT * FROM advicegoal WHERE advice is null AND productType=1;"));
     }
 
     public static ResultSet getUnansweredLifestyleAdvice(Statement stmt) throws SQLException {
         // 2 = LIFESTYLE
-        String sql = String.format("SELECT * FROM advicegoal WHERE advice is null AND productType=2;");
-        return stmt.executeQuery(sql);
+        return stmt.executeQuery(String.format("SELECT * FROM advicegoal WHERE advice is null AND productType=2;"));
     }
 
     public static ResultSet getUnansweredOtherAdvice(Statement stmt) throws SQLException {
         // 3 = OTHER & 4 = NOTSPECIFIED
-        String sql = String.format("SELECT * FROM advicegoal WHERE advice is null AND (productType=3 OR productType=4);");
-        return stmt.executeQuery(sql);
+        return stmt.executeQuery(String.format("SELECT * FROM advicegoal WHERE advice is null AND (productType=3 OR productType=4);"));
     }
 
 }
