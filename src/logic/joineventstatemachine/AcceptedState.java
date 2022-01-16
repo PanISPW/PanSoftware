@@ -1,4 +1,4 @@
-package logic.joinEventStateMachine;
+package logic.joineventstatemachine;
 
 import logic.entity.Event;
 import logic.enumeration.EventRequestState;
@@ -7,9 +7,9 @@ import logic.exception.NoTransitionException;
 
 // @author Danilo D'Amico
 
-public class RejectedState extends JoinEventState {
+public class AcceptedState extends JoinEventState {
 
-    public RejectedState(Event event) throws Exception {
+    public AcceptedState(Event event) throws Exception {
     }
 
     @Override
@@ -24,7 +24,7 @@ public class RejectedState extends JoinEventState {
 
     @Override
     protected EventRequestState getState() {
-        return EventRequestState.REJECTED;
+        return EventRequestState.ACCEPTED;
     }
 
 }

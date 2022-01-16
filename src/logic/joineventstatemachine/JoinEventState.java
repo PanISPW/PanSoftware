@@ -1,4 +1,4 @@
-package logic.joinEventStateMachine;
+package logic.joineventstatemachine;
 
 import logic.entity.Event;
 import logic.enumeration.EventRequestState;

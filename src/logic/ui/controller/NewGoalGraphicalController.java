@@ -75,7 +75,7 @@ public class NewGoalGraphicalController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
-        List<ProductType> list = new ArrayList<ProductType>();
+        List<ProductType> list = new ArrayList<>();
         list.add(ProductType.NOTSPECIFIED);
         list.add(ProductType.FOOD);
         list.add(ProductType.LIFESTYLE);

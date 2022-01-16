@@ -1,9 +1,11 @@
-package logic.joinEventStateMachine;
+package logic.joineventstatemachine;
 
 import logic.entity.Event;
 import logic.entity.EventGoal;
 import logic.enumeration.EventRequestState;
 import logic.interfaces.StateMachine;
+
+import static logic.enumeration.EventRequestState.REJECTED;
 
 // @author Danilo D'Amico
 
@@ -31,12 +33,10 @@ public class ConcreteStateMachine implements StateMachine {
     @Override
     public void answerRequest(EventRequestState state) throws Exception {
 
-        switch (state) {
-            case REJECTED:
-                currentState.reject();
-                break;
-            default:
-                currentState.accept();
+        if(state == REJECTED){
+            currentState.reject();
+        } else {
+            currentState.accept();
         }
     }
 

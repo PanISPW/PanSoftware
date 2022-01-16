@@ -42,8 +42,7 @@ public class EventGoalDao {
             resultSet = SimpleQueries.getEventGoalList(statement, user);
 
             if (!resultSet.first()) {
-                Exception e = new Exception("No Event Goal related to the User was found");
-                throw e;
+                throw new Exception("No Event Goal related to the User was found");
             }
 
             goalList = new ArrayList<>();
@@ -55,7 +54,7 @@ public class EventGoalDao {
                 User userEntity = UserDao.getUser(user);
                 Event event;
 
-                EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
+                EventRequestState state = DaoUtils.databaseIntToEventRequestState(resultSet.getInt("requestState"));
                 int eventId = resultSet.getInt("eventId");
                 if (eventId == -1) {
                     event = null;
@@ -99,8 +98,7 @@ public class EventGoalDao {
             resultSet = SimpleQueries.getPendingEventApprovalList(statement, user);
 
             if (!resultSet.first()) {
-                Exception e = new Exception("No Pending Event Goal related to the User was found");
-                throw e;
+                throw new Exception("No Pending Event Goal related to the User was found");
             }
 
             goalList = new ArrayList<>();
@@ -111,7 +109,7 @@ public class EventGoalDao {
 
                 User userEntity = UserDao.getUser(resultSet.getString("user"));
 
-                EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
+                EventRequestState state = DaoUtils.databaseIntToEventRequestState(resultSet.getInt("requestState"));
 
                 Event event = EventDao.getEvent(resultSet.getInt("eventId"), resultSet.getString("eventOrganizer"));
 
@@ -152,13 +150,12 @@ public class EventGoalDao {
             resultSet = SimpleQueries.getEventGoal(statement, user, id);
 
             if (!resultSet.first()) {
-                Exception e = new Exception("The Event Goal was not found");
-                throw e;
+                throw new Exception("The Event Goal was not found");
             }
 
             User userEntity = UserDao.getUser(user);
 
-            EventRequestState state = DaoUtils.DatabaseIntToEventRequestState(resultSet.getInt("requestState"));
+            EventRequestState state = DaoUtils.databaseIntToEventRequestState(resultSet.getInt("requestState"));
 
 
             event = EventDao.getEvent(resultSet.getInt("eventId"), resultSet.getString("eventOrganizer"));
@@ -200,8 +197,7 @@ public class EventGoalDao {
             resultSet = SimpleQueries.getLastUserEventGoalId(statement, user);
 
             if (!resultSet.first()) {
-                EmptyResultSetException e = new EmptyResultSetException("No Goal related to the User was found");
-                throw e;
+                throw new EmptyResultSetException("No Goal related to the User was found");
             }
 
             lastId = resultSet.getInt("maxId");
@@ -225,9 +221,7 @@ public class EventGoalDao {
     public static EventRequestState getEventParticipationState(String user, int id) throws UserNotFoundException, Exception {
 
         EventGoal goal = getEventGoal(user, id);
-        EventRequestState currentState = goal.getState();
-
-        return currentState;
+        return goal.getState();
     }
 
     public static int addEventGoal(String user, String name, String description, int numberOfSteps, int stepsCompleted,
@@ -243,8 +237,8 @@ public class EventGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            stateInt = DaoUtils.EventRequestStateToDatabaseInt(requestState);
-            Date sqlDeadline = DaoUtils.LocalDateToSqlDateOrDefault(deadline);
+            stateInt = DaoUtils.eventRequestStateToDatabaseInt(requestState);
+            Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(deadline);
             result = CRUDQueries.addEventGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user, eventOrganizer, eventId, stateInt);
 
             return result;
@@ -299,7 +293,7 @@ public class EventGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            requestStateInt = DaoUtils.EventRequestStateToDatabaseInt(requestState);
+            requestStateInt = DaoUtils.eventRequestStateToDatabaseInt(requestState);
 
             result = CRUDQueries.joinEvent(statement, event.getId(), event.getUser().getUsername(), requestStateInt, id, user);
 

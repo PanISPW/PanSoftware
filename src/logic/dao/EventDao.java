@@ -50,7 +50,7 @@ public class EventDao {
             while (resultSet.next()) {
 
                 User userEntity = UserDao.getUser(resultSet.getString("organizer"));
-                EventType eventType = DaoUtils.DatabaseIntToEventType(resultSet.getInt("private"));
+                EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt("private"));
 
 
                 Event singleEvent = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
@@ -95,7 +95,7 @@ public class EventDao {
             }
 
             User userEntity = UserDao.getUser(resultSet.getString("organizer"));
-            EventType eventType = DaoUtils.DatabaseIntToEventType(resultSet.getInt("private"));
+            EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt("private"));
 
             event = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
 
@@ -129,9 +129,9 @@ public class EventDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            typeInt = DaoUtils.EventTypeToDatabaseInt(type);
-            Date sqlStartingDate = DaoUtils.LocalDateToSqlDateOrDefault(startingDate);
-            Date sqlEndingDate = DaoUtils.LocalDateToSqlDateOrDefault(endingDate);
+            typeInt = DaoUtils.eventTypeToDatabaseInt(type);
+            Date sqlStartingDate = DaoUtils.localDateToSqlDateOrDefault(startingDate);
+            Date sqlEndingDate = DaoUtils.localDateToSqlDateOrDefault(endingDate);
             result = CRUDQueries.addEvent(statement, id, organizer, name, sqlStartingDate, sqlEndingDate, typeInt);
 
             return result;
@@ -163,7 +163,7 @@ public class EventDao {
 
             resultSet = SimpleQueries.getEvent(statement, id, organizer);
 
-            return DaoUtils.DatabaseIntToEventType(resultSet.getInt("private"));
+            return DaoUtils.databaseIntToEventType(resultSet.getInt("private"));
 
         } catch (SQLException e) {
 

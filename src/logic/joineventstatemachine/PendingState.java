@@ -1,4 +1,4 @@
-package logic.joinEventStateMachine;
+package logic.joineventstatemachine;
 
 import logic.dao.EventGoalDao;
 import logic.entity.Event;

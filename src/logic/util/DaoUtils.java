@@ -7,11 +7,13 @@ import logic.enumeration.UserRole;
 
 import java.time.LocalDate;
 
+import static logic.enumeration.EventType.PRIVATE;
+
 // @author Danilo D'Amico
 
 public class DaoUtils {
 
-    public static ProductType DatabaseIntToProductType(int databaseInt) {
+    public static ProductType databaseIntToProductType(int databaseInt) {
 
         switch (databaseInt) {
 
@@ -32,7 +34,7 @@ public class DaoUtils {
         }
     }
 
-    public static int ProductTypeToDatabaseInt(ProductType type) {
+    public static int productTypeToDatabaseInt(ProductType type) {
 
         switch (type) {
 
@@ -54,7 +56,7 @@ public class DaoUtils {
 
     }
 
-    public static java.sql.Date LocalDateToSqlDateOrDefault(LocalDate localDate) {
+    public static java.sql.Date localDateToSqlDateOrDefault(LocalDate localDate) {
         java.sql.Date date;
         try {
             date = java.sql.Date.valueOf(localDate);
@@ -65,7 +67,7 @@ public class DaoUtils {
         return date;
     }
 
-    public static UserRole DatabaseIntToUserRole(int databaseInt) {
+    public static UserRole databaseIntToUserRole(int databaseInt) {
 
         switch (databaseInt) {
 
@@ -80,7 +82,7 @@ public class DaoUtils {
         }
     }
 
-    public static int UserRoleToDatabaseInt(UserRole role) {
+    public static int userRoleToDatabaseInt(UserRole role) {
         switch (role) {
             case ACTIVIST:
                 return 1;
@@ -91,26 +93,26 @@ public class DaoUtils {
         }
     }
 
-    public static EventType DatabaseIntToEventType(int databaseInt) {
-        switch (databaseInt) {
-            case 1:
-                return EventType.PRIVATE;
+    public static EventType databaseIntToEventType(int databaseInt) {
 
-            default:
-                return EventType.PUBLIC;
+        if(databaseInt == 1){
+            return PRIVATE;
+        } else{
+            return EventType.PUBLIC;
+        }
+
+    }
+
+    public static int eventTypeToDatabaseInt(EventType type) {
+
+        if(type == PRIVATE){
+            return 1;
+        } else{
+            return 0;
         }
     }
 
-    public static int EventTypeToDatabaseInt(EventType type) {
-        switch (type) {
-            case PRIVATE:
-                return 1;
-            default:
-                return 0;
-        }
-    }
-
-    public static EventRequestState DatabaseIntToEventRequestState(int databaseInt) {
+    public static EventRequestState databaseIntToEventRequestState(int databaseInt) {
         switch (databaseInt) {
 
             case 0:
@@ -127,7 +129,7 @@ public class DaoUtils {
         }
     }
 
-    public static int EventRequestStateToDatabaseInt(EventRequestState requestState) {
+    public static int eventRequestStateToDatabaseInt(EventRequestState requestState) {
         switch (requestState) {
 
             case PENDING:

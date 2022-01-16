@@ -4,7 +4,7 @@ import logic.dao.EventGoalDao;
 import logic.enumeration.EventRequestState;
 import logic.exception.UserNotFoundException;
 import logic.interfaces.StateMachine;
-import logic.joinEventStateMachine.ConcreteStateMachine;
+import logic.joineventstatemachine.ConcreteStateMachine;
 
 import java.time.LocalDate;
 

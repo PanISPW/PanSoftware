@@ -32,11 +32,10 @@ public class UserDao {
 
 
         if (!resultSet.first()) {
-            Exception e = new Exception("Username or password incorrect");
-            throw e;
+            throw new Exception("Username or password incorrect");
         }
 
-        return DaoUtils.DatabaseIntToUserRole(resultSet.getInt("role"));
+        return DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
 
         //} catch (SQLException | ClassNotFoundException e) {
 
@@ -66,11 +65,10 @@ public class UserDao {
             resultSet = SimpleQueries.getUser(statement, user);
 
             if (!resultSet.first()) {
-                Exception e = new Exception("User incorrect");
-                throw e;
+                throw new Exception("User incorrect");
             }
 
-            role = DaoUtils.DatabaseIntToUserRole(resultSet.getInt("role"));
+            role = DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
 
             userEntity = new User(user, resultSet.getString("password"), resultSet.getString("email"), resultSet.getString("name"), resultSet.getString("surname"), role);
 
@@ -102,7 +100,7 @@ public class UserDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            roleInt = DaoUtils.UserRoleToDatabaseInt(role);
+            roleInt = DaoUtils.userRoleToDatabaseInt(role);
             result = CRUDQueries.addUser(statement, username, password, email, name, surname, roleInt);
 
             return result;

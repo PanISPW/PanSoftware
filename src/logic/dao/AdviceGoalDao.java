@@ -50,7 +50,7 @@ public class AdviceGoalDao {
         while (resultSet.next()) {
 
             User userEntity = UserDao.getUser(user);
-            ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
+            ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt("productType"));
             LocalDate deadline;
 
             // activist null
@@ -102,7 +102,7 @@ public class AdviceGoalDao {
             throw new Exception("No Goal related to the User was found");
         }
 
-        ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
+        ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt("productType"));
         User userEntity = UserDao.getUser(user);
 
         try {
@@ -183,9 +183,9 @@ public class AdviceGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            int typeInt = DaoUtils.ProductTypeToDatabaseInt(type);
+            int typeInt = DaoUtils.productTypeToDatabaseInt(type);
 
-            sqlDeadline = DaoUtils.LocalDateToSqlDateOrDefault(deadline);
+            sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(deadline);
 
             result = CRUDQueries.addAdviceGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user, typeInt);
 
@@ -266,7 +266,7 @@ public class AdviceGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            int typeInt = DaoUtils.ProductTypeToDatabaseInt(type);
+            int typeInt = DaoUtils.productTypeToDatabaseInt(type);
 
             result = CRUDQueries.updateProductTypeAdviceGoal(statement, typeInt, id, user);
 
@@ -506,7 +506,7 @@ public class AdviceGoalDao {
         while (resultSet.next()) {
 
             User userEntity = UserDao.getUser(resultSet.getString("user"));
-            ProductType productType = DaoUtils.DatabaseIntToProductType(resultSet.getInt("productType"));
+            ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt("productType"));
             LocalDate deadline;
 
             // activist null

@@ -4,7 +4,7 @@ import logic.entity.Event;
 import logic.enumeration.EventRequestState;
 import logic.exception.DatabaseException;
 import logic.exception.NoTransitionException;
-import logic.joinEventStateMachine.JoinEventState;
+import logic.joineventstatemachine.JoinEventState;
 
 // @author Danilo D'Amico
 

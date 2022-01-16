@@ -10,6 +10,23 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/dao/AdviceGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/AdviceGoalDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/dao/EventDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/EventDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/dao/EventGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/EventGoalDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/dao/GoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/GoalDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/entity/EventGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/entity/EventGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/interfaces/StateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/interfaces/StateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/joinEventStateMachine/AcceptedState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/joineventstatemachine/AcceptedState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/joinEventStateMachine/ConcreteStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/joineventstatemachine/ConcreteStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/joinEventStateMachine/JoinEventState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/joineventstatemachine/JoinEventState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/joinEventStateMachine/PendingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/joineventstatemachine/PendingState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/joinEventStateMachine/RejectedState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/joineventstatemachine/RejectedState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/joinEventStateMachine/StartingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/joineventstatemachine/StartingState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/mail/SendMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/mail/SendMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/observer/Observer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/observer/Subject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persistance/queries/CRUDQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persistance/queries/CRUDQueries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ui/controller/NewGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/controller/NewGoalGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/util/DaoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/util/DaoUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -569,7 +586,12 @@
       <workItem from="1642026411884" duration="430000" />
       <workItem from="1642026888807" duration="669000" />
       <workItem from="1642027884092" duration="1243000" />
-      <workItem from="1642089515862" duration="296000" />
+      <workItem from="1642089515862" duration="493000" />
+      <workItem from="1642101544633" duration="629000" />
+      <workItem from="1642156572398" duration="595000" />
+      <workItem from="1642174871720" duration="595000" />
+      <workItem from="1642257813953" duration="1188000" />
+      <workItem from="1642350316781" duration="1620000" />
     </task>
     <servers />
   </component>

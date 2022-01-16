@@ -35,8 +35,7 @@ public class GoalDao {
         resultSet = SimpleQueries.getGoalList(statement, user);
 
         if (!resultSet.first()) {
-            Exception e = new Exception("No Goal related to the User was found");
-            throw e;
+            throw new Exception("No Goal related to the User was found");
         }
 
 
@@ -83,8 +82,7 @@ public class GoalDao {
         resultSet = SimpleQueries.getGoal(statement, user, id);
 
         if (!resultSet.first()) {
-            Exception e = new Exception("Goal not found");
-            throw e;
+            throw new Exception("Goal not found");
         }
 
         //resultSet.beforeFirst();
@@ -124,8 +122,7 @@ public class GoalDao {
             resultSet = SimpleQueries.getLastUserGoalId(statement, user);
 
             if (!resultSet.first()) {
-                EmptyResultSetException e = new EmptyResultSetException("No Goal related to the User was found");
-                throw e;
+                throw new EmptyResultSetException("No Goal related to the User was found");
             }
 
             lastId = resultSet.getInt("maxId");
@@ -156,7 +153,7 @@ public class GoalDao {
 
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
-            Date sqlDeadline = DaoUtils.LocalDateToSqlDateOrDefault(deadline);
+            Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(deadline);
             result = CRUDQueries.addGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user);
 
             return result;
