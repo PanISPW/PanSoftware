@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class DatabaseConnection {
 
-    private static Connection connection = null;
+    private Connection connection;
     private static String url = "jdbc:mysql://localhost:3306/pandb";
     private static String dbUser = "esameispw10";
     private static String dbPassword = "esameispw";
@@ -17,7 +17,7 @@ public class DatabaseConnection {
         connection = DriverManager.getConnection(url, dbUser, dbPassword);
     }
 
-    public static void closeConnection() throws SQLException {
+    public void closeConnection() throws SQLException {
         if (connection != null) {
             connection.close();
             connection = null;

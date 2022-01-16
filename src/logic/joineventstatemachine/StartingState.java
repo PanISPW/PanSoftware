@@ -15,12 +15,6 @@ public class StartingState extends JoinEventState {
     private static Event event;
 
     public StartingState(ConcreteStateMachine stateMachine, Event event) throws Exception {
-
-        StartingState.stateMachine = stateMachine;
-        StartingState.event = event;
-
-        if (stateMachine.getEvent().getType().equals(EventType.PRIVATE))
-            isPrivate = true;
     }
 
     public static JoinEventState nextState() throws Exception {

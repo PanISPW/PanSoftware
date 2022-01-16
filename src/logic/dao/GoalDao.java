@@ -106,10 +106,8 @@ public class GoalDao {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeResultSet(resultSet);
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeResultSet(resultSet);
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -130,9 +128,7 @@ public class GoalDao {
             return result;
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -157,9 +153,7 @@ public class GoalDao {
             throw new DatabaseException("Can't update Goal in database");
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }

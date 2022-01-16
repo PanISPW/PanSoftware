@@ -131,10 +131,8 @@ public class AdviceGoalDao {
 
         } finally {
 
-            if (databaseConnection != null) {
-                databaseConnection.closeResultSet(resultSet);
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeResultSet(resultSet);
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -165,9 +163,7 @@ public class AdviceGoalDao {
             throw new DatabaseException("Can't insert new Goal in database");
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -192,9 +188,7 @@ public class AdviceGoalDao {
             throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -218,9 +212,7 @@ public class AdviceGoalDao {
             throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -246,9 +238,7 @@ public class AdviceGoalDao {
             throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }

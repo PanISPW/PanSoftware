@@ -323,9 +323,7 @@ public class EventGoalDao {
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -354,9 +352,7 @@ public class EventGoalDao {
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -380,9 +376,7 @@ public class EventGoalDao {
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         } finally {
-            if (databaseConnection != null) {
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeStatement(statement);
         }
 
     }

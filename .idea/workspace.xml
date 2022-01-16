@@ -8,15 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d670b996-fe98-4411-bff6-a4b840a220a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/dao/AdviceGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/AdviceGoalDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/dao/EventGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/EventGoalDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/dao/GoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/GoalDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/mail/SendMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/mail/SendMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/persistance/queries/CRUDQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persistance/queries/CRUDQueries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/persistance/queries/SimpleQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persistance/queries/SimpleQueries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ui/FxUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ui/FxUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/util/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/util/DaoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/util/DaoUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/util/DataValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/util/DataValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/util/WebURLs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/util/WebURLs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/joineventstatemachine/StartingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/joineventstatemachine/StartingState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persistance/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persistance/DatabaseConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -593,7 +589,7 @@
       <workItem from="1642156572398" duration="595000" />
       <workItem from="1642174871720" duration="595000" />
       <workItem from="1642257813953" duration="1188000" />
-      <workItem from="1642350316781" duration="6937000" />
+      <workItem from="1642350316781" duration="7645000" />
     </task>
     <servers />
   </component>
