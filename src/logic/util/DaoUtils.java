@@ -1,10 +1,13 @@
 package logic.util;
 
+import logic.bean.GoalQueryBean;
+import logic.entity.Goal;
 import logic.enumeration.EventRequestState;
 import logic.enumeration.EventType;
 import logic.enumeration.ProductType;
 import logic.enumeration.UserRole;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import static logic.enumeration.EventType.PRIVATE;
@@ -148,4 +151,15 @@ public class DaoUtils {
         }
     }
 
+    public static GoalQueryBean getGoalQueryBean(Goal goal, Date sqlDeadline) {
+        GoalQueryBean bean = new GoalQueryBean();
+        bean.setName(goal.getName());
+        bean.setDescription(goal.getDescription());
+        bean.setNumberOfSteps(goal.getNumberOfSteps());
+        bean.setStepsCompleted(goal.getStepsCompleted());
+        bean.setDeadline(sqlDeadline);
+        bean.setId(goal.getId());
+        bean.setUser(goal.getUser().getUsername());
+        return bean;
+    }
 }

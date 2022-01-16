@@ -1,5 +1,6 @@
 package logic.dao;
 
+import logic.bean.GoalQueryBean;
 import logic.entity.Goal;
 import logic.entity.User;
 import logic.exception.DatabaseException;
@@ -123,7 +124,10 @@ public class GoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
             Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
-            result = CRUDQueries.addGoal(statement, goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername());
+
+            GoalQueryBean bean = DaoUtils.getGoalQueryBean(goal, sqlDeadline);
+
+            result = CRUDQueries.addGoal(statement, bean);
 
             return result;
 

@@ -1,5 +1,7 @@
 package logic.dao;
 
+import logic.bean.AdviceGoalQueryBean;
+import logic.bean.EventGoalQueryBean;
 import logic.entity.Event;
 import logic.entity.EventGoal;
 import logic.entity.User;
@@ -239,7 +241,14 @@ public class EventGoalDao {
 
             stateInt = DaoUtils.eventRequestStateToDatabaseInt(goal.getState());
             Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
-            result = CRUDQueries.addEventGoal(statement, goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), goal.getOrganizer().getUsername(), goal.getEvent().getId(), stateInt);
+
+            EventGoalQueryBean bean = (EventGoalQueryBean) DaoUtils.getGoalQueryBean(goal, sqlDeadline);
+
+            bean.setEventOrganizer(goal.getOrganizer().getUsername());
+            bean.setEventId(goal.getEvent().getId());
+            bean.setRequestState(stateInt);
+
+            result = CRUDQueries.addEventGoal(statement, bean);
 
             return result;
 

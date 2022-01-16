@@ -1,5 +1,7 @@
 package logic.dao;
 
+import logic.bean.AdviceGoalQueryBean;
+import logic.bean.GoalQueryBean;
 import logic.entity.AdviceGoal;
 import logic.entity.User;
 import logic.enumeration.ProductType;
@@ -153,7 +155,11 @@ public class AdviceGoalDao {
 
             sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
-            result = CRUDQueries.addAdviceGoal(statement, goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), typeInt);
+            AdviceGoalQueryBean bean = (AdviceGoalQueryBean) DaoUtils.getGoalQueryBean(goal, sqlDeadline);
+
+            bean.setProductType(typeInt);
+
+            result = CRUDQueries.addAdviceGoal(statement, bean);
 
             return result;
 

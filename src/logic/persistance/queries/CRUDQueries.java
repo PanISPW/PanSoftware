@@ -1,5 +1,9 @@
 package logic.persistance.queries;
 
+import logic.bean.AdviceGoalQueryBean;
+import logic.bean.EventGoalQueryBean;
+import logic.bean.GoalQueryBean;
+
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,8 +14,8 @@ public class CRUDQueries {
 
     private CRUDQueries(){}
 
-    public static int addGoal(Statement stmt, String name, String description, int numberOfSteps, int stepsCompleted, Date deadline, int id, String user) throws SQLException {
-        String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", name, description, numberOfSteps, stepsCompleted, deadline, id, user);
+    public static int addGoal(Statement stmt, GoalQueryBean bean) throws SQLException {
+        String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), bean.getId(), bean.getUser());
         return stmt.executeUpdate(insertStatement);
     }
 
@@ -25,9 +29,9 @@ public class CRUDQueries {
         return stmt.executeUpdate(updateStatement);
     }
 
-    public static int addAdviceGoal(Statement stmt, String name, String description, int numberOfSteps, int stepsCompleted, Date deadline, int id, String user, int productType) throws SQLException {
+    public static int addAdviceGoal(Statement stmt, AdviceGoalQueryBean bean) throws SQLException {
         String insertStatement = String.format("INSERT INTO advicegoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, productType, productBarcode, advice, adviceActivist) "
-                + "VALUES ('%s','%s',%s,%s,'%s',%s,'%s',%s,NULL,NULL,NULL);", name, description, numberOfSteps, stepsCompleted, deadline, id, user, productType);
+                + "VALUES ('%s','%s',%s,%s,'%s',%s,'%s',%s,NULL,NULL,NULL);", bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), bean.getId(), bean.getUser(), bean.getProductType());
         return stmt.executeUpdate(insertStatement);
     }
 
@@ -47,9 +51,9 @@ public class CRUDQueries {
         return stmt.executeUpdate(updateStatement);
     }
 
-    public static int addEventGoal(Statement stmt, String name, String description, int numberOfSteps, int stepsCompleted, Date deadline, int id, String user, String eventOrganizer, int eventId, int requestState) throws SQLException {
+    public static int addEventGoal(Statement stmt, EventGoalQueryBean bean) throws SQLException {
 
-        String insertStatement = String.format("INSERT INTO eventgoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState) VALUES ('%s','%s',%s,%s,'%s',%s,'%s','%s',%s,%s);", name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState);
+        String insertStatement = String.format("INSERT INTO eventgoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState) VALUES ('%s','%s',%s,%s,'%s',%s,'%s','%s',%s,%s);", bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), bean.getId(), bean.getUser(), bean.getEventOrganizer(), bean.getEventId(), bean.getRequestState());
         return stmt.executeUpdate(insertStatement);
     }
 
