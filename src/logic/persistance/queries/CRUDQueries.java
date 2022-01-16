@@ -40,18 +40,12 @@ public class CRUDQueries {
     }
 
     public static int updateProductTypeAdviceGoal(Statement stmt, int type, int id, String user) throws SQLException {
-        //
-        //System.out.println("type: " + String.valueOf(type));
-        //System.out.println("id: " + String.valueOf(id));
-        //System.out.println("user: " + user);
 
         String updateStatement = String.format("UPDATE advicegoal set productType=%s WHERE Id=%s AND user='%s';", type, id, user);
         return stmt.executeUpdate(updateStatement);
     }
 
     public static int addEventGoal(Statement stmt, String name, String description, int numberOfSteps, int stepsCompleted, Date deadline, int id, String user, String eventOrganizer, int eventId, int requestState) throws SQLException {
-        //
-        //System.out.println("state: " + String.valueOf(requestState)); //
 
         String insertStatement = String.format("INSERT INTO eventgoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState) VALUES ('%s','%s',%s,%s,'%s',%s,'%s','%s',%s,%s);", name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState);
         return stmt.executeUpdate(insertStatement);
@@ -68,12 +62,7 @@ public class CRUDQueries {
     }
 
     public static int answerAdviceGoal(Statement stmt, String advice, String activist, int id, String user) throws SQLException {
-        //
-        //System.out.println("advice: " + advice);
-        //System.out.println("activist: " + activist);
-        //System.out.println("id: " + String.valueOf(id));
-        //System.out.println("user: " + user);
-        //
+
         String updateStatement = String.format("UPDATE advicegoal SET advice='%s', adviceActivist='%s' WHERE id=%s AND user='%s';", advice, activist, id, user);
         return stmt.executeUpdate(updateStatement);
     }

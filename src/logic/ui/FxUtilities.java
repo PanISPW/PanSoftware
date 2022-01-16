@@ -25,8 +25,6 @@ public class FxUtilities {
 
         Session.getSession().setPage(page);
 
-//		try {
-
         if (page.equals(Pages.LOGIN)) {
             Session.getSession().setCurrUser(null);
             Session.getSession().setRole(UserRole.USER);
@@ -49,11 +47,6 @@ public class FxUtilities {
 
 
         }
-
-//		}
-//		catch(IOException e) {
-//			throw new Exception("unable to show selected page");		
-//		}
     }
 
     public static FXMLLoader loadFxml(Pages page) {

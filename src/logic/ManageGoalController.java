@@ -163,8 +163,6 @@ public class ManageGoalController {
 
         EventGoal goal = new EventGoal(bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), bean.getId(), userEntity, eventEntity, bean.getState());
 
-        //System.out.println("rejectEventGoal " + bean.getEventOrganizer() + " " + String.valueOf(bean.getEventId()));
-
         goal.rejectJoinRequest();
 
         if (goal.getState().equals(EventRequestState.REJECTED))

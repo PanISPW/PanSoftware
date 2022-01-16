@@ -63,7 +63,6 @@ public class ProfileGraphicalController implements Initializable {
 
         System.out.println("goal loop");//
         for (Goal item : goals) {
-            //System.out.println("loop: " + item.getName());//
 
             GoalCellGraphicalController cell = new GoalCellGraphicalController(item);
 
@@ -159,23 +158,4 @@ public class ProfileGraphicalController implements Initializable {
             e.printStackTrace();
         }
     }
-
-//	@FXML
-//	public void getGoalList() throws Exception {
-//		List<Goal> goalList = ManageGoalController.getGoalList();
-//		// bind su goalList
-//	}
-//	
-//	@FXML
-//	public void getAdviceList() throws Exception {
-//		List<AdviceGoal> adviceList = ManageGoalController.getAdviceGoalList();
-//		// bind su adviceGoalList
-//	}
-//	
-//	@FXML
-//	public void getEventGoalList() throws Exception {
-//		List<EventGoal> eventList = ManageGoalController.getEventGoalList();
-//		// bind su eventGoalList
-//	}
-
 }

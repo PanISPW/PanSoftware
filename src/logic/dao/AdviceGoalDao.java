@@ -34,8 +34,6 @@ public class AdviceGoalDao {
         DatabaseConnection databaseConnection = null;
         List<AdviceGoal> goalList;
 
-        //try {
-
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
         resultSet = SimpleQueries.getAdviceGoalList(statement, user);
@@ -80,8 +78,6 @@ public class AdviceGoalDao {
         DatabaseConnection databaseConnection = null;
         AdviceGoal goal;
         User activistEntity;
-
-        //try {
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
