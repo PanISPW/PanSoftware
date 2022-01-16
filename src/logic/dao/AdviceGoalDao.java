@@ -137,8 +137,7 @@ public class AdviceGoalDao {
 
     }
 
-    public static int addAdviceGoal(String user, String name, String description, int numberOfSteps, int stepsCompleted,
-                                    java.time.LocalDate deadline, int id, ProductType type) throws Exception {
+    public static int addAdviceGoal(AdviceGoal goal) throws Exception {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -150,11 +149,11 @@ public class AdviceGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            int typeInt = DaoUtils.productTypeToDatabaseInt(type);
+            int typeInt = DaoUtils.productTypeToDatabaseInt(goal.getType());
 
-            sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(deadline);
+            sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
-            result = CRUDQueries.addAdviceGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user, typeInt);
+            result = CRUDQueries.addAdviceGoal(statement, goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), typeInt);
 
             return result;
 

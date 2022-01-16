@@ -112,7 +112,7 @@ public class GoalDao {
 
     }
 
-    public static int addGoal(String user, String name, String description, int numberOfSteps, int stepsCompleted, java.time.LocalDate deadline, int id) throws Exception {
+    public static int addGoal(Goal goal) throws Exception {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -122,8 +122,8 @@ public class GoalDao {
 
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
-            Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(deadline);
-            result = CRUDQueries.addGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user);
+            Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
+            result = CRUDQueries.addGoal(statement, goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername());
 
             return result;
 

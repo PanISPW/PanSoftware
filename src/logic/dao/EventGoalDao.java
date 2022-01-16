@@ -222,8 +222,10 @@ public class EventGoalDao {
         return goal.getState();
     }
 
-    public static int addEventGoal(String user, String name, String description, int numberOfSteps, int stepsCompleted,
-                                   LocalDate deadline, int id, String eventOrganizer, int eventId, EventRequestState requestState) throws Exception {
+    public static int addEventGoal(EventGoal goal) throws Exception {
+
+        // String user, String name, String description, int numberOfSteps, int stepsCompleted,
+        //                                   LocalDate deadline, int id, String eventOrganizer, int eventId, EventRequestState requestState
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -235,9 +237,9 @@ public class EventGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            stateInt = DaoUtils.eventRequestStateToDatabaseInt(requestState);
-            Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(deadline);
-            result = CRUDQueries.addEventGoal(statement, name, description, numberOfSteps, stepsCompleted, sqlDeadline, id, user, eventOrganizer, eventId, stateInt);
+            stateInt = DaoUtils.eventRequestStateToDatabaseInt(goal.getState());
+            Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
+            result = CRUDQueries.addEventGoal(statement, goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), goal.getOrganizer().getUsername(), goal.getEvent().getId(), stateInt);
 
             return result;
 

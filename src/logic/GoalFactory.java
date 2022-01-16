@@ -2,8 +2,7 @@ package logic;
 
 import logic.bean.GoalBean;
 import logic.dao.*;
-import logic.entity.Event;
-import logic.entity.EventGoal;
+import logic.entity.*;
 import logic.enumeration.EventRequestState;
 import logic.enumeration.GoalType;
 import logic.enumeration.ProductType;
@@ -75,7 +74,9 @@ public class GoalFactory {
 
         goalId = goalId + 1;
 
-        GoalDao.addGoal(Session.getSession().getUser(), name, description, numberOfSteps, stepsCompleted, deadline, goalId);
+        Goal goal = new Goal(name, description, numberOfSteps, stepsCompleted, deadline, UserDao.getUser(Session.getSession().getUser()), goalId);
+
+        GoalDao.addGoal(goal);
 
         return goalId;
     }
@@ -93,7 +94,9 @@ public class GoalFactory {
 
         adviceGoalId = adviceGoalId + 1;
 
-        AdviceGoalDao.addAdviceGoal(Session.getSession().getUser(), name, description, numberOfSteps, stepsCompleted, deadline, adviceGoalId, type);
+        AdviceGoal goal = new AdviceGoal(name, description, numberOfSteps, stepsCompleted, deadline, adviceGoalId, UserDao.getUser(Session.getSession().getUser()), type, "", null);
+
+        AdviceGoalDao.addAdviceGoal(goal);
 
         return adviceGoalId;
     }
@@ -114,7 +117,7 @@ public class GoalFactory {
 
         EventGoal goal = new EventGoal(name, description, numberOfSteps, stepsCompleted, deadline, goalId, UserDao.getUser(Session.getSession().getUser()), event, EventRequestState.STARTING);
 
-        EventGoalDao.addEventGoal(Session.getSession().getUser(), name, description, numberOfSteps, stepsCompleted, deadline, eventGoalId, eventOrganizer, eventId, goal.getState());
+        EventGoalDao.addEventGoal(goal);
 
         return eventGoalId;
     }
