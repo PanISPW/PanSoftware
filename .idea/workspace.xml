@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d670b996-fe98-4411-bff6-a4b840a220a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/persistance/queries/SimpleQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persistance/queries/SimpleQueries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/servlet/EventsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/servlet/EventsServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -585,7 +585,7 @@
       <workItem from="1642156572398" duration="595000" />
       <workItem from="1642174871720" duration="595000" />
       <workItem from="1642257813953" duration="1188000" />
-      <workItem from="1642350316781" duration="8408000" />
+      <workItem from="1642350316781" duration="8615000" />
     </task>
     <servers />
   </component>
