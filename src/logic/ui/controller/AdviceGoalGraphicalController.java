@@ -66,7 +66,7 @@ public class AdviceGoalGraphicalController implements Initializable {
         goalItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
 
         temp = item.getAdvice();
-        if (!temp.equals("") & item.getAdviceActivist() != null) {
+        if (!temp.equals("") && item.getAdviceActivist() != null) {
             adviceGoalAdvice.setText(temp);
             adviceGoalActivist.setText(item.getAdviceActivist().getUsername());
         } else {

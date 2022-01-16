@@ -25,8 +25,12 @@ public class JoinEventController {
 
             case PENDING:
                 message = "There's a new goal waiting for approval";
+                break;
+
             case REJECTED:
                 message = "Your submission has been rejected";
+                break;
+
             default:
                 message = "Your submission has been approved";
         }
