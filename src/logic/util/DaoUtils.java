@@ -13,6 +13,8 @@ import static logic.enumeration.EventType.PRIVATE;
 
 public class DaoUtils {
 
+    private DaoUtils(){}
+
     public static ProductType databaseIntToProductType(int databaseInt) {
 
         switch (databaseInt) {

@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 public class SimpleQueries {
 
+    private SimpleQueries(){}
+
     public static ResultSet checkUserCredentials(Statement stmt, String username, String password) throws SQLException {
         String sql = String.format("SELECT * FROM user WHERE username='%s' AND password ='%s';", username, password);
         return stmt.executeQuery(sql);

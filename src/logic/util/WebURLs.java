@@ -4,6 +4,8 @@ package logic.util;
 
 public class WebURLs {
 
+    private WebURLs(){}
+
     private static final  String ABOUT = "http://localhost:8081/PanSoftware/Pages/About.jsp";
     private static final String EVENTS = "http://localhost:8081/PanSoftware/Pages/Events.jsp";
     private static final String GIVEADVICE = "http://localhost:8081/PanSoftware/Pages/GiveAdvice.jsp";

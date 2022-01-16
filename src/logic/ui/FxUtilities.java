@@ -18,6 +18,8 @@ import java.io.IOException;
 
 public class FxUtilities {
 
+    private FxUtilities(){}
+
     static BorderPane navbar = null;
     static NavbarGraphicalController navbarController = null;
 

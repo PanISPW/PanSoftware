@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 
 public class DataValidation {
 
+    private DataValidation(){}
+
     public static LocalDate setDefaultDate() {
         return LocalDate.of(1970, Month.JANUARY, 1);
     }

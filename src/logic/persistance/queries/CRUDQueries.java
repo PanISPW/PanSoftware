@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 public class CRUDQueries {
 
+    private CRUDQueries(){}
+
     public static int addGoal(Statement stmt, String name, String description, int numberOfSteps, int stepsCompleted, Date deadline, int id, String user) throws SQLException {
         String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", name, description, numberOfSteps, stepsCompleted, deadline, id, user);
         return stmt.executeUpdate(insertStatement);

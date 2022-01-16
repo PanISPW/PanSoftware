@@ -1,6 +1,9 @@
 package logic.util;
 
 public class Constants {
+
+    private Constants(){}
+
     public static final String NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND = "No Goal related to the User was found";
     public static final String COULD_NOT_RETRIEVE_NEW_ID = "could not retrieve new id";
     public static final String PRODUCT_TYPE = "productType";

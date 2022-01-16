@@ -22,6 +22,8 @@ import java.util.List;
 
 public class GoalDao {
 
+    private GoalDao(){}
+
     public static List<Goal> getGoalList(String user) throws UserNotFoundException, Exception {
 
         DatabaseConnection databaseConnection = null;
