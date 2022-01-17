@@ -7,6 +7,8 @@ import logic.enumeration.Pages;
 import logic.ui.FxUtilities;
 import logic.util.Session;
 
+import java.io.IOException;
+
 // @author Danilo D'Amico
 
 public class MainDesktop extends Application {
@@ -15,7 +17,7 @@ public class MainDesktop extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws IOException {
 
         Scene scene = FxUtilities.goToPage(Pages.LOGIN, null);
 

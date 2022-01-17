@@ -368,7 +368,7 @@ public class EventGoalDao {
 
     }
 
-    public static int pendingEventGoal(int id, String user) throws Exception {
+    public static int pendingEventGoal(int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;

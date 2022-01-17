@@ -9,7 +9,7 @@ import logic.exception.NoTransitionException;
 
 public class RejectedState extends JoinEventState {
 
-    public RejectedState(Event event) throws Exception {
+    public RejectedState(Event event) {
     }
 
     @Override

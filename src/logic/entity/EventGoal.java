@@ -2,6 +2,8 @@ package logic.entity;
 
 import logic.dao.EventGoalDao;
 import logic.enumeration.EventRequestState;
+import logic.exception.DatabaseException;
+import logic.exception.NoTransitionException;
 import logic.exception.UserNotFoundException;
 import logic.interfaces.StateMachine;
 import logic.joineventstatemachine.ConcreteStateMachine;
@@ -19,7 +21,7 @@ public class EventGoal extends Goal {
 
     private StateMachine stateMachine = null;
 
-    public EventGoal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, int id, User user, Event event, EventRequestState state) throws Exception {
+    public EventGoal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, int id, User user, Event event, EventRequestState state) throws DatabaseException {
         super(name, description, numberOfSteps, stepsCompleted, deadline, user, id);
         this.event = event;
 
@@ -56,11 +58,11 @@ public class EventGoal extends Goal {
         return stateMachine.getState();
     }
 
-    public void acceptJoinRequest() throws Exception {
+    public void acceptJoinRequest() throws NoTransitionException, DatabaseException {
         stateMachine.answerRequest(EventRequestState.ACCEPTED);
     }
 
-    public void rejectJoinRequest() throws Exception {
+    public void rejectJoinRequest() throws NoTransitionException, DatabaseException {
         stateMachine.answerRequest(EventRequestState.REJECTED);
     }
 }

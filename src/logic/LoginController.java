@@ -6,6 +6,8 @@ import logic.entity.User;
 import logic.enumeration.UserRole;
 import logic.exception.DatabaseException;
 
+import javax.security.auth.login.LoginException;
+
 // @author Danilo D'Amico
 
 public class LoginController {

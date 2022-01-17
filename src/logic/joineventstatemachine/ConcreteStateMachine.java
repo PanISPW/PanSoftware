@@ -3,6 +3,8 @@ package logic.joineventstatemachine;
 import logic.entity.Event;
 import logic.entity.EventGoal;
 import logic.enumeration.EventRequestState;
+import logic.exception.DatabaseException;
+import logic.exception.NoTransitionException;
 import logic.interfaces.StateMachine;
 
 import static logic.enumeration.EventRequestState.REJECTED;
@@ -15,7 +17,7 @@ public class ConcreteStateMachine implements StateMachine {
     private EventGoal goal;
     private JoinEventState currentState; // abstract state
 
-    public ConcreteStateMachine(Event event, EventGoal goal, EventRequestState state) throws Exception {
+    public ConcreteStateMachine(Event event, EventGoal goal, EventRequestState state) throws DatabaseException {
         this.event = event;
         this.goal = goal;
 
@@ -31,7 +33,7 @@ public class ConcreteStateMachine implements StateMachine {
     }
 
     @Override
-    public void answerRequest(EventRequestState state) throws Exception {
+    public void answerRequest(EventRequestState state) throws DatabaseException, NoTransitionException {
 
         if(state == REJECTED){
             currentState.reject();

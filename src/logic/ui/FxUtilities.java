@@ -23,7 +23,7 @@ public class FxUtilities {
     static BorderPane navbar = null;
     static NavbarGraphicalController navbarController = null;
 
-    public static Scene goToPage(Pages page, Initializable controller) throws Exception {
+    public static Scene goToPage(Pages page, Initializable controller) throws IOException {
 
         Session.getSession().setPage(page);
 

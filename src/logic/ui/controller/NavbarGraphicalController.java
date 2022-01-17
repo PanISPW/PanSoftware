@@ -9,6 +9,8 @@ import logic.enumeration.UserRole;
 import logic.ui.FxUtilities;
 import logic.util.Session;
 
+import java.io.IOException;
+
 // @author Danilo D'Amico
 
 public class NavbarGraphicalController {
@@ -79,31 +81,31 @@ public class NavbarGraphicalController {
     }
 
     @FXML
-    public void goToEvents() throws Exception {
+    public void goToEvents() throws IOException {
         changePage(Pages.EVENTS);
     }
 
     @FXML
-    public void goToNewGoal() throws Exception {
+    public void goToNewGoal() throws IOException {
         changePage(Pages.NEWGOAL);
     }
 
     @FXML
-    public void goToProfile() throws Exception {
+    public void goToProfile() throws IOException {
         changePage(Pages.PROFILE);
     }
 
     @FXML
-    public void goToGiveAdvice() throws Exception {
+    public void goToGiveAdvice() throws IOException {
         changePage(Pages.ADVICEPAGE);
     }
 
     @FXML
-    public void goToManageEventParticipation() throws Exception {
+    public void goToManageEventParticipation() throws IOException {
         changePage(Pages.EVENTPARTICIPATION);
     }
 
-    private void changePage(Pages page) throws Exception {
+    private void changePage(Pages page) throws IOException {
         Stage stage = (Stage) main.getScene().getWindow();
         stage.setScene(FxUtilities.goToPage(page, null));
     }

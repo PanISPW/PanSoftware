@@ -14,10 +14,10 @@ public class StartingState extends JoinEventState {
     private static boolean isPrivate = false;
     private static Event event;
 
-    public StartingState(ConcreteStateMachine stateMachine, Event event) throws Exception {
+    public StartingState(ConcreteStateMachine stateMachine, Event event) {
     }
 
-    public static JoinEventState nextState() throws Exception {
+    public static JoinEventState nextState() throws DatabaseException {
         if (isPrivate) {
             return new PendingState(stateMachine, event);
         } else {

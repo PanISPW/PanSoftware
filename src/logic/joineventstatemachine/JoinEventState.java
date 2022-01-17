@@ -11,7 +11,7 @@ import logic.exception.NoTransitionException;
 
 public abstract class JoinEventState {
 
-    public static JoinEventState getMachineState(ConcreteStateMachine stateMachine, EventRequestState state, Event event) throws Exception {
+    public static JoinEventState getMachineState(ConcreteStateMachine stateMachine, EventRequestState state, Event event) throws DatabaseException {
 
         switch (state) {
             case PENDING:
@@ -27,9 +27,9 @@ public abstract class JoinEventState {
 
     }
 
-    protected abstract void accept() throws DatabaseException, NoTransitionException, Exception;
+    protected abstract void accept() throws DatabaseException, NoTransitionException;
 
-    protected abstract void reject() throws DatabaseException, NoTransitionException, Exception;
+    protected abstract void reject() throws DatabaseException, NoTransitionException;
 
     protected abstract EventRequestState getState();
 }
