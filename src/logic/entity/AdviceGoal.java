@@ -2,8 +2,12 @@ package logic.entity;
 
 import logic.dao.AdviceGoalDao;
 import logic.enumeration.ProductType;
+import logic.exception.DatabaseException;
+import logic.exception.EmptyResultSetException;
 import logic.exception.UserNotFoundException;
 
+import javax.security.auth.login.LoginException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 // @author Danilo D'Amico
@@ -27,7 +31,7 @@ public class AdviceGoal extends Goal {
         super(name, description, numberOfSteps, stepsCompleted, deadline, user, id);
     }
 
-    public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, Exception {
+    public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return AdviceGoalDao.getAdviceGoal(user, id);
     }
 

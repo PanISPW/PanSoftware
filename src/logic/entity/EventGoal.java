@@ -3,11 +3,13 @@ package logic.entity;
 import logic.dao.EventGoalDao;
 import logic.enumeration.EventRequestState;
 import logic.exception.DatabaseException;
+import logic.exception.EmptyResultSetException;
 import logic.exception.NoTransitionException;
 import logic.exception.UserNotFoundException;
 import logic.interfaces.StateMachine;
 import logic.joineventstatemachine.ConcreteStateMachine;
 
+import javax.security.auth.login.LoginException;
 import java.time.LocalDate;
 
 // classe Client del pattern Machine State
@@ -34,7 +36,7 @@ public class EventGoal extends Goal {
         this.stateMachine = new ConcreteStateMachine(event, this, state);
     }
 
-    public static EventGoal getEventGoal(String user, int id) throws UserNotFoundException, Exception {
+    public static EventGoal getEventGoal(String user, int id) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
         return EventGoalDao.getEventGoal(user, id);
     }
 

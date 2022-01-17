@@ -1,9 +1,13 @@
 package logic.entity;
 
 import logic.dao.GoalDao;
+import logic.exception.DatabaseException;
+import logic.exception.EmptyResultSetException;
 import logic.exception.UserNotFoundException;
 import logic.interfaces.UserContent;
 
+import javax.security.auth.login.LoginException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 // @author Danilo D'Amico
@@ -28,7 +32,7 @@ public class Goal implements UserContent {
         this.id = id;
     }
 
-    public static Goal getGoal(String user, int id) throws UserNotFoundException, Exception {
+    public static Goal getGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return GoalDao.getGoal(user, id);
     }
 

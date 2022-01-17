@@ -10,6 +10,7 @@ import logic.persistance.queries.SimpleQueries;
 import logic.util.Constants;
 import logic.util.DaoUtils;
 
+import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,7 +22,7 @@ public class UserDao {
     private UserDao() {
     }
 
-    public static UserRole checkUserPassword(String user, String password) throws UserNotFoundException, Exception {
+    public static UserRole checkUserPassword(String user, String password) throws UserNotFoundException, LoginException, SQLException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -33,7 +34,7 @@ public class UserDao {
 
 
         if (!resultSet.first()) {
-            throw new Exception("Username or password incorrect");
+            throw new LoginException("Username or password incorrect");
         }
 
         return DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
@@ -41,7 +42,7 @@ public class UserDao {
     }
 
 
-    public static User getUser(String user) throws UserNotFoundException, Exception {
+    public static User getUser(String user) throws UserNotFoundException, LoginException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -55,7 +56,7 @@ public class UserDao {
             resultSet = SimpleQueries.getUser(statement, user);
 
             if (!resultSet.first()) {
-                throw new Exception("User incorrect");
+                throw new LoginException("User incorrect");
             }
 
             role = DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
@@ -65,7 +66,7 @@ public class UserDao {
             return userEntity;
 
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
@@ -79,7 +80,7 @@ public class UserDao {
 
     }
 
-    public static int addUser(String username, String password, String email, String name, String surname, UserRole role) throws Exception {
+    public static int addUser(String username, String password, String email, String name, String surname, UserRole role) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;

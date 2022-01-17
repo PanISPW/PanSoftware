@@ -2,6 +2,7 @@ package logic.entity;
 
 import logic.dao.UserDao;
 import logic.enumeration.UserRole;
+import logic.exception.DatabaseException;
 
 // @author Danilo D'Amico
 
@@ -70,7 +71,7 @@ public class User {
         this.role = role;
     }
 
-    public void save() throws Exception {
+    public void save() throws DatabaseException {
         UserDao.addUser(this.username, this.password, this.email, this.name, this.surname, this.role);
     }
 }

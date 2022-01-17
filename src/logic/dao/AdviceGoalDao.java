@@ -15,6 +15,7 @@ import logic.util.Constants;
 import logic.util.DaoUtils;
 import logic.util.DataValidation;
 
+import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,7 +30,7 @@ public class AdviceGoalDao {
     private AdviceGoalDao() {
     }
 
-    public static List<AdviceGoal> getAdviceGoalList(String user) throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getAdviceGoalList(String user) throws UserNotFoundException, EmptyResultSetException, SQLException, LoginException, DatabaseException {
 
         Statement statement = null;
         ResultSet resultSet = null;
@@ -41,7 +42,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getAdviceGoalList(statement, user);
 
         if (!resultSet.first()) {
-            throw new Exception(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
+            throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
         }
 
         goalList = new ArrayList<>();
@@ -73,7 +74,7 @@ public class AdviceGoalDao {
 
     }
 
-    public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, Exception {
+    public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, EmptyResultSetException, SQLException, LoginException, DatabaseException {
 
         Statement statement = null;
         ResultSet resultSet = null;
@@ -86,7 +87,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getAdviceGoal(statement, user, id);
 
         if (!resultSet.first()) {
-            throw new Exception(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
+            throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
         }
 
         ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
@@ -107,7 +108,7 @@ public class AdviceGoalDao {
 
     }
 
-    public static int getLastUserAdviceGoalId(String user) throws UserNotFoundException, Exception {
+    public static int getLastUserAdviceGoalId(String user) throws UserNotFoundException, EmptyResultSetException, DatabaseException {
 
         Statement statement = null;
         ResultSet resultSet = null;
@@ -139,7 +140,7 @@ public class AdviceGoalDao {
 
     }
 
-    public static int addAdviceGoal(AdviceGoal goal) throws Exception {
+    public static int addAdviceGoal(AdviceGoal goal) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -173,7 +174,7 @@ public class AdviceGoalDao {
 
     }
 
-    public static int updateStepsAdviceGoal(int stepsCompleted, int id, String user) throws Exception {
+    public static int updateStepsAdviceGoal(int stepsCompleted, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -198,7 +199,7 @@ public class AdviceGoalDao {
 
     }
 
-    public static int insertBarcode(String barcode, int id, String user) throws Exception {
+    public static int insertBarcode(String barcode, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -222,7 +223,7 @@ public class AdviceGoalDao {
 
     }
 
-    public static int updateProductTypeAdviceGoal(ProductType type, int id, String user) throws Exception {
+    public static int updateProductTypeAdviceGoal(ProductType type, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -248,7 +249,7 @@ public class AdviceGoalDao {
 
     }
 
-    public static int answerAdviceGoal(int id, String user, String activist, String advice) throws Exception {
+    public static int answerAdviceGoal(int id, String user, String activist, String advice) throws SQLException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -264,7 +265,7 @@ public class AdviceGoalDao {
 
 
     // MAKEUP
-    public static List<AdviceGoal> getUnansweredMakeupAdvice() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getUnansweredMakeupAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
 
         Statement statement = null;
         ResultSet resultSet = null;
@@ -276,7 +277,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getUnansweredMakeupAdvice(statement);
 
         if (!resultSet.first()) {
-            throw new Exception("No unanswered makeup advice was found");
+            throw new EmptyResultSetException("No unanswered makeup advice was found");
         }
 
         goalList = new ArrayList<>();
@@ -306,7 +307,7 @@ public class AdviceGoalDao {
     }
 
     // FOOD
-    public static List<AdviceGoal> getUnansweredFoodAdvice() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getUnansweredFoodAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
 
         Statement statement = null;
         ResultSet resultSet = null;
@@ -318,7 +319,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getUnansweredFoodAdvice(statement);
 
         if (!resultSet.first()) {
-            throw new Exception("No unanswered food advice was found");
+            throw new EmptyResultSetException("No unanswered food advice was found");
         }
 
         goalList = new ArrayList<>();
@@ -348,7 +349,7 @@ public class AdviceGoalDao {
     }
 
     // LIFESTYLE
-    public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws UserNotFoundException, EmptyResultSetException, SQLException, LoginException, DatabaseException {
 
         Statement statement = null;
         ResultSet resultSet = null;
@@ -360,7 +361,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getUnansweredLifestyleAdvice(statement);
 
         if (!resultSet.first()) {
-            throw new Exception("No unanswered lifestyle advice was found");
+            throw new EmptyResultSetException("No unanswered lifestyle advice was found");
         }
 
         goalList = new ArrayList<>();
@@ -391,7 +392,7 @@ public class AdviceGoalDao {
     }
 
     // OTHER & NOTSPECIFIED
-    public static List<AdviceGoal> getUnansweredOtherAdvice() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getUnansweredOtherAdvice() throws UserNotFoundException, EmptyResultSetException, SQLException, LoginException, DatabaseException {
 
         Statement statement = null;
         ResultSet resultSet = null;
@@ -403,7 +404,7 @@ public class AdviceGoalDao {
         resultSet = SimpleQueries.getUnansweredOtherAdvice(statement);
 
         if (!resultSet.first()) {
-            throw new Exception("No unanswered other advice was found");
+            throw new EmptyResultSetException("No unanswered other advice was found");
         }
 
         goalList = new ArrayList<>();

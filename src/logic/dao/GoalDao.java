@@ -12,6 +12,7 @@ import logic.persistance.queries.SimpleQueries;
 import logic.util.Constants;
 import logic.util.DaoUtils;
 
+import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class GoalDao {
 
     private GoalDao(){}
 
-    public static List<Goal> getGoalList(String user) throws UserNotFoundException, Exception {
+    public static List<Goal> getGoalList(String user) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -37,7 +38,7 @@ public class GoalDao {
         resultSet = SimpleQueries.getGoalList(statement, user);
 
         if (!resultSet.first()) {
-            throw new Exception(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
+            throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
         }
 
 
@@ -57,7 +58,7 @@ public class GoalDao {
 
     }
 
-    public static Goal getGoal(String user, int id) throws UserNotFoundException, Exception {
+    public static Goal getGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -69,7 +70,7 @@ public class GoalDao {
         resultSet = SimpleQueries.getGoal(statement, user, id);
 
         if (!resultSet.first()) {
-            throw new Exception("Goal not found");
+            throw new EmptyResultSetException("Goal not found");
         }
 
         User userEntity = UserDao.getUser(user);
@@ -79,7 +80,7 @@ public class GoalDao {
 
     }
 
-    public static int getLastUserGoalId(String user) throws UserNotFoundException, EmptyResultSetException, Exception {
+    public static int getLastUserGoalId(String user) throws UserNotFoundException, EmptyResultSetException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -113,7 +114,7 @@ public class GoalDao {
 
     }
 
-    public static int addGoal(Goal goal) throws Exception {
+    public static int addGoal(Goal goal) throws SQLException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -137,7 +138,7 @@ public class GoalDao {
 
     }
 
-    public static int updateStepsGoal(int stepsCompleted, int id, String user) throws Exception {
+    public static int updateStepsGoal(int stepsCompleted, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;

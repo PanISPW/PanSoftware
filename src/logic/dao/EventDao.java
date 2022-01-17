@@ -4,6 +4,7 @@ import logic.entity.Event;
 import logic.entity.User;
 import logic.enumeration.EventType;
 import logic.exception.DatabaseException;
+import logic.exception.EmptyResultSetException;
 import logic.exception.UserNotFoundException;
 import logic.persistance.DatabaseConnection;
 import logic.persistance.queries.CRUDQueries;
@@ -11,6 +12,7 @@ import logic.persistance.queries.SimpleQueries;
 import logic.util.Constants;
 import logic.util.DaoUtils;
 
+import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +29,7 @@ public class EventDao {
     private EventDao() {
     }
 
-    public static List<Event> getEventList() throws UserNotFoundException, Exception {
+    public static List<Event> getEventList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -41,7 +43,7 @@ public class EventDao {
             resultSet = SimpleQueries.getEventList(statement);
 
             if (!resultSet.first()) {
-                throw new Exception("No Event Found");
+                throw new EmptyResultSetException("No Event Found");
             }
 
             eventList = new ArrayList<>();
@@ -61,7 +63,7 @@ public class EventDao {
             return eventList;
 
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
@@ -75,7 +77,7 @@ public class EventDao {
 
     }
 
-    public static Event getEvent(int id, String organizer) throws UserNotFoundException, Exception {
+    public static Event getEvent(int id, String organizer) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -90,7 +92,7 @@ public class EventDao {
             resultSet = SimpleQueries.getEvent(statement, id, organizer);
 
             if (!resultSet.first()) {
-                throw new Exception("Event not found");
+                throw new EmptyResultSetException("Event not found");
             }
 
             User userEntity = UserDao.getUser(resultSet.getString("organizer"));
@@ -101,7 +103,7 @@ public class EventDao {
             return event;
 
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
@@ -116,7 +118,7 @@ public class EventDao {
     }
 
 
-    public static int addEvent(String organizer, int id, String name, LocalDate startingDate, LocalDate endingDate, EventType type) throws Exception {
+    public static int addEvent(String organizer, int id, String name, LocalDate startingDate, LocalDate endingDate, EventType type) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;

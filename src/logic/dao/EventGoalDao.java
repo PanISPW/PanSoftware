@@ -8,6 +8,7 @@ import logic.entity.User;
 import logic.enumeration.EventRequestState;
 import logic.exception.DatabaseException;
 import logic.exception.EmptyResultSetException;
+import logic.exception.NoTransitionException;
 import logic.exception.UserNotFoundException;
 import logic.persistance.DatabaseConnection;
 import logic.persistance.queries.CRUDQueries;
@@ -15,6 +16,7 @@ import logic.persistance.queries.SimpleQueries;
 import logic.util.Constants;
 import logic.util.DaoUtils;
 
+import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +32,7 @@ public class EventGoalDao {
     private EventGoalDao() {
     }
 
-    public static List<EventGoal> getEventGoalList(String user) throws UserNotFoundException, Exception {
+    public static List<EventGoal> getEventGoalList(String user) throws UserNotFoundException, DatabaseException, LoginException, EmptyResultSetException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -45,7 +47,7 @@ public class EventGoalDao {
             resultSet = SimpleQueries.getEventGoalList(statement, user);
 
             if (!resultSet.first()) {
-                throw new Exception("No Event Goal related to the User was found");
+                throw new EmptyResultSetException("No Event Goal related to the User was found");
             }
 
             goalList = new ArrayList<>();
@@ -72,7 +74,7 @@ public class EventGoalDao {
 
             return goalList;
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
@@ -86,7 +88,7 @@ public class EventGoalDao {
 
     }
 
-    public static List<EventGoal> getPendingEventGoalList(String user) throws UserNotFoundException, Exception {
+    public static List<EventGoal> getPendingEventGoalList(String user) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -101,7 +103,7 @@ public class EventGoalDao {
             resultSet = SimpleQueries.getPendingEventApprovalList(statement, user);
 
             if (!resultSet.first()) {
-                throw new Exception("No Pending Event Goal related to the User was found");
+                throw new EmptyResultSetException("No Pending Event Goal related to the User was found");
             }
 
             goalList = new ArrayList<>();
@@ -124,7 +126,7 @@ public class EventGoalDao {
 
             return goalList;
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
@@ -138,7 +140,7 @@ public class EventGoalDao {
 
     }
 
-    public static EventGoal getEventGoal(String user, int id) throws UserNotFoundException, Exception {
+    public static EventGoal getEventGoal(String user, int id) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -153,7 +155,7 @@ public class EventGoalDao {
             resultSet = SimpleQueries.getEventGoal(statement, user, id);
 
             if (!resultSet.first()) {
-                throw new Exception("The Event Goal was not found");
+                throw new EmptyResultSetException("The Event Goal was not found");
             }
 
             User userEntity = UserDao.getUser(user);
@@ -170,9 +172,7 @@ public class EventGoalDao {
 
             return goal;
 
-        } catch (SQLException |
-
-                ClassNotFoundException e) {
+        } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
@@ -186,7 +186,7 @@ public class EventGoalDao {
 
     }
 
-    public static int getLastUserEventGoalId(String user) throws UserNotFoundException, Exception {
+    public static int getLastUserEventGoalId(String user) throws UserNotFoundException, EmptyResultSetException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -218,16 +218,13 @@ public class EventGoalDao {
 
     }
 
-    public static EventRequestState getEventParticipationState(String user, int id) throws UserNotFoundException, Exception {
+    public static EventRequestState getEventParticipationState(String user, int id) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
 
         EventGoal goal = getEventGoal(user, id);
         return goal.getState();
     }
 
-    public static int addEventGoal(EventGoal goal) throws Exception {
-
-        // String user, String name, String description, int numberOfSteps, int stepsCompleted,
-        //                                   LocalDate deadline, int id, String eventOrganizer, int eventId, EventRequestState requestState
+    public static int addEventGoal(EventGoal goal) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -262,7 +259,7 @@ public class EventGoalDao {
 
     }
 
-    public static int updateStepsEventGoal(int stepsCompleted, int id, String user) throws Exception {
+    public static int updateStepsEventGoal(int stepsCompleted, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -286,7 +283,7 @@ public class EventGoalDao {
 
     }
 
-    public static int joinEvent(Event event, EventRequestState requestState, int id, String user) throws Exception {
+    public static int joinEvent(Event event, EventRequestState requestState, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -314,7 +311,7 @@ public class EventGoalDao {
 
     }
 
-    public static int acceptEventGoal(int id, String user) throws Exception {
+    public static int acceptEventGoal(int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -339,14 +336,14 @@ public class EventGoalDao {
 
     }
 
-    public static int rejectEventGoal(int id, String user) throws Exception {
+    public static int rejectEventGoal(int id, String user) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, NoTransitionException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
         int result = 0;
 
         if (!EventGoalDao.getEventParticipationState(user, id).equals(EventRequestState.PENDING)) {
-            throw new Exception("Only EventGoals in a pending state can be rejected");
+            throw new NoTransitionException();
         }
 
         try {
