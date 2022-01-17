@@ -68,11 +68,8 @@ public class EventDao {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
-
-            if (databaseConnection != null) {
-                databaseConnection.closeResultSet(resultSet);
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeResultSet(resultSet);
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -108,11 +105,8 @@ public class EventDao {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
-
-            if (databaseConnection != null) {
-                databaseConnection.closeResultSet(resultSet);
-                databaseConnection.closeStatement(statement);
-            }
+            databaseConnection.closeResultSet(resultSet);
+            databaseConnection.closeStatement(statement);
         }
 
     }
@@ -149,7 +143,7 @@ public class EventDao {
     }
 
 
-    public static EventType getEventType(String organizer, int id) throws Exception {
+    public static EventType getEventType(String organizer, int id) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
