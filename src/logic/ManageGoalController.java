@@ -9,11 +9,12 @@ import logic.dao.*;
 import logic.entity.*;
 import logic.enumeration.EventRequestState;
 import logic.enumeration.UserRole;
-import logic.exception.NotEnoughPermissionsException;
-import logic.exception.UserNotFoundException;
+import logic.exception.*;
 import logic.mail.SendMail;
 import logic.util.Session;
 
+import javax.security.auth.login.LoginException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class ManageGoalController {
         SendMail.sendOnDay(email, day);
     }
 
-    public static void updateSteps(UpdateStepsBean bean) throws Exception {
+    public static void updateSteps(UpdateStepsBean bean) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         String username = Session.getSession().getUser();
         int stepsCompleted = bean.getStepsCompleted();
         int numberOfSteps;
@@ -61,40 +62,40 @@ public class ManageGoalController {
 
     }
 
-    public static List<AdviceGoal> getAdviceGoalList() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getAdviceGoalList() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return AdviceGoalDao.getAdviceGoalList(Session.getSession().getUser());
     }
 
     //
-    public static List<AdviceGoal> getUnansweredMakeupAdvice() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getUnansweredMakeupAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return AdviceGoalDao.getUnansweredMakeupAdvice();
     }
 
-    public static List<AdviceGoal> getUnansweredFoodAdvice() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getUnansweredFoodAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return AdviceGoalDao.getUnansweredFoodAdvice();
     }
 
-    public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return AdviceGoalDao.getUnansweredLifestyleAdvice();
     }
 
-    public static List<AdviceGoal> getUnansweredOtherAdvice() throws UserNotFoundException, Exception {
+    public static List<AdviceGoal> getUnansweredOtherAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return AdviceGoalDao.getUnansweredOtherAdvice();
     }
 
-    public static List<Goal> getGoalList() throws UserNotFoundException, Exception {
+    public static List<Goal> getGoalList() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return GoalDao.getGoalList(Session.getSession().getUser());
     }
 
-    public static List<EventGoal> getEventGoalList() throws UserNotFoundException, Exception {
+    public static List<EventGoal> getEventGoalList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
         return EventGoalDao.getEventGoalList(Session.getSession().getUser());
     }
 
-    public static List<Event> getEventList() throws UserNotFoundException, Exception {
+    public static List<Event> getEventList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
         return EventDao.getEventList();
     }
 
-    public static List<EventGoal> getPendingEventGoalList() throws UserNotFoundException, Exception {
+    public static List<EventGoal> getPendingEventGoalList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
         return EventGoalDao.getPendingEventGoalList(Session.getSession().getUser());
     }
 
@@ -102,11 +103,11 @@ public class ManageGoalController {
         return BarcodeScanner.getBarcode();
     }
 
-    public static void updateProductType(GoalBean bean, int id) throws Exception {
+    public static void updateProductType(GoalBean bean, int id) throws DatabaseException {
         AdviceGoalDao.updateProductTypeAdviceGoal(bean.getType(), id, Session.getSession().getUser());
     }
 
-    public static void answerAdviceGoal(AnswerAdviceGoalBean bean) throws UserNotFoundException, Exception {
+    public static void answerAdviceGoal(AnswerAdviceGoalBean bean) throws UserNotFoundException, LoginException, DatabaseException, NotEnoughPermissionsException, SQLException {
         UserRole role = UserDao.getUser(Session.getSession().getUser()).getRole();
 
         if (role.equals(UserRole.USER))
@@ -115,25 +116,25 @@ public class ManageGoalController {
         AdviceGoalDao.answerAdviceGoal(bean.getId(), bean.getUser(), Session.getSession().getUser(), bean.getAnswer());
     }
 
-    public static void insertBarcode(BarcodeBean bean) throws Exception {
+    public static void insertBarcode(BarcodeBean bean) throws DatabaseException {
         AdviceGoalDao.insertBarcode(bean.getBarcode(), bean.getId(), Session.getSession().getUser());
     }
 
-    public static void joinEvent(GoalBean bean, int id) throws UserNotFoundException, Exception {
+    public static void joinEvent(GoalBean bean, int id) throws UserNotFoundException, LoginException, DatabaseException, EmptyResultSetException {
         User userEntity = UserDao.getUser(Session.getSession().getUser());
         Event eventEntity = EventDao.getEvent(bean.getEventId(), bean.getEventOrganizer());
 
         new EventGoal(bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), id, userEntity, eventEntity, EventRequestState.STARTING);
     }
 
-    public static void acceptEventGoal(GoalBean bean) throws UserNotFoundException, Exception {
+    public static void acceptEventGoal(GoalBean bean) throws UserNotFoundException, NoTransitionException, NotEnoughPermissionsException, LoginException, DatabaseException, EmptyResultSetException {
 
         if (!bean.getState().equals(EventRequestState.PENDING)) {
-            throw new Exception("Selected goal not waiting for approval. Operation denied");
+            throw new NoTransitionException();
         }
 
         if (!Session.getSession().getUser().equals(bean.getEventOrganizer())) {
-            throw new Exception("You do not have permission to update the state of this goal");
+            throw new NotEnoughPermissionsException();
         }
 
         User userEntity = UserDao.getUser(bean.getUser());
@@ -148,14 +149,14 @@ public class ManageGoalController {
 
     }
 
-    public static void rejectEventGoal(GoalBean bean) throws UserNotFoundException, Exception {
+    public static void rejectEventGoal(GoalBean bean) throws UserNotFoundException, NoTransitionException, NotEnoughPermissionsException, LoginException, DatabaseException, EmptyResultSetException {
 
         if (!bean.getState().equals(EventRequestState.PENDING)) {
-            throw new Exception("Selected goal not waiting for approval. Operation denied");
+            throw new NoTransitionException();
         }
 
         if (!Session.getSession().getUser().equals(bean.getEventOrganizer())) {
-            throw new Exception("You do not have permission to update the state of this goal");
+            throw new NotEnoughPermissionsException();
         }
 
         User userEntity = UserDao.getUser(bean.getUser());
@@ -169,13 +170,13 @@ public class ManageGoalController {
             EventGoalDao.rejectEventGoal(goal.getId(), goal.getUser().getUsername());
     }
 
-    public static User getCurrentUser() throws UserNotFoundException, Exception {
+    public static User getCurrentUser() throws UserNotFoundException, LoginException, DatabaseException {
         String user = Session.getSession().getUser();
 
         return UserDao.getUser(user);
     }
 
-    public void createGoal(GoalBean bean) throws Exception {
+    public void createGoal(GoalBean bean) throws UserNotFoundException, LoginException, DatabaseException, SQLException, EmptyResultSetException {
         User user = UserDao.getUser(Session.getSession().getUser());
         GoalFactory.getGoalFactory().createGoal(bean);
 

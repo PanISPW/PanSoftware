@@ -8,9 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d670b996-fe98-4411-bff6-a4b840a220a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dao/EventDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/EventDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dao/EventGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/EventGoalDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/GoalFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/GoalFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/JoinEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/JoinEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ManageGoalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ManageGoalController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -594,7 +595,7 @@
       <workItem from="1642174871720" duration="595000" />
       <workItem from="1642257813953" duration="1188000" />
       <workItem from="1642350316781" duration="15722000" />
-      <workItem from="1642420637071" duration="3726000" />
+      <workItem from="1642420637071" duration="4674000" />
     </task>
     <servers />
   </component>

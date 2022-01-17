@@ -5,14 +5,16 @@ import logic.dao.UserDao;
 import logic.entity.User;
 import logic.enumeration.UserRole;
 import logic.exception.DatabaseException;
+import logic.exception.UserNotFoundException;
 
 import javax.security.auth.login.LoginException;
+import java.sql.SQLException;
 
 // @author Danilo D'Amico
 
 public class LoginController {
 
-    public UserRole loginUser(LoginBean bean) throws Exception {
+    public UserRole loginUser(LoginBean bean) throws UserNotFoundException, SQLException, LoginException {
         String user = bean.getUsername();
         String password = bean.getPassword();
 

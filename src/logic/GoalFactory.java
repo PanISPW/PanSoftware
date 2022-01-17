@@ -8,9 +8,12 @@ import logic.enumeration.GoalType;
 import logic.enumeration.ProductType;
 import logic.exception.DatabaseException;
 import logic.exception.EmptyResultSetException;
+import logic.exception.UserNotFoundException;
 import logic.util.Constants;
 import logic.util.Session;
 
+import javax.security.auth.login.LoginException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 // singleton
@@ -42,7 +45,7 @@ public class GoalFactory {
         return instance;
     }
 
-    public int createGoal(GoalBean bean) throws Exception {
+    public int createGoal(GoalBean bean) throws SQLException, DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException {
 
         this.name = bean.getName();
         this.description = bean.getDescription();
@@ -60,7 +63,7 @@ public class GoalFactory {
         } else return -1;
     }
 
-    private int makeGoal() throws Exception {
+    private int makeGoal() throws DatabaseException, SQLException, UserNotFoundException, LoginException {
 
         try {
             goalId = GoalDao.getLastUserGoalId(Session.getSession().getUser());
@@ -81,7 +84,7 @@ public class GoalFactory {
         return goalId;
     }
 
-    private int makeAdviceGoal(ProductType type) throws Exception {
+    private int makeAdviceGoal(ProductType type) throws DatabaseException, UserNotFoundException, LoginException {
 
         try {
             adviceGoalId = AdviceGoalDao.getLastUserAdviceGoalId(Session.getSession().getUser());
@@ -101,7 +104,7 @@ public class GoalFactory {
         return adviceGoalId;
     }
 
-    private int makeEventGoal(String eventOrganizer, int eventId) throws Exception {
+    private int makeEventGoal(String eventOrganizer, int eventId) throws DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException {
 
         try {
             eventGoalId = EventGoalDao.getLastUserEventGoalId(Session.getSession().getUser());

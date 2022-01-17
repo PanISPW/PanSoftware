@@ -6,10 +6,14 @@ import logic.dao.EventGoalDao;
 import logic.entity.Event;
 import logic.entity.EventGoal;
 import logic.enumeration.EventRequestState;
+import logic.exception.DatabaseException;
+import logic.exception.EmptyResultSetException;
+import logic.exception.NoTransitionException;
 import logic.exception.UserNotFoundException;
 import logic.mail.SendMail;
 import logic.util.Session;
 
+import javax.security.auth.login.LoginException;
 import java.util.List;
 
 // @author Danilo D'Amico
@@ -38,15 +42,15 @@ public class JoinEventController {
         SendMail.send(message, email);
     }
 
-    public List<EventGoal> getPendingEventGoalList() throws UserNotFoundException, Exception {
+    public List<EventGoal> getPendingEventGoalList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
         return EventGoalDao.getPendingEventGoalList(Session.getSession().getUser());
     }
 
-    public List<Event> getEventList() throws UserNotFoundException, Exception {
+    public List<Event> getEventList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
         return EventDao.getEventList();
     }
 
-    public boolean acceptJoinRequest(GoalBean bean) throws UserNotFoundException, Exception {
+    public boolean acceptJoinRequest(GoalBean bean) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, NoTransitionException {
 
         EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
 
@@ -58,7 +62,7 @@ public class JoinEventController {
         }
     }
 
-    public boolean rejectJoinRequest(GoalBean bean) throws UserNotFoundException, Exception {
+    public boolean rejectJoinRequest(GoalBean bean) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, NoTransitionException {
 
         EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
 
