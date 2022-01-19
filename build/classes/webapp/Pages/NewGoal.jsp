@@ -10,6 +10,8 @@
 <!-- @author Danilo D'Amico -->
 
 <body>
+<jsp:include page="Navbar.jsp"/>
 
+<p> Questa è la pagina New Goal </p>
 </body>
 </html>

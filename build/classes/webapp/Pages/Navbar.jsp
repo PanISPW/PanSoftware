@@ -23,51 +23,24 @@
 <!-- @author Danilo D'Amico -->
 
 <body>
-<nav class="navbar navbar-expand navbar-dark bg-success"
-     aria-label="PanChiSiamoNavbar">
+<nav class="navbar navbar-expand navbar-dark bg-success">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"> <img src="../pictures/logo.png"
                                                width="30" height="30" alt=""> Pan
         </a>
 
-        <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse" data-bs-target="#chiSiamoNavbar"
-                aria-controls="chiSiamoNavbar" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="chiSiamoNavbar">
+        <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" href="About.jsp">About</a>
-                </li>
                 <li class="nav-item"><a class="nav-link" href="Events.jsp">Events</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="GiveAdvice.jsp">Give Advice</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="ManageEventParticipations.jsp">Manage Event
-                    Participation</a>
+                    Participations</a>
                 </li>
-            </ul>
-
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="Domande.jsp">
-                    <!-- temp --> <img src="../pictures/Obiettivi.png" width="20"
-                                       height="20" alt="">
-                </a></li>
-                <li class="nav-item"><a class="nav-link" href="Domande.jsp">
-                    <!-- temp --> <img src="../pictures/Nuovo.png" width="20"
-                                       height="20" alt="">
-                </a></li>
-                <li class="nav-item"><a class="nav-link" href="Domande.jsp">
-                    <!-- temp --> <img src="../pictures/Notifications.png" width="20"
-                                       height="20" alt="">
-                </a></li>
-                <li class="nav-item"><a class="nav-link" href="Domande.jsp">
-                    <!-- temp --> <img src="../pictures/Settings.png" width="20"
-                                       height="20" alt="">
-                </a></li>
-                <li class="nav-item"><a class="nav-link" href="Login.jsp">Logout</a> <!-- svuotare session -->
+                <li class="nav-item"><a class="nav-link" href="NewGoal.jsp">Create New Goal</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="Profile.jsp">Profile</a>
                 </li>
             </ul>
 
