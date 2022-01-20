@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- @author Danilo D'Amico -->
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+			prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
+			fx:controller="com.pansoftware.logic.ui.controller.NewGoalGraphicalController">
+    <center>
+        <ScrollPane prefHeight="600.0" prefWidth="600.0" vbarPolicy="ALWAYS">
+            <content>
+                <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="600.0" prefWidth="600.0">
+                    <children>
+                        <Label text="Create New Goal Form">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                        <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submit" text="Submit">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                            <children>
+                                <RadioButton fx:id="adviceButton" mnemonicParsing="false" onAction="#adviceGoalRadio"
+                                             text="AdviceGoal">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </HBox.margin>
+                                </RadioButton>
+                                <RadioButton fx:id="goalButton" mnemonicParsing="false" onAction="#goalRadio"
+                                             text="Goal">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </HBox.margin>
+                                </RadioButton>
+                                <RadioButton fx:id="eventButton" mnemonicParsing="false" onAction="#eventGoalRadio"
+                                             text="EventGoal">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </HBox.margin>
+                                </RadioButton>
+                            </children>
+                        </HBox>
+                        <TextField fx:id="goalName" maxWidth="-Infinity" promptText="name">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="goalDescription" maxWidth="-Infinity" promptText="description">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="numberOfSteps" maxWidth="-Infinity" promptText="numberOfSteps">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="stepsCompleted" maxWidth="-Infinity" promptText="stepsCompleted">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <Label text="Deadline">
+                            <VBox.margin>
+                                <Insets bottom="1.0" left="10.0" right="10.0" top="10.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <DatePicker fx:id="deadline">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0"/>
+                            </VBox.margin>
+                        </DatePicker>
+                        <CheckBox fx:id="reminder" mnemonicParsing="false" text="Reminder">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </VBox.margin>
+                        </CheckBox>
+                        <VBox fx:id="adviceGoal" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="600.0">
+                            <children>
+                                <Label text="AdviceGoal options">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <Label text="product type">
+                                    <VBox.margin>
+                                        <Insets left="10.0" right="10.0" top="10.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <ComboBox fx:id="productType" prefWidth="150.0">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="1.0"/>
+                                    </VBox.margin>
+                                </ComboBox>
+                            </children>
+                        </VBox>
+                        <VBox fx:id="eventGoal" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="100.0">
+                            <children>
+                                <Label text="EventGoal options">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <TextField fx:id="eventId" maxWidth="-Infinity" promptText="eventId">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="eventOrganizer" maxWidth="-Infinity" promptText="eventOrganizer">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
