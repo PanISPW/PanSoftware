@@ -81,6 +81,8 @@
         <input
                 type="password" id="password" name="password" class="form-control"
                 placeholder="password" required>
+
+        <!-- La classe LoginBean viene invocata quando viene ricevuto come valore login -->
         <button class="w-100 btn btn-lg btn-primary half-top-buffer"
                 type="submit" name="login" value="login">Login
         </button>

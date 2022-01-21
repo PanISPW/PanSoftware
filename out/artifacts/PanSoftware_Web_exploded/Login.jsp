@@ -29,7 +29,7 @@
     } %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta charset="ISO-8859-1">
@@ -82,7 +82,7 @@
                 type="password" id="password" name="password" class="form-control"
                 placeholder="password" required>
 
-        <!-- La classe LoginBean viene invocata quando viene ricevuto value="login" -->
+        <!-- La classe LoginBean viene invocata quando viene ricevuto come valore login -->
         <button class="w-100 btn btn-lg btn-primary half-top-buffer"
                 type="submit" name="login" value="login">Login
         </button>
