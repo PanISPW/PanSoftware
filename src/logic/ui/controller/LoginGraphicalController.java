@@ -18,7 +18,10 @@ import logic.exception.UserNotFoundException;
 import logic.ui.FxUtilities;
 import logic.util.Session;
 
+import javax.security.auth.login.LoginException;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 // @author Danilo D'Amico
@@ -48,7 +51,7 @@ public class LoginGraphicalController implements Initializable {
     }
 
     @FXML
-    public void login() throws Exception {
+    public void login() throws SQLException, LoginException, IOException {
 
         try {
 
@@ -71,7 +74,7 @@ public class LoginGraphicalController implements Initializable {
             }
 
 
-        } catch (UserNotFoundException | DatabaseException e) {
+        } catch (UserNotFoundException e) {
             resultLabel.setText(e.getMessage().toUpperCase());
         }
     }

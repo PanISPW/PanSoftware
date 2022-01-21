@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 
-<%
-    session.invalidate();
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +43,7 @@
         </a>
     </div>
 </nav>
-
+<!-- fill a LoginBean and call LoginController-->
 <main
         class="d-flex justify-content-center align-items-center form-signin">
     <form action="../LoginServlet" name="loginForm" method="POST"> <!-- come chiamo la servlet -->
