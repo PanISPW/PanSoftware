@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PanSoftware:Web exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/StartingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/StartingState.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="23wB1ZQzm63PMX3Op1TpmzfGMMy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="D:/intellij-workspace/Netbooks" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.4183908" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\intellij-workspace\PanSoftware\lib" />
+      <recent name="D:\intellij-workspace\PanSoftware\src\main\resources\pictures" />
+      <recent name="D:\intellij-workspace\PanSoftware\src\main\java\com\pansoftware\logic\jsp" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\intellij-workspace\PanSoftware\lib" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.pansoftware" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainDesktop">
+    <configuration name="MainDesktop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.pansoftware.logic.MainDesktop" />
+      <module name="PanSoftware" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pansoftware.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainDesktop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.pansoftware.MainDesktop" />
+      <module name="PanSoftware" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pansoftware.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestJoinEventController.testAcceptJoinRequestNonExistingGoal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PanSoftware" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pansoftware.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.pansoftware.test" />
+      <option name="MAIN_CLASS_NAME" value="com.pansoftware.test.TestJoinEventController" />
+      <option name="METHOD_NAME" value="testAcceptJoinRequestNonExistingGoal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestManageGoalController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PanSoftware" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pansoftware.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.pansoftware.test" />
+      <option name="MAIN_CLASS_NAME" value="com.pansoftware.test.TestManageGoalController" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestManageGoalController.testSetNameTooLong" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PanSoftware" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pansoftware.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.pansoftware.test" />
+      <option name="MAIN_CLASS_NAME" value="com.pansoftware.test.TestManageGoalController" />
+      <option name="METHOD_NAME" value="testSetNameTooLong" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestManageGoalController.testUpdateStepsCompletedMoreThanMax" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PanSoftware" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pansoftware.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.pansoftware.test" />
+      <option name="MAIN_CLASS_NAME" value="com.pansoftware.test.TestManageGoalController" />
+      <option name="METHOD_NAME" value="testUpdateStepsCompletedMoreThanMax" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 10.0.14" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.14" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="PanSoftware:Web exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="00de249e-43f1-4ee3-839e-d6b3852ba76a" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62898" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="PanSoftware:Web exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.TestJoinEventController.testAcceptJoinRequestNonExistingGoal" />
+      <item itemvalue="Tomcat Server.Tomcat 10.0.14" />
+      <item itemvalue="JUnit.TestManageGoalController.testSetNameTooLong" />
+      <item itemvalue="JUnit.TestManageGoalController.testUpdateStepsCompletedMoreThanMax" />
+      <item itemvalue="JUnit.TestManageGoalController" />
+      <item itemvalue="Application.MainDesktop" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainDesktop" />
+        <item itemvalue="JUnit.TestManageGoalController" />
+        <item itemvalue="JUnit.TestManageGoalController.testUpdateStepsCompletedMoreThanMax" />
+        <item itemvalue="JUnit.TestJoinEventController.testAcceptJoinRequestNonExistingGoal" />
+        <item itemvalue="JUnit.TestManageGoalController.testSetNameTooLong" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="" />
+      <created>1642635058667</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642635058667</updated>
+      <workItem from="1642635060478" duration="3318000" />
+      <workItem from="1642668997869" duration="2397000" />
+      <workItem from="1642677468696" duration="534000" />
+      <workItem from="1642678032604" duration="6544000" />
+      <workItem from="1642684855085" duration="2739000" />
+      <workItem from="1642693442968" duration="3369000" />
+      <workItem from="1642696883061" duration="663000" />
+      <workItem from="1642697570210" duration="203000" />
+      <workItem from="1642697789822" duration="86000" />
+      <workItem from="1642698114403" duration="4541000" />
+      <workItem from="1642703453678" duration="1276000" />
+      <workItem from="1642714442478" duration="5384000" />
+      <workItem from="1642724308465" duration="220000" />
+      <workItem from="1642724559752" duration="3000" />
+      <workItem from="1642724830682" duration="308000" />
+      <workItem from="1642767124597" duration="1190000" />
+      <workItem from="1642799208646" duration="4113000" />
+      <workItem from="1642844798002" duration="4925000" />
+      <workItem from="1642957045317" duration="596000" />
+      <workItem from="1642961701025" duration="1156000" />
+      <workItem from="1642962884569" duration="13346000" />
+      <workItem from="1642979862334" duration="8740000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
