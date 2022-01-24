@@ -64,7 +64,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-success"
      aria-label="PanLoginNavbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> <img src="../pictures/logo.png"
+        <a class="navbar-brand" href="#"> <img src="jetbrains://idea/navigate/reference?project=PanSoftware&path=pictures/logo.png"
                                                width="30" height="30" alt=""> Pan
         </a>
     </div>
@@ -74,7 +74,7 @@
         class="d-flex justify-content-center align-items-center form-signin">
     <!-- action chiama Login.jsp -->
     <form action="Login.jsp" name="loginForm" method="POST">
-        <img class="img-fluid center-block" src="../pictures/logo.png"
+        <img class="img-fluid center-block" src="jetbrains://idea/navigate/reference?project=PanSoftware&path=pictures/logo.png"
              alt="Responsive image" width="72" height="72">
         <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
 
