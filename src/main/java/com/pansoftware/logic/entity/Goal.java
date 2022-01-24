@@ -12,15 +12,13 @@ import java.time.LocalDate;
 
 // @author Danilo D'Amico
 
-public class Goal implements UserContent {
+public class Goal extends UserContent {
 
-    private String name;
     private String description;
     private int numberOfSteps;
     private int stepsCompleted;
     private LocalDate deadline;
-    private int id;
-    private User user;
+
 
     public Goal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, User user, int id) {
         this.name = name;
@@ -34,30 +32,6 @@ public class Goal implements UserContent {
 
     public static Goal getGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return GoalDao.getGoal(user, id);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {

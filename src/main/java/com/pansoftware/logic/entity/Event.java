@@ -7,11 +7,8 @@ import java.time.LocalDate;
 
 // @author Danilo D'Amico
 
-public class Event implements UserContent {
+public class Event extends UserContent {
 
-    private int id;
-    private User user; // utente in grado di organizzare eventi: Activist o Brand Manager quindi EventOrganizer
-    private String name;
     private LocalDate startingDate;
     private LocalDate endingDate;
     private EventType type; // private or public event
@@ -47,30 +44,6 @@ public class Event implements UserContent {
 
     public void setType(EventType type) {
         this.type = type;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 }

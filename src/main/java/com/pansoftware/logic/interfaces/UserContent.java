@@ -4,18 +4,33 @@ import com.pansoftware.logic.entity.User;
 
 // @author Danilo D'Amico
 
-public interface UserContent {
+public abstract class UserContent {
 
-    int getId();
+    protected int id;
+    protected User user;
+    protected String name;
 
-    void setId(int id);
+    int getId() {
+        return id;
+    }
 
-    // basta stringa user?
-    User getUser();
+    void setId(int id) {
+        this.id = id;
+    }
 
-    void setUser(User user);
+    User getUser() {
+        return user;
+    }
 
-    String getName();
+    void setUser(User user) {
+        this.user = user;
+    }
 
-    void setName(String name);
+    String getName() {
+        return name;
+    }
+
+    void setName(String name) {
+        this.name = name;
+    }
 }
