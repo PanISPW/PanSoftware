@@ -10,27 +10,27 @@ public abstract class UserContent {
     protected User user;
     protected String name;
 
-    int getId() {
+    public int getId() {
         return id;
     }
 
-    void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    User getUser() {
+    public User getUser() {
         return user;
     }
 
-    void setUser(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
