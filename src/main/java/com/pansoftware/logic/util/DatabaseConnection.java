@@ -1,4 +1,4 @@
-package com.pansoftware.logic.persistance;
+package com.pansoftware.logic.util;
 
 import com.pansoftware.logic.exception.DatabaseException;
 
@@ -8,20 +8,13 @@ import java.sql.*;
 
 public class DatabaseConnection {
 
-    private Connection connection;
-    private static String url = "jdbc:mysql://localhost:3306/pandb";
-    private static String dbUser = "esameispw10";
-    private static String dbPassword = "esameispw";
+    private final Connection connection;
+    private static final String url = "jdbc:mysql://localhost:3306/pandb";
+    private static final String dbUser = "esameispw10";
+    private static final String dbPassword = "esameispw";
 
     public DatabaseConnection() throws SQLException {
         connection = DriverManager.getConnection(url, dbUser, dbPassword);
-    }
-
-    public void closeConnection() throws SQLException {
-        if (connection != null) {
-            connection.close();
-            connection = null;
-        }
     }
 
     public void closeResultSet(ResultSet resultSet) throws DatabaseException {

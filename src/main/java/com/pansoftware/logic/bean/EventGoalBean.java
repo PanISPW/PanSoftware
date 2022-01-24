@@ -37,7 +37,6 @@ public class EventGoalBean extends GoalBean{
     public void setState(EventRequestState state) throws InvalidDataException {
         if (state.equals(EventRequestState.ACCEPTED) | state.equals(EventRequestState.REJECTED))
             this.state = state;
-        else throw new InvalidDataException("Cannot set state different from either ACCEPTED or REJECTED");
     }
 
     public ProductType getType() {

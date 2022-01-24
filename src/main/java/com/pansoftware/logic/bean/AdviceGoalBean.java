@@ -17,7 +17,6 @@ public class AdviceGoalBean extends GoalBean{
     public void setType(ProductType type) throws InvalidDataException {
         if (type.equals(ProductType.FOOD) | type.equals(ProductType.LIFESTYLE) | type.equals(ProductType.MAKEUP) | type.equals(ProductType.OTHER))
             this.type = type;
-        else throw new InvalidDataException("It wasn't possible to set the Goal's Type");
     }
 
     public String getBarcode() {

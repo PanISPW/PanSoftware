@@ -3,7 +3,7 @@ package com.pansoftware.logic.util;
 import com.pansoftware.logic.enumeration.Pages;
 import com.pansoftware.logic.enumeration.UserRole;
 
-// session è un singleton che mantiene l'utente corrente
+// session Ã¨ un singleton che mantiene l'utente corrente
 
 // @author Danilo D'Amico
 

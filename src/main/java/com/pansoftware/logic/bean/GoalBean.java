@@ -16,6 +16,7 @@ public class GoalBean {
     private boolean reminder = false;
 
     private String name = "";
+    private String surname = "";
     private String description = "";
     private int numberOfSteps = 1;
     private int stepsCompleted = 0;
@@ -103,5 +104,13 @@ public class GoalBean {
 
     public void setReminder(boolean reminder) {
         this.reminder = reminder;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }

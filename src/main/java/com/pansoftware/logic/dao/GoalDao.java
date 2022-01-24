@@ -1,14 +1,11 @@
 package com.pansoftware.logic.dao;
 
-import com.pansoftware.logic.bean.GoalQueryBean;
 import com.pansoftware.logic.entity.Goal;
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
-import com.pansoftware.logic.persistance.DatabaseConnection;
-import com.pansoftware.logic.persistance.queries.CRUDQueries;
-import com.pansoftware.logic.persistance.queries.SimpleQueries;
+import com.pansoftware.logic.util.DatabaseConnection;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 
@@ -28,14 +25,16 @@ public class GoalDao {
 
     public static List<Goal> getGoalList(String user) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection;
+        Statement statement;
+        ResultSet resultSet;
         List<Goal> goalList;
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
-        resultSet = SimpleQueries.getGoalList(statement, user);
+
+        String sql = String.format("SELECT * FROM goal WHERE user = '%s';", user);
+        resultSet = statement.executeQuery(sql);
 
         if (!resultSet.first()) {
             throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
@@ -60,14 +59,16 @@ public class GoalDao {
 
     public static Goal getGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
+        DatabaseConnection databaseConnection;
+        Statement statement;
+        ResultSet resultSet;
         Goal goal;
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
-        resultSet = SimpleQueries.getGoal(statement, user, id);
+
+        String sql = String.format("SELECT * FROM goal WHERE user='%s' and id=%s;", user, id);
+        resultSet = statement.executeQuery(sql);
 
         if (!resultSet.first()) {
             throw new EmptyResultSetException("Goal not found");
@@ -77,10 +78,9 @@ public class GoalDao {
         goal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
 
         return goal;
-
     }
 
-    public static int getLastUserGoalId(String user) throws UserNotFoundException, EmptyResultSetException, DatabaseException {
+    public static int getLastUserGoalId(String user) throws EmptyResultSetException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -92,7 +92,8 @@ public class GoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            resultSet = SimpleQueries.getLastUserGoalId(statement, user);
+            String sql = String.format("SELECT MAX(Id) as maxId FROM goal WHERE user='%s';", user);
+            resultSet = statement.executeQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
@@ -108,17 +109,17 @@ public class GoalDao {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeResultSet(resultSet);
             databaseConnection.closeStatement(statement);
         }
 
     }
 
-    public static int addGoal(Goal goal) throws SQLException, DatabaseException {
+    public static void addGoal(Goal goal) throws SQLException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
-        int result;
 
         try {
 
@@ -126,38 +127,35 @@ public class GoalDao {
             statement = databaseConnection.createStatement();
             Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
-            GoalQueryBean bean = DaoUtils.getGoalQueryBean(goal, sqlDeadline);
-
-            result = CRUDQueries.addGoal(statement, bean);
-
-            return result;
+            String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername());
+            statement.executeUpdate(insertStatement);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeStatement(statement);
         }
 
     }
 
-    public static int updateStepsGoal(int stepsCompleted, int id, String user) throws DatabaseException {
+    public static void updateStepsGoal(int stepsCompleted, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
-        int result;
 
         try {
 
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
-            result = CRUDQueries.updateStepsGoal(statement, stepsCompleted, id, user);
 
-            return result;
-
+            String updateStatement = String.format("UPDATE  goal set stepsCompleted=%s WHERE id = %s AND user='%s';", stepsCompleted, id, user);
+            statement.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException("Can't update Goal in database");
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeStatement(statement);
         }
 

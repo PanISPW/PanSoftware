@@ -1,6 +1,6 @@
 package com.pansoftware.logic.util;
 
-import com.pansoftware.logic.bean.GoalQueryBean;
+import com.pansoftware.logic.entity.EventGoal;
 import com.pansoftware.logic.entity.Goal;
 import com.pansoftware.logic.enumeration.EventRequestState;
 import com.pansoftware.logic.enumeration.EventType;
@@ -18,44 +18,24 @@ public class DaoUtils {
 
     public static ProductType databaseIntToProductType(int databaseInt) {
 
-        switch (databaseInt) {
-
-            case 0:
-                return ProductType.MAKEUP;
-
-            case 1:
-                return ProductType.FOOD;
-
-            case 2:
-                return ProductType.LIFESTYLE;
-
-            case 3:
-                return ProductType.OTHER;
-
-            default:
-                return ProductType.NOTSPECIFIED;
-        }
+        return switch (databaseInt) {
+            case 0 -> ProductType.MAKEUP;
+            case 1 -> ProductType.FOOD;
+            case 2 -> ProductType.LIFESTYLE;
+            case 3 -> ProductType.OTHER;
+            default -> ProductType.NOTSPECIFIED;
+        };
     }
 
     public static int productTypeToDatabaseInt(ProductType type) {
 
-        switch (type) {
-
-            case MAKEUP:
-                return 0;
-
-            case FOOD:
-                return 1;
-
-            case LIFESTYLE:
-                return 2;
-
-            case OTHER:
-                return 3;
-
-            default:
-                return 4;
-        }
+        return switch (type) {
+            case MAKEUP -> 0;
+            case FOOD -> 1;
+            case LIFESTYLE -> 2;
+            case OTHER -> 3;
+            default -> 4;
+        };
 
     }
 
@@ -72,28 +52,19 @@ public class DaoUtils {
 
     public static UserRole databaseIntToUserRole(int databaseInt) {
 
-        switch (databaseInt) {
-
-            case 1:
-                return UserRole.ACTIVIST;
-
-            case 2:
-                return UserRole.BRANDMANAGER;
-
-            default:
-                return UserRole.USER;
-        }
+        return switch (databaseInt) {
+            case 1 -> UserRole.ACTIVIST;
+            case 2 -> UserRole.BRANDMANAGER;
+            default -> UserRole.USER;
+        };
     }
 
     public static int userRoleToDatabaseInt(UserRole role) {
-        switch (role) {
-            case ACTIVIST:
-                return 1;
-            case BRANDMANAGER:
-                return 2;
-            default:
-                return 0;
-        }
+        return switch (role) {
+            case ACTIVIST -> 1;
+            case BRANDMANAGER -> 2;
+            default -> 0;
+        };
     }
 
     public static EventType databaseIntToEventType(int databaseInt) {
@@ -116,48 +87,21 @@ public class DaoUtils {
     }
 
     public static EventRequestState databaseIntToEventRequestState(int databaseInt) {
-        switch (databaseInt) {
-
-            case 0:
-                return EventRequestState.PENDING;
-
-            case 1:
-                return EventRequestState.ACCEPTED;
-
-            case 2:
-                return EventRequestState.REJECTED;
-
-            default:
-                return EventRequestState.STARTING;
-        }
+        return switch (databaseInt) {
+            case 0 -> EventRequestState.PENDING;
+            case 1 -> EventRequestState.ACCEPTED;
+            case 2 -> EventRequestState.REJECTED;
+            default -> EventRequestState.STARTING;
+        };
     }
 
     public static int eventRequestStateToDatabaseInt(EventRequestState requestState) {
-        switch (requestState) {
-
-            case PENDING:
-                return 0;
-
-            case ACCEPTED:
-                return 1;
-
-            case REJECTED:
-                return 2;
-
-            default: // starting
-                return 4;
-        }
+        return switch (requestState) {
+            case PENDING -> 0;
+            case ACCEPTED -> 1;
+            case REJECTED -> 2;
+            default -> 4; // starting
+        };
     }
 
-    public static GoalQueryBean getGoalQueryBean(Goal goal, Date sqlDeadline) {
-        GoalQueryBean bean = new GoalQueryBean();
-        bean.setName(goal.getName());
-        bean.setDescription(goal.getDescription());
-        bean.setNumberOfSteps(goal.getNumberOfSteps());
-        bean.setStepsCompleted(goal.getStepsCompleted());
-        bean.setDeadline(sqlDeadline);
-        bean.setId(goal.getId());
-        bean.setUser(goal.getUser().getUsername());
-        return bean;
-    }
 }

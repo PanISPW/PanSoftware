@@ -52,37 +52,18 @@ public class FxUtilities {
     }
 
     public static FXMLLoader loadFxml(Pages page) {
-        switch (page) {
-            case LOGIN:
-                return new FXMLLoader(MainDesktop.class.getResource("Login.fxml"));
-
-            case EVENTS:
-                return new FXMLLoader(MainDesktop.class.getResource("Events.fxml"));
-
-            case NEWGOAL:
-                return new FXMLLoader(MainDesktop.class.getResource("NewGoal.fxml"));
-
-            case EVENTITEM:
-                return new FXMLLoader(MainDesktop.class.getResource("EventItem.fxml"));
-
-            case GOALITEM:
-                return new FXMLLoader(MainDesktop.class.getResource("GoalCell.fxml"));
-
-            case ADVICEPAGE:
-                return new FXMLLoader(MainDesktop.class.getResource("GiveAdvice.fxml"));
-
-            case EVENTPARTICIPATION:
-                return new FXMLLoader(MainDesktop.class.getResource("ManageEventParticipation.fxml"));
-
-            case ADVICEITEM:
-                return new FXMLLoader(MainDesktop.class.getResource("AdviceCell.fxml"));
-
-            case EVENTPARTICIPATIONITEM:
-                return new FXMLLoader(MainDesktop.class.getResource("EventParticipationItem.fxml"));
-
-            default:
-                return new FXMLLoader(MainDesktop.class.getResource("Profile.fxml"));
-        }
+        return switch (page) {
+            case LOGIN -> new FXMLLoader(MainDesktop.class.getResource("Login.fxml"));
+            case EVENTS -> new FXMLLoader(MainDesktop.class.getResource("Events.fxml"));
+            case NEWGOAL -> new FXMLLoader(MainDesktop.class.getResource("NewGoal.fxml"));
+            case EVENTITEM -> new FXMLLoader(MainDesktop.class.getResource("EventItem.fxml"));
+            case GOALITEM -> new FXMLLoader(MainDesktop.class.getResource("GoalCell.fxml"));
+            case ADVICEPAGE -> new FXMLLoader(MainDesktop.class.getResource("GiveAdvice.fxml"));
+            case EVENTPARTICIPATION -> new FXMLLoader(MainDesktop.class.getResource("ManageEventParticipation.fxml"));
+            case ADVICEITEM -> new FXMLLoader(MainDesktop.class.getResource("AdviceCell.fxml"));
+            case EVENTPARTICIPATIONITEM -> new FXMLLoader(MainDesktop.class.getResource("EventParticipationItem.fxml"));
+            default -> new FXMLLoader(MainDesktop.class.getResource("Profile.fxml"));
+        };
     }
 
     private static BorderPane getNavbar() throws IOException {

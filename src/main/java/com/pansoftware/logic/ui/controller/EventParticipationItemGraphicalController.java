@@ -39,7 +39,6 @@ public class EventParticipationItemGraphicalController implements Initializable 
     @FXML
     private Button eventParticipationReject;
 
-    // dovrei passarmi il bean non l'entity
     public EventParticipationItemGraphicalController(EventGoal goal) {
         this.item = goal;
     }

@@ -1,6 +1,5 @@
 package com.pansoftware.logic.dao;
 
-import com.pansoftware.logic.bean.EventGoalQueryBean;
 import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.entity.EventGoal;
 import com.pansoftware.logic.entity.User;
@@ -9,9 +8,7 @@ import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.NoTransitionException;
 import com.pansoftware.logic.exception.UserNotFoundException;
-import com.pansoftware.logic.persistance.DatabaseConnection;
-import com.pansoftware.logic.persistance.queries.CRUDQueries;
-import com.pansoftware.logic.persistance.queries.SimpleQueries;
+import com.pansoftware.logic.util.DatabaseConnection;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 
@@ -44,7 +41,8 @@ public class EventGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            resultSet = SimpleQueries.getEventGoalList(statement, user);
+            String sql = String.format("SELECT * FROM eventgoal WHERE user = '%s';", user);
+            resultSet = statement.executeQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("No Event Goal related to the User was found");
@@ -79,6 +77,7 @@ public class EventGoalDao {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeResultSet(resultSet);
             databaseConnection.closeStatement(statement);
         }
@@ -97,7 +96,9 @@ public class EventGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            resultSet = SimpleQueries.getPendingEventApprovalList(statement, user);
+            // 0 = PENDING
+            String sql = String.format("SELECT * FROM eventgoal WHERE eventOrganizer='%s' AND requestState=0;", user);
+            resultSet = statement.executeQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("No Pending Event Goal related to the User was found");
@@ -128,6 +129,7 @@ public class EventGoalDao {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeResultSet(resultSet);
             databaseConnection.closeStatement(statement);
         }
@@ -146,7 +148,9 @@ public class EventGoalDao {
 
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
-            resultSet = SimpleQueries.getEventGoal(statement, user, id);
+
+            String sql = String.format("SELECT * FROM eventgoal WHERE user = '%s' and id=%s;", user, id);
+            resultSet = statement.executeQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("The Event Goal was not found");
@@ -171,13 +175,14 @@ public class EventGoalDao {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeResultSet(resultSet);
             databaseConnection.closeStatement(statement);
         }
 
     }
 
-    public static int getLastUserEventGoalId(String user) throws UserNotFoundException, EmptyResultSetException, DatabaseException {
+    public static int getLastUserEventGoalId(String user) throws EmptyResultSetException, DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
@@ -188,7 +193,9 @@ public class EventGoalDao {
 
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
-            resultSet = SimpleQueries.getLastUserEventGoalId(statement, user);
+
+            String sql = String.format("SELECT MAX(Id) as maxId FROM eventgoal WHERE user = '%s';", user);
+            resultSet = statement.executeQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
@@ -203,6 +210,7 @@ public class EventGoalDao {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeResultSet(resultSet);
             databaseConnection.closeStatement(statement);
         }
@@ -215,12 +223,11 @@ public class EventGoalDao {
         return goal.getState();
     }
 
-    public static int addEventGoal(EventGoal goal) throws DatabaseException {
+    public static void addEventGoal(EventGoal goal) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
         int stateInt;
-        int result;
 
         try {
 
@@ -230,55 +237,48 @@ public class EventGoalDao {
             stateInt = DaoUtils.eventRequestStateToDatabaseInt(goal.getState());
             Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
-            EventGoalQueryBean bean = (EventGoalQueryBean) DaoUtils.getGoalQueryBean(goal, sqlDeadline);
-
-            bean.setEventOrganizer(goal.getOrganizer().getUsername());
-            bean.setEventId(goal.getEvent().getId());
-            bean.setRequestState(stateInt);
-
-            result = CRUDQueries.addEventGoal(statement, bean);
-
-            return result;
+            String insertStatement = String.format("INSERT INTO eventgoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState) VALUES ('%s','%s',%s,%s,'%s',%s,'%s','%s',%s,%s);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), goal.getOrganizer().getUsername(), goal.getEvent().getId(), stateInt);
+            statement.executeUpdate(insertStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException("Can't insert new Event Goal in database");
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeStatement(statement);
         }
 
     }
 
-    public static int updateStepsEventGoal(int stepsCompleted, int id, String user) throws DatabaseException {
+    public static void updateStepsEventGoal(int stepsCompleted, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
-        int result;
 
         try {
 
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
-            result = CRUDQueries.updateStepsEventGoal(statement, stepsCompleted, id, user);
 
-            return result;
+            String updateStatement = String.format("UPDATE  eventgoal set stepsCompleted=%s WHERE id = %s AND user = '%s';", stepsCompleted, id, user);
+            statement.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeStatement(statement);
         }
 
     }
 
-    public static int joinEvent(Event event, EventRequestState requestState, int id, String user) throws DatabaseException {
+    public static void joinEvent(Event event, EventRequestState requestState, int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
-        int result;
         int requestStateInt;
 
         try {
@@ -288,50 +288,48 @@ public class EventGoalDao {
 
             requestStateInt = DaoUtils.eventRequestStateToDatabaseInt(requestState);
 
-            result = CRUDQueries.joinEvent(statement, event.getId(), event.getUser().getUsername(), requestStateInt, id, user);
-
-            return result;
+            String updateStatement = String.format("UPDATE eventgoal set eventId = %s and eventOrganizer = '%s' and requestState = %s WHERE id = %s AND user = '%s';", event.getId(), event.getUser().getUsername(), requestStateInt, id, user);
+            statement.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeStatement(statement);
         }
 
     }
 
-    public static int acceptEventGoal(int id, String user) throws DatabaseException {
+    public static void acceptEventGoal(int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
-        int result = 0;
 
         try {
 
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            result = CRUDQueries.acceptEventParticipation(statement, id, user);
-
-            return result;
+            String updateStatement = String.format("UPDATE eventgoal SET requestState=1 WHERE id=%s AND user='%s';", id, user);
+            statement.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeStatement(statement);
         }
 
     }
 
-    public static int rejectEventGoal(int id, String user) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, NoTransitionException {
+    public static void rejectEventGoal(int id, String user) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, NoTransitionException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
-        int result = 0;
 
         if (!EventGoalDao.getEventParticipationState(user, id).equals(EventRequestState.PENDING)) {
             throw new NoTransitionException(NO_TRANSITION_OCCURS);
@@ -342,39 +340,39 @@ public class EventGoalDao {
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
 
-            result = CRUDQueries.rejectEventParticipation(statement, id, user);
-
-            return result;
+            String updateStatement = String.format("UPDATE eventgoal SET requestState=2 WHERE id=%s AND user = '%s';", id, user);
+            statement.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeStatement(statement);
         }
 
     }
 
-    public static int pendingEventGoal(int id, String user) throws DatabaseException {
+    public static void pendingEventGoal(int id, String user) throws DatabaseException {
 
         DatabaseConnection databaseConnection = null;
         Statement statement = null;
-        int result = 0;
 
         try {
 
             databaseConnection = new DatabaseConnection();
             statement = databaseConnection.createStatement();
-            result = CRUDQueries.pendingEventParticipation(statement, id, user);
 
-            return result;
+            String updateStatement = String.format("UPDATE  eventgoal set requestState=0 WHERE id = %s AND user = '%s';", id, user);
+            statement.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         } finally {
+            assert databaseConnection != null;
             databaseConnection.closeStatement(statement);
         }
 
