@@ -11,15 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/AdviceGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/AdviceGoalDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/EventDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/EventDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/EventGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/EventGoalDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/GoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/GoalDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/LoginGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/LoginGraphicalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/DaoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/DaoUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/DatabaseConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +296,7 @@
       <workItem from="1642962884569" duration="13346000" />
       <workItem from="1642979862334" duration="9335000" />
       <workItem from="1642989405797" duration="4957000" />
-      <workItem from="1643015374435" duration="3349000" />
+      <workItem from="1643015374435" duration="3661000" />
     </task>
     <servers />
   </component>

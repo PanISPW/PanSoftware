@@ -31,12 +31,9 @@ public class EventGoalDao {
 
     public static List<EventGoal> getEventGoalList(String user) throws UserNotFoundException, DatabaseException, LoginException, EmptyResultSetException {
         List<EventGoal> goalList;
-
         ResultSet resultSet = null;
         try {
-
-            String sql = String.format("SELECT * FROM eventgoal WHERE user = '%s';", user);
-            resultSet = DaoUtils.executeCRUDQuery(sql);
+            resultSet = DaoUtils.executeCRUDQuery(String.format("SELECT * FROM eventgoal WHERE user = '%s';", user));
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("No Event Goal related to the User was found");
