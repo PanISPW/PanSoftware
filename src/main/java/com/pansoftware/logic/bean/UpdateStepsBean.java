@@ -32,21 +32,21 @@ public class UpdateStepsBean {
         else throw new InvalidDataException("steps completed must be a natural number");
     }
 
-    public int getId() {
+    public int getUpdateId() {
         return id;
     }
 
-    public void setId(int id) throws InvalidDataException {
+    public void setUpdateId(int id) throws InvalidDataException {
         if (DataValidation.isNatural(id))
             this.id = id;
         else throw new InvalidDataException("id must be a natural number");
     }
 
-    public String getUser() {
+    public String getUpdateUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUpdateUser(String user) {
         this.user = user;
     }
 }

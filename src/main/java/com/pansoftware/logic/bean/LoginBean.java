@@ -30,9 +30,9 @@ public class LoginBean {
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);
-        this.setName(name);
-        this.setSurname(surname);
-        this.setRole(role);
+        this.setLoginName(name);
+        this.setLoginSurname(surname);
+        this.setLoginRole(role);
     }
 
     public String getEmail() {
@@ -45,27 +45,27 @@ public class LoginBean {
         else throw new InvalidDataException("Please insert a valid email");
     }
 
-    public String getName() {
+    public String getLoginName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setLoginName(String name) {
         this.name = name;
     }
 
-    public String getSurname() {
+    public String getLoginSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setLoginSurname(String surname) {
         this.surname = surname;
     }
 
-    public UserRole getRole() {
+    public UserRole getLoginRole() {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public void setLoginRole(UserRole role) {
         if (role.equals(UserRole.ACTIVIST) | role.equals(UserRole.BRANDMANAGER))
             this.role = role;
     }

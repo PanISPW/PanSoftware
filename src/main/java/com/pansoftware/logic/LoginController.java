@@ -28,7 +28,7 @@ public class LoginController {
 
     public void signup(LoginBean bean) throws DatabaseException {
 
-        User user = new User(bean.getUsername(), bean.getPassword(), bean.getEmail(), bean.getName(), bean.getSurname(), bean.getRole());
+        User user = new User(bean.getUsername(), bean.getPassword(), bean.getEmail(), bean.getLoginName(), bean.getLoginSurname(), bean.getLoginRole());
         try {
             user.save();
         } catch (Exception e) {

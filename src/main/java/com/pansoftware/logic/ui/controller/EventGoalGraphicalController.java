@@ -77,10 +77,10 @@ public class EventGoalGraphicalController implements Initializable {
     public void submit() throws Exception {
         UpdateStepsBean bean = new UpdateStepsBean();
 
-        bean.setId(item.getId());
+        bean.setUpdateId(item.getId());
         bean.setStepsCompleted(Integer.parseInt(goalItemStepsTextField.getText()));
         bean.setType(GoalType.EVENTGOAL);
-        bean.setUser(Session.getSession().getUser());
+        bean.setUpdateUser(Session.getSession().getUser());
 
 
         ManageGoalController.updateSteps(bean);

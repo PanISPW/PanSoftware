@@ -2,10 +2,7 @@ package com.pansoftware.test;
 
 // @author Danilo D'Amico
 
-import com.pansoftware.logic.JoinEventController;
 import com.pansoftware.logic.ManageGoalController;
-import com.pansoftware.logic.bean.EventGoalBean;
-import com.pansoftware.logic.bean.GoalBean;
 import com.pansoftware.logic.bean.UpdateStepsBean;
 import com.pansoftware.logic.enumeration.GoalType;
 import com.pansoftware.logic.exception.DatabaseException;
@@ -32,8 +29,8 @@ public class TestManageGoalController {
         bean.setStepsCompleted(0);
 
         // goal that's already part of the database
-        bean.setId(id);
-        bean.setUser(user);
+        bean.setUpdateId(id);
+        bean.setUpdateUser(user);
 
         ManageGoalController.updateSteps(bean);
 

@@ -3,7 +3,6 @@ package com.pansoftware.logic.ui.controller;
 import com.pansoftware.logic.ManageGoalController;
 import com.pansoftware.logic.bean.AnswerAdviceGoalBean;
 import com.pansoftware.logic.entity.AdviceGoal;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -49,8 +48,8 @@ public class AdviceCellGraphicalController implements Initializable {
 
         AnswerAdviceGoalBean bean = new AnswerAdviceGoalBean();
 
-        bean.setId(item.getId());
-        bean.setUser(item.getUser().getUsername());
+        bean.setAnswerAdviceId(item.getId());
+        bean.setGoalUser(item.getUser().getUsername());
         bean.setAnswer(adviceTextField.getText());
 
         ManageGoalController.answerAdviceGoal(bean);

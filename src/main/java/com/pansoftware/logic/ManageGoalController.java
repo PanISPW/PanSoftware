@@ -24,31 +24,31 @@ public class ManageGoalController {
     }
 
     public static void updateSteps(UpdateStepsBean bean) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        String username = bean.getUser();
+        String username = bean.getUpdateUser();
         int stepsCompleted = bean.getStepsCompleted();
         int numberOfSteps;
 
         switch (bean.getType()) {
             case ADVICEGOAL -> {
-                numberOfSteps = AdviceGoalDao.getAdviceGoal(username, bean.getId()).getNumberOfSteps();
+                numberOfSteps = AdviceGoalDao.getAdviceGoal(username, bean.getUpdateId()).getNumberOfSteps();
                 if (numberOfSteps < stepsCompleted) {
                     stepsCompleted = numberOfSteps;
                 }
-                AdviceGoalDao.updateStepsAdviceGoal(stepsCompleted, bean.getId(), username);
+                AdviceGoalDao.updateStepsAdviceGoal(stepsCompleted, bean.getUpdateId(), username);
             }
             case EVENTGOAL -> {
-                numberOfSteps = EventGoalDao.getEventGoal(username, bean.getId()).getNumberOfSteps();
+                numberOfSteps = EventGoalDao.getEventGoal(username, bean.getUpdateId()).getNumberOfSteps();
                 if (numberOfSteps < stepsCompleted) {
                     stepsCompleted = numberOfSteps;
                 }
-                EventGoalDao.updateStepsEventGoal(stepsCompleted, bean.getId(), username);
+                EventGoalDao.updateStepsEventGoal(stepsCompleted, bean.getUpdateId(), username);
             }
             default -> {
-                numberOfSteps = GoalDao.getGoal(bean.getUser(), bean.getId()).getNumberOfSteps();
+                numberOfSteps = GoalDao.getGoal(bean.getUpdateUser(), bean.getUpdateId()).getNumberOfSteps();
                 if (numberOfSteps < stepsCompleted) {
                     stepsCompleted = numberOfSteps;
                 }
-                GoalDao.updateStepsGoal(stepsCompleted, bean.getId(), username);
+                GoalDao.updateStepsGoal(stepsCompleted, bean.getUpdateId(), username);
             }
         }
 
@@ -104,7 +104,7 @@ public class ManageGoalController {
         if (role.equals(UserRole.USER))
             throw new NotEnoughPermissionsException("Your type of user cannot perform this action");
 
-        AdviceGoalDao.answerAdviceGoal(bean.getId(), bean.getUser(), Session.getSession().getUser(), bean.getAnswer());
+        AdviceGoalDao.answerAdviceGoal(bean.getAnswerAdviceId(), bean.getGoalUser(), Session.getSession().getUser(), bean.getAnswer());
     }
 
     public static void insertBarcode(BarcodeBean bean) throws DatabaseException {

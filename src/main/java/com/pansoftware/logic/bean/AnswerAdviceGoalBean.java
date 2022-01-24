@@ -11,22 +11,22 @@ public class AnswerAdviceGoalBean {
     private String user = "";
     private String answer = "";
 
-    public int getId() {
+    public int getAnswerAdviceId() {
         return id;
     }
 
-    public void setId(int id) throws InvalidDataException {
+    public void setAnswerAdviceId(int id) throws InvalidDataException {
         if (DataValidation.isNatural(id))
             this.id = id;
         else
             throw new InvalidDataException("id must be a natural number");
     }
 
-    public String getUser() {
+    public String getGoalUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setGoalUser(String user) {
         this.user = user;
     }
 
