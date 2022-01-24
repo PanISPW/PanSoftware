@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestGoalBean {
 
-    private static final String test_input = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec sagittis metus. Aliquam eget elementum ante, eget varius neque. Cras lobortis, lacus nec commodo commodo, nisi quam egestas quam, ut vestibulum elit justo et lacus. Ut a orci et ipsum molestie accumsan. Aliquam erat volutpat. Etiam interdum eget urna eu sollicitudin.";
+    private static final String TEST_INPUT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec sagittis metus. Aliquam eget elementum ante, eget varius neque. Cras lobortis, lacus nec commodo commodo, nisi quam egestas quam, ut vestibulum elit justo et lacus. Ut a orci et ipsum molestie accumsan. Aliquam erat volutpat. Etiam interdum eget urna eu sollicitudin.";
 
     @Test
     public void testSetNameTooLong() {
 
         assertThrows(InvalidDataException.class, () -> {
             GoalBean bean = new GoalBean();
-            bean.setName(test_input);
+            bean.setName(TEST_INPUT);
         });
     }
 
