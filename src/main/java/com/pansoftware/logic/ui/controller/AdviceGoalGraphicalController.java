@@ -20,35 +20,48 @@ import java.util.ResourceBundle;
 
 public class AdviceGoalGraphicalController implements Initializable {
 
-    AdviceGoal item;
-    @FXML
-    private VBox eventGoalBox;
-    @FXML
-    private Label goalItemTitle;
-    @FXML
-    private Label goalItemDeadline;
-    @FXML
-    private Label goalItemDescription;
-    @FXML
-    private Label goalItemId;
-    @FXML
-    private Label goalItemCompletedSteps;
-    @FXML
-    private Label goalItemTotalSteps;
-    @FXML
-    private TextField goalItemStepsTextField;
-    @FXML
-    private Button goalItemStepsButton;
-    @FXML
-    private Label adviceGoalAdvice;
-    @FXML
-    private Label adviceGoalActivist;
-    @FXML
-    private Label adviceGoalProductType;
-    @FXML
-    private Label adviceGoalProductBarcode;
 
-    // dovrei passarmi il bean non l'entity
+    @FXML
+    private VBox eventGoalCellBox;
+
+    AdviceGoal item;
+
+    @FXML
+    private Label goalCellItemTitle;
+
+    @FXML
+    private Label goalCellItemDeadline;
+
+    @FXML
+    private Label adviceGoalCellActivist;
+
+    @FXML
+    private Label goalCellItemDescription;
+
+    @FXML
+    private Label goalCellItemId;
+
+    @FXML
+    private Label adviceGoalCellProductType;
+
+    @FXML
+    private Label goalCellItemCompletedSteps;
+
+    @FXML
+    private Label goalCellItemTotalSteps;
+
+    @FXML
+    private Label adviceGoalCellProductBarcode;
+
+    @FXML
+    private Label adviceGoalCellAdvice;
+
+    @FXML
+    private Button goalCellItemStepsButton;
+
+    @FXML
+    private TextField goalCellItemStepsTextField;
+
     public AdviceGoalGraphicalController(AdviceGoal goal) {
         this.item = goal;
     }
@@ -56,31 +69,32 @@ public class AdviceGoalGraphicalController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String temp = "";
-        FxUtilities.hideVBox(eventGoalBox);
+        FxUtilities.hideVBox(eventGoalCellBox);
 
-        goalItemTitle.setText(item.getName());
-        goalItemDeadline.setText("Deadline: " + item.getDeadline().toString());
-        goalItemDescription.setText(item.getDescription());
-        goalItemId.setText(String.valueOf(item.getId()));
-        goalItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
-        goalItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
+        goalCellItemTitle.setText(item.getName());
+        goalCellItemDeadline.setText("Deadline: " + item.getDeadline().toString());
+        goalCellItemDescription.setText(item.getDescription());
+        goalCellItemId.setText(String.valueOf(item.getId()));
+        goalCellItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
+        goalCellItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
 
-        temp = item.getAdvice();
-        if (!temp.equals("") && item.getAdviceActivist() != null) {
-            adviceGoalAdvice.setText(temp);
-            adviceGoalActivist.setText(item.getAdviceActivist().getUsername());
-        } else {
-            adviceGoalAdvice.setText("not answered");
-            adviceGoalActivist.setText("");
+
+        try {
+            adviceGoalCellAdvice.setText(temp);
+            adviceGoalCellActivist.setText(item.getAdviceActivist().getUsername());
+        } catch(NullPointerException e) {
+            adviceGoalCellAdvice.setText("not answered");
+            adviceGoalCellActivist.setText("");
         }
 
-        adviceGoalProductType.setText(item.getType().toString());
+        adviceGoalCellProductType.setText(item.getType().toString());
 
         temp = item.getProductBarcode();
-        if (!temp.equals("")) {
-            adviceGoalProductBarcode.setText(temp);
-        } else {
-            adviceGoalProductBarcode.setText("");
+        try{
+            temp = item.getAdvice();
+            adviceGoalCellProductBarcode.setText(temp);
+        } catch(NullPointerException e){
+            adviceGoalCellProductBarcode.setText("");
         }
 
     }
@@ -90,7 +104,7 @@ public class AdviceGoalGraphicalController implements Initializable {
         UpdateStepsBean bean = new UpdateStepsBean();
 
         bean.setUpdateId(item.getId());
-        bean.setStepsCompleted(Integer.parseInt(goalItemStepsTextField.getText()));
+        bean.setStepsCompleted(Integer.parseInt(goalCellItemStepsTextField.getText()));
         bean.setType(GoalType.ADVICEGOAL);
         bean.setUpdateUser(Session.getSession().getUser());
 

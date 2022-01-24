@@ -21,30 +21,42 @@ import java.util.ResourceBundle;
 public class EventGoalGraphicalController implements Initializable {
 
     EventGoal item;
+
     @FXML
-    private VBox adviceGoalBox;
+    private Label goalCellItemTotalSteps;
+
     @FXML
-    private Label goalItemTitle;
+    private Label goalCellItemCompletedSteps;
+
     @FXML
-    private Label goalItemDeadline;
+    private Label goalCellItemId;
+
     @FXML
-    private Label goalItemDescription;
+    private Label eventGoalCellEventId;
+
     @FXML
-    private Label goalItemId;
+    private Label goalCellItemDescription;
+
     @FXML
-    private Label goalItemCompletedSteps;
+    private Label goalCellItemDeadline;
+
     @FXML
-    private Label goalItemTotalSteps;
+    private Label eventGoalCellEvent;
+
     @FXML
-    private TextField goalItemStepsTextField;
+    private Label goalCellItemTitle;
+
     @FXML
-    private Button goalItemStepsButton;
+    private VBox adviceGoalCellBox;
+
     @FXML
-    private Label eventGoalEvent;
+    private TextField goalCellItemStepsTextField;
+
     @FXML
-    private Label eventGoalEventId;
+    private Button goalCellItemStepsButton;
+
     @FXML
-    private Label eventGoalParticipationStatus;
+    private Label eventGoalCellParticipationStatus;
 
     // dovrei passarmi il bean non l'entity
     public EventGoalGraphicalController(EventGoal goal) {
@@ -53,23 +65,23 @@ public class EventGoalGraphicalController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FxUtilities.hideVBox(adviceGoalBox);
+        FxUtilities.hideVBox(adviceGoalCellBox);
 
-        goalItemTitle.setText(item.getName());
-        goalItemDeadline.setText("Deadline: " + item.getDeadline().toString());
-        goalItemDescription.setText(item.getDescription());
-        goalItemId.setText(String.valueOf(item.getId()));
-        goalItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
-        goalItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
+        goalCellItemTitle.setText(item.getName());
+        goalCellItemDeadline.setText("Deadline: " + item.getDeadline().toString());
+        goalCellItemDescription.setText(item.getDescription());
+        goalCellItemId.setText(String.valueOf(item.getId()));
+        goalCellItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
+        goalCellItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
 
         try {
-            eventGoalEvent.setText(item.getEvent().getName());
-            eventGoalEventId.setText(item.getOrganizer().getUsername());
-            eventGoalParticipationStatus.setText(item.getState().toString());
+            eventGoalCellEvent.setText(item.getEvent().getName());
+            eventGoalCellEventId.setText(item.getOrganizer().getUsername());
+            eventGoalCellParticipationStatus.setText(item.getState().toString());
         } catch (NullPointerException e) {
-            eventGoalEvent.setText("Event not specified");
-            eventGoalEventId.setText("");
-            eventGoalParticipationStatus.setText("");
+            eventGoalCellEvent.setText("Event not specified");
+            eventGoalCellEventId.setText("");
+            eventGoalCellParticipationStatus.setText("");
         }
     }
 
@@ -78,7 +90,7 @@ public class EventGoalGraphicalController implements Initializable {
         UpdateStepsBean bean = new UpdateStepsBean();
 
         bean.setUpdateId(item.getId());
-        bean.setStepsCompleted(Integer.parseInt(goalItemStepsTextField.getText()));
+        bean.setStepsCompleted(Integer.parseInt(goalCellItemStepsTextField.getText()));
         bean.setType(GoalType.EVENTGOAL);
         bean.setUpdateUser(Session.getSession().getUser());
 
