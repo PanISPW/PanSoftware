@@ -12,7 +12,7 @@ import static com.pansoftware.logic.util.Constants.NO_TRANSITION_OCCURS;
 public class StartingState extends JoinEventState {
 
     private static ConcreteStateMachine stateMachine;
-    private static boolean isPrivate = false;
+    private static final boolean isPrivate = false;
     private static Event event;
 
     public StartingState(ConcreteStateMachine stateMachine, Event event) {

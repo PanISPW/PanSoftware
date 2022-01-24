@@ -68,13 +68,13 @@ public class EventParticipationItemGraphicalController implements Initializable 
     }
 
     @FXML
-    public void accept() throws UserNotFoundException, Exception {
+    public void accept() throws Exception {
         EventGoalBean bean = populateGoalBean();
         ManageGoalController.acceptEventGoal(bean);
     }
 
     @FXML
-    public void reject() throws UserNotFoundException, Exception {
+    public void reject() throws Exception {
         EventGoalBean bean = populateGoalBean();
         ManageGoalController.rejectEventGoal(bean);
     }

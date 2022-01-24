@@ -5,7 +5,6 @@ import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
-import com.pansoftware.logic.util.DatabaseConnection;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 
@@ -13,7 +12,6 @@ import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 

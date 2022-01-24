@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EventOrganizer {
 
-    public List<Event> getOwnEvents();
+    List<Event> getOwnEvents();
 
-    public List<Event> getPendingParticipations();
+    List<Event> getPendingParticipations();
 }

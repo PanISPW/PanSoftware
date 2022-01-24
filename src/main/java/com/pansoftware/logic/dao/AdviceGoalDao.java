@@ -6,7 +6,6 @@ import com.pansoftware.logic.enumeration.ProductType;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
-import com.pansoftware.logic.util.DatabaseConnection;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 import com.pansoftware.logic.util.DataValidation;
@@ -14,7 +13,6 @@ import com.pansoftware.logic.util.DataValidation;
 import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +125,7 @@ public class AdviceGoalDao {
 
             String insertStatement = String.format("INSERT INTO advicegoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, productType, productBarcode, advice, adviceActivist) "
                     + "VALUES ('%s','%s',%s,%s,'%s',%s,'%s',%s,NULL,NULL,NULL);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), typeInt);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(insertStatement);
+            DaoUtils.executeCRUDQuery(insertStatement);
 
         } catch (SQLException e) {
 
@@ -141,7 +139,7 @@ public class AdviceGoalDao {
         try {
 
             String updateStatement = String.format("UPDATE advicegoal set stepsCompleted=%s WHERE id = %s AND user = '%s';", stepsCompleted, id, user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 
@@ -154,7 +152,7 @@ public class AdviceGoalDao {
 
         try {
             String updateStatement = String.format("UPDATE advicegoal set barcode='%s' WHERE id = %s AND user = '%s';", barcode, id, user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 
@@ -170,7 +168,7 @@ public class AdviceGoalDao {
             int typeInt = DaoUtils.productTypeToDatabaseInt(type);
 
             String updateStatement = String.format("UPDATE advicegoal set productType=%s WHERE Id=%s AND user='%s';", typeInt, id, user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 

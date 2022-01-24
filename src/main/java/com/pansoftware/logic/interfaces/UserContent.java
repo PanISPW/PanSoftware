@@ -6,16 +6,16 @@ import com.pansoftware.logic.entity.User;
 
 public interface UserContent {
 
-    public int getId();
+    int getId();
 
-    public void setId(int id);
+    void setId(int id);
 
     // basta stringa user?
-    public User getUser();
+    User getUser();
 
-    public void setUser(User user);
+    void setUser(User user);
 
-    public String getName();
+    String getName();
 
-    public void setName(String name);
+    void setName(String name);
 }

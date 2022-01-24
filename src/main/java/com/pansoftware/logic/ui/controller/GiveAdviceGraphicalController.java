@@ -57,28 +57,28 @@ public class GiveAdviceGraphicalController implements Initializable {
     }
 
     @FXML
-    public void makeupAdviceRadio() throws UserNotFoundException, Exception {
+    public void makeupAdviceRadio() throws Exception {
         adviceBox.getChildren().clear();
         List<AdviceGoal> goals = ManageGoalController.getUnansweredMakeupAdvice();
         populateBox(goals);
     }
 
     @FXML
-    public void foodAdviceRadio() throws UserNotFoundException, Exception {
+    public void foodAdviceRadio() throws Exception {
         adviceBox.getChildren().clear();
         List<AdviceGoal> goals = ManageGoalController.getUnansweredFoodAdvice();
         populateBox(goals);
     }
 
     @FXML
-    public void lifestyleAdviceRadio() throws UserNotFoundException, Exception {
+    public void lifestyleAdviceRadio() throws Exception {
         adviceBox.getChildren().clear();
         List<AdviceGoal> goals = ManageGoalController.getUnansweredLifestyleAdvice();
         populateBox(goals);
     }
 
     @FXML
-    public void otherAdviceRadio() throws UserNotFoundException, Exception {
+    public void otherAdviceRadio() throws Exception {
         adviceBox.getChildren().clear();
         List<AdviceGoal> goals = ManageGoalController.getUnansweredOtherAdvice();
         populateBox(goals);

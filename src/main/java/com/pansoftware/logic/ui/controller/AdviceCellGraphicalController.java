@@ -45,7 +45,7 @@ public class AdviceCellGraphicalController implements Initializable {
     }
 
     @FXML
-    public void submitAdvice() throws UserNotFoundException, Exception {
+    public void submitAdvice() throws Exception {
 
         AnswerAdviceGoalBean bean = new AnswerAdviceGoalBean();
 

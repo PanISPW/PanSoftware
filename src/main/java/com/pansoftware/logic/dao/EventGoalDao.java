@@ -8,7 +8,6 @@ import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.NoTransitionException;
 import com.pansoftware.logic.exception.UserNotFoundException;
-import com.pansoftware.logic.util.DatabaseConnection;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 
@@ -16,7 +15,6 @@ import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,7 +199,7 @@ public class EventGoalDao {
         try {
 
             String updateStatement = String.format("UPDATE  eventgoal set stepsCompleted=%s WHERE id = %s AND user = '%s';", stepsCompleted, id, user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 
@@ -218,7 +216,7 @@ public class EventGoalDao {
             requestStateInt = DaoUtils.eventRequestStateToDatabaseInt(requestState);
 
             String updateStatement = String.format("UPDATE eventgoal set eventId = %s and eventOrganizer = '%s' and requestState = %s WHERE id = %s AND user = '%s';", event.getId(), event.getUser().getUsername(), requestStateInt, id, user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 
@@ -264,7 +262,7 @@ public class EventGoalDao {
         try {
 
             String updateStatement = String.format("UPDATE  eventgoal set requestState=0 WHERE id = %s AND user = '%s';", id, user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 
