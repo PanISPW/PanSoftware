@@ -6,6 +6,8 @@ import com.pansoftware.logic.enumeration.EventRequestState;
 import com.pansoftware.logic.enumeration.EventType;
 import com.pansoftware.logic.enumeration.ProductType;
 import com.pansoftware.logic.enumeration.UserRole;
+import com.pansoftware.logic.exception.DatabaseException;
+import com.pansoftware.logic.exception.EmptyResultSetException;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -112,6 +114,38 @@ public class DaoUtils {
         statement = databaseConnection.createStatement();
 
         return statement.executeQuery(sql);
+    }
+
+    public static int executeUpdate(String sql) throws SQLException {
+        DatabaseConnection databaseConnection;
+        Statement statement;
+
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+
+        return statement.executeUpdate(sql);
+    }
+
+    public static int getLastIdFromSelectedGoalType(String goalType, String user) throws DatabaseException {
+        int lastId;
+
+        try {
+
+            String sql = String.format("SELECT MAX(Id) as maxId FROM %s WHERE user = '%s';", goalType, user);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+
+            if (!resultSet.first()) {
+                throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
+            }
+
+            lastId = resultSet.getInt("maxId");
+            return lastId;
+
+        } catch (SQLException | EmptyResultSetException e) {
+
+            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
+
+        }
     }
 
 }

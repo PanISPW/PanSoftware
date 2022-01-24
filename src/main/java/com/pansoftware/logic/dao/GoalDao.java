@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pansoftware.logic.util.DaoUtils.getLastIdFromSelectedGoalType;
+
 // @author Danilo D'Amico
 
 public class GoalDao {
@@ -65,33 +67,14 @@ public class GoalDao {
     }
 
     public static int getLastUserGoalId(String user) throws EmptyResultSetException, DatabaseException {
-
-        int lastId;
-
-        try {
-            String sql = String.format("SELECT MAX(Id) as maxId FROM goal WHERE user='%s';", user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
-
-            if (!resultSet.first()) {
-                throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
-            }
-
-            lastId = resultSet.getInt("maxId");
-
-            return lastId;
-
-        } catch (SQLException e) {
-
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
-
-        }
+        return getLastIdFromSelectedGoalType("goal", user);
     }
 
     public static void addGoal(Goal goal) throws SQLException {
 
         Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
         String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername());
-        DaoUtils.executeCRUDQuery(insertStatement);
+        DaoUtils.executeUpdate(insertStatement);
     }
 
     public static void updateStepsGoal(int stepsCompleted, int id, String user) throws DatabaseException {
@@ -99,7 +82,7 @@ public class GoalDao {
         try {
 
             String updateStatement = String.format("UPDATE  goal set stepsCompleted=%s WHERE id = %s AND user='%s';", stepsCompleted, id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 

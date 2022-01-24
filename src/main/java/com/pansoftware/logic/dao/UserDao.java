@@ -53,7 +53,7 @@ public class UserDao {
         try {
             int roleInt = DaoUtils.userRoleToDatabaseInt(role);
             String insertStatement = String.format("INSERT INTO user (username, password, email, name, surname, role) VALUES ('%s','%s','%s','%s','%s',%s);", username, password, email, name, surname, roleInt);
-            DaoUtils.executeCRUDQuery(insertStatement);
+            DaoUtils.executeUpdate(insertStatement);
         } catch (SQLException e) {
             throw new DatabaseException("Can't insert new Goal in database");
         }

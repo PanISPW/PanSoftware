@@ -99,7 +99,7 @@ public class EventDao {
             Date sqlEndingDate = DaoUtils.localDateToSqlDateOrDefault(event.getEndingDate());
 
             String insertStatement = String.format("INSERT INTO event (id, organizer, name, startingDate, endingDate, private) VALUES (%s,'%s','%s','%s','%s',%s);", event.getId(), event.getUser().getUsername(), event.getName(), sqlStartingDate, sqlEndingDate, typeInt);
-            DaoUtils.executeCRUDQuery(insertStatement);
+            DaoUtils.executeUpdate(insertStatement);
 
         } catch (SQLException e) {
 

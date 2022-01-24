@@ -1,8 +1,5 @@
 package com.pansoftware.logic.bean;
 
-import com.pansoftware.logic.enumeration.EventRequestState;
-import com.pansoftware.logic.enumeration.GoalType;
-import com.pansoftware.logic.enumeration.ProductType;
 import com.pansoftware.logic.exception.InvalidDataException;
 import com.pansoftware.logic.util.DataValidation;
 

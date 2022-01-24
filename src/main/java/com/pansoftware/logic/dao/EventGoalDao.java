@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.pansoftware.logic.util.Constants.NO_TRANSITION_OCCURS;
+import static com.pansoftware.logic.util.DaoUtils.getLastIdFromSelectedGoalType;
 
 // @author Danilo D'Amico
 
@@ -146,28 +147,7 @@ public class EventGoalDao {
     }
 
     public static int getLastUserEventGoalId(String user) throws EmptyResultSetException, DatabaseException {
-
-        int lastId;
-
-        try {
-
-            String sql = String.format("SELECT MAX(Id) as maxId FROM eventgoal WHERE user = '%s';", user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
-
-            if (!resultSet.first()) {
-                throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
-            }
-
-            lastId = resultSet.getInt("maxId");
-
-            return lastId;
-
-        } catch (SQLException e) {
-
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
-
-        }
-
+        return getLastIdFromSelectedGoalType("eventgoal", user);
     }
 
     public static EventRequestState getEventParticipationState(String user, int id) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
@@ -185,7 +165,7 @@ public class EventGoalDao {
             Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
             String insertStatement = String.format("INSERT INTO eventgoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState) VALUES ('%s','%s',%s,%s,'%s',%s,'%s','%s',%s,%s);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), goal.getOrganizer().getUsername(), goal.getEvent().getId(), stateInt);
-            DaoUtils.executeCRUDQuery(insertStatement);
+            DaoUtils.executeUpdate(insertStatement);
 
         } catch (SQLException e) {
 
@@ -199,7 +179,7 @@ public class EventGoalDao {
         try {
 
             String updateStatement = String.format("UPDATE  eventgoal set stepsCompleted=%s WHERE id = %s AND user = '%s';", stepsCompleted, id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
@@ -216,7 +196,7 @@ public class EventGoalDao {
             requestStateInt = DaoUtils.eventRequestStateToDatabaseInt(requestState);
 
             String updateStatement = String.format("UPDATE eventgoal set eventId = %s and eventOrganizer = '%s' and requestState = %s WHERE id = %s AND user = '%s';", event.getId(), event.getUser().getUsername(), requestStateInt, id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
@@ -230,7 +210,7 @@ public class EventGoalDao {
         try {
 
             String updateStatement = String.format("UPDATE eventgoal SET requestState=1 WHERE id=%s AND user='%s';", id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
@@ -249,7 +229,7 @@ public class EventGoalDao {
         try {
 
             String updateStatement = String.format("UPDATE eventgoal SET requestState=2 WHERE id=%s AND user = '%s';", id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
@@ -262,7 +242,7 @@ public class EventGoalDao {
         try {
 
             String updateStatement = String.format("UPDATE  eventgoal set requestState=0 WHERE id = %s AND user = '%s';", id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 

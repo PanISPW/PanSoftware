@@ -17,6 +17,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pansoftware.logic.util.DaoUtils.getLastIdFromSelectedGoalType;
+
 // @author Danilo D'Amico
 
 public class AdviceGoalDao {
@@ -92,26 +94,8 @@ public class AdviceGoalDao {
 
     }
 
-    public static int getLastUserAdviceGoalId(String user) throws EmptyResultSetException, DatabaseException {
-        int lastId;
-
-        try {
-
-            String sql = String.format("SELECT MAX(Id) as maxId FROM advicegoal WHERE user = '%s';", user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
-
-            if (!resultSet.first()) {
-                throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
-            }
-
-            lastId = resultSet.getInt("maxId");
-            return lastId;
-
-        } catch (SQLException e) {
-
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
-
-        }
+    public static int getLastUserAdviceGoalId(String user) throws DatabaseException {
+        return getLastIdFromSelectedGoalType("advicegoal", user);
     }
 
     public static void addAdviceGoal(AdviceGoal goal) throws DatabaseException {
@@ -125,7 +109,7 @@ public class AdviceGoalDao {
 
             String insertStatement = String.format("INSERT INTO advicegoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, productType, productBarcode, advice, adviceActivist) "
                     + "VALUES ('%s','%s',%s,%s,'%s',%s,'%s',%s,NULL,NULL,NULL);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), typeInt);
-            DaoUtils.executeCRUDQuery(insertStatement);
+            DaoUtils.executeUpdate(insertStatement);
 
         } catch (SQLException e) {
 
@@ -139,7 +123,7 @@ public class AdviceGoalDao {
         try {
 
             String updateStatement = String.format("UPDATE advicegoal set stepsCompleted=%s WHERE id = %s AND user = '%s';", stepsCompleted, id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
@@ -152,7 +136,7 @@ public class AdviceGoalDao {
 
         try {
             String updateStatement = String.format("UPDATE advicegoal set barcode='%s' WHERE id = %s AND user = '%s';", barcode, id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
@@ -168,7 +152,7 @@ public class AdviceGoalDao {
             int typeInt = DaoUtils.productTypeToDatabaseInt(type);
 
             String updateStatement = String.format("UPDATE advicegoal set productType=%s WHERE Id=%s AND user='%s';", typeInt, id, user);
-            DaoUtils.executeCRUDQuery(updateStatement);
+            DaoUtils.executeUpdate(updateStatement);
 
         } catch (SQLException e) {
 
@@ -179,7 +163,7 @@ public class AdviceGoalDao {
 
     public static void answerAdviceGoal(int id, String user, String activist, String advice) throws SQLException {
         String updateStatement = String.format("UPDATE advicegoal SET advice='%s', adviceActivist='%s' WHERE id=%s AND user='%s';", advice, activist, id, user);
-        DaoUtils.executeCRUDQuery(updateStatement);
+        DaoUtils.executeUpdate(updateStatement);
     }
 
 
