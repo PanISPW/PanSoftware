@@ -8,6 +8,7 @@ import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
+import com.pansoftware.logic.util.DatabaseConnection;
 
 import javax.security.auth.login.LoginException;
 import java.sql.Date;
@@ -28,8 +29,9 @@ public class EventDao {
 
         List<Event> eventList;
 
+        ResultSet resultSet = null;
         try {
-            ResultSet resultSet = DaoUtils.executeCRUDQuery("SELECT * FROM event;");
+            resultSet = DaoUtils.executeCRUDQuery("SELECT * FROM event;");
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("No Event Found");
@@ -48,14 +50,13 @@ public class EventDao {
                 Event singleEvent = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
                 eventList.add(singleEvent);
             }
-
             return eventList;
 
-
         } catch (SQLException e) {
-
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
+        } finally{
+            DatabaseConnection.closeResultSet(resultSet);
         }
     }
 
@@ -63,10 +64,11 @@ public class EventDao {
 
         Event event;
 
+        ResultSet resultSet = null;
         try {
 
             String sql = String.format("SELECT * FROM event WHERE id = %s AND organizer = '%s';", id, organizer);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+            resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("Event not found");
@@ -81,9 +83,9 @@ public class EventDao {
 
 
         } catch (SQLException e) {
-
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
-
+        } finally {
+            DatabaseConnection.closeResultSet(resultSet);
         }
     }
 
@@ -111,16 +113,17 @@ public class EventDao {
 
     public static EventType getEventType(String organizer, int id) throws DatabaseException {
 
+        ResultSet resultSet = null;
         try {
             String sql = String.format("SELECT * FROM event WHERE id = %s AND organizer = '%s';", id, organizer);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+            resultSet = DaoUtils.executeCRUDQuery(sql);
 
             return DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
         } catch (SQLException e) {
-
             throw new DatabaseException("Can't update Goal in database");
-
+        } finally {
+            DatabaseConnection.closeResultSet(resultSet);
         }
     }
 }

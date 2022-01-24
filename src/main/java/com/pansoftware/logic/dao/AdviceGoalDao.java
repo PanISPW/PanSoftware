@@ -9,10 +9,12 @@ import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 import com.pansoftware.logic.util.DataValidation;
+import com.pansoftware.logic.util.DatabaseConnection;
 
 import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +62,7 @@ public class AdviceGoalDao {
             goalList.add(singleGoal);
         }
 
+        DatabaseConnection.closeResultSet(resultSet);
         return goalList;
 
     }
@@ -90,8 +93,8 @@ public class AdviceGoalDao {
                 resultSet.getDate(Constants.DEADLINE).toLocalDate(), resultSet.getInt("Id"), userEntity, productType,
                 resultSet.getString(Constants.ADVICE), activistEntity);
 
+        DatabaseConnection.closeResultSet(resultSet);
         return goal;
-
     }
 
     public static int getLastUserAdviceGoalId(String user) throws DatabaseException {
@@ -161,7 +164,7 @@ public class AdviceGoalDao {
         }
     }
 
-    public static void answerAdviceGoal(int id, String user, String activist, String advice) throws SQLException {
+    public static void answerAdviceGoal(int id, String user, String activist, String advice) throws SQLException, DatabaseException {
         String updateStatement = String.format("UPDATE advicegoal SET advice='%s', adviceActivist='%s' WHERE id=%s AND user='%s';", advice, activist, id, user);
         DaoUtils.executeUpdate(updateStatement);
     }
@@ -196,6 +199,7 @@ public class AdviceGoalDao {
 
         }
 
+        DatabaseConnection.closeResultSet(resultSet);
         return goalList;
     }
 
@@ -238,6 +242,7 @@ public class AdviceGoalDao {
             getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
         }
 
+        DatabaseConnection.closeResultSet(resultSet);
         return goalList;
     }
 
@@ -264,8 +269,8 @@ public class AdviceGoalDao {
             getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
         }
 
+        DatabaseConnection.closeResultSet(resultSet);
         return goalList;
-
     }
 
     // OTHER & NOTSPECIFIED
@@ -290,6 +295,7 @@ public class AdviceGoalDao {
             getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
         }
 
+        DatabaseConnection.closeResultSet(resultSet);
         return goalList;
     }
 }

@@ -17,7 +17,7 @@ public class DatabaseConnection {
         connection = DriverManager.getConnection(URL, DBUSER, DB_PASSWORD);
     }
 
-    public void closeResultSet(ResultSet resultSet) throws DatabaseException {
+    public static void closeResultSet(ResultSet resultSet) throws DatabaseException {
         if (resultSet != null)
             try {
                 resultSet.close();
@@ -31,7 +31,7 @@ public class DatabaseConnection {
         return connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
     }
 
-    public void closeStatement(Statement statement) throws DatabaseException {
+    public static void closeStatement(Statement statement) throws DatabaseException {
         try {
             if (statement != null)
                 statement.close();

@@ -10,6 +10,7 @@ import com.pansoftware.logic.exception.NoTransitionException;
 import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
+import com.pansoftware.logic.util.DatabaseConnection;
 
 import javax.security.auth.login.LoginException;
 import java.sql.Date;
@@ -31,10 +32,11 @@ public class EventGoalDao {
     public static List<EventGoal> getEventGoalList(String user) throws UserNotFoundException, DatabaseException, LoginException, EmptyResultSetException {
         List<EventGoal> goalList;
 
+        ResultSet resultSet = null;
         try {
 
             String sql = String.format("SELECT * FROM eventgoal WHERE user = '%s';", user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+            resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("No Event Goal related to the User was found");
@@ -65,9 +67,9 @@ public class EventGoalDao {
             return goalList;
 
         } catch (SQLException e) {
-
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
-
+        } finally {
+            DatabaseConnection.closeResultSet(resultSet);
         }
 
     }
@@ -75,10 +77,11 @@ public class EventGoalDao {
     public static List<EventGoal> getPendingEventGoalList(String user) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
         List<EventGoal> goalList;
 
+        ResultSet resultSet = null;
         try {
             // 0 = PENDING
             String sql = String.format("SELECT * FROM eventgoal WHERE eventOrganizer='%s' AND requestState=0;", user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+            resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("No Pending Event Goal related to the User was found");
@@ -105,9 +108,9 @@ public class EventGoalDao {
             return goalList;
 
         } catch (SQLException e) {
-
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
-
+        } finally {
+            DatabaseConnection.closeResultSet(resultSet);
         }
     }
 
@@ -116,10 +119,11 @@ public class EventGoalDao {
         EventGoal goal;
         Event event;
 
+        ResultSet resultSet = null;
         try {
 
             String sql = String.format("SELECT * FROM eventgoal WHERE user = '%s' and id=%s;", user, id);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+            resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("The Event Goal was not found");
@@ -140,9 +144,9 @@ public class EventGoalDao {
             return goal;
 
         } catch (SQLException e) {
-
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
-
+        } finally {
+            DatabaseConnection.closeResultSet(resultSet);
         }
     }
 

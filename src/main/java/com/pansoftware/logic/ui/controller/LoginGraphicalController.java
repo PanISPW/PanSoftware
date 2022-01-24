@@ -4,6 +4,7 @@ import com.pansoftware.logic.LoginController;
 import com.pansoftware.logic.bean.LoginBean;
 import com.pansoftware.logic.enumeration.Pages;
 import com.pansoftware.logic.enumeration.UserRole;
+import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.UserNotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,7 +49,7 @@ public class LoginGraphicalController implements Initializable {
     }
 
     @FXML
-    public void login() throws SQLException, IOException {
+    public void login() throws SQLException, IOException, DatabaseException {
 
         try {
 

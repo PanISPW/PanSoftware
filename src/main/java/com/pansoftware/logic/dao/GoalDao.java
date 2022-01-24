@@ -7,6 +7,7 @@ import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
+import com.pansoftware.logic.util.DatabaseConnection;
 
 import javax.security.auth.login.LoginException;
 import java.sql.Date;
@@ -46,6 +47,7 @@ public class GoalDao {
             goalList.add(singleGoal);
         }
 
+        DatabaseConnection.closeResultSet(resultSet);
         return goalList;
     }
 
@@ -63,6 +65,7 @@ public class GoalDao {
         User userEntity = UserDao.getUser(user);
         goal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
 
+        DatabaseConnection.closeResultSet(resultSet);
         return goal;
     }
 
@@ -70,7 +73,7 @@ public class GoalDao {
         return getLastIdFromSelectedGoalType("goal", user);
     }
 
-    public static void addGoal(Goal goal) throws SQLException {
+    public static void addGoal(Goal goal) throws SQLException, DatabaseException {
 
         Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
         String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername());

@@ -106,9 +106,9 @@ public class DaoUtils {
         };
     }
 
-    public static ResultSet executeCRUDQuery(String sql) throws SQLException {
-        DatabaseConnection databaseConnection;
+    public static ResultSet executeCRUDQuery(String sql) throws SQLException, DatabaseException {
         Statement statement;
+        DatabaseConnection databaseConnection;
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
@@ -116,23 +116,25 @@ public class DaoUtils {
         return statement.executeQuery(sql);
     }
 
-    public static int executeUpdate(String sql) throws SQLException {
+    public static void executeUpdate(String sql) throws SQLException, DatabaseException {
         DatabaseConnection databaseConnection;
         Statement statement;
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
 
-        return statement.executeUpdate(sql);
+        statement.executeUpdate(sql);
+        DatabaseConnection.closeStatement(statement);
     }
 
     public static int getLastIdFromSelectedGoalType(String goalType, String user) throws DatabaseException {
         int lastId;
 
+        ResultSet resultSet = null;
         try {
 
             String sql = String.format("SELECT MAX(Id) as maxId FROM %s WHERE user = '%s';", goalType, user);
-            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+            resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
@@ -145,6 +147,8 @@ public class DaoUtils {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
+        } finally {
+            DatabaseConnection.closeResultSet(resultSet);
         }
     }
 

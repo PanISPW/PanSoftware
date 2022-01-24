@@ -5,6 +5,7 @@ import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.DaoUtils;
+import com.pansoftware.logic.util.DatabaseConnection;
 
 import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
@@ -17,16 +18,21 @@ public class UserDao {
     private UserDao() {
     }
 
-    public static UserRole checkUserPassword(String user, String password) throws UserNotFoundException, SQLException {
+    public static UserRole checkUserPassword(String user, String password) throws UserNotFoundException, SQLException, DatabaseException {
 
-        String sql = String.format("SELECT * FROM user WHERE username='%s' AND password ='%s';", user, password);
-        ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+        ResultSet resultSet = null;
+        try {
+            String sql = String.format("SELECT * FROM user WHERE username='%s' AND password ='%s';", user, password);
+            resultSet = DaoUtils.executeCRUDQuery(sql);
 
-        if (!resultSet.first()) {
-            throw new UserNotFoundException("Username or password incorrect");
+            if (!resultSet.first()) {
+                throw new UserNotFoundException("Username or password incorrect");
+            }
+
+            return DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
+        } finally {
+            DatabaseConnection.closeResultSet(resultSet);
         }
-
-        return DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
     }
 
 
@@ -45,6 +51,7 @@ public class UserDao {
         role = DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
         userEntity = new User(user, resultSet.getString("password"), resultSet.getString("email"), resultSet.getString("name"), resultSet.getString("surname"), role);
 
+        DatabaseConnection.closeResultSet(resultSet);
         return userEntity;
     }
 

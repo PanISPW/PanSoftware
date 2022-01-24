@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class LoginController {
 
-    public static void loginUser(LoginBean bean) throws UserNotFoundException, SQLException {
+    public static void loginUser(LoginBean bean) throws UserNotFoundException, SQLException, DatabaseException {
         String user = bean.getUsername();
         String password = bean.getPassword();
         UserRole role;
