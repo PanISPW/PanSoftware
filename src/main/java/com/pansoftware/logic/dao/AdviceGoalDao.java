@@ -28,16 +28,10 @@ public class AdviceGoalDao {
 
     public static List<AdviceGoal> getAdviceGoalList(String user) throws UserNotFoundException, EmptyResultSetException, SQLException, LoginException, DatabaseException {
 
-        Statement statement;
-        ResultSet resultSet;
-        DatabaseConnection databaseConnection;
         List<AdviceGoal> goalList;
 
-        databaseConnection = new DatabaseConnection();
-        statement = databaseConnection.createStatement();
-
         String sql = String.format("SELECT * FROM advicegoal WHERE user = '%s';", user);
-        resultSet =  statement.executeQuery(sql);
+        ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
         if (!resultSet.first()) {
             throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
@@ -72,17 +66,11 @@ public class AdviceGoalDao {
 
     public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, EmptyResultSetException, SQLException, LoginException, DatabaseException {
 
-        Statement statement;
-        ResultSet resultSet;
-        DatabaseConnection databaseConnection;
         AdviceGoal goal;
         User activistEntity;
 
-        databaseConnection = new DatabaseConnection();
-        statement = databaseConnection.createStatement();
-
         String sql = String.format("SELECT * FROM advicegoal WHERE user = '%s' and id=%s;", user, id);
-        resultSet = statement.executeQuery(sql);
+        ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
         if (!resultSet.first()) {
             throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
@@ -107,19 +95,12 @@ public class AdviceGoalDao {
     }
 
     public static int getLastUserAdviceGoalId(String user) throws EmptyResultSetException, DatabaseException {
-
-        Statement statement = null;
-        ResultSet resultSet = null;
-        DatabaseConnection databaseConnection = null;
         int lastId;
 
         try {
 
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
-
             String sql = String.format("SELECT MAX(Id) as maxId FROM advicegoal WHERE user = '%s';", user);
-            resultSet = statement.executeQuery(sql);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
@@ -132,142 +113,84 @@ public class AdviceGoalDao {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
-        } finally {
-
-            assert databaseConnection != null;
-            databaseConnection.closeResultSet(resultSet);
-            databaseConnection.closeStatement(statement);
         }
-
     }
 
     public static void addAdviceGoal(AdviceGoal goal) throws DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
         java.sql.Date sqlDeadline;
 
         try {
-
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
 
             int typeInt = DaoUtils.productTypeToDatabaseInt(goal.getType());
             sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
             String insertStatement = String.format("INSERT INTO advicegoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, productType, productBarcode, advice, adviceActivist) "
                     + "VALUES ('%s','%s',%s,%s,'%s',%s,'%s',%s,NULL,NULL,NULL);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), typeInt);
-            statement.executeUpdate(insertStatement);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery(insertStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException("Can't insert new Goal in database");
 
-        } finally {
-            assert databaseConnection != null;
-            databaseConnection.closeStatement(statement);
         }
-
     }
 
     public static void updateStepsAdviceGoal(int stepsCompleted, int id, String user) throws DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-
         try {
 
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
-
             String updateStatement = String.format("UPDATE advicegoal set stepsCompleted=%s WHERE id = %s AND user = '%s';", stepsCompleted, id, user);
-            statement.executeUpdate(updateStatement);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
-        } finally {
-            assert databaseConnection != null;
-            databaseConnection.closeStatement(statement);
         }
-
     }
 
     public static void insertBarcode(String barcode, int id, String user) throws DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-
         try {
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
-
             String updateStatement = String.format("UPDATE advicegoal set barcode='%s' WHERE id = %s AND user = '%s';", barcode, id, user);
-            statement.executeUpdate(updateStatement);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
-        } finally {
-            assert databaseConnection != null;
-            databaseConnection.closeStatement(statement);
         }
-
     }
 
     public static void updateProductTypeAdviceGoal(ProductType type, int id, String user) throws DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-
         try {
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
 
             int typeInt = DaoUtils.productTypeToDatabaseInt(type);
 
             String updateStatement = String.format("UPDATE advicegoal set productType=%s WHERE Id=%s AND user='%s';", typeInt, id, user);
-            statement.executeUpdate(updateStatement);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery(updateStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
-        } finally {
-            assert databaseConnection != null;
-            databaseConnection.closeStatement(statement);
         }
-
     }
 
     public static void answerAdviceGoal(int id, String user, String activist, String advice) throws SQLException {
-
-        DatabaseConnection databaseConnection;
-        Statement statement;
-
-        databaseConnection = new DatabaseConnection();
-        statement = databaseConnection.createStatement();
-
         String updateStatement = String.format("UPDATE advicegoal SET advice='%s', adviceActivist='%s' WHERE id=%s AND user='%s';", advice, activist, id, user);
-        statement.executeUpdate(updateStatement);
+        DaoUtils.executeCRUDQuery(updateStatement);
     }
 
 
     // MAKEUP
     public static List<AdviceGoal> getUnansweredMakeupAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-
-        Statement statement;
-        ResultSet resultSet;
-        DatabaseConnection databaseConnection;
         List<AdviceGoal> goalList;
 
-        databaseConnection = new DatabaseConnection();
-        statement = databaseConnection.createStatement();
-
         // 0 = MAKEUP
-        resultSet = statement.executeQuery("SELECT * FROM advicegoal WHERE advice is null AND productType=0;");
+        ResultSet resultSet = DaoUtils.executeCRUDQuery("SELECT * FROM advicegoal WHERE advice is null AND productType=0;");
 
         if (!resultSet.first()) {
             throw new EmptyResultSetException("No unanswered makeup advice was found");
@@ -313,16 +236,10 @@ public class AdviceGoalDao {
     // FOOD
     public static List<AdviceGoal> getUnansweredFoodAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
 
-        Statement statement;
-        ResultSet resultSet;
-        DatabaseConnection databaseConnection;
         List<AdviceGoal> goalList;
 
-        databaseConnection = new DatabaseConnection();
-        statement = databaseConnection.createStatement();
-
         // 1 = FOOD
-        resultSet = statement.executeQuery("SELECT * FROM advicegoal WHERE advice is null AND productType=1;");
+        ResultSet resultSet = DaoUtils.executeCRUDQuery("SELECT * FROM advicegoal WHERE advice is null AND productType=1;");
 
         if (!resultSet.first()) {
             throw new EmptyResultSetException("No unanswered food advice was found");
@@ -345,16 +262,10 @@ public class AdviceGoalDao {
     // LIFESTYLE
     public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws UserNotFoundException, EmptyResultSetException, SQLException, LoginException, DatabaseException {
 
-        Statement statement;
-        ResultSet resultSet;
-        DatabaseConnection databaseConnection;
         List<AdviceGoal> goalList;
 
-        databaseConnection = new DatabaseConnection();
-        statement = databaseConnection.createStatement();
-
         // 2 = LIFESTYLE
-        resultSet = statement.executeQuery("SELECT * FROM advicegoal WHERE advice is null AND productType=2;");
+        ResultSet resultSet = DaoUtils.executeCRUDQuery("SELECT * FROM advicegoal WHERE advice is null AND productType=2;");
 
         if (!resultSet.first()) {
             throw new EmptyResultSetException("No unanswered lifestyle advice was found");
@@ -378,16 +289,10 @@ public class AdviceGoalDao {
     // OTHER & NOTSPECIFIED
     public static List<AdviceGoal> getUnansweredOtherAdvice() throws UserNotFoundException, EmptyResultSetException, SQLException, LoginException, DatabaseException {
 
-        Statement statement;
-        ResultSet resultSet;
-        DatabaseConnection databaseConnection;
         List<AdviceGoal> goalList;
 
-        databaseConnection = new DatabaseConnection();
-        statement = databaseConnection.createStatement();
-
         // 3 = OTHER & 4 = NOTSPECIFIED
-        resultSet = statement.executeQuery("SELECT * FROM advicegoal WHERE advice is null AND (productType=3 OR productType=4);");
+        ResultSet resultSet = DaoUtils.executeCRUDQuery("SELECT * FROM advicegoal WHERE advice is null AND (productType=3 OR productType=4);");
 
         if (!resultSet.first()) {
             throw new EmptyResultSetException("No unanswered other advice was found");
@@ -405,6 +310,4 @@ public class AdviceGoalDao {
 
         return goalList;
     }
-
-
 }

@@ -7,7 +7,7 @@ import com.pansoftware.logic.enumeration.EventType;
 import com.pansoftware.logic.enumeration.ProductType;
 import com.pansoftware.logic.enumeration.UserRole;
 
-import java.sql.Date;
+import java.sql.*;
 import java.time.LocalDate;
 
 // @author Danilo D'Amico
@@ -102,6 +102,16 @@ public class DaoUtils {
             case REJECTED -> 2;
             default -> 4; // starting
         };
+    }
+
+    public static ResultSet executeCRUDQuery(String sql) throws SQLException {
+        DatabaseConnection databaseConnection;
+        Statement statement;
+
+        databaseConnection = new DatabaseConnection();
+        statement = databaseConnection.createStatement();
+
+        return statement.executeQuery(sql);
     }
 
 }
