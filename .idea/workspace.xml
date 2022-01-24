@@ -9,14 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/Event.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/Goal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/Goal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/interfaces/UserContent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/interfaces/UserContent.class" afterDir="false" />
-    </list>
+    <list default="true" id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -300,7 +293,7 @@
       <workItem from="1642962884569" duration="13346000" />
       <workItem from="1642979862334" duration="9335000" />
       <workItem from="1642989405797" duration="4957000" />
-      <workItem from="1643015374435" duration="1380000" />
+      <workItem from="1643015374435" duration="1410000" />
     </task>
     <servers />
   </component>
