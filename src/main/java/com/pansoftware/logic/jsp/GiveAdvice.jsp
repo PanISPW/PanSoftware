@@ -5,11 +5,6 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Profilo</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <!-- versioni "minimizzate" di bootstrap -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <!-- @author Danilo D'Amico -->

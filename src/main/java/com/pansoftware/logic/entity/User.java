@@ -4,6 +4,8 @@ import com.pansoftware.logic.dao.UserDao;
 import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.DatabaseException;
 
+import java.sql.SQLException;
+
 // @author Danilo D'Amico
 
 public class User {
@@ -71,7 +73,7 @@ public class User {
         this.role = role;
     }
 
-    public void save() throws DatabaseException {
+    public void save() throws DatabaseException, SQLException {
         UserDao.addUser(this.username, this.password, this.email, this.name, this.surname, this.role);
     }
 }

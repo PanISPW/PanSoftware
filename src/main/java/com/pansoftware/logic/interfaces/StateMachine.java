@@ -10,12 +10,12 @@ import com.pansoftware.logic.joineventstatemachine.JoinEventState;
 
 public interface StateMachine {
 
-    public void answerRequest(EventRequestState state) throws DatabaseException, NoTransitionException;
+    void answerRequest(EventRequestState state) throws DatabaseException, NoTransitionException;
 
-    public void changeState(JoinEventState state);
+    void changeState(JoinEventState state);
 
-    public EventRequestState getState();
+    EventRequestState getState();
 
-    public Event getEvent();
+    Event getEvent();
 
 }

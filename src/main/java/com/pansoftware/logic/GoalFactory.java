@@ -4,15 +4,11 @@ import com.pansoftware.logic.bean.AdviceGoalBean;
 import com.pansoftware.logic.bean.EventGoalBean;
 import com.pansoftware.logic.bean.GoalBean;
 import com.pansoftware.logic.dao.*;
-import com.pansoftware.logic.entity.*;
-import com.pansoftware.logic.dao.*;
 import com.pansoftware.logic.entity.AdviceGoal;
 import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.entity.EventGoal;
 import com.pansoftware.logic.entity.Goal;
 import com.pansoftware.logic.enumeration.EventRequestState;
-import com.pansoftware.logic.enumeration.GoalType;
-import com.pansoftware.logic.enumeration.ProductType;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
@@ -21,7 +17,6 @@ import com.pansoftware.logic.util.Session;
 
 import javax.security.auth.login.LoginException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 // singleton
 // creates new goal and adds it to the persistance layer
@@ -46,18 +41,18 @@ public class GoalFactory {
         return instance;
     }
 
-    public int createGoal(GoalBean bean) throws SQLException, DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException {
+    public void createGoal(GoalBean bean) throws SQLException, DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException {
 
         if(bean instanceof AdviceGoalBean){
-            return makeAdviceGoal((AdviceGoalBean) bean);
+            makeAdviceGoal((AdviceGoalBean) bean);
         } else if(bean instanceof EventGoalBean){
-            return makeEventGoal((EventGoalBean) bean);
+            makeEventGoal((EventGoalBean) bean);
         } else{
-            return makeGoal(bean);
+            makeGoal(bean);
         }
     }
 
-    private int makeGoal(GoalBean bean) throws DatabaseException, SQLException, UserNotFoundException, LoginException {
+    private void makeGoal(GoalBean bean) throws DatabaseException, SQLException, UserNotFoundException, LoginException {
 
         try {
             goalId = GoalDao.getLastUserGoalId(Session.getSession().getUser());
@@ -70,15 +65,11 @@ public class GoalFactory {
         }
 
         goalId = goalId + 1;
-
         Goal goal = new Goal(bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), UserDao.getUser(Session.getSession().getUser()), goalId);
-
         GoalDao.addGoal(goal);
-
-        return goalId;
     }
 
-    private int makeAdviceGoal(AdviceGoalBean bean) throws DatabaseException, UserNotFoundException, LoginException {
+    private void makeAdviceGoal(AdviceGoalBean bean) throws DatabaseException, UserNotFoundException, LoginException {
 
         try {
             adviceGoalId = AdviceGoalDao.getLastUserAdviceGoalId(Session.getSession().getUser());
@@ -95,10 +86,9 @@ public class GoalFactory {
 
         AdviceGoalDao.addAdviceGoal(goal);
 
-        return adviceGoalId;
     }
 
-    private int makeEventGoal(EventGoalBean bean) throws DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException {
+    private void makeEventGoal(EventGoalBean bean) throws DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException {
 
         try {
             eventGoalId = EventGoalDao.getLastUserEventGoalId(Session.getSession().getUser());
@@ -116,7 +106,6 @@ public class GoalFactory {
 
         EventGoalDao.addEventGoal(goal);
 
-        return eventGoalId;
     }
 
 }

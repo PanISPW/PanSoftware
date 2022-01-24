@@ -4,16 +4,11 @@ import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.UserNotFoundException;
-import com.pansoftware.logic.persistance.DatabaseConnection;
-import com.pansoftware.logic.persistance.queries.CRUDQueries;
-import com.pansoftware.logic.persistance.queries.SimpleQueries;
-import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 
 import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 // @author Danilo D'Amico
 
@@ -24,82 +19,43 @@ public class UserDao {
 
     public static UserRole checkUserPassword(String user, String password) throws UserNotFoundException, SQLException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        databaseConnection = new DatabaseConnection();
-        statement = databaseConnection.createStatement();
-        resultSet = SimpleQueries.checkUserCredentials(statement, user, password);
-
+        String sql = String.format("SELECT * FROM user WHERE username='%s' AND password ='%s';", user, password);
+        ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
         if (!resultSet.first()) {
             throw new UserNotFoundException("Username or password incorrect");
         }
 
         return DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
-
     }
 
 
-    public static User getUser(String user) throws UserNotFoundException, LoginException, DatabaseException {
+    public static User getUser(String user) throws UserNotFoundException, LoginException, DatabaseException, SQLException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         User userEntity;
         UserRole role;
 
-        try {
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
-            resultSet = SimpleQueries.getUser(statement, user);
+        String sql = String.format("SELECT * FROM user WHERE username = '%s';", user);
+        ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
-            if (!resultSet.first()) {
-                throw new LoginException("User incorrect");
-            }
-
-            role = DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
-
-            userEntity = new User(user, resultSet.getString("password"), resultSet.getString("email"), resultSet.getString("name"), resultSet.getString("surname"), role);
-
-            return userEntity;
-
-
-        } catch (SQLException e) {
-
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
-
-        } finally {
-            databaseConnection.closeResultSet(resultSet);
-            databaseConnection.closeStatement(statement);
+        if (!resultSet.first()) {
+            throw new LoginException("User incorrect");
         }
 
+        role = DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
+        userEntity = new User(user, resultSet.getString("password"), resultSet.getString("email"), resultSet.getString("name"), resultSet.getString("surname"), role);
+
+        return userEntity;
     }
 
-    public static int addUser(String username, String password, String email, String name, String surname, UserRole role) throws DatabaseException {
-
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-        int roleInt;
-        int result;
+    public static void addUser(String username, String password, String email, String name, String surname, UserRole role) throws DatabaseException, SQLException {
 
         try {
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
-
-            roleInt = DaoUtils.userRoleToDatabaseInt(role);
-            result = CRUDQueries.addUser(statement, username, password, email, name, surname, roleInt);
-
-            return result;
-
-
+            int roleInt = DaoUtils.userRoleToDatabaseInt(role);
+            String insertStatement = String.format("INSERT INTO user (username, password, email, name, surname, role) VALUES ('%s','%s','%s','%s','%s',%s);", username, password, email, name, surname, roleInt);
+            DaoUtils.executeCRUDQuery(insertStatement);
         } catch (SQLException e) {
-
             throw new DatabaseException("Can't insert new Goal in database");
-
-        } finally {
-            databaseConnection.closeStatement(statement);
         }
 
     }

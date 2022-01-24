@@ -6,9 +6,6 @@ import com.pansoftware.logic.enumeration.EventType;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
-import com.pansoftware.logic.persistance.DatabaseConnection;
-import com.pansoftware.logic.persistance.queries.CRUDQueries;
-import com.pansoftware.logic.persistance.queries.SimpleQueries;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 
@@ -16,8 +13,6 @@ import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,16 +26,10 @@ public class EventDao {
 
     public static List<Event> getEventList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         List<Event> eventList;
 
         try {
-
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
-            resultSet = SimpleQueries.getEventList(statement);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery("SELECT * FROM event;");
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("No Event Found");
@@ -67,26 +56,17 @@ public class EventDao {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
-        } finally {
-            databaseConnection.closeResultSet(resultSet);
-            databaseConnection.closeStatement(statement);
         }
-
     }
 
     public static Event getEvent(int id, String organizer) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         Event event;
 
         try {
 
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
-
-            resultSet = SimpleQueries.getEvent(statement, id, organizer);
+            String sql = String.format("SELECT * FROM event WHERE id = %s AND organizer = '%s';", id, organizer);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("Event not found");
@@ -104,57 +84,36 @@ public class EventDao {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
-        } finally {
-            databaseConnection.closeResultSet(resultSet);
-            databaseConnection.closeStatement(statement);
         }
-
     }
 
 
-    public static int addEvent(String organizer, int id, String name, LocalDate startingDate, LocalDate endingDate, EventType type) throws DatabaseException {
+    public static void addEvent(Event event) throws DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
         int typeInt;
-        int result;
 
         try {
 
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
+            typeInt = DaoUtils.eventTypeToDatabaseInt(event.getType());
+            Date sqlStartingDate = DaoUtils.localDateToSqlDateOrDefault(event.getStartingDate());
+            Date sqlEndingDate = DaoUtils.localDateToSqlDateOrDefault(event.getEndingDate());
 
-            typeInt = DaoUtils.eventTypeToDatabaseInt(type);
-            Date sqlStartingDate = DaoUtils.localDateToSqlDateOrDefault(startingDate);
-            Date sqlEndingDate = DaoUtils.localDateToSqlDateOrDefault(endingDate);
-            result = CRUDQueries.addEvent(statement, id, organizer, name, sqlStartingDate, sqlEndingDate, typeInt);
-
-            return result;
-
+            String insertStatement = String.format("INSERT INTO event (id, organizer, name, startingDate, endingDate, private) VALUES (%s,'%s','%s','%s','%s',%s);", event.getId(), event.getUser().getUsername(), event.getName(), sqlStartingDate, sqlEndingDate, typeInt);
+            DaoUtils.executeCRUDQuery(insertStatement);
 
         } catch (SQLException e) {
 
             throw new DatabaseException("Can't insert new Goal in database");
 
-        } finally {
-            databaseConnection.closeStatement(statement);
         }
-
     }
 
 
     public static EventType getEventType(String organizer, int id) throws DatabaseException {
 
-        DatabaseConnection databaseConnection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
         try {
-
-            databaseConnection = new DatabaseConnection();
-            statement = databaseConnection.createStatement();
-
-            resultSet = SimpleQueries.getEvent(statement, id, organizer);
+            String sql = String.format("SELECT * FROM event WHERE id = %s AND organizer = '%s';", id, organizer);
+            ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
             return DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
@@ -162,11 +121,6 @@ public class EventDao {
 
             throw new DatabaseException("Can't update Goal in database");
 
-        } finally {
-            databaseConnection.closeResultSet(resultSet);
-            databaseConnection.closeStatement(statement);
         }
-
     }
-
 }
