@@ -9,12 +9,12 @@ import java.sql.*;
 public class DatabaseConnection {
 
     private final Connection connection;
-    private static final String url = "jdbc:mysql://localhost:3306/pandb";
-    private static final String dbUser = "esameispw10";
-    private static final String dbPassword = "esameispw";
+    private static final String URL = "jdbc:mysql://localhost:3306/pandb";
+    private static final String DBUSER = "esameispw10";
+    private static final String DB_PASSWORD = "esameispw";
 
     public DatabaseConnection() throws SQLException {
-        connection = DriverManager.getConnection(url, dbUser, dbPassword);
+        connection = DriverManager.getConnection(URL, DBUSER, DB_PASSWORD);
     }
 
     public void closeResultSet(ResultSet resultSet) throws DatabaseException {
