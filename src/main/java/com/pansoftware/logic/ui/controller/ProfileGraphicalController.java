@@ -52,7 +52,7 @@ public class ProfileGraphicalController implements Initializable {
     private ToggleGroup radioGroup;
 
     @FXML
-    public void goalRadio() throws UserNotFoundException, Exception {
+    public void goalRadio() throws Exception {
         FxUtilities.showScrollPane(goalPane);
         FxUtilities.hideScrollPane(adviceGoalPane);
         FxUtilities.hideScrollPane(eventGoalPane);
@@ -76,7 +76,7 @@ public class ProfileGraphicalController implements Initializable {
     }
 
     @FXML
-    public void adviceGoalRadio() throws UserNotFoundException, Exception {
+    public void adviceGoalRadio() throws Exception {
         FxUtilities.showScrollPane(adviceGoalPane);
         FxUtilities.hideScrollPane(goalPane);
         FxUtilities.hideScrollPane(eventGoalPane);
@@ -99,7 +99,7 @@ public class ProfileGraphicalController implements Initializable {
     }
 
     @FXML
-    public void eventGoalRadio() throws UserNotFoundException, Exception {
+    public void eventGoalRadio() throws Exception {
         FxUtilities.showScrollPane(eventGoalPane);
         FxUtilities.hideScrollPane(goalPane);
         FxUtilities.hideScrollPane(adviceGoalPane);

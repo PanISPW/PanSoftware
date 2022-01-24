@@ -6,12 +6,6 @@
     <meta charset="ISO-8859-1">
     <title>Navbar</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <!-- versioni "minimizzate" di bootstrap -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <link href="../css/style.css" rel="stylesheet">
-
     <style>
         .top-buffer {
             margin-top: 100px;

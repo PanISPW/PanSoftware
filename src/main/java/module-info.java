@@ -10,8 +10,11 @@ module com.example.pansoftware {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires junit;
+    requires org.junit.jupiter.api;
 
     opens com.pansoftware.logic to javafx.fxml;
     opens com.pansoftware.logic.ui.controller to javafx.fxml;
     exports com.pansoftware.logic;
+    exports com.pansoftware.test;
 }

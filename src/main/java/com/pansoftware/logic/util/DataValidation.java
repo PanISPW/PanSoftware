@@ -16,20 +16,11 @@ public class DataValidation {
     }
 
     public static boolean isNatural(int number) {
-        boolean bool = false;
-        if (number >= 0)
-            bool = true;
-
-        return bool;
+        return number >= 0;
     }
 
     public static boolean isNotPastDate(LocalDate date) {
-        boolean bool = false;
-        if (!date.isBefore(LocalDate.now()))
-            bool = true;
-
-        return bool;
-
+        return !date.isBefore(LocalDate.now());
     }
 
     public static boolean isCorrectEmail(String email) {

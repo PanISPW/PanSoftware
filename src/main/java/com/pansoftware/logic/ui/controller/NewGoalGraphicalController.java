@@ -30,8 +30,6 @@ import java.util.ResourceBundle;
 
 public class NewGoalGraphicalController implements Initializable {
 
-    UserRole role = null;
-
     @FXML
     private Label resultLabel;
 
@@ -135,42 +133,41 @@ public class NewGoalGraphicalController implements Initializable {
         String selectedButton = selected.getText();
 
         switch (selectedButton) {
-            case "EventGoal":
+            case "EventGoal" -> {
                 EventGoalBean eventGoalBean = new EventGoalBean();
-
                 eventGoalBean.setEventId(Integer.parseInt(eventId.getText()));
                 eventGoalBean.setEventOrganizer(eventOrganizer.getText());
-
                 fillBeanAndCreateGoal(eventGoalBean);
-                break;
-            case "AdviceGoal":
+            }
+            case "AdviceGoal" -> {
                 AdviceGoalBean adviceGoalBean = new AdviceGoalBean();
-
                 adviceGoalBean.setType(productType.getValue());
                 fillBeanAndCreateGoal(adviceGoalBean);
-                break;
-            default:
+            }
+            default -> {
                 GoalBean goalBean = new GoalBean();
-
-                try {
-                    fillBeanAndCreateGoal(goalBean);
-                    resultLabel.setText("Goal Successfully added");
-                } catch(InvalidDataException e){
-                    resultLabel.setText(e.getMessage());
-                }
+                fillBeanAndCreateGoal(goalBean);
+            }
         }
     }
 
     public void fillBeanAndCreateGoal(GoalBean bean) throws InvalidDataException, UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        bean.setName(goalName.getText());
-        bean.setDescription(goalDescription.getText());
 
-        bean.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
-        bean.setStepsCompleted(Integer.parseInt(stepsCompleted.getText()));
+        try {
+            bean.setName(goalName.getText());
+            bean.setDescription(goalDescription.getText());
 
-        bean.setDeadline(deadline.getValue());
-        bean.setReminder(reminder.isSelected());
+            bean.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
+            bean.setStepsCompleted(Integer.parseInt(stepsCompleted.getText()));
 
-        new ManageGoalController().createGoal(bean);
+            bean.setDeadline(deadline.getValue());
+            bean.setReminder(reminder.isSelected());
+
+            new ManageGoalController().createGoal(bean);
+            resultLabel.setText("Goal Successfully added");
+        } catch (InvalidDataException e) {
+            resultLabel.setText(e.getMessage());
+        }
+
     }
 }

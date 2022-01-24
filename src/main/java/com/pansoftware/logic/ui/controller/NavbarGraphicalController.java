@@ -42,41 +42,41 @@ public class NavbarGraphicalController {
 
     public void disableButtons() {
         switch (Session.getSession().getPage()) {
-            case EVENTS:
+            case EVENTS -> {
                 eventsButton.setDisable(true);
                 newGoalButton.setDisable(false);
                 profileButton.setDisable(false);
                 adviceButton.setDisable(false);
                 eventParticipationButton.setDisable(false);
-                break;
-            case NEWGOAL:
+            }
+            case NEWGOAL -> {
                 eventsButton.setDisable(false);
                 newGoalButton.setDisable(true);
                 profileButton.setDisable(false);
                 adviceButton.setDisable(false);
                 eventParticipationButton.setDisable(false);
-                break;
-            case ADVICEPAGE:
+            }
+            case ADVICEPAGE -> {
                 eventsButton.setDisable(false);
                 newGoalButton.setDisable(false);
                 profileButton.setDisable(false);
                 adviceButton.setDisable(true);
                 eventParticipationButton.setDisable(false);
-                break;
-            case EVENTPARTICIPATION:
+            }
+            case EVENTPARTICIPATION -> {
                 eventsButton.setDisable(false);
                 newGoalButton.setDisable(false);
                 profileButton.setDisable(false);
                 adviceButton.setDisable(false);
                 eventParticipationButton.setDisable(true);
-                break;
-            default:
+            }
+            default -> {
                 eventsButton.setDisable(false);
                 newGoalButton.setDisable(false);
                 profileButton.setDisable(true);
                 adviceButton.setDisable(false);
                 eventParticipationButton.setDisable(false);
-                break;
+            }
         }
     }
 
