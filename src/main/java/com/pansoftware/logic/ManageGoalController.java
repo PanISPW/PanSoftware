@@ -111,7 +111,7 @@ public class ManageGoalController {
         AdviceGoalDao.insertBarcode(bean.getBarcode(), bean.getId(), Session.getSession().getUser());
     }
 
-    public static void joinEvent(EventGoalBean bean, int id) throws UserNotFoundException, LoginException, DatabaseException, EmptyResultSetException {
+    public static void joinEvent(EventGoalBean bean, int id) throws UserNotFoundException, LoginException, DatabaseException, EmptyResultSetException, SQLException {
         User userEntity = UserDao.getUser(Session.getSession().getUser());
         Event eventEntity = EventDao.getEvent(bean.getEventId(), bean.getEventOrganizer());
 
@@ -139,7 +139,7 @@ public class ManageGoalController {
         }
     }
 
-    public static User getCurrentUser() throws UserNotFoundException, LoginException, DatabaseException {
+    public static User getCurrentUser() throws UserNotFoundException, LoginException, DatabaseException, SQLException {
         String user = Session.getSession().getUser();
 
         return UserDao.getUser(user);

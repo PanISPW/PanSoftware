@@ -69,7 +69,7 @@ public class GoalFactory {
         GoalDao.addGoal(goal);
     }
 
-    private void makeAdviceGoal(AdviceGoalBean bean) throws DatabaseException, UserNotFoundException, LoginException {
+    private void makeAdviceGoal(AdviceGoalBean bean) throws DatabaseException, UserNotFoundException, LoginException, SQLException {
 
         try {
             adviceGoalId = AdviceGoalDao.getLastUserAdviceGoalId(Session.getSession().getUser());
@@ -88,7 +88,7 @@ public class GoalFactory {
 
     }
 
-    private void makeEventGoal(EventGoalBean bean) throws DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException {
+    private void makeEventGoal(EventGoalBean bean) throws DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException, SQLException {
 
         try {
             eventGoalId = EventGoalDao.getLastUserEventGoalId(Session.getSession().getUser());

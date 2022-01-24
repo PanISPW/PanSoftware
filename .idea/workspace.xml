@@ -10,7 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/StartingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/StartingState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/GoalFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/GoalFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ManageGoalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ManageGoalController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,12 +249,12 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.MainDesktop" />
       <item itemvalue="JUnit.TestJoinEventController.testAcceptJoinRequestNonExistingGoal" />
-      <item itemvalue="Tomcat Server.Tomcat 10.0.14" />
       <item itemvalue="JUnit.TestManageGoalController.testSetNameTooLong" />
       <item itemvalue="JUnit.TestManageGoalController.testUpdateStepsCompletedMoreThanMax" />
       <item itemvalue="JUnit.TestManageGoalController" />
-      <item itemvalue="Application.MainDesktop" />
+      <item itemvalue="Tomcat Server.Tomcat 10.0.14" />
     </list>
     <recent_temporary>
       <list>
@@ -293,7 +295,8 @@
       <workItem from="1642957045317" duration="596000" />
       <workItem from="1642961701025" duration="1156000" />
       <workItem from="1642962884569" duration="13346000" />
-      <workItem from="1642979862334" duration="8740000" />
+      <workItem from="1642979862334" duration="9335000" />
+      <workItem from="1642989405797" duration="142000" />
     </task>
     <servers />
   </component>
