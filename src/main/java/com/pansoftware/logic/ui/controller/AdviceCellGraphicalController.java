@@ -18,25 +18,25 @@ public class AdviceCellGraphicalController implements Initializable {
 
     AdviceGoal item;
     @FXML
-    private Label adviceGoalTitle;
+    private Label adviceCellGoalTitle;
     @FXML
-    private Label adviceGoalId;
+    private Label adviceCellGoalId;
     @FXML
-    private Label adviceGoalDeadline;
+    private Label adviceCellGoalDeadline;
     @FXML
-    private Label adviceGoalUser;
+    private Label adviceCellGoalUser;
     @FXML
-    private Label adviceCompletedSteps;
+    private Label adviceCellCompletedSteps;
     @FXML
-    private Label adviceTotalSteps;
+    private Label adviceCellTotalSteps;
     @FXML
-    private Label adviceGoalDescription;
+    private Label adviceCellGoalDescription;
     @FXML
-    private Label adviceProductBarcode;
+    private Label adviceCellProductBarcode;
     @FXML
-    private TextField adviceTextField;
+    private TextField adviceCellTextField;
     @FXML
-    private Button adviceSubmitButton;
+    private Button adviceCellSubmitButton;
 
     // dovrei passarmi il bean non l'entity
     public AdviceCellGraphicalController(AdviceGoal goal) {
@@ -50,7 +50,7 @@ public class AdviceCellGraphicalController implements Initializable {
 
         bean.setAnswerAdviceId(item.getId());
         bean.setGoalUser(item.getUser().getUsername());
-        bean.setAnswer(adviceTextField.getText());
+        bean.setAnswer(adviceCellTextField.getText());
 
         ManageGoalController.answerAdviceGoal(bean);
     }
@@ -58,14 +58,14 @@ public class AdviceCellGraphicalController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        adviceGoalTitle.setText(item.getName());
-        adviceGoalId.setText(String.valueOf(item.getId()));
-        adviceGoalDeadline.setText(item.getDeadline().toString());
-        adviceGoalUser.setText(item.getUser().getUsername());
-        adviceCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
-        adviceTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
-        adviceGoalDescription.setText(item.getDescription());
-        adviceProductBarcode.setText(item.getProductBarcode());
+        adviceCellGoalTitle.setText(item.getName());
+        adviceCellGoalId.setText(String.valueOf(item.getId()));
+        adviceCellGoalDeadline.setText(item.getDeadline().toString());
+        adviceCellGoalUser.setText(item.getUser().getUsername());
+        adviceCellCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
+        adviceCellTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
+        adviceCellGoalDescription.setText(item.getDescription());
+        adviceCellProductBarcode.setText(item.getProductBarcode());
     }
 
 }

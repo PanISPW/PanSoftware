@@ -23,27 +23,27 @@ public class GoalCellGraphicalController implements Initializable {
 
     Goal item;
     @FXML
-    private VBox eventGoalBox;
+    private VBox eventGoalCellBox;
     @FXML
-    private VBox adviceGoalBox;
+    private VBox adviceGoalCellBox;
     @FXML
-    private Separator goalSeparator;
+    private Separator goalCellSeparator;
     @FXML
-    private Label goalItemTitle;
+    private Label goalCellItemTitle;
     @FXML
-    private Label goalItemDeadline;
+    private Label goalCellItemDeadline;
     @FXML
-    private Label goalItemDescription;
+    private Label goalCellItemDescription;
     @FXML
-    private Label goalItemId;
+    private Label goalCellItemId;
     @FXML
-    private Label goalItemCompletedSteps;
+    private Label goalCellItemCompletedSteps;
     @FXML
-    private Label goalItemTotalSteps;
+    private Label goalCellItemTotalSteps;
     @FXML
-    private TextField goalItemStepsTextField;
+    private TextField goalCellItemStepsTextField;
     @FXML
-    private Button goalItemStepsButton;
+    private Button goalCellItemStepsButton;
 
     // dovrei passarmi il bean non l'entity
     public GoalCellGraphicalController(Goal goal) {
@@ -52,18 +52,18 @@ public class GoalCellGraphicalController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FxUtilities.hideVBox(eventGoalBox);
-        FxUtilities.hideVBox(adviceGoalBox);
+        FxUtilities.hideVBox(eventGoalCellBox);
+        FxUtilities.hideVBox(adviceGoalCellBox);
 
-        goalSeparator.setVisible(false);
-        goalSeparator.managedProperty().bind(goalSeparator.visibleProperty());
+        goalCellSeparator.setVisible(false);
+        goalCellSeparator.managedProperty().bind(goalCellSeparator.visibleProperty());
 
-        goalItemTitle.setText(item.getName());
-        goalItemDeadline.setText("Deadline: " + item.getDeadline().toString());
-        goalItemDescription.setText(item.getDescription());
-        goalItemId.setText(String.valueOf(item.getId()));
-        goalItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
-        goalItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
+        goalCellItemTitle.setText(item.getName());
+        goalCellItemDeadline.setText("Deadline: " + item.getDeadline().toString());
+        goalCellItemDescription.setText(item.getDescription());
+        goalCellItemId.setText(String.valueOf(item.getId()));
+        goalCellItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
+        goalCellItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
     }
 
     @FXML
@@ -71,7 +71,7 @@ public class GoalCellGraphicalController implements Initializable {
         UpdateStepsBean bean = new UpdateStepsBean();
 
         bean.setUpdateId(item.getId());
-        bean.setStepsCompleted(Integer.parseInt(goalItemStepsTextField.getText()));
+        bean.setStepsCompleted(Integer.parseInt(goalCellItemStepsTextField.getText()));
         bean.setType(GoalType.GOAL);
         bean.setUpdateUser(Session.getSession().getUser());
 
