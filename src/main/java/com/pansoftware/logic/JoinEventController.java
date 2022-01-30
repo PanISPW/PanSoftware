@@ -20,9 +20,9 @@ import java.util.Objects;
 // responsabile della persistenza
 public class JoinEventController {
 
-    public void sendNotificationEmail(EventRequestState state, String email) {
+    public void sendNotificationEmail(final EventRequestState state, final String email) {
 
-        String message = switch (state) {
+        final String message = switch (state) {
             case PENDING -> "There's a new goal waiting for approval";
             case REJECTED -> "Your submission has been rejected";
             default -> "Your submission has been approved";
@@ -31,13 +31,13 @@ public class JoinEventController {
         SendMail.send(message, email);
     }
 
-    public static List<EventGoal> getPendingEventGoalList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
+    public static List<EventGoal> getPendingEventGoalList() throws EmptyResultSetException, DatabaseException {
         return EventGoalDao.getPendingEventGoalList(Session.getSession().getUser());
     }
 
-    public static void acceptJoinRequest(EventGoalBean bean) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, NoTransitionException {
+    public static void acceptJoinRequest(final EventGoalBean bean) throws EmptyResultSetException, DatabaseException, NoTransitionException {
 
-        EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
+        final EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
 
         if (Objects.equals(eventGoal.getOrganizer().getUsername(), Session.getSession().getUser()) && eventGoal.getState() == EventRequestState.PENDING) {
             eventGoal.acceptJoinRequest();
@@ -46,9 +46,9 @@ public class JoinEventController {
         }
     }
 
-    public static void rejectJoinRequest(EventGoalBean bean) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, NoTransitionException {
+    public static void rejectJoinRequest(final EventGoalBean bean) throws EmptyResultSetException, DatabaseException, NoTransitionException {
 
-        EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
+        final EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
 
         if (Objects.equals(eventGoal.getOrganizer().getUsername(), Session.getSession().getUser()) && eventGoal.getState() == EventRequestState.PENDING) {
             eventGoal.rejectJoinRequest();

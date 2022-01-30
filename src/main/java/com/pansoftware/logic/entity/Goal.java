@@ -20,7 +20,7 @@ public class Goal extends UserContent {
     private LocalDate deadline;
 
 
-    public Goal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, User user, int id) {
+    public Goal(final String name, final String description, final int numberOfSteps, final int stepsCompleted, final LocalDate deadline, final User user, final int id) {
         this.name = name;
         this.description = description;
         this.numberOfSteps = numberOfSteps;
@@ -30,39 +30,39 @@ public class Goal extends UserContent {
         this.id = id;
     }
 
-    public static Goal getGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
+    public static Goal getGoal(final String user, final int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
         return GoalDao.getGoal(user, id);
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
     public int getNumberOfSteps() {
-        return numberOfSteps;
+        return this.numberOfSteps;
     }
 
-    public void setNumberOfSteps(int numberOfSteps) {
+    public void setNumberOfSteps(final int numberOfSteps) {
         this.numberOfSteps = numberOfSteps;
     }
 
     public int getStepsCompleted() {
-        return stepsCompleted;
+        return this.stepsCompleted;
     }
 
-    public void setStepsCompleted(int stepsCompleted) {
+    public void setStepsCompleted(final int stepsCompleted) {
         this.stepsCompleted = stepsCompleted;
     }
 
     public LocalDate getDeadline() {
-        return deadline;
+        return this.deadline;
     }
 
-    public void setDeadline(LocalDate deadline) {
+    public void setDeadline(final LocalDate deadline) {
         this.deadline = deadline;
     }
 

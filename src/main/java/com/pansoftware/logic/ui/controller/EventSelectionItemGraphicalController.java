@@ -30,26 +30,26 @@ public class EventSelectionItemGraphicalController implements Initializable {
     @FXML
     private Label eventType;
 
-    public EventSelectionItemGraphicalController(EventBean event) {
-        this.item = event;
+    public EventSelectionItemGraphicalController(final EventBean event) {
+        item = event;
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
 
-        eventTitle.setText(item.getName());
-        eventId.setText(String.valueOf(item.getId()));
-        eventOrganizer.setText(item.getOrganizer());
-        eventDuration.setText(item.getStartingDate().toString() + " - " + item.getEndingDate().toString());
-        eventType.setText(item.getType().toString());
+        this.eventTitle.setText(this.item.getName());
+        this.eventId.setText(String.valueOf(this.item.getId()));
+        this.eventOrganizer.setText(this.item.getOrganizer());
+        this.eventDuration.setText(this.item.getStartingDate().toString() + " - " + this.item.getEndingDate().toString());
+        this.eventType.setText(this.item.getType().toString());
     }
 
     @FXML
     public void submit() throws Exception {
 
-        EventGoalBeanUtil util = EventGoalBeanUtil.getEventGoalBeanUtil();
+        final EventGoalBeanUtil util = EventGoalBeanUtil.getEventGoalBeanUtil();
 
-        EventGoalBean bean = new EventGoalBean();
+        final EventGoalBean bean = new EventGoalBean();
 
 
         bean.setName(util.getName());
@@ -62,13 +62,13 @@ public class EventSelectionItemGraphicalController implements Initializable {
         bean.setReminder(util.isReminder());
 
 
-        bean.setEventId(item.getId());
-        bean.setEventOrganizer(item.getOrganizer());
+        bean.setEventId(this.item.getId());
+        bean.setEventOrganizer(this.item.getOrganizer());
 
         ManageGoalController.createGoal(bean);
         EventGoalBeanUtil.invalidate();
 
-        NavbarGraphicalController navbar = NavbarGraphicalController.getInstance();
+        final NavbarGraphicalController navbar = NavbarGraphicalController.getInstance();
         navbar.changePage(Pages.PROFILE);
     }
 }

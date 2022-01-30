@@ -20,10 +20,10 @@ public class FxUtilities {
 
     private FxUtilities(){}
 
-    static BorderPane navbar = null;
-    static NavbarGraphicalController navbarController = null;
+    static BorderPane navbar;
+    static NavbarGraphicalController navbarController;
 
-    public static Scene goToPage(Pages page, Initializable controller) throws IOException {
+    public static Scene goToPage(final Pages page, final Initializable controller) throws IOException {
 
         Session.getSession().setPage(page);
 
@@ -31,19 +31,19 @@ public class FxUtilities {
             Session.getSession().setCurrUser(null);
             Session.getSession().setRole(UserRole.USER);
 
-            return new Scene(loadFxml(page).load());
+            return new Scene(FxUtilities.loadFxml(page).load());
         } else {
-            FXMLLoader loader = loadFxml(page);
+            final FXMLLoader loader = FxUtilities.loadFxml(page);
 
             if (controller != null) {
                 loader.setController(controller);
             }
 
-            BorderPane pane = loader.load();
-            pane.setTop(getNavbar());
-            navbarController.disableButtons();
+            final BorderPane pane = loader.load();
+            pane.setTop(FxUtilities.getNavbar());
+            FxUtilities.navbarController.disableButtons();
 
-            navbarController.setUserNavbar();
+            FxUtilities.navbarController.setUserNavbar();
 
             return new Scene(pane);
 
@@ -51,7 +51,7 @@ public class FxUtilities {
         }
     }
 
-    public static FXMLLoader loadFxml(Pages page) {
+    public static FXMLLoader loadFxml(final Pages page) {
         return switch (page) {
             case LOGIN -> new FXMLLoader(MainDesktop.class.getResource("Login.fxml"));
             case EVENTS -> new FXMLLoader(MainDesktop.class.getResource("Events.fxml"));
@@ -69,34 +69,34 @@ public class FxUtilities {
     }
 
     private static BorderPane getNavbar() throws IOException {
-        if (navbar == null) {
-            FXMLLoader loader = new FXMLLoader(MainDesktop.class.getResource("Navbar.fxml"));
+        if (FxUtilities.navbar == null) {
+            final FXMLLoader loader = new FXMLLoader(MainDesktop.class.getResource("Navbar.fxml"));
 
-            navbarController = NavbarGraphicalController.getInstance();
+            FxUtilities.navbarController = NavbarGraphicalController.getInstance();
 
-            loader.setController(navbarController);
-            navbar = loader.load();
+            loader.setController(FxUtilities.navbarController);
+            FxUtilities.navbar = loader.load();
         }
 
-        return navbar;
+        return FxUtilities.navbar;
     }
 
-    public static void hideVBox(VBox box) {
+    public static void hideVBox(final VBox box) {
         box.setVisible(false);
         box.managedProperty().bind(box.visibleProperty());
     }
 
-    public static void showVBox(VBox box) {
+    public static void showVBox(final VBox box) {
         box.setVisible(true);
         box.managedProperty().bind(box.visibleProperty());
     }
 
-    public static void hideScrollPane(ScrollPane pane) {
+    public static void hideScrollPane(final ScrollPane pane) {
         pane.setVisible(false);
         pane.managedProperty().bind(pane.visibleProperty());
     }
 
-    public static void showScrollPane(ScrollPane pane) {
+    public static void showScrollPane(final ScrollPane pane) {
         pane.setVisible(true);
         pane.managedProperty().bind(pane.visibleProperty());
     }

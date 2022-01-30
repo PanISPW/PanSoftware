@@ -21,24 +21,24 @@ public class ManageEventParticipationGraphicalController implements Initializabl
     private VBox eventsParticipationList;
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        eventsParticipationList.getChildren().clear();
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
+        this.eventsParticipationList.getChildren().clear();
 
         try {
-            List<EventGoalBean> goals = ManageGoalController.getPendingEventGoalBeanList();
+            final List<EventGoalBean> goals = ManageGoalController.getPendingEventGoalBeanList();
 
-            for (EventGoalBean item : goals) {
-                EventParticipationItemGraphicalController cell = new EventParticipationItemGraphicalController(item);
+            for (final EventGoalBean item : goals) {
+                final EventParticipationItemGraphicalController cell = new EventParticipationItemGraphicalController(item);
 
-                FXMLLoader loader = FxUtilities.loadFxml(Pages.EVENTPARTICIPATIONITEM);
+                final FXMLLoader loader = FxUtilities.loadFxml(Pages.EVENTPARTICIPATIONITEM);
                 loader.setController(cell);
 
 
-                VBox vbox = loader.load();
+                final VBox vbox = loader.load();
 
-                eventsParticipationList.getChildren().add(vbox);
+                this.eventsParticipationList.getChildren().add(vbox);
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
 
             e.printStackTrace();
         }

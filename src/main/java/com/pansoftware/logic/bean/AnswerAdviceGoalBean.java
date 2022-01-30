@@ -12,10 +12,10 @@ public class AnswerAdviceGoalBean {
     private String answer = "";
 
     public int getAnswerAdviceId() {
-        return id;
+        return this.id;
     }
 
-    public void setAnswerAdviceId(int id) throws InvalidDataException {
+    public void setAnswerAdviceId(final int id) throws InvalidDataException {
         if (DataValidation.isNatural(id))
             this.id = id;
         else
@@ -23,18 +23,18 @@ public class AnswerAdviceGoalBean {
     }
 
     public String getGoalUser() {
-        return user;
+        return this.user;
     }
 
-    public void setGoalUser(String user) {
+    public void setGoalUser(final String user) {
         this.user = user;
     }
 
     public String getAnswer() {
-        return answer;
+        return this.answer;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(final String answer) {
         this.answer = answer;
     }
 

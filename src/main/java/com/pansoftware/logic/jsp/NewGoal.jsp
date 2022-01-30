@@ -17,7 +17,7 @@
 <%
     if (request.getParameter("newgoal") != null) {
         try {
-            GoalBean bean = new GoalBean();
+            final GoalBean bean = new GoalBean();
 
             bean.setName(request.getParameter("goalname"));
             bean.setDescription(request.getParameter("goaldescription"));
@@ -30,7 +30,7 @@
             }
 
             GoalFactory.getGoalFactory().createGoal(bean);
-        } catch(InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
+        } catch(final InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
             e.printStackTrace();
         }
     } %>
@@ -38,7 +38,7 @@
 <%
     if (request.getParameter("advicegoal") != null) {
         try {
-            AdviceGoalBean bean = new AdviceGoalBean();
+            final AdviceGoalBean bean = new AdviceGoalBean();
 
             bean.setName(request.getParameter("advicegoalname"));
             bean.setDescription(request.getParameter("advicegoaldescription"));
@@ -53,7 +53,7 @@
             }
 
             GoalFactory.getGoalFactory().createGoal(bean);
-        } catch(InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
+        } catch(final InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
             e.printStackTrace();
         }
     } %>
@@ -91,7 +91,7 @@
 <jsp:include page="UserNavbar.jsp"/>
 <%
     }
-} catch (InvalidDataException e) {
+} catch (final InvalidDataException e) {
 %>
 <jsp:forward page="Login.jsp"/>
 <%

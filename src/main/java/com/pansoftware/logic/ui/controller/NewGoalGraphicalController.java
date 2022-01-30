@@ -73,99 +73,99 @@ public class NewGoalGraphicalController implements Initializable {
     private Button submitButton;
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
 
-        List<ProductType> list = new ArrayList<>();
+        final List<ProductType> list = new ArrayList<>();
         list.add(ProductType.NOTSPECIFIED);
         list.add(ProductType.FOOD);
         list.add(ProductType.LIFESTYLE);
         list.add(ProductType.MAKEUP);
         list.add(ProductType.OTHER);
 
-        ObservableList<ProductType> observable = FXCollections.observableList(list);
+        final ObservableList<ProductType> observable = FXCollections.observableList(list);
 
-        productType.getItems().clear();
-        productType.setItems(observable);
-        productType.getSelectionModel().selectFirst();
+        this.productType.getItems().clear();
+        this.productType.setItems(observable);
+        this.productType.getSelectionModel().selectFirst();
 
-        FxUtilities.hideVBox(adviceGoal);
+        FxUtilities.hideVBox(this.adviceGoal);
 
-        radioGroup = new ToggleGroup();
-        goalButton.setToggleGroup(radioGroup);
-        adviceButton.setToggleGroup(radioGroup);
-        eventButton.setToggleGroup(radioGroup);
-        goalButton.setSelected(true);
+        this.radioGroup = new ToggleGroup();
+        this.goalButton.setToggleGroup(this.radioGroup);
+        this.adviceButton.setToggleGroup(this.radioGroup);
+        this.eventButton.setToggleGroup(this.radioGroup);
+        this.goalButton.setSelected(true);
     }
 
     @FXML
     public void goalRadio() {
-        FxUtilities.hideVBox(adviceGoal);
+        FxUtilities.hideVBox(this.adviceGoal);
     }
 
     @FXML
     public void adviceGoalRadio() {
-        FxUtilities.showVBox(adviceGoal);
+        FxUtilities.showVBox(this.adviceGoal);
     }
 
     @FXML
     public void eventGoalRadio() {
-        FxUtilities.hideVBox(adviceGoal);
+        FxUtilities.hideVBox(this.adviceGoal);
     }
 
     @FXML
     public void submit() throws Exception {
 
 
-        RadioButton selected = (RadioButton) radioGroup.getSelectedToggle();
-        String selectedButton = selected.getText();
+        final RadioButton selected = (RadioButton) this.radioGroup.getSelectedToggle();
+        final String selectedButton = selected.getText();
 
         switch (selectedButton) {
             case "EventGoal" -> {
-                EventGoalBeanUtil util = EventGoalBeanUtil.getEventGoalBeanUtil();
+                final EventGoalBeanUtil util = EventGoalBeanUtil.getEventGoalBeanUtil();
 
-                util.setName(goalName.getText());
-                util.setDescription(goalDescription.getText());
+                util.setName(this.goalName.getText());
+                util.setDescription(this.goalDescription.getText());
 
-                util.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
+                util.setNumberOfSteps(Integer.parseInt(this.numberOfSteps.getText()));
 
-                util.setDeadline(deadline.getValue());
-                util.setReminder(reminder.isSelected());
+                util.setDeadline(this.deadline.getValue());
+                util.setReminder(this.reminder.isSelected());
 
-                NavbarGraphicalController navbar = NavbarGraphicalController.getInstance();
+                final NavbarGraphicalController navbar = NavbarGraphicalController.getInstance();
                 navbar.changePage(Pages.EVENTSELECTION);
             }
             case "AdviceGoal" -> {
-                AdviceGoalBean adviceGoalBean = new AdviceGoalBean();
-                adviceGoalBean.setType(productType.getValue());
-                fillBean(adviceGoalBean);
+                final AdviceGoalBean adviceGoalBean = new AdviceGoalBean();
+                adviceGoalBean.setType(this.productType.getValue());
+                this.fillBean(adviceGoalBean);
 
                 ManageGoalController.createGoal(adviceGoalBean);
-                resultLabel.setText("Goal Successfully added");
+                this.resultLabel.setText("Goal Successfully added");
             }
             default -> {
-                GoalBean goalBean = new GoalBean();
-                fillBean(goalBean);
+                final GoalBean goalBean = new GoalBean();
+                this.fillBean(goalBean);
 
                 ManageGoalController.createGoal(goalBean);
-                resultLabel.setText("Goal Successfully added");
+                this.resultLabel.setText("Goal Successfully added");
             }
         }
     }
 
-    private void fillBean(GoalBean bean) {
+    private void fillBean(final GoalBean bean) {
 
         try {
-            bean.setName(goalName.getText());
-            bean.setDescription(goalDescription.getText());
+            bean.setName(this.goalName.getText());
+            bean.setDescription(this.goalDescription.getText());
 
-            bean.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
+            bean.setNumberOfSteps(Integer.parseInt(this.numberOfSteps.getText()));
             bean.setStepsCompleted(0);
 
-            bean.setNewDeadline(deadline.getValue());
-            bean.setReminder(reminder.isSelected());
+            bean.setNewDeadline(this.deadline.getValue());
+            bean.setReminder(this.reminder.isSelected());
 
-        } catch (InvalidDataException e) {
-            resultLabel.setText(e.getMessage());
+        } catch (final InvalidDataException e) {
+            this.resultLabel.setText(e.getMessage());
         }
 
     }

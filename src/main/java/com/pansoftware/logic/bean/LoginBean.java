@@ -21,68 +21,68 @@ public class LoginBean {
         // empty
     }
 
-    public LoginBean(String username, String password) {
-        this.setUsername(username);
-        this.setPassword(password);
+    public LoginBean(final String username, final String password) {
+        setUsername(username);
+        setPassword(password);
     }
 
-    public LoginBean(String username, String password, String email, String name, String surname, UserRole role) throws InvalidDataException {
-        this.setUsername(username);
-        this.setPassword(password);
-        this.setEmail(email);
-        this.setLoginName(name);
-        this.setLoginSurname(surname);
-        this.setLoginRole(role);
+    public LoginBean(final String username, final String password, final String email, final String name, final String surname, final UserRole role) throws InvalidDataException {
+        setUsername(username);
+        setPassword(password);
+        setEmail(email);
+        setLoginName(name);
+        setLoginSurname(surname);
+        setLoginRole(role);
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
-    public void setEmail(String email) throws InvalidDataException {
+    public void setEmail(final String email) throws InvalidDataException {
         if (DataValidation.isCorrectEmail(email))
             this.email = email;
         else throw new InvalidDataException("Please insert a valid email");
     }
 
     public String getLoginName() {
-        return name;
+        return this.name;
     }
 
-    public void setLoginName(String name) {
+    public void setLoginName(final String name) {
         this.name = name;
     }
 
     public String getLoginSurname() {
-        return surname;
+        return this.surname;
     }
 
-    public void setLoginSurname(String surname) {
+    public void setLoginSurname(final String surname) {
         this.surname = surname;
     }
 
     public UserRole getLoginRole() {
-        return role;
+        return this.role;
     }
 
-    public void setLoginRole(UserRole role) {
+    public void setLoginRole(final UserRole role) {
         if (role.equals(UserRole.ACTIVIST) | role.equals(UserRole.BRANDMANAGER))
             this.role = role;
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 

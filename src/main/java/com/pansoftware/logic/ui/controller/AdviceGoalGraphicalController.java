@@ -59,41 +59,41 @@ public class AdviceGoalGraphicalController implements Initializable {
     @FXML
     private TextField goalCellItemStepsTextField;
 
-    public AdviceGoalGraphicalController(AdviceGoalBean goal) {
-        this.item = goal;
+    public AdviceGoalGraphicalController(final AdviceGoalBean goal) {
+        item = goal;
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        String temp = "";
-        FxUtilities.hideVBox(eventGoalCellBox);
+    public void initialize(final URL location, final ResourceBundle resources) {
+        final String temp = "";
+        FxUtilities.hideVBox(this.eventGoalCellBox);
 
-        goalCellItemTitle.setText(item.getName());
-        goalCellItemDeadline.setText("Deadline: " + item.getDeadline().toString());
-        goalCellItemDescription.setText(item.getDescription());
-        goalCellItemId.setText(String.valueOf(item.getId()));
-        goalCellItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
-        goalCellItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
+        this.goalCellItemTitle.setText(this.item.getName());
+        this.goalCellItemDeadline.setText("Deadline: " + this.item.getDeadline().toString());
+        this.goalCellItemDescription.setText(this.item.getDescription());
+        this.goalCellItemId.setText(String.valueOf(this.item.getId()));
+        this.goalCellItemCompletedSteps.setText(String.valueOf(this.item.getStepsCompleted()));
+        this.goalCellItemTotalSteps.setText(String.valueOf(this.item.getNumberOfSteps()));
 
 
         try {
-            adviceGoalCellAdvice.setText(temp);
-            adviceGoalCellActivist.setText(item.getAdviceActivist());
-        } catch(NullPointerException e) {
-            adviceGoalCellAdvice.setText("not answered");
-            adviceGoalCellActivist.setText("");
+            this.adviceGoalCellAdvice.setText(temp);
+            this.adviceGoalCellActivist.setText(this.item.getAdviceActivist());
+        } catch(final NullPointerException e) {
+            this.adviceGoalCellAdvice.setText("not answered");
+            this.adviceGoalCellActivist.setText("");
         }
 
-        adviceGoalCellProductType.setText(item.getType().toString());
+        this.adviceGoalCellProductType.setText(this.item.getType().toString());
 
     }
 
     @FXML
     public void submit() throws Exception {
-        UpdateStepsBean bean = new UpdateStepsBean();
+        final UpdateStepsBean bean = new UpdateStepsBean();
 
-        bean.setUpdateId(item.getId());
-        bean.setStepsCompleted(Integer.parseInt(goalCellItemStepsTextField.getText()));
+        bean.setUpdateId(this.item.getId());
+        bean.setStepsCompleted(Integer.parseInt(this.goalCellItemStepsTextField.getText()));
         bean.setType(GoalType.ADVICEGOAL);
         bean.setUpdateUser(Session.getSession().getUser());
 

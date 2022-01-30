@@ -11,7 +11,7 @@ import com.pansoftware.logic.exception.NoTransitionException;
 
 public abstract class JoinEventState {
 
-    public static JoinEventState getMachineState(ConcreteStateMachine stateMachine, EventRequestState state, Event event) throws DatabaseException {
+    public static JoinEventState getMachineState(final ConcreteStateMachine stateMachine, final EventRequestState state, final Event event) throws DatabaseException {
 
         switch (state) {
             case PENDING:

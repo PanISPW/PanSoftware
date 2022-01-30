@@ -35,56 +35,56 @@ public class EventParticipationItemGraphicalController implements Initializable 
     @FXML
     private Button eventParticipationReject;
 
-    public EventParticipationItemGraphicalController(EventGoalBean goal) {
-        this.item = goal;
+    public EventParticipationItemGraphicalController(final EventGoalBean goal) {
+        item = goal;
     }
 
     public EventGoalBean populateGoalBean() throws InvalidDataException {
-        EventGoalBean bean = new EventGoalBean();
+        final EventGoalBean bean = new EventGoalBean();
 
-        bean.setName(item.getName());
-        bean.setDescription(item.getDescription());
+        bean.setName(this.item.getName());
+        bean.setDescription(this.item.getDescription());
 
         try {
-            bean.setNumberOfSteps(item.getNumberOfSteps());
-        } catch (InvalidDataException e) {
+            bean.setNumberOfSteps(this.item.getNumberOfSteps());
+        } catch (final InvalidDataException e) {
             throw new InvalidDataException("invalid number of steps");
         }
 
-        bean.setStepsCompleted(item.getStepsCompleted());
-        bean.setNewDeadline(item.getDeadline());
-        bean.setId(item.getId());
-        bean.setUser(item.getUser());
+        bean.setStepsCompleted(this.item.getStepsCompleted());
+        bean.setNewDeadline(this.item.getDeadline());
+        bean.setId(this.item.getId());
+        bean.setUser(this.item.getUser());
 
-        bean.setEventId(item.getEventId());
-        bean.setEventOrganizer(item.getEventOrganizer());
-        bean.setState(item.getState());
+        bean.setEventId(this.item.getEventId());
+        bean.setEventOrganizer(this.item.getEventOrganizer());
+        bean.setState(this.item.getState());
 
         return bean;
     }
 
     @FXML
     public void accept() throws Exception {
-        EventGoalBean bean = populateGoalBean();
+        final EventGoalBean bean = this.populateGoalBean();
         ManageGoalController.acceptEventGoal(bean);
     }
 
     @FXML
     public void reject() throws Exception {
-        EventGoalBean bean = populateGoalBean();
+        final EventGoalBean bean = this.populateGoalBean();
         ManageGoalController.rejectEventGoal(bean);
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
 
-        eventParticipationTitle.setText(item.getName());
-        eventParticipationId.setText(String.valueOf(item.getId()));
-        eventParticipationDeadline.setText(item.getDeadline().toString());
-        eventParticipationUser.setText(item.getUser());
-        eventParticipationCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
-        eventParticipationTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
-        eventParticipationDescription.setText(item.getDescription());
+        this.eventParticipationTitle.setText(this.item.getName());
+        this.eventParticipationId.setText(String.valueOf(this.item.getId()));
+        this.eventParticipationDeadline.setText(this.item.getDeadline().toString());
+        this.eventParticipationUser.setText(this.item.getUser());
+        this.eventParticipationCompletedSteps.setText(String.valueOf(this.item.getStepsCompleted()));
+        this.eventParticipationTotalSteps.setText(String.valueOf(this.item.getNumberOfSteps()));
+        this.eventParticipationDescription.setText(this.item.getDescription());
     }
 
 }

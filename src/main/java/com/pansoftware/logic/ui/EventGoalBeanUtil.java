@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class EventGoalBeanUtil {
 
-    private static EventGoalBeanUtil instance = null;
+    private static EventGoalBeanUtil instance;
 
     private String name = "";
     private String description = "";
@@ -19,81 +19,81 @@ public class EventGoalBeanUtil {
     private EventRequestState state = EventRequestState.PENDING;
 
     public boolean isReminder() {
-        return reminder;
+        return this.reminder;
     }
 
-    public void setReminder(boolean reminder) {
+    public void setReminder(final boolean reminder) {
         this.reminder = reminder;
     }
 
-    private boolean reminder = false;
+    private boolean reminder;
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
     public int getNumberOfSteps() {
-        return numberOfSteps;
+        return this.numberOfSteps;
     }
 
-    public void setNumberOfSteps(int numberOfSteps) {
+    public void setNumberOfSteps(final int numberOfSteps) {
         this.numberOfSteps = numberOfSteps;
     }
 
     public LocalDate getDeadline() {
-        return deadline;
+        return this.deadline;
     }
 
-    public void setDeadline(LocalDate deadline) {
+    public void setDeadline(final LocalDate deadline) {
         this.deadline = deadline;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
     public String getUser() {
-        return user;
+        return this.user;
     }
 
-    public void setUser(String user) {
+    public void setUser(final String user) {
         this.user = user;
     }
 
     public EventRequestState getState() {
-        return state;
+        return this.state;
     }
 
-    public void setState(EventRequestState state) {
+    public void setState(final EventRequestState state) {
         this.state = state;
     }
 
     private EventGoalBeanUtil() {}
 
     public static EventGoalBeanUtil getEventGoalBeanUtil() {
-        if (instance == null)
-            instance = new EventGoalBeanUtil();
+        if (EventGoalBeanUtil.instance == null)
+            EventGoalBeanUtil.instance = new EventGoalBeanUtil();
 
-        return instance;
+        return EventGoalBeanUtil.instance;
     }
 
     public static void invalidate(){
-        instance = null;
+        EventGoalBeanUtil.instance = null;
     }
 }

@@ -23,23 +23,23 @@ public class EventSelectionGraphicalController implements Initializable {
     private VBox eventsList;
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
 
         try {
 
-            List<EventBean> events = ManageGoalController.getEventBeanList();
+            final List<EventBean> events = ManageGoalController.getEventBeanList();
 
-            for (EventBean item : events) {
-                EventSelectionItemGraphicalController cell = new EventSelectionItemGraphicalController(item);
+            for (final EventBean item : events) {
+                final EventSelectionItemGraphicalController cell = new EventSelectionItemGraphicalController(item);
 
-                FXMLLoader loader = FxUtilities.loadFxml(Pages.EVENTSELECTIONITEM);
+                final FXMLLoader loader = FxUtilities.loadFxml(Pages.EVENTSELECTIONITEM);
                 loader.setController(cell);
 
-                VBox vbox = loader.load();
+                final VBox vbox = loader.load();
 
-                eventsList.getChildren().add(vbox);
+                this.eventsList.getChildren().add(vbox);
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             Platform.exit();
         }
 

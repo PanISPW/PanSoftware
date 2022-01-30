@@ -12,14 +12,14 @@ import java.io.IOException;
 // @author Danilo D'Amico
 
 public class MainDesktop extends Application {
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(final String[] args) {
+        Application.launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(final Stage primaryStage) throws IOException {
 
-        Scene scene = FxUtilities.goToPage(Pages.LOGIN, null);
+        final Scene scene = FxUtilities.goToPage(Pages.LOGIN, null);
 
         try {
 
@@ -30,7 +30,7 @@ public class MainDesktop extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             e.printStackTrace();
         }
     }

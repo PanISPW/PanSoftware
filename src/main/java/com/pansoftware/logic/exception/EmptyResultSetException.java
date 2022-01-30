@@ -4,7 +4,7 @@ package com.pansoftware.logic.exception;
 
 public class EmptyResultSetException extends Exception {
 
-    public EmptyResultSetException(String explanation) {
+    public EmptyResultSetException(final String explanation) {
         super(explanation);
     }
 }

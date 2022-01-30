@@ -15,15 +15,15 @@ import java.io.IOException;
 
 public class NavbarGraphicalController {
 
-    private static NavbarGraphicalController instance = null;
+    private static NavbarGraphicalController instance;
 
     private NavbarGraphicalController() {}
 
     public static NavbarGraphicalController getInstance() {
-        if (instance == null)
-            instance = new NavbarGraphicalController();
+        if (NavbarGraphicalController.instance == null)
+            NavbarGraphicalController.instance = new NavbarGraphicalController();
 
-        return instance;
+        return NavbarGraphicalController.instance;
     }
 
     @FXML
@@ -46,82 +46,82 @@ public class NavbarGraphicalController {
 
     public void setUserNavbar() {
         if (Session.getSession().getRole() == UserRole.ACTIVIST) {
-            eventParticipationButton.setVisible(false);
+            this.eventParticipationButton.setVisible(false);
         } else if(Session.getSession().getRole() == UserRole.BRANDMANAGER){
-            adviceButton.setVisible(false);
+            this.adviceButton.setVisible(false);
         } else{
-            adviceButton.setVisible(false);
-            eventParticipationButton.setVisible(false);
+            this.adviceButton.setVisible(false);
+            this.eventParticipationButton.setVisible(false);
         }
     }
 
     public void disableButtons() {
         switch (Session.getSession().getPage()) {
             case EVENTS -> {
-                eventsButton.setDisable(true);
-                newGoalButton.setDisable(false);
-                profileButton.setDisable(false);
-                adviceButton.setDisable(false);
-                eventParticipationButton.setDisable(false);
+                this.eventsButton.setDisable(true);
+                this.newGoalButton.setDisable(false);
+                this.profileButton.setDisable(false);
+                this.adviceButton.setDisable(false);
+                this.eventParticipationButton.setDisable(false);
             }
             case NEWGOAL -> {
-                eventsButton.setDisable(false);
-                newGoalButton.setDisable(true);
-                profileButton.setDisable(false);
-                adviceButton.setDisable(false);
-                eventParticipationButton.setDisable(false);
+                this.eventsButton.setDisable(false);
+                this.newGoalButton.setDisable(true);
+                this.profileButton.setDisable(false);
+                this.adviceButton.setDisable(false);
+                this.eventParticipationButton.setDisable(false);
             }
             case ADVICEPAGE -> {
-                eventsButton.setDisable(false);
-                newGoalButton.setDisable(false);
-                profileButton.setDisable(false);
-                adviceButton.setDisable(true);
-                eventParticipationButton.setDisable(false);
+                this.eventsButton.setDisable(false);
+                this.newGoalButton.setDisable(false);
+                this.profileButton.setDisable(false);
+                this.adviceButton.setDisable(true);
+                this.eventParticipationButton.setDisable(false);
             }
             case EVENTPARTICIPATION -> {
-                eventsButton.setDisable(false);
-                newGoalButton.setDisable(false);
-                profileButton.setDisable(false);
-                adviceButton.setDisable(false);
-                eventParticipationButton.setDisable(true);
+                this.eventsButton.setDisable(false);
+                this.newGoalButton.setDisable(false);
+                this.profileButton.setDisable(false);
+                this.adviceButton.setDisable(false);
+                this.eventParticipationButton.setDisable(true);
             }
             default -> {
-                eventsButton.setDisable(false);
-                newGoalButton.setDisable(false);
-                profileButton.setDisable(true);
-                adviceButton.setDisable(false);
-                eventParticipationButton.setDisable(false);
+                this.eventsButton.setDisable(false);
+                this.newGoalButton.setDisable(false);
+                this.profileButton.setDisable(true);
+                this.adviceButton.setDisable(false);
+                this.eventParticipationButton.setDisable(false);
             }
         }
     }
 
     @FXML
     public void goToEvents() throws IOException {
-        changePage(Pages.EVENTS);
+        this.changePage(Pages.EVENTS);
     }
 
     @FXML
     public void goToNewGoal() throws IOException {
-        changePage(Pages.NEWGOAL);
+        this.changePage(Pages.NEWGOAL);
     }
 
     @FXML
     public void goToProfile() throws IOException {
-        changePage(Pages.PROFILE);
+        this.changePage(Pages.PROFILE);
     }
 
     @FXML
     public void goToGiveAdvice() throws IOException {
-        changePage(Pages.ADVICEPAGE);
+        this.changePage(Pages.ADVICEPAGE);
     }
 
     @FXML
     public void goToManageEventParticipation() throws IOException {
-        changePage(Pages.EVENTPARTICIPATION);
+        this.changePage(Pages.EVENTPARTICIPATION);
     }
 
-    public void changePage(Pages page) throws IOException {
-        Stage stage = (Stage) main.getScene().getWindow();
+    public void changePage(final Pages page) throws IOException {
+        final Stage stage = (Stage) this.main.getScene().getWindow();
         stage.setScene(FxUtilities.goToPage(page, null));
     }
 

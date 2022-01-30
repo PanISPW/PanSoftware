@@ -13,7 +13,7 @@ public class Event extends UserContent {
     private LocalDate endingDate;
     private EventType type; // private or public event
 
-    public Event(User user, String name, LocalDate startingDate, LocalDate endingDate, EventType type, int id) {
+    public Event(final User user, final String name, final LocalDate startingDate, final LocalDate endingDate, final EventType type, final int id) {
         this.user = user;
         this.name = name;
         this.startingDate = startingDate;
@@ -23,26 +23,26 @@ public class Event extends UserContent {
     }
 
     public LocalDate getStartingDate() {
-        return startingDate;
+        return this.startingDate;
     }
 
-    public void setStartingDate(LocalDate startingDate) {
+    public void setStartingDate(final LocalDate startingDate) {
         this.startingDate = startingDate;
     }
 
     public LocalDate getEndingDate() {
-        return endingDate;
+        return this.endingDate;
     }
 
-    public void setEndingDate(LocalDate endingDate) {
+    public void setEndingDate(final LocalDate endingDate) {
         this.endingDate = endingDate;
     }
 
     public EventType getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(EventType type) {
+    public void setType(final EventType type) {
         this.type = type;
     }
 

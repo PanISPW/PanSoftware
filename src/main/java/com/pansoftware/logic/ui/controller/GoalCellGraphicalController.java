@@ -46,32 +46,32 @@ public class GoalCellGraphicalController implements Initializable {
     private Button goalCellItemStepsButton;
 
     // dovrei passarmi il bean non l'entity
-    public GoalCellGraphicalController(GoalBean goal) {
-        this.item = goal;
+    public GoalCellGraphicalController(final GoalBean goal) {
+        item = goal;
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        FxUtilities.hideVBox(eventGoalCellBox);
-        FxUtilities.hideVBox(adviceGoalCellBox);
+    public void initialize(final URL location, final ResourceBundle resources) {
+        FxUtilities.hideVBox(this.eventGoalCellBox);
+        FxUtilities.hideVBox(this.adviceGoalCellBox);
 
-        goalCellSeparator.setVisible(false);
-        goalCellSeparator.managedProperty().bind(goalCellSeparator.visibleProperty());
+        this.goalCellSeparator.setVisible(false);
+        this.goalCellSeparator.managedProperty().bind(this.goalCellSeparator.visibleProperty());
 
-        goalCellItemTitle.setText(item.getName());
-        goalCellItemDeadline.setText("Deadline: " + item.getDeadline().toString());
-        goalCellItemDescription.setText(item.getDescription());
-        goalCellItemId.setText(String.valueOf(item.getId()));
-        goalCellItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
-        goalCellItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
+        this.goalCellItemTitle.setText(this.item.getName());
+        this.goalCellItemDeadline.setText("Deadline: " + this.item.getDeadline().toString());
+        this.goalCellItemDescription.setText(this.item.getDescription());
+        this.goalCellItemId.setText(String.valueOf(this.item.getId()));
+        this.goalCellItemCompletedSteps.setText(String.valueOf(this.item.getStepsCompleted()));
+        this.goalCellItemTotalSteps.setText(String.valueOf(this.item.getNumberOfSteps()));
     }
 
     @FXML
     public void submit() throws Exception {
-        UpdateStepsBean bean = new UpdateStepsBean();
+        final UpdateStepsBean bean = new UpdateStepsBean();
 
-        bean.setUpdateId(item.getId());
-        bean.setStepsCompleted(Integer.parseInt(goalCellItemStepsTextField.getText()));
+        bean.setUpdateId(this.item.getId());
+        bean.setStepsCompleted(Integer.parseInt(this.goalCellItemStepsTextField.getText()));
         bean.setType(GoalType.GOAL);
         bean.setUpdateUser(Session.getSession().getUser());
 

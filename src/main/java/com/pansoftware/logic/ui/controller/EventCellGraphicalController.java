@@ -27,18 +27,18 @@ public class EventCellGraphicalController implements Initializable {
     @FXML
     private Label eventItemType;
 
-    public EventCellGraphicalController(EventBean event) {
-        this.item = event;
+    public EventCellGraphicalController(final EventBean event) {
+        item = event;
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
 
-        eventItemTitle.setText(item.getName());
-        eventItemId.setText(String.valueOf(item.getId()));
-        eventItemOrganizer.setText(item.getOrganizer());
-        eventItemDuration.setText(item.getStartingDate().toString() + " - " + item.getEndingDate().toString());
-        eventItemType.setText(item.getType().toString());
+        this.eventItemTitle.setText(this.item.getName());
+        this.eventItemId.setText(String.valueOf(this.item.getId()));
+        this.eventItemOrganizer.setText(this.item.getOrganizer());
+        this.eventItemDuration.setText(this.item.getStartingDate().toString() + " - " + this.item.getEndingDate().toString());
+        this.eventItemType.setText(this.item.getType().toString());
     }
 
 }

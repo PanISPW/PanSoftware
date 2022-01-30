@@ -11,33 +11,33 @@ public class AdviceGoalBean extends GoalBean{
     private String adviceActivist = "";
 
     public ProductType getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(ProductType type) throws InvalidDataException {
+    public void setType(final ProductType type) throws InvalidDataException {
         if (type.equals(ProductType.FOOD) | type.equals(ProductType.LIFESTYLE) | type.equals(ProductType.MAKEUP) | type.equals(ProductType.OTHER))
             this.type = type;
     }
 
-    public void setTypeInt(int typeInt) {
-        this.type = DaoUtils.intToProductType(typeInt);
+    public void setTypeInt(final int typeInt) {
+        type = DaoUtils.intToProductType(typeInt);
     }
 
     public String getAdvice() {
-        return advice;
+        return this.advice;
     }
 
-    public void setAdvice(String advice) throws InvalidDataException {
+    public void setAdvice(final String advice) throws InvalidDataException {
         if(advice.length() >= 45)
             throw new InvalidDataException("The Advice should be under 45 characters");
         this.advice = advice;
     }
 
     public String getAdviceActivist() {
-        return adviceActivist;
+        return this.adviceActivist;
     }
 
-    public void setAdviceActivist(String adviceActivist) {
+    public void setAdviceActivist(final String adviceActivist) {
         this.adviceActivist = adviceActivist;
     }
 

@@ -43,7 +43,7 @@
             <jsp:include page="UserNavbar.jsp"/>
             <%
         }
-    } catch (InvalidDataException e) {
+    } catch (final InvalidDataException e) {
 %>
 <jsp:forward page="Login.jsp"/>
 <%
@@ -59,11 +59,11 @@
     List<EventBean> events = null;
     try {
         events = ManageGoalController.getEventBeanList();
-    } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException| InvalidDataException e) {
+    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException| InvalidDataException e) {
         e.printStackTrace();
     }
     assert events != null;
-    for (EventBean e  : events) {
+    for (final EventBean e  : events) {
 %>
     <div class="card text-center mt-2 ">
         <div class="card-body">

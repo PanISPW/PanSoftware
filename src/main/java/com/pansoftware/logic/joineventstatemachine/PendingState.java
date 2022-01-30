@@ -12,7 +12,7 @@ public class PendingState extends JoinEventState {
     ConcreteStateMachine stateMachine;
     Event event;
 
-    public PendingState(ConcreteStateMachine stateMachine, Event event) throws DatabaseException {
+    public PendingState(final ConcreteStateMachine stateMachine, final Event event) throws DatabaseException {
         this.stateMachine = stateMachine;
         this.event = event;
         EventGoalDao.pendingEventGoal(event.getId(), event.getUser().getUsername());
@@ -20,12 +20,12 @@ public class PendingState extends JoinEventState {
 
     @Override
     protected void accept() {
-        this.stateMachine.changeState(new AcceptedState(event));
+        stateMachine.changeState(new AcceptedState(this.event));
     }
 
     @Override
     protected void reject() {
-        this.stateMachine.changeState(new RejectedState(event));
+        stateMachine.changeState(new RejectedState(this.event));
     }
 
     @Override

@@ -9,44 +9,44 @@ import com.pansoftware.logic.util.DataValidation;
 public class UpdateStepsBean {
 
     private GoalType type = GoalType.GOAL;
-    private int stepsCompleted = 0;
+    private int stepsCompleted;
     private int id = -1;
     private String user = "";
 
     public GoalType getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(GoalType type) {
+    public void setType(final GoalType type) {
         if (type.equals(GoalType.ADVICEGOAL) | type.equals(GoalType.EVENTGOAL))
             this.type = type;
     }
 
     public int getStepsCompleted() {
-        return stepsCompleted;
+        return this.stepsCompleted;
     }
 
-    public void setStepsCompleted(int stepsCompleted) throws InvalidDataException {
+    public void setStepsCompleted(final int stepsCompleted) throws InvalidDataException {
         if (DataValidation.isNatural(stepsCompleted))
             this.stepsCompleted = stepsCompleted;
         else throw new InvalidDataException("steps completed must be a natural number");
     }
 
     public int getUpdateId() {
-        return id;
+        return this.id;
     }
 
-    public void setUpdateId(int id) throws InvalidDataException {
+    public void setUpdateId(final int id) throws InvalidDataException {
         if (DataValidation.isNatural(id))
             this.id = id;
         else throw new InvalidDataException("id must be a natural number");
     }
 
     public String getUpdateUser() {
-        return user;
+        return this.user;
     }
 
-    public void setUpdateUser(String user) {
+    public void setUpdateUser(final String user) {
         this.user = user;
     }
 }

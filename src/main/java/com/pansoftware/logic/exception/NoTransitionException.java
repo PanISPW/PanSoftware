@@ -4,7 +4,7 @@ package com.pansoftware.logic.exception;
 
 public class NoTransitionException extends Exception {
 
-    public NoTransitionException(String explanation) {
+    public NoTransitionException(final String explanation) {
         super(explanation);
     }
 

@@ -4,7 +4,7 @@ package com.pansoftware.logic.exception;
 
 public class NotEnoughPermissionsException extends Exception {
 
-    public NotEnoughPermissionsException(String explanation) {
+    public NotEnoughPermissionsException(final String explanation) {
         super(explanation);
     }
 

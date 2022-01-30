@@ -18,7 +18,7 @@ public class AdviceGoal extends Goal {
     private String advice;
     private User adviceActivist;
 
-    public AdviceGoal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, int id, User user, ProductType type, String advice, User adviceActivist) {
+    public AdviceGoal(final String name, final String description, final int numberOfSteps, final int stepsCompleted, final LocalDate deadline, final int id, final User user, final ProductType type, final String advice, final User adviceActivist) {
         super(name, description, numberOfSteps, stepsCompleted, deadline, user, id);
         this.type = type;
         this.advice = advice;
@@ -26,35 +26,35 @@ public class AdviceGoal extends Goal {
 
     }
 
-    public AdviceGoal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, User user, int id) {
+    public AdviceGoal(final String name, final String description, final int numberOfSteps, final int stepsCompleted, final LocalDate deadline, final User user, final int id) {
         super(name, description, numberOfSteps, stepsCompleted, deadline, user, id);
     }
 
-    public static AdviceGoal getAdviceGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
+    public static AdviceGoal getAdviceGoal(final String user, final int id) throws EmptyResultSetException, DatabaseException {
         return AdviceGoalDao.getAdviceGoal(user, id);
     }
 
     public ProductType getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(ProductType type) {
+    public void setType(final ProductType type) {
         this.type = type;
     }
 
     public String getAdvice() {
-        return advice;
+        return this.advice;
     }
 
-    public void setAdvice(String advice) {
+    public void setAdvice(final String advice) {
         this.advice = advice;
     }
 
     public User getAdviceActivist() {
-        return adviceActivist;
+        return this.adviceActivist;
     }
 
-    public void setAdviceActivist(User adviceActivist) {
+    public void setAdviceActivist(final User adviceActivist) {
         this.adviceActivist = adviceActivist;
     }
 }

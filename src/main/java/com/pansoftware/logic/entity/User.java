@@ -16,7 +16,7 @@ public class User {
     private String surname;
     private UserRole role;
 
-    public User(String username, String password, String email, String name, String surname, UserRole role) {
+    public User(final String username, final String password, final String email, final String name, final String surname, final UserRole role) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -26,57 +26,57 @@ public class User {
     }
 
     public String getUsername() {
-        if(username == null)
+        if(this.username == null)
             return "";
         else
-            return username;
+            return this.username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public String getSurname() {
-        return surname;
+        return this.surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 
     public UserRole getRole() {
-        return role;
+        return this.role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(final UserRole role) {
         this.role = role;
     }
 
     public void save() throws DatabaseException {
-        UserDao.addUser(this.username, this.password, this.email, this.name, this.surname, this.role);
+        UserDao.addUser(username, password, email, name, surname, role);
     }
 }

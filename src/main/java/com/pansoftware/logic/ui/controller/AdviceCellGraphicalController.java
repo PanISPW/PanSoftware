@@ -36,32 +36,32 @@ public class AdviceCellGraphicalController implements Initializable {
     @FXML
     private Button adviceCellSubmitButton;
 
-    public AdviceCellGraphicalController(AdviceGoalBean goal) {
-        this.item = goal;
+    public AdviceCellGraphicalController(final AdviceGoalBean goal) {
+        item = goal;
     }
 
     @FXML
     public void submitAdvice() throws Exception {
 
-        AnswerAdviceGoalBean bean = new AnswerAdviceGoalBean();
+        final AnswerAdviceGoalBean bean = new AnswerAdviceGoalBean();
 
-        bean.setAnswerAdviceId(item.getId());
-        bean.setGoalUser(item.getUser());
-        bean.setAnswer(adviceCellTextField.getText());
+        bean.setAnswerAdviceId(this.item.getId());
+        bean.setGoalUser(this.item.getUser());
+        bean.setAnswer(this.adviceCellTextField.getText());
 
         ManageGoalController.answerAdviceGoal(bean);
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
 
-        adviceCellGoalTitle.setText(item.getName());
-        adviceCellGoalId.setText(String.valueOf(item.getId()));
-        adviceCellGoalDeadline.setText(item.getDeadline().toString());
-        adviceCellGoalUser.setText(item.getUser());
-        adviceCellCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
-        adviceCellTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
-        adviceCellGoalDescription.setText(item.getDescription());
+        this.adviceCellGoalTitle.setText(this.item.getName());
+        this.adviceCellGoalId.setText(String.valueOf(this.item.getId()));
+        this.adviceCellGoalDeadline.setText(this.item.getDeadline().toString());
+        this.adviceCellGoalUser.setText(this.item.getUser());
+        this.adviceCellCompletedSteps.setText(String.valueOf(this.item.getStepsCompleted()));
+        this.adviceCellTotalSteps.setText(String.valueOf(this.item.getNumberOfSteps()));
+        this.adviceCellGoalDescription.setText(this.item.getDescription());
     }
 
 }

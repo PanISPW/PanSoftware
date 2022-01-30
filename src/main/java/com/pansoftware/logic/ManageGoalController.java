@@ -21,14 +21,14 @@ public class ManageGoalController {
 
     private ManageGoalController(){}
 
-    private static void addReminder(String email, LocalDate day) {
+    private static void addReminder(final String email, final LocalDate day) {
         SendMail.sendOnDay(email, day);
     }
 
-    public static void updateSteps(UpdateStepsBean bean) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        String username = bean.getUpdateUser();
+    public static void updateSteps(final UpdateStepsBean bean) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
+        final String username = bean.getUpdateUser();
         int stepsCompleted = bean.getStepsCompleted();
-        int numberOfSteps;
+        final int numberOfSteps;
 
         switch (bean.getType()) {
             case ADVICEGOAL -> {
@@ -56,19 +56,15 @@ public class ManageGoalController {
 
     }
 
-    public static List<AdviceGoal> getAdviceGoalList() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        return AdviceGoalDao.getAdviceGoalList(Session.getSession().getUser());
-    }
-
     public static List<AdviceGoalBean> getAdviceGoalBeanList() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<AdviceGoal> goalList = AdviceGoalDao.getAdviceGoalList(Session.getSession().getUser());
-        List<AdviceGoalBean> beanList = new ArrayList<>();
+        final List<AdviceGoal> goalList = AdviceGoalDao.getAdviceGoalList(Session.getSession().getUser());
+        final List<AdviceGoalBean> beanList = new ArrayList<>();
 
-        for (AdviceGoal e : goalList){
-            AdviceGoalBean bean = new AdviceGoalBean();
-            populateGoalBean(e, bean);
+        for (final AdviceGoal e : goalList){
+            final AdviceGoalBean bean = new AdviceGoalBean();
+            ManageGoalController.populateGoalBean(e, bean);
 
-            String adviceActivist;
+            final String adviceActivist;
 
             bean.setType(e.getType());
             bean.setAdvice(e.getAdvice());
@@ -86,12 +82,12 @@ public class ManageGoalController {
         return beanList;
     }
 
-    public static List<AdviceGoalBean> populateUnansweredAdviceBean(List<AdviceGoal> goalList) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<AdviceGoalBean> beanList = new ArrayList<>();
+    public static List<AdviceGoalBean> populateUnansweredAdviceBean(final List<AdviceGoal> goalList) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
+        final List<AdviceGoalBean> beanList = new ArrayList<>();
 
-        for (AdviceGoal e : goalList){
+        for (final AdviceGoal e : goalList){
 
-            AdviceGoalBean bean = new AdviceGoalBean();
+            final AdviceGoalBean bean = new AdviceGoalBean();
 
             bean.setName(e.getName());
             bean.setId(e.getId());
@@ -111,51 +107,31 @@ public class ManageGoalController {
         return beanList;
     }
 
-    public static List<AdviceGoal> getUnansweredMakeupAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        return AdviceGoalDao.getUnansweredMakeupAdvice();
-    }
-
     public static List<AdviceGoalBean> getUnansweredMakeupAdviceBean() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<AdviceGoal> goalList = AdviceGoalDao.getUnansweredMakeupAdvice();
+        final List<AdviceGoal> goalList = AdviceGoalDao.getUnansweredMakeupAdvice();
 
         return populateUnansweredAdviceBean(goalList);
-    }
-
-    public static List<AdviceGoal> getUnansweredFoodAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        return AdviceGoalDao.getUnansweredFoodAdvice();
     }
 
     public static List<AdviceGoalBean> getUnansweredFoodAdviceBean() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<AdviceGoal> goalList =  AdviceGoalDao.getUnansweredFoodAdvice();
+        final List<AdviceGoal> goalList =  AdviceGoalDao.getUnansweredFoodAdvice();
 
         return populateUnansweredAdviceBean(goalList);
-    }
-
-    public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        return AdviceGoalDao.getUnansweredLifestyleAdvice();
     }
 
     public static List<AdviceGoalBean> getUnansweredLifestyleAdviceBean() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<AdviceGoal> goalList =   AdviceGoalDao.getUnansweredLifestyleAdvice();
+        final List<AdviceGoal> goalList =   AdviceGoalDao.getUnansweredLifestyleAdvice();
 
         return populateUnansweredAdviceBean(goalList);
-    }
-
-    public static List<AdviceGoal> getUnansweredOtherAdvice() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        return AdviceGoalDao.getUnansweredOtherAdvice();
     }
 
     public static List<AdviceGoalBean> getUnansweredOtherAdviceBean() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<AdviceGoal> goalList =  AdviceGoalDao.getUnansweredOtherAdvice();
+        final List<AdviceGoal> goalList =  AdviceGoalDao.getUnansweredOtherAdvice();
 
         return populateUnansweredAdviceBean(goalList);
     }
 
-    public static List<Goal> getGoalList() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        return GoalDao.getGoalList(Session.getSession().getUser());
-    }
-
-    private static void populateGoalBean(Goal e, GoalBean bean) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
+    private static void populateGoalBean(final Goal e, final GoalBean bean) throws InvalidDataException {
         bean.setName(e.getName());
         bean.setDescription(e.getDescription());
         bean.setNumberOfSteps(e.getNumberOfSteps());
@@ -166,11 +142,11 @@ public class ManageGoalController {
     }
 
     public static List<GoalBean> getGoalBeanList() throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<Goal> goalList = GoalDao.getGoalList(Session.getSession().getUser());
-        List<GoalBean> beanList = new ArrayList<>();
+        final List<Goal> goalList = GoalDao.getGoalList(Session.getSession().getUser());
+        final List<GoalBean> beanList = new ArrayList<>();
 
-        for (Goal e : goalList){
-            GoalBean bean = new GoalBean();
+        for (final Goal e : goalList){
+            final GoalBean bean = new GoalBean();
             populateGoalBean(e, bean);
 
             beanList.add(bean);
@@ -180,17 +156,13 @@ public class ManageGoalController {
     }
 
 
-    public static List<EventGoal> getEventGoalList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
-        return EventGoalDao.getEventGoalList(Session.getSession().getUser());
-    }
+    public static List<EventGoalBean> getEventGoalBeanList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
+        final List<EventGoal> goalList = EventGoalDao.getEventGoalList(Session.getSession().getUser());
 
-    public static List<EventGoalBean> getEventGoalBeanList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, SQLException, InvalidDataException {
-        List<EventGoal> goalList = EventGoalDao.getEventGoalList(Session.getSession().getUser());
+        final List<EventGoalBean> beanList = new ArrayList<>();
 
-        List<EventGoalBean> beanList = new ArrayList<>();
-
-        for (EventGoal e : goalList){
-            EventGoalBean bean = new EventGoalBean();
+        for (final EventGoal e : goalList){
+            final EventGoalBean bean = new EventGoalBean();
             populateGoalBean(e, bean);
 
             bean.setEventId(e.getEvent().getId());
@@ -204,18 +176,14 @@ public class ManageGoalController {
         return beanList;
     }
 
-    public static List<Event> getEventList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
-        return EventDao.getEventList();
-    }
-
     public static List<EventBean> getEventBeanList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<Event> eventList = EventDao.getEventList();
-        List<EventBean> beanList = new ArrayList<>();
+        final List<Event> eventList = EventDao.getEventList();
+        final List<EventBean> beanList = new ArrayList<>();
 
 
-        for (Event e : eventList){
+        for (final Event e : eventList){
 
-            EventBean bean = new EventBean();
+            final EventBean bean = new EventBean();
 
             bean.setName(e.getName());
             bean.setStartingDate(e.getStartingDate());
@@ -231,19 +199,15 @@ public class ManageGoalController {
         return beanList;
     }
 
-    public static List<EventGoal> getPendingEventGoalList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
-        return JoinEventController.getPendingEventGoalList();
-    }
-
     public static List<EventGoalBean> getPendingEventGoalBeanList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException, InvalidDataException {
-        List<EventGoal> goalList = JoinEventController.getPendingEventGoalList();
+        final List<EventGoal> goalList = JoinEventController.getPendingEventGoalList();
 
-        List<EventGoalBean> beanList = new ArrayList<>();
+        final List<EventGoalBean> beanList = new ArrayList<>();
 
 
-        for (EventGoal e : goalList){
+        for (final EventGoal e : goalList){
 
-            EventGoalBean bean = new EventGoalBean();
+            final EventGoalBean bean = new EventGoalBean();
 
             bean.setName(e.getName());
             bean.setDescription(e.getDescription());
@@ -263,8 +227,8 @@ public class ManageGoalController {
         return beanList;
     }
 
-    public static void answerAdviceGoal(AnswerAdviceGoalBean bean) throws UserNotFoundException, LoginException, DatabaseException, NotEnoughPermissionsException, SQLException {
-        UserRole role = UserDao.getUser(Session.getSession().getUser()).getRole();
+    public static void answerAdviceGoal(final AnswerAdviceGoalBean bean) throws UserNotFoundException, LoginException, DatabaseException, NotEnoughPermissionsException, SQLException, EmptyResultSetException {
+        final UserRole role = UserDao.getUser(Session.getSession().getUser()).getRole();
 
         if (role.equals(UserRole.USER))
             throw new NotEnoughPermissionsException("Your type of user cannot perform this action");
@@ -272,44 +236,44 @@ public class ManageGoalController {
         AdviceGoalDao.answerAdviceGoal(bean.getAnswerAdviceId(), bean.getGoalUser(), Session.getSession().getUser(), bean.getAnswer());
     }
 
-    public static void joinEvent(EventGoalBean bean, int id) throws UserNotFoundException, LoginException, DatabaseException, EmptyResultSetException, SQLException {
-        User userEntity = UserDao.getUser(Session.getSession().getUser());
-        Event eventEntity = EventDao.getEvent(bean.getEventId(), bean.getEventOrganizer());
+    public static void joinEvent(final EventGoalBean bean, final int id) throws DatabaseException, EmptyResultSetException {
+        final User userEntity = UserDao.getUser(Session.getSession().getUser());
+        final Event eventEntity = EventDao.getEvent(bean.getEventId(), bean.getEventOrganizer());
 
         new EventGoal(bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), id, userEntity, eventEntity, EventRequestState.STARTING);
     }
 
-    public static void acceptEventGoal(EventGoalBean bean) throws UserNotFoundException, NoTransitionException, LoginException, DatabaseException, EmptyResultSetException {
+    public static void acceptEventGoal(final EventGoalBean bean) throws UserNotFoundException, NoTransitionException, LoginException, DatabaseException, EmptyResultSetException {
 
 
         try{
             JoinEventController.acceptJoinRequest(bean);
             EventGoalDao.acceptEventGoal(bean.getId(), bean.getUser());
-        } catch(NoTransitionException e){
+        } catch(final NoTransitionException e){
             throw new NoTransitionException("Event Goal not accepted");
         }
     }
 
-    public static void rejectEventGoal(EventGoalBean bean) throws UserNotFoundException, NoTransitionException, LoginException, DatabaseException, EmptyResultSetException {
+    public static void rejectEventGoal(final EventGoalBean bean) throws UserNotFoundException, NoTransitionException, LoginException, DatabaseException, EmptyResultSetException {
 
         try{
             JoinEventController.rejectJoinRequest(bean);
             EventGoalDao.rejectEventGoal(bean.getId(), bean.getUser());
-        } catch(NoTransitionException e){
+        } catch(final NoTransitionException e){
             throw new NoTransitionException("Event Goal not rejected");
         }
     }
 
-    public static User getCurrentUser() throws UserNotFoundException, LoginException, DatabaseException, SQLException {
-        String user = Session.getSession().getUser();
+    public static User getCurrentUser() throws DatabaseException, EmptyResultSetException {
+        final String user = Session.getSession().getUser();
 
         return UserDao.getUser(user);
     }
 
-    public static UserBean getCurrentUserBean() throws UserNotFoundException, LoginException, DatabaseException, SQLException {
-        User user = ManageGoalController.getCurrentUser();
+    public static UserBean getCurrentUserBean() throws DatabaseException, EmptyResultSetException {
+        final User user = getCurrentUser();
 
-        UserBean bean = new UserBean();
+        final UserBean bean = new UserBean();
         bean.setName(user.getName());
         bean.setSurname(user.getSurname());
         bean.setUsername(user.getUsername());
@@ -317,8 +281,8 @@ public class ManageGoalController {
         return bean;
     }
 
-    public static void createGoal(GoalBean bean) throws UserNotFoundException, LoginException, DatabaseException, SQLException, EmptyResultSetException {
-        User user = UserDao.getUser(Session.getSession().getUser());
+    public static void createGoal(final GoalBean bean) throws UserNotFoundException, LoginException, DatabaseException, SQLException, EmptyResultSetException {
+        final User user = UserDao.getUser(Session.getSession().getUser());
         GoalFactory.getGoalFactory().createGoal(bean);
 
         if (bean.isReminder()) {
@@ -326,7 +290,7 @@ public class ManageGoalController {
         }
     }
 
-    public static Goal getGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
+    public static Goal getGoal(final String user, final int id) throws EmptyResultSetException, DatabaseException {
         return GoalDao.getGoal(user, id);
     }
 

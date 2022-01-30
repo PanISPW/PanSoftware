@@ -15,20 +15,20 @@ public class DataValidation {
         return LocalDate.of(1970, Month.JANUARY, 1);
     }
 
-    public static boolean isNatural(int number) {
+    public static boolean isNatural(final int number) {
         return number >= 0;
     }
 
-    public static boolean isNotPastDate(LocalDate date) {
+    public static boolean isNotPastDate(final LocalDate date) {
         return !date.isBefore(LocalDate.now());
     }
 
-    public static boolean isCorrectEmail(String email) {
+    public static boolean isCorrectEmail(final String email) {
         boolean bool = false;
-        String regex = "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b";
+        final String regex = "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b";
 
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(email);
+        final Pattern pattern = Pattern.compile(regex);
+        final Matcher matcher = pattern.matcher(email);
 
         if (matcher.matches())
             bool = true;

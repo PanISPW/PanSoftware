@@ -18,10 +18,10 @@ public class EventBean {
     private EventType type = EventType.PUBLIC;
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(int id) throws InvalidDataException {
+    public void setId(final int id) throws InvalidDataException {
         if (DataValidation.isNatural(id))
             this.id = id;
         else
@@ -29,50 +29,50 @@ public class EventBean {
     }
 
     public String getOrganizer() {
-        return organizer;
+        return this.organizer;
     }
 
-    public void setOrganizer(String organizer) {
+    public void setOrganizer(final String organizer) {
         this.organizer = organizer;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public LocalDate getStartingDate() {
-        return startingDate;
+        return this.startingDate;
     }
 
-    public void setStartingDate(LocalDate startingDate) throws InvalidDataException {
+    public void setStartingDate(final LocalDate startingDate) throws InvalidDataException {
         this.startingDate = startingDate;
     }
 
-    public void setNewStartingDate(LocalDate startingDate) throws InvalidDataException {
+    public void setNewStartingDate(final LocalDate startingDate) throws InvalidDataException {
         if (DataValidation.isNotPastDate(startingDate))
             this.startingDate = startingDate;
         else throw new InvalidDataException("The starting date must not be a past date");
     }
 
     public LocalDate getEndingDate() {
-        return endingDate;
+        return this.endingDate;
     }
 
-    public void setEndingDate(LocalDate endingDate) throws InvalidDataException {
-        if (endingDate.isAfter(startingDate))
+    public void setEndingDate(final LocalDate endingDate) throws InvalidDataException {
+        if (endingDate.isAfter(this.startingDate))
             this.endingDate = endingDate;
         else throw new InvalidDataException("The ending date must not be a valid date after the starting one");
     }
 
     public EventType getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(EventType type) {
+    public void setType(final EventType type) {
         if (type.equals(EventType.PRIVATE))
             this.type = type;
     }

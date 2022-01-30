@@ -21,10 +21,10 @@ public class TestManageGoalController {
     @Test
     public void testUpdateStepsCompletedMoreThanMax() throws InvalidDataException, UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
 
-        String user = "leosciascia";
-        int id = 1;
+        final String user = "leosciascia";
+        final int id = 1;
 
-        UpdateStepsBean bean = new UpdateStepsBean();
+        final UpdateStepsBean bean = new UpdateStepsBean();
         bean.setType(GoalType.GOAL);
         bean.setStepsCompleted(0);
 
@@ -39,7 +39,7 @@ public class TestManageGoalController {
         bean.setStepsCompleted(5);
         ManageGoalController.updateSteps(bean);
 
-        int output = ManageGoalController.getGoal(user, id).getStepsCompleted();
+        final int output = ManageGoalController.getGoal(user, id).getStepsCompleted();
 
         assertEquals(4, output);
     }

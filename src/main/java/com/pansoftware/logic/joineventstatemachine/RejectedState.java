@@ -11,7 +11,7 @@ import static com.pansoftware.logic.util.Constants.NO_TRANSITION_OCCURS;
 
 public class RejectedState extends JoinEventState {
 
-    public RejectedState(Event event) {
+    public RejectedState(final Event event) {
     }
 
     @Override

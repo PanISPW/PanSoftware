@@ -10,7 +10,7 @@
 <%
     if (request.getParameter("login") != null) {
         try {
-            LoginBean bean = new LoginBean();
+            final LoginBean bean = new LoginBean();
 
             bean.setUsername(request.getParameter("username"));
             bean.setPassword(request.getParameter("password"));
@@ -20,7 +20,7 @@
             %>
             <jsp:forward page="Profile.jsp"/>
             <%
-        } catch(SQLException | DatabaseException | UserNotFoundException e){
+        } catch(final SQLException | DatabaseException | UserNotFoundException e){
             %>
             <jsp:forward page="LoginFailure.jsp"/>
             <%

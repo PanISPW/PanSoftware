@@ -12,37 +12,37 @@ public class EventGoalBean extends GoalBean{
     private EventRequestState state = EventRequestState.PENDING;
 
     public int getEventId() {
-        return eventId;
+        return this.eventId;
     }
 
-    public void setEventId(int eventId) throws InvalidDataException {
+    public void setEventId(final int eventId) throws InvalidDataException {
         if (DataValidation.isNatural(eventId))
             this.eventId = eventId;
         else throw new InvalidDataException("id should be a natural number");
     }
 
     public String getEventOrganizer() {
-        return eventOrganizer;
+        return this.eventOrganizer;
     }
 
-    public void setEventOrganizer(String eventOrganizer) {
+    public void setEventOrganizer(final String eventOrganizer) {
         this.eventOrganizer = eventOrganizer;
     }
 
     public EventRequestState getState() {
-        return state;
+        return this.state;
     }
 
-    public void setState(EventRequestState state) throws InvalidDataException {
+    public void setState(final EventRequestState state) throws InvalidDataException {
         if (state.equals(EventRequestState.ACCEPTED) | state.equals(EventRequestState.REJECTED))
             this.state = state;
     }
 
     public String getEventName() {
-        return eventName;
+        return this.eventName;
     }
 
-    public void setEventName(String eventName) {
+    public void setEventName(final String eventName) {
         this.eventName = eventName;
     }
 }

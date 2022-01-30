@@ -17,8 +17,8 @@ public class TestGoalBean {
     public void testSetNameTooLong() {
 
         assertThrows(InvalidDataException.class, () -> {
-            GoalBean bean = new GoalBean();
-            bean.setName(TEST_INPUT);
+            final GoalBean bean = new GoalBean();
+            bean.setName(TestGoalBean.TEST_INPUT);
         });
     }
 

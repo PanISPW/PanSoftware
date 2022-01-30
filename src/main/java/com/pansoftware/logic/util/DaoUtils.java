@@ -18,7 +18,7 @@ public class DaoUtils {
 
     private DaoUtils(){}
 
-    public static ProductType intToProductType(int databaseInt) {
+    public static ProductType intToProductType(final int databaseInt) {
 
         return switch (databaseInt) {
             case 0 -> ProductType.MAKEUP;
@@ -29,7 +29,7 @@ public class DaoUtils {
         };
     }
 
-    public static int productTypeToInt(ProductType type) {
+    public static int productTypeToInt(final ProductType type) {
 
         return switch (type) {
             case MAKEUP -> 0;
@@ -41,18 +41,18 @@ public class DaoUtils {
 
     }
 
-    public static java.sql.Date localDateToSqlDateOrDefault(LocalDate localDate) {
-        java.sql.Date date;
+    public static java.sql.Date localDateToSqlDateOrDefault(final LocalDate localDate) {
+        final java.sql.Date date;
         try {
             date = java.sql.Date.valueOf(localDate);
-        } catch (NullPointerException e) {
+        } catch (final NullPointerException e) {
             return java.sql.Date.valueOf(DataValidation.setDefaultDate());
         }
 
         return date;
     }
 
-    public static UserRole intToUserRole(int databaseInt) {
+    public static UserRole intToUserRole(final int databaseInt) {
 
         return switch (databaseInt) {
             case 1 -> UserRole.ACTIVIST;
@@ -61,7 +61,7 @@ public class DaoUtils {
         };
     }
 
-    public static int userRoleToInt(UserRole role) {
+    public static int userRoleToInt(final UserRole role) {
         return switch (role) {
             case ACTIVIST -> 1;
             case BRANDMANAGER -> 2;
@@ -69,7 +69,7 @@ public class DaoUtils {
         };
     }
 
-    public static EventType databaseIntToEventType(int databaseInt) {
+    public static EventType databaseIntToEventType(final int databaseInt) {
 
         if(databaseInt == 1){
             return EventType.PRIVATE;
@@ -79,7 +79,7 @@ public class DaoUtils {
 
     }
 
-    public static int eventTypeToDatabaseInt(EventType type) {
+    public static int eventTypeToDatabaseInt(final EventType type) {
 
         if(type == EventType.PRIVATE){
             return 1;
@@ -88,7 +88,7 @@ public class DaoUtils {
         }
     }
 
-    public static EventRequestState databaseIntToEventRequestState(int databaseInt) {
+    public static EventRequestState databaseIntToEventRequestState(final int databaseInt) {
         return switch (databaseInt) {
             case 0 -> EventRequestState.PENDING;
             case 1 -> EventRequestState.ACCEPTED;
@@ -97,7 +97,7 @@ public class DaoUtils {
         };
     }
 
-    public static int eventRequestStateToDatabaseInt(EventRequestState requestState) {
+    public static int eventRequestStateToDatabaseInt(final EventRequestState requestState) {
         return switch (requestState) {
             case PENDING -> 0;
             case ACCEPTED -> 1;
@@ -106,9 +106,9 @@ public class DaoUtils {
         };
     }
 
-    public static ResultSet executeCRUDQuery(String sql) throws SQLException {
-        Statement statement;
-        DatabaseConnection databaseConnection;
+    public static ResultSet executeCRUDQuery(final String sql) throws SQLException {
+        final Statement statement;
+        final DatabaseConnection databaseConnection;
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
@@ -116,9 +116,9 @@ public class DaoUtils {
         return statement.executeQuery(sql);
     }
 
-    public static void executeUpdate(String sql) throws SQLException, DatabaseException {
-        DatabaseConnection databaseConnection;
-        Statement statement;
+    public static void executeUpdate(final String sql) throws SQLException, DatabaseException {
+        final DatabaseConnection databaseConnection;
+        final Statement statement;
 
         databaseConnection = new DatabaseConnection();
         statement = databaseConnection.createStatement();
@@ -127,14 +127,14 @@ public class DaoUtils {
         DatabaseConnection.closeStatement(statement);
     }
 
-    public static int getLastIdFromSelectedGoalType(String goalType, String user) throws DatabaseException {
-        int lastId;
+    public static int getLastIdFromSelectedGoalType(final String goalType, final String user) throws DatabaseException {
+        final int lastId;
 
         ResultSet resultSet = null;
         try {
 
-            String sql = String.format("SELECT MAX(Id) as maxId FROM %s WHERE user = '%s';", goalType, user);
-            resultSet = DaoUtils.executeCRUDQuery(sql);
+            final String sql = String.format("SELECT MAX(Id) as maxId FROM %s WHERE user = '%s';", goalType, user);
+            resultSet = executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
@@ -143,7 +143,7 @@ public class DaoUtils {
             lastId = resultSet.getInt("maxId");
             return lastId;
 
-        } catch (SQLException | EmptyResultSetException e) {
+        } catch (final SQLException | EmptyResultSetException e) {
 
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 

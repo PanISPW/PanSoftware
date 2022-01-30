@@ -24,73 +24,82 @@ public class GoalDao {
 
     private GoalDao(){}
 
-    public static List<Goal> getGoalList(String user) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
+    public static List<Goal> getGoalList(final String user) throws EmptyResultSetException, DatabaseException {
+        try {
+            final List<Goal> goalList;
 
-        List<Goal> goalList;
+            final String sql = String.format("SELECT * FROM goal WHERE user = '%s';", user);
+            final ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
-        String sql = String.format("SELECT * FROM goal WHERE user = '%s';", user);
-        ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+            if (!resultSet.first()) {
+                throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
+            }
 
-        if (!resultSet.first()) {
-            throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
+            goalList = new ArrayList<>();
+
+            resultSet.beforeFirst();
+
+            while (resultSet.next()) {
+
+                final User userEntity = UserDao.getUser(user);
+
+                final Goal singleGoal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
+                goalList.add(singleGoal);
+            }
+
+            DatabaseConnection.closeResultSet(resultSet);
+            return goalList;
+        } catch(final SQLException e){
+            throw new DatabaseException("SQL error");
         }
-
-        goalList = new ArrayList<>();
-
-        resultSet.beforeFirst();
-
-        while (resultSet.next()) {
-
-            User userEntity = UserDao.getUser(user);
-
-            Goal singleGoal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
-            goalList.add(singleGoal);
-        }
-
-        DatabaseConnection.closeResultSet(resultSet);
-        return goalList;
     }
 
-    public static Goal getGoal(String user, int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
+    public static Goal getGoal(final String user, final int id) throws EmptyResultSetException, DatabaseException {
 
-        Goal goal;
+        try {
+            final Goal goal;
 
-        String sql = String.format("SELECT * FROM goal WHERE user='%s' and id=%s;", user, id);
-        ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
+            final String sql = String.format("SELECT * FROM goal WHERE user='%s' and id=%s;", user, id);
+            final ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
 
-        if (!resultSet.first()) {
-            throw new EmptyResultSetException("Goal not found");
+            if (!resultSet.first()) {
+                throw new EmptyResultSetException("Goal not found");
+            }
+
+            final User userEntity = UserDao.getUser(user);
+            goal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
+
+            DatabaseConnection.closeResultSet(resultSet);
+            return goal;
+        } catch(final SQLException e){
+            throw new DatabaseException("SQL error");
         }
-
-        User userEntity = UserDao.getUser(user);
-        goal = new Goal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION), resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED), resultSet.getDate(Constants.DEADLINE).toLocalDate(), userEntity, resultSet.getInt("Id"));
-
-        DatabaseConnection.closeResultSet(resultSet);
-        return goal;
     }
 
-    public static int getLastUserGoalId(String user) throws DatabaseException {
+    public static int getLastUserGoalId(final String user) throws DatabaseException {
         return getLastIdFromSelectedGoalType("goal", user);
     }
 
-    public static void addGoal(Goal goal) throws SQLException, DatabaseException {
+    public static void addGoal(final Goal goal) throws DatabaseException {
 
-        Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
-        String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername());
-        DaoUtils.executeUpdate(insertStatement);
+        try {
+            final Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
+            final String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername());
+            DaoUtils.executeUpdate(insertStatement);
+        } catch(final SQLException e){
+            throw new DatabaseException("Can't add Goal to Database");
+        }
     }
 
-    public static void updateStepsGoal(int stepsCompleted, int id, String user) throws DatabaseException {
+    public static void updateStepsGoal(final int stepsCompleted, final int id, final String user) throws DatabaseException {
 
         try {
 
-            String updateStatement = String.format("UPDATE  goal set stepsCompleted=%s WHERE id = %s AND user='%s';", stepsCompleted, id, user);
+            final String updateStatement = String.format("UPDATE  goal set stepsCompleted=%s WHERE id = %s AND user='%s';", stepsCompleted, id, user);
             DaoUtils.executeUpdate(updateStatement);
 
-        } catch (SQLException e) {
-
+        } catch (final SQLException e) {
             throw new DatabaseException("Can't update Goal in database");
-
         }
     }
 }

@@ -15,14 +15,14 @@ public class StartingState extends JoinEventState {
     private static final boolean ISPRIVATE = false;
     private static Event event;
 
-    public StartingState(ConcreteStateMachine stateMachine, Event event) {
+    public StartingState(final ConcreteStateMachine stateMachine, final Event event) {
     }
 
     public static JoinEventState nextState() throws DatabaseException {
-        if (ISPRIVATE) {
-            return new PendingState(stateMachine, event);
+        if (StartingState.ISPRIVATE) {
+            return new PendingState(StartingState.stateMachine, StartingState.event);
         } else {
-            return new AcceptedState(event);
+            return new AcceptedState(StartingState.event);
         }
     }
 

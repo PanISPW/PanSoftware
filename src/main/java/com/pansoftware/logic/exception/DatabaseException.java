@@ -4,7 +4,7 @@ package com.pansoftware.logic.exception;
 
 public class DatabaseException extends Exception {
 
-    public DatabaseException(String explanation) {
+    public DatabaseException(final String explanation) {
         super(explanation);
     }
 

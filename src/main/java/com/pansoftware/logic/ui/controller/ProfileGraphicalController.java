@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class ProfileGraphicalController implements Initializable {
 
-    UserBean user = null;
+    UserBean user;
     @FXML
     private Label nameLabel;
     @FXML
@@ -52,96 +52,96 @@ public class ProfileGraphicalController implements Initializable {
 
     @FXML
     public void goalRadio() throws Exception {
-        FxUtilities.showScrollPane(goalPane);
-        FxUtilities.hideScrollPane(adviceGoalPane);
-        FxUtilities.hideScrollPane(eventGoalPane);
+        FxUtilities.showScrollPane(this.goalPane);
+        FxUtilities.hideScrollPane(this.adviceGoalPane);
+        FxUtilities.hideScrollPane(this.eventGoalPane);
 
         // lista
-        List<GoalBean> goals = ManageGoalController.getGoalBeanList();
-        goalList.getChildren().clear();
+        final List<GoalBean> goals = ManageGoalController.getGoalBeanList();
+        this.goalList.getChildren().clear();
 
-        for (GoalBean item : goals) {
+        for (final GoalBean item : goals) {
 
-            GoalCellGraphicalController cell = new GoalCellGraphicalController(item);
+            final GoalCellGraphicalController cell = new GoalCellGraphicalController(item);
 
-            FXMLLoader loader = FxUtilities.loadFxml(Pages.GOALITEM);
+            final FXMLLoader loader = FxUtilities.loadFxml(Pages.GOALITEM);
             loader.setController(cell);
 
 
-            VBox vbox = loader.load();
+            final VBox vbox = loader.load();
 
-            goalList.getChildren().add(vbox);
+            this.goalList.getChildren().add(vbox);
         }
     }
 
     @FXML
     public void adviceGoalRadio() throws Exception {
-        FxUtilities.showScrollPane(adviceGoalPane);
-        FxUtilities.hideScrollPane(goalPane);
-        FxUtilities.hideScrollPane(eventGoalPane);
+        FxUtilities.showScrollPane(this.adviceGoalPane);
+        FxUtilities.hideScrollPane(this.goalPane);
+        FxUtilities.hideScrollPane(this.eventGoalPane);
 
         // lista
-        List<AdviceGoalBean> goals = ManageGoalController.getAdviceGoalBeanList();
-        adviceGoalList.getChildren().clear();
+        final List<AdviceGoalBean> goals = ManageGoalController.getAdviceGoalBeanList();
+        this.adviceGoalList.getChildren().clear();
 
-        for (AdviceGoalBean item : goals) {
+        for (final AdviceGoalBean item : goals) {
 
-            AdviceGoalGraphicalController cell = new AdviceGoalGraphicalController(item);
+            final AdviceGoalGraphicalController cell = new AdviceGoalGraphicalController(item);
 
-            FXMLLoader loader = FxUtilities.loadFxml(Pages.GOALITEM);
+            final FXMLLoader loader = FxUtilities.loadFxml(Pages.GOALITEM);
             loader.setController(cell);
 
-            VBox vbox = loader.load();
+            final VBox vbox = loader.load();
 
-            adviceGoalList.getChildren().add(vbox);
+            this.adviceGoalList.getChildren().add(vbox);
         }
     }
 
     @FXML
     public void eventGoalRadio() throws Exception {
-        FxUtilities.showScrollPane(eventGoalPane);
-        FxUtilities.hideScrollPane(goalPane);
-        FxUtilities.hideScrollPane(adviceGoalPane);
+        FxUtilities.showScrollPane(this.eventGoalPane);
+        FxUtilities.hideScrollPane(this.goalPane);
+        FxUtilities.hideScrollPane(this.adviceGoalPane);
 
         //lista
-        List<EventGoalBean> goals = ManageGoalController.getEventGoalBeanList();
-        eventGoalList.getChildren().clear();
+        final List<EventGoalBean> goals = ManageGoalController.getEventGoalBeanList();
+        this.eventGoalList.getChildren().clear();
 
-        for (EventGoalBean item : goals) {
+        for (final EventGoalBean item : goals) {
 
-            EventGoalGraphicalController cell = new EventGoalGraphicalController(item);
+            final EventGoalGraphicalController cell = new EventGoalGraphicalController(item);
 
-            FXMLLoader loader = FxUtilities.loadFxml(Pages.GOALITEM);
+            final FXMLLoader loader = FxUtilities.loadFxml(Pages.GOALITEM);
             loader.setController(cell);
 
-            VBox vbox = loader.load();
+            final VBox vbox = loader.load();
 
-            eventGoalList.getChildren().add(vbox);
+            this.eventGoalList.getChildren().add(vbox);
         }
     }
 
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
 
-        radioGroup = new ToggleGroup();
-        goalListButton.setToggleGroup(radioGroup);
-        adviceListButton.setToggleGroup(radioGroup);
-        eventListButton.setToggleGroup(radioGroup);
-        goalListButton.setSelected(true);
+        this.radioGroup = new ToggleGroup();
+        this.goalListButton.setToggleGroup(this.radioGroup);
+        this.adviceListButton.setToggleGroup(this.radioGroup);
+        this.eventListButton.setToggleGroup(this.radioGroup);
+        this.goalListButton.setSelected(true);
 
         try {
-            user = ManageGoalController.getCurrentUserBean();
-        } catch (Exception e) {
+            this.user = ManageGoalController.getCurrentUserBean();
+        } catch (final Exception e) {
             e.printStackTrace();
         }
 
-        nameLabel.setText(user.getName() + " " + user.getSurname());
-        usernameLabel.setText("@" + user.getUsername());
+        this.nameLabel.setText(this.user.getName() + " " + this.user.getSurname());
+        this.usernameLabel.setText("@" + this.user.getUsername());
 
         try {
-            goalRadio();
-        } catch (Exception e) {
+            this.goalRadio();
+        } catch (final Exception e) {
             e.printStackTrace();
         }
     }

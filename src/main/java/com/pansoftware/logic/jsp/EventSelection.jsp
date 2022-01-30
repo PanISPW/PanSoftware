@@ -20,7 +20,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%
-    EventGoalBean bean = new EventGoalBean();
+    final EventGoalBean bean = new EventGoalBean();
 
     if (request.getParameter("eventgoal") != null) {
         //stub
@@ -47,7 +47,7 @@
 <jsp:forward page="Profile.jsp"/>
 <%
 
-        } catch(InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
+        } catch(final InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
             e.printStackTrace();
         }
     }else{
@@ -81,11 +81,11 @@
                 List<EventBean> events = null;
                 try {
                     events = ManageGoalController.getEventBeanList();
-                } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
+                } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
                     e.printStackTrace();
                 }
                 if(events != null){
-                for (EventBean e  : events) {
+                for (final EventBean e  : events) {
             %>
             <div class="card text-center mt-2 ">
                 <div class="card-body">

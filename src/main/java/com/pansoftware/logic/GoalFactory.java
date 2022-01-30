@@ -25,7 +25,7 @@ import java.sql.SQLException;
 
 public class GoalFactory {
 
-    private static GoalFactory instance = null;
+    private static GoalFactory instance;
 
     private GoalFactory() {
     }
@@ -48,7 +48,7 @@ public class GoalFactory {
         }
     }
 
-    private void makeGoal(GoalBean bean) throws DatabaseException, SQLException, UserNotFoundException, LoginException {
+    private void makeGoal(GoalBean bean) throws DatabaseException, EmptyResultSetException {
 
         int goalId;
         try {
@@ -63,7 +63,7 @@ public class GoalFactory {
         GoalDao.addGoal(goal);
     }
 
-    private void makeAdviceGoal(AdviceGoalBean bean) throws DatabaseException, UserNotFoundException, LoginException, SQLException {
+    private void makeAdviceGoal(AdviceGoalBean bean) throws DatabaseException, EmptyResultSetException {
 
         int adviceGoalId;
         try {
@@ -80,7 +80,7 @@ public class GoalFactory {
 
     }
 
-    private void makeEventGoal(EventGoalBean bean) throws DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException, SQLException {
+    private void makeEventGoal(EventGoalBean bean) throws DatabaseException, EmptyResultSetException {
 
         int eventGoalId;
         try {

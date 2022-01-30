@@ -6,7 +6,7 @@ package com.pansoftware.logic.exception;
 
 public class UserNotFoundException extends Exception {
 
-    public UserNotFoundException(String explanation) {
+    public UserNotFoundException(final String explanation) {
         super(explanation);
     }
 

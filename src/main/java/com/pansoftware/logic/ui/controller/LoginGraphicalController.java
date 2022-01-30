@@ -5,7 +5,9 @@ import com.pansoftware.logic.bean.LoginBean;
 import com.pansoftware.logic.enumeration.Pages;
 import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.DatabaseException;
+import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -26,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class LoginGraphicalController implements Initializable {
 
-    UserRole role = null;
+    UserRole role;
 
     @FXML
     private TextField usernameField;
@@ -44,27 +46,30 @@ public class LoginGraphicalController implements Initializable {
     private VBox outerVBox;
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
         // empty
     }
 
     @FXML
-    public void login() throws SQLException, IOException, DatabaseException {
+    public void login() throws SQLException, DatabaseException, EmptyResultSetException {
 
         try {
 
-            String username = usernameField.getText();
-            String password = passwordField.getText();
+            final String username = this.usernameField.getText();
+            final String password = this.passwordField.getText();
 
-            LoginBean bean = new LoginBean(username, password);
+            final LoginBean bean = new LoginBean(username, password);
             LoginController.loginUser(bean);
 
-            Scene newScene = FxUtilities.goToPage(Pages.PROFILE, null);
-            Stage stage = (Stage) outerVBox.getScene().getWindow();
+            final Scene newScene = FxUtilities.goToPage(Pages.PROFILE, null);
+            final Stage stage = (Stage) this.outerVBox.getScene().getWindow();
             stage.setScene(newScene);
 
-        } catch (UserNotFoundException e) {
-            resultLabel.setText(e.getMessage());
+        } catch (final UserNotFoundException e) {
+            this.resultLabel.setText(e.getMessage());
+        } catch(final IOException e){
+            e.printStackTrace();
+            Platform.exit();
         }
     }
 

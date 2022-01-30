@@ -4,7 +4,7 @@ package com.pansoftware.logic.exception;
 
 public class InvalidDataException extends Exception {
 
-    public InvalidDataException(String explanation) {
+    public InvalidDataException(final String explanation) {
         super(explanation);
     }
 

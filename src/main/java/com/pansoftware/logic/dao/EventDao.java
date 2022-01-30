@@ -25,9 +25,9 @@ public class EventDao {
     private EventDao() {
     }
 
-    public static List<Event> getEventList() throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
+    public static List<Event> getEventList() throws EmptyResultSetException, DatabaseException {
 
-        List<Event> eventList;
+        final List<Event> eventList;
 
         ResultSet resultSet = null;
         try {
@@ -43,15 +43,15 @@ public class EventDao {
 
             while (resultSet.next()) {
 
-                User userEntity = UserDao.getUser(resultSet.getString("organizer"));
-                EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
+                final User userEntity = UserDao.getUser(resultSet.getString("organizer"));
+                final EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
-                Event singleEvent = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
+                final Event singleEvent = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
                 eventList.add(singleEvent);
             }
             return eventList;
 
-        } catch (SQLException e) {
+        } catch (final SQLException e) {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally{
@@ -59,29 +59,29 @@ public class EventDao {
         }
     }
 
-    public static Event getEvent(int id, String organizer) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
+    public static Event getEvent(final int id, final String organizer) throws EmptyResultSetException, DatabaseException {
 
-        Event event;
+        final Event event;
 
         ResultSet resultSet = null;
         try {
 
-            String sql = String.format("SELECT * FROM event WHERE id = %s AND organizer = '%s';", id, organizer);
+            final String sql = String.format("SELECT * FROM event WHERE id = %s AND organizer = '%s';", id, organizer);
             resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
                 throw new EmptyResultSetException("Event not found");
             }
 
-            User userEntity = UserDao.getUser(resultSet.getString("organizer"));
-            EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
+            final User userEntity = UserDao.getUser(resultSet.getString("organizer"));
+            final EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
             event = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
 
             return event;
 
 
-        } catch (SQLException e) {
+        } catch (final SQLException e) {
             throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
         } finally {
             DatabaseConnection.closeResultSet(resultSet);
@@ -89,20 +89,20 @@ public class EventDao {
     }
 
 
-    public static void addEvent(Event event) throws DatabaseException {
+    public static void addEvent(final Event event) throws DatabaseException {
 
-        int typeInt;
+        final int typeInt;
 
         try {
 
             typeInt = DaoUtils.eventTypeToDatabaseInt(event.getType());
-            Date sqlStartingDate = DaoUtils.localDateToSqlDateOrDefault(event.getStartingDate());
-            Date sqlEndingDate = DaoUtils.localDateToSqlDateOrDefault(event.getEndingDate());
+            final Date sqlStartingDate = DaoUtils.localDateToSqlDateOrDefault(event.getStartingDate());
+            final Date sqlEndingDate = DaoUtils.localDateToSqlDateOrDefault(event.getEndingDate());
 
-            String insertStatement = String.format("INSERT INTO event (id, organizer, name, startingDate, endingDate, private) VALUES (%s,'%s','%s','%s','%s',%s);", event.getId(), event.getUser().getUsername(), event.getName(), sqlStartingDate, sqlEndingDate, typeInt);
+            final String insertStatement = String.format("INSERT INTO event (id, organizer, name, startingDate, endingDate, private) VALUES (%s,'%s','%s','%s','%s',%s);", event.getId(), event.getUser().getUsername(), event.getName(), sqlStartingDate, sqlEndingDate, typeInt);
             DaoUtils.executeUpdate(insertStatement);
 
-        } catch (SQLException e) {
+        } catch (final SQLException e) {
 
             throw new DatabaseException("Can't insert new Goal in database");
 
@@ -110,16 +110,16 @@ public class EventDao {
     }
 
 
-    public static EventType getEventType(String organizer, int id) throws DatabaseException {
+    public static EventType getEventType(final String organizer, final int id) throws DatabaseException {
 
         ResultSet resultSet = null;
         try {
-            String sql = String.format("SELECT * FROM event WHERE id = %s AND organizer = '%s';", id, organizer);
+            final String sql = String.format("SELECT * FROM event WHERE id = %s AND organizer = '%s';", id, organizer);
             resultSet = DaoUtils.executeCRUDQuery(sql);
 
             return DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
-        } catch (SQLException e) {
+        } catch (final SQLException e) {
             throw new DatabaseException("Can't update Goal in database");
         } finally {
             DatabaseConnection.closeResultSet(resultSet);

@@ -14,14 +14,14 @@
     if (request.getParameter("submitadvice") != null ){
 
         try {
-            AnswerAdviceGoalBean bean = new AnswerAdviceGoalBean();
+            final AnswerAdviceGoalBean bean = new AnswerAdviceGoalBean();
             bean.setAnswerAdviceId(Integer.parseInt(request.getParameter("goalid")));
             bean.setGoalUser(request.getParameter("user"));
             bean.setAnswer(request.getParameter("advice"));
 
             ManageGoalController.answerAdviceGoal(bean);
 
-        } catch (InvalidDataException | UserNotFoundException | LoginException | DatabaseException | NotEnoughPermissionsException | SQLException e) {
+        } catch (final InvalidDataException | UserNotFoundException | LoginException | DatabaseException | NotEnoughPermissionsException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -49,7 +49,7 @@
 <jsp:forward page="Login.jsp"/>
 <%
     }
-} catch (InvalidDataException e) {
+} catch (final InvalidDataException e) {
 %>
 <jsp:forward page="Login.jsp"/>
 <%
@@ -81,11 +81,11 @@
                     List<AdviceGoalBean> goals = null;
                     try {
                         goals = ManageGoalController.getUnansweredMakeupAdviceBean();
-                    } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(goals != null){
-                    for (AdviceGoalBean a  : goals) {
+                    for (final AdviceGoalBean a  : goals) {
                 %>
                 <div class="card text-center mt-2 ">
                     <div class="card-body">
@@ -122,11 +122,11 @@
                     List<AdviceGoalBean> foodGoals = null;
                     try {
                         foodGoals = ManageGoalController.getUnansweredFoodAdviceBean();
-                    } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(foodGoals != null){
-                        for (AdviceGoalBean a  : foodGoals) {
+                        for (final AdviceGoalBean a  : foodGoals) {
                 %>
                 <div class="card text-center mt-2 ">
                     <div class="card-body">
@@ -162,11 +162,11 @@
                     List<AdviceGoalBean> lifestyleGoals = null;
                     try {
                         lifestyleGoals = ManageGoalController.getUnansweredLifestyleAdviceBean();
-                    } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(lifestyleGoals != null){
-                        for (AdviceGoalBean a  : lifestyleGoals) {
+                        for (final AdviceGoalBean a  : lifestyleGoals) {
                 %>
                 <div class="card text-center mt-2 ">
                     <div class="card-body">
@@ -201,11 +201,11 @@
                     List<AdviceGoalBean> otherGoals = null;
                     try {
                         otherGoals = ManageGoalController.getUnansweredOtherAdviceBean();
-                    } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException e) {
                         e.printStackTrace();
                     }
                     if(otherGoals != null){
-                        for (AdviceGoalBean a  : otherGoals) {
+                        for (final AdviceGoalBean a  : otherGoals) {
                 %>
                 <div class="card text-center mt-2 ">
                     <div class="card-body">

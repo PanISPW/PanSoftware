@@ -13,7 +13,7 @@
 if (request.getParameter("accept") != null | request.getParameter("reject") != null){
 
     try {
-        EventGoalBean bean = new EventGoalBean();
+        final EventGoalBean bean = new EventGoalBean();
         bean.setId(Integer.parseInt(request.getParameter("goalid")));
         bean.setUser(request.getParameter("user"));
 
@@ -22,7 +22,7 @@ if (request.getParameter("accept") != null | request.getParameter("reject") != n
         else
             ManageGoalController.acceptEventGoal(bean);
 
-    } catch (InvalidDataException | UserNotFoundException | LoginException | DatabaseException | NoTransitionException | EmptyResultSetException e) {
+    } catch (final InvalidDataException | UserNotFoundException | LoginException | DatabaseException | NoTransitionException | EmptyResultSetException e) {
         e.printStackTrace();
     }
 
@@ -50,7 +50,7 @@ if (request.getParameter("accept") != null | request.getParameter("reject") != n
 <jsp:include page="Login.jsp"/>
 <%
     }
-} catch (InvalidDataException e) {
+} catch (final InvalidDataException e) {
 %>
 <jsp:forward page="Login.jsp"/>
 <%
@@ -64,11 +64,11 @@ if (request.getParameter("accept") != null | request.getParameter("reject") != n
             List<EventGoalBean> goals = null;
             try {
                 goals = ManageGoalController.getPendingEventGoalBeanList();
-            } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
+            } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
                 e.printStackTrace();
             }
             if(goals != null){
-            for (EventGoalBean e  : goals) {
+            for (final EventGoalBean e  : goals) {
         %>
         <div class="card text-center mt-2 ">
             <div class="card-body">

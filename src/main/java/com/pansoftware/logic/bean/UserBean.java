@@ -6,26 +6,26 @@ public class UserBean {
     private String surname = "";
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public String getSurname() {
-        return surname;
+        return this.surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 }

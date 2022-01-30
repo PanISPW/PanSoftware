@@ -9,48 +9,48 @@ import com.pansoftware.logic.enumeration.UserRole;
 
 public class Session {
 
-    private static Session instance = null;
+    private static Session instance;
     private String username;
     private Pages page;
     private UserRole role;
 
     private Session() {
-        username = "";
+        this.username = "";
     }
 
     public static Session getSession() {
-        if (instance == null)
-            instance = new Session();
+        if (Session.instance == null)
+            Session.instance = new Session();
 
-        return instance;
+        return Session.instance;
     }
 
     public static void invalidate(){
-        instance = null;
+        Session.instance = null;
     }
 
     public UserRole getRole() {
-        return role;
+        return this.role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(final UserRole role) {
         this.role = role;
     }
 
     public Pages getPage() {
-        return page;
+        return this.page;
     }
 
-    public void setPage(Pages page) {
+    public void setPage(final Pages page) {
         this.page = page;
     }
 
     public String getUser() {
-        return username;
+        return this.username;
     }
 
-    public void setCurrUser(String currUser) {
-        this.username = currUser;
+    public void setCurrUser(final String currUser) {
+        username = currUser;
     }
 
 }

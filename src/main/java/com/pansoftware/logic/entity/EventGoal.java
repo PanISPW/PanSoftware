@@ -23,48 +23,48 @@ public class EventGoal extends Goal {
 
     private final StateMachine stateMachine;
 
-    public EventGoal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, int id, User user, Event event, EventRequestState state) throws DatabaseException {
+    public EventGoal(final String name, final String description, final int numberOfSteps, final int stepsCompleted, final LocalDate deadline, final int id, final User user, final Event event, final EventRequestState state) throws DatabaseException {
         super(name, description, numberOfSteps, stepsCompleted, deadline, user, id);
         this.event = event;
 
         try {
-            this.organizer = event.getUser();
-        } catch (NullPointerException e) {
-            this.organizer = null;
+            organizer = event.getUser();
+        } catch (final NullPointerException e) {
+            organizer = null;
         }
 
-        this.stateMachine = new ConcreteStateMachine(event, this, state);
+        stateMachine = new ConcreteStateMachine(event, this, state);
     }
 
-    public static EventGoal getEventGoal(String user, int id) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
+    public static EventGoal getEventGoal(final String user, final int id) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
         return EventGoalDao.getEventGoal(user, id);
     }
 
     public Event getEvent() {
-        return event;
+        return this.event;
     }
 
-    public void setEvent(Event event) {
+    public void setEvent(final Event event) {
         this.event = event;
     }
 
     public User getOrganizer() {
-        return organizer;
+        return this.organizer;
     }
 
-    public void setOrganizer(User organizer) {
+    public void setOrganizer(final User organizer) {
         this.organizer = organizer;
     }
 
     public EventRequestState getState() {
-        return stateMachine.getState();
+        return this.stateMachine.getState();
     }
 
     public void acceptJoinRequest() throws NoTransitionException, DatabaseException {
-        stateMachine.answerRequest(EventRequestState.ACCEPTED);
+        this.stateMachine.answerRequest(EventRequestState.ACCEPTED);
     }
 
     public void rejectJoinRequest() throws NoTransitionException, DatabaseException {
-        stateMachine.answerRequest(EventRequestState.REJECTED);
+        this.stateMachine.answerRequest(EventRequestState.REJECTED);
     }
 }

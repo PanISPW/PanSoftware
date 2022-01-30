@@ -18,7 +18,7 @@ public class TestJoinEventController {
 
         assertThrows(EmptyResultSetException.class, () -> {
 
-            EventGoalBean bean = new EventGoalBean();
+            final EventGoalBean bean = new EventGoalBean();
             bean.setEventId(4);
             bean.setUser("Alcibiade");
 

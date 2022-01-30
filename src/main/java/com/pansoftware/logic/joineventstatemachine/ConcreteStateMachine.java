@@ -15,47 +15,47 @@ public class ConcreteStateMachine implements StateMachine {
     private EventGoal goal;
     private JoinEventState currentState; // abstract state
 
-    public ConcreteStateMachine(Event event, EventGoal goal, EventRequestState state) throws DatabaseException {
+    public ConcreteStateMachine(final Event event, final EventGoal goal, final EventRequestState state) throws DatabaseException {
         this.event = event;
         this.goal = goal;
 
-        currentState = JoinEventState.getMachineState(this, state, event);
+        this.currentState = JoinEventState.getMachineState(this, state, event);
     }
 
     public EventGoal getGoal() {
-        return goal;
+        return this.goal;
     }
 
-    public void setGoal(EventGoal goal) {
+    public void setGoal(final EventGoal goal) {
         this.goal = goal;
     }
 
     @Override
-    public void answerRequest(EventRequestState state) throws DatabaseException, NoTransitionException {
+    public void answerRequest(final EventRequestState state) throws DatabaseException, NoTransitionException {
 
         if(state == EventRequestState.REJECTED){
-            currentState.reject();
+            this.currentState.reject();
         } else {
-            currentState.accept();
+            this.currentState.accept();
         }
     }
 
     @Override
-    public void changeState(JoinEventState state) {
-        currentState = state;
+    public void changeState(final JoinEventState state) {
+        this.currentState = state;
     }
 
     @Override
     public EventRequestState getState() {
-        return this.currentState.getState();
+        return currentState.getState();
     }
 
     @Override
     public Event getEvent() {
-        return event;
+        return this.event;
     }
 
-    public void setEvent(Event event) {
+    public void setEvent(final Event event) {
         this.event = event;
     }
 

@@ -5,6 +5,7 @@ import com.pansoftware.logic.dao.UserDao;
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.DatabaseException;
+import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.InvalidDataException;
 import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Session;
@@ -15,10 +16,10 @@ import java.sql.SQLException;
 
 public class LoginController {
 
-    public static void loginUser(LoginBean bean) throws UserNotFoundException, SQLException, DatabaseException {
-        String user = bean.getUsername();
-        String password = bean.getPassword();
-        UserRole role;
+    public static void loginUser(final LoginBean bean) throws UserNotFoundException, SQLException, DatabaseException, EmptyResultSetException {
+        final String user = bean.getUsername();
+        final String password = bean.getPassword();
+        final UserRole role;
 
         // may throw UserNotFoundException
         role  = UserDao.checkUserPassword(user, password);
@@ -27,12 +28,12 @@ public class LoginController {
         Session.getSession().setRole(role);
     }
 
-    public void signup(LoginBean bean) throws DatabaseException {
+    public void signup(final LoginBean bean) throws DatabaseException {
 
-        User user = new User(bean.getUsername(), bean.getPassword(), bean.getEmail(), bean.getLoginName(), bean.getLoginSurname(), bean.getLoginRole());
+        final User user = new User(bean.getUsername(), bean.getPassword(), bean.getEmail(), bean.getLoginName(), bean.getLoginSurname(), bean.getLoginRole());
         try {
             user.save();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new DatabaseException("signup failed");
         }
     }
@@ -40,7 +41,7 @@ public class LoginController {
     public static String getCurrentUser() throws InvalidDataException {
         try {
             return Session.getSession().getUser();
-        } catch(Exception e){
+        } catch(final Exception e){
             throw new InvalidDataException("Session data is invalid");
         }
     }
@@ -48,7 +49,7 @@ public class LoginController {
     public static UserRole getUserRole() throws InvalidDataException {
         try {
             return Session.getSession().getRole();
-        } catch(Exception e){
+        } catch(final Exception e){
             throw new InvalidDataException("Session data is invalid");
         }
     }
