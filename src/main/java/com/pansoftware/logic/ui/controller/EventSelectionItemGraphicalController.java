@@ -1,11 +1,9 @@
 package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
-import com.pansoftware.logic.bean.AdviceGoalBean;
 import com.pansoftware.logic.bean.EventBean;
 import com.pansoftware.logic.bean.EventGoalBean;
 import com.pansoftware.logic.enumeration.Pages;
-import com.pansoftware.logic.exception.InvalidDataException;
 import com.pansoftware.logic.ui.EventGoalBeanUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,15 +20,15 @@ public class EventSelectionItemGraphicalController implements Initializable {
     @FXML
     private VBox eventItemVBox;
     @FXML
-    private Label eventItemTitle;
+    private Label eventTitle;
     @FXML
-    private Label eventItemDuration;
+    private Label eventDuration;
     @FXML
-    private Label eventItemId;
+    private Label eventId;
     @FXML
-    private Label eventItemOrganizer;
+    private Label eventOrganizer;
     @FXML
-    private Label eventItemType;
+    private Label eventType;
 
     public EventSelectionItemGraphicalController(EventBean event) {
         this.item = event;
@@ -39,11 +37,11 @@ public class EventSelectionItemGraphicalController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        eventItemTitle.setText(item.getName());
-        eventItemId.setText(String.valueOf(item.getId()));
-        eventItemOrganizer.setText(item.getOrganizer());
-        eventItemDuration.setText(item.getStartingDate().toString() + " - " + item.getEndingDate().toString());
-        eventItemType.setText(item.getType().toString());
+        eventTitle.setText(item.getName());
+        eventId.setText(String.valueOf(item.getId()));
+        eventOrganizer.setText(item.getOrganizer());
+        eventDuration.setText(item.getStartingDate().toString() + " - " + item.getEndingDate().toString());
+        eventType.setText(item.getType().toString());
     }
 
     @FXML

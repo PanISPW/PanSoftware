@@ -127,7 +127,6 @@ public class NewGoalGraphicalController implements Initializable {
                 util.setDescription(goalDescription.getText());
 
                 util.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
-                util.setStepsCompleted(0);
 
                 util.setDeadline(deadline.getValue());
                 util.setReminder(reminder.isSelected());

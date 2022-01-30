@@ -17,7 +17,7 @@
             <Insets left="10.0" right="10.0" top="10.0" />
         </VBox.margin>
         <children>
-            <Label fx:id="eventItemTitle" text="Title">
+            <Label fx:id="eventTitle" text="Title">
                 <font>
                     <Font name="System Bold" size="14.0" />
                 </font>
@@ -26,7 +26,7 @@
                 </HBox.margin>
             </Label>
             <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="eventItemDuration" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="StartingDate - EndingDate" textFill="GREY">
+            <Label fx:id="eventDuration" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="StartingDate - EndingDate" textFill="GREY">
                 <HBox.margin>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </HBox.margin>
@@ -35,13 +35,13 @@
     </HBox>
     <HBox prefHeight="20.0" prefWidth="200.0">
         <children>
-            <Label fx:id="eventItemId" text="Id" textFill="GREY">
+            <Label fx:id="eventId" text="Id" textFill="GREY">
                 <HBox.margin>
                     <Insets bottom="10.0" left="10.0" right="10.0" />
                 </HBox.margin>
             </Label>
             <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="eventItemOrganizer" text="Organizer: username" textFill="GREY">
+            <Label fx:id="eventOrganizer" text="Organizer: username" textFill="GREY">
                 <HBox.margin>
                     <Insets bottom="10.0" left="10.0" right="10.0" />
                 </HBox.margin>
@@ -56,7 +56,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" />
         </VBox.margin>
         <children>
-            <Label fx:id="eventItemType" text="PUBLIC" textFill="LIME" />
+            <Label fx:id="eventType" text="PUBLIC" textFill="LIME" />
         </children>
     </HBox>
       <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="200.0">

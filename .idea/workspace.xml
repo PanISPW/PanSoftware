@@ -11,18 +11,21 @@
   <component name="ChangeListManager">
     <list default="true" id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ManageGoalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ManageGoalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/AdviceGoalBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/AdviceGoalBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/AdviceGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/AdviceGoalDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/EventSelection.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/EventSelection.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/EventGoalBeanUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/EventGoalBeanUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventSelectionItemGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventSelectionItemGraphicalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/DaoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/DaoUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/test/selenium/TestNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/test/selenium/TestNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/EventSelectionItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/EventSelectionItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/EventSelectionItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/EventSelectionItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ManageGoalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ManageGoalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/AdviceGoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/AdviceGoalBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/AdviceGoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/AdviceGoalDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventSelectionItemGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventSelectionItemGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/util/DaoUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/util/DaoUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/util/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/util/Session.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/test/selenium/TestNavigation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/test/selenium/TestNavigation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +298,7 @@
       <workItem from="1643473309542" duration="3121000" />
       <workItem from="1643529837317" duration="5578000" />
       <workItem from="1643539049886" duration="5724000" />
-      <workItem from="1643551625773" duration="16038000" />
+      <workItem from="1643551625773" duration="16627000" />
     </task>
     <servers />
   </component>
