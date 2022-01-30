@@ -70,7 +70,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-success"
      aria-label="PanLoginNavbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> <img src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png" width="30" height="30"/> Pan
+        <a class="navbar-brand" href="#"> <img src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png" alt="logo" width="30" height="30"/> Pan
         </a>
     </div>
 </nav>

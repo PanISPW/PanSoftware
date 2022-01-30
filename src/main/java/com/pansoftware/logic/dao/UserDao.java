@@ -29,7 +29,7 @@ public class UserDao {
                 throw new UserNotFoundException("Username or password incorrect");
             }
 
-            return DaoUtils.IntToUserRole(resultSet.getInt("role"));
+            return DaoUtils.intToUserRole(resultSet.getInt("role"));
         } finally {
             DatabaseConnection.closeResultSet(resultSet);
         }
@@ -48,7 +48,7 @@ public class UserDao {
             throw new LoginException("User incorrect");
         }
 
-        role = DaoUtils.IntToUserRole(resultSet.getInt("role"));
+        role = DaoUtils.intToUserRole(resultSet.getInt("role"));
         userEntity = new User(user, resultSet.getString("password"), resultSet.getString("email"), resultSet.getString("name"), resultSet.getString("surname"), role);
 
         DatabaseConnection.closeResultSet(resultSet);

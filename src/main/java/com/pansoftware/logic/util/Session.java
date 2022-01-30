@@ -25,7 +25,7 @@ public class Session {
         return instance;
     }
 
-    public void invalidate(){
+    public static void invalidate(){
         instance = null;
     }
 

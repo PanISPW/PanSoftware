@@ -67,7 +67,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-success"
      aria-label="PanLoginNavbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> <img src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png" width="30" height="30"/> Pan
+        <a class="navbar-brand" href="#"> <img src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png" alt="logo" width="30" height="30"/> Pan
         </a>
     </div>
 </nav>
@@ -77,7 +77,7 @@
     <!-- action chiama Login.jsp -->
     <form action="Login.jsp" name="loginForm" method="POST">
         <img class="img-fluid center-block" src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png"
-             alt="Responsive image" width="72" height="72"/>
+             alt="logo" width="72" height="72"/>
         <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
 
         <input type="text" id="username" name="username" class="form-control"

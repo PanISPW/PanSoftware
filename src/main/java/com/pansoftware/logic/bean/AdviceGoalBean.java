@@ -20,7 +20,7 @@ public class AdviceGoalBean extends GoalBean{
     }
 
     public void setTypeInt(int typeInt) {
-        this.type = DaoUtils.IntToProductType(typeInt);
+        this.type = DaoUtils.intToProductType(typeInt);
     }
 
     public String getAdvice() {

@@ -18,7 +18,7 @@ public class DaoUtils {
 
     private DaoUtils(){}
 
-    public static ProductType IntToProductType(int databaseInt) {
+    public static ProductType intToProductType(int databaseInt) {
 
         return switch (databaseInt) {
             case 0 -> ProductType.MAKEUP;
@@ -52,7 +52,7 @@ public class DaoUtils {
         return date;
     }
 
-    public static UserRole IntToUserRole(int databaseInt) {
+    public static UserRole intToUserRole(int databaseInt) {
 
         return switch (databaseInt) {
             case 1 -> UserRole.ACTIVIST;

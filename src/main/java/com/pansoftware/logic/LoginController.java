@@ -54,6 +54,6 @@ public class LoginController {
     }
 
     public static void invalidateSession() {
-        Session.getSession().invalidate();
+        Session.invalidate();
     }
 }

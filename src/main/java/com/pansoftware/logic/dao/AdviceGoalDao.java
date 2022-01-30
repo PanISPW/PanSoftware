@@ -45,7 +45,7 @@ public class AdviceGoalDao {
         while (resultSet.next()) {
 
             User userEntity = UserDao.getUser(user);
-            ProductType productType = DaoUtils.IntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
+            ProductType productType = DaoUtils.intToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
             LocalDate deadline;
 
             try {
@@ -78,7 +78,7 @@ public class AdviceGoalDao {
             throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
         }
 
-        ProductType productType = DaoUtils.IntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
+        ProductType productType = DaoUtils.intToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
         User userEntity = UserDao.getUser(user);
 
         try {
@@ -277,7 +277,7 @@ public class AdviceGoalDao {
 
         while (resultSet.next()) {
             User userEntity = UserDao.getUser(resultSet.getString("user"));
-            ProductType productType = DaoUtils.IntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
+            ProductType productType = DaoUtils.intToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
             getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
         }
 

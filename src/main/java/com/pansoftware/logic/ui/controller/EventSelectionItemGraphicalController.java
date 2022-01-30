@@ -55,7 +55,6 @@ public class EventSelectionItemGraphicalController implements Initializable {
 
 
         bean.setName(util.getName());
-        System.out.println("Name: " + bean.getName());
         bean.setDescription(util.getDescription());
 
         bean.setNumberOfSteps(util.getNumberOfSteps());
@@ -69,7 +68,7 @@ public class EventSelectionItemGraphicalController implements Initializable {
         bean.setEventOrganizer(item.getOrganizer());
 
         ManageGoalController.createGoal(bean);
-        util.invalidate();
+        EventGoalBeanUtil.invalidate();
 
         NavbarGraphicalController navbar = NavbarGraphicalController.getInstance();
         navbar.changePage(Pages.PROFILE);

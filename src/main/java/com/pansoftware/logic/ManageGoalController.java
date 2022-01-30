@@ -19,6 +19,8 @@ import java.util.List;
 
 public class ManageGoalController {
 
+    private ManageGoalController(){}
+
     private static void addReminder(String email, LocalDate day) {
         SendMail.sendOnDay(email, day);
     }
