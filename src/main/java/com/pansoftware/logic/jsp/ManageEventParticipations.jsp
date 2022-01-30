@@ -1,11 +1,10 @@
 <%@ page import="com.pansoftware.logic.LoginController" %>
 <%@ page import="com.pansoftware.logic.ManageGoalController" %>
 <%@ page import="com.pansoftware.logic.bean.EventGoalBean" %>
-<%@ page import="com.pansoftware.logic.entity.EventGoal" %>
+<%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
 <%@ page import="com.pansoftware.logic.exception.*" %>
 <%@ page import="javax.security.auth.login.LoginException" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
 <%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 
@@ -73,8 +72,6 @@ if (request.getParameter("accept") != null | request.getParameter("reject") != n
         <div class="card text-center mt-2 ">
             <div class="card-body">
                 <form action="ManageEventParticipations.jsp" name="manageGoalForm" method="POST">
-
-                    <!-- solo user e id (legge demetra) -->
 
                     <h5 class="card-title"><%=e.getName() + " \nId: #" + e.getId()%></h5>
                     <h5 class="card-title text-muted"><%="Author: " + e.getUser()%></h5>

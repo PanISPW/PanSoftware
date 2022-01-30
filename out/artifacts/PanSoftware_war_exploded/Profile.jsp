@@ -19,10 +19,8 @@
 <%
     if (request.getParameter("goal") != null | request.getParameter("advicegoal") != null | request.getParameter("eventgoal") != null) {
 
-        System.out.println("sono entrato");
-
         try {
-            UpdateStepsBean bean = new UpdateStepsBean();
+            final UpdateStepsBean bean = new UpdateStepsBean();
 
             if (request.getParameter("eventgoal") != null)
                 bean.setType(GoalType.EVENTGOAL);
@@ -37,12 +35,11 @@
 
             ManageGoalController.updateSteps(bean);
 
-        } catch(InvalidDataException | UserNotFoundException | EmptyResultSetException | DatabaseException |SQLException | LoginException e){
+        } catch(final InvalidDataException | UserNotFoundException | EmptyResultSetException | DatabaseException |SQLException | LoginException e){
             e.printStackTrace();
         }
 
-    } else
-        System.out.println("non sono entrato");%>
+    }%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +67,7 @@
 <jsp:include page="UserNavbar.jsp"/>
 <%
     }
-} catch (InvalidDataException e) {
+} catch (final InvalidDataException e) {
 %>
 <jsp:forward page="Login.jsp"/>
 <%
@@ -98,11 +95,11 @@
                     List<GoalBean> goals = null;
                     try {
                         goals = ManageGoalController.getGoalBeanList();
-                    } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(goals != null){
-                    for (GoalBean e  : goals) {
+                    for (final GoalBean e  : goals) {
                 %>
                 <div class="card text-center mt-2 ">
                     <div class="card-body">
@@ -137,11 +134,11 @@
                     List<AdviceGoalBean> adviceGoals = null;
                     try {
                         adviceGoals = ManageGoalController.getAdviceGoalBeanList();
-                    } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(adviceGoals != null){
-                    for (AdviceGoalBean e  : adviceGoals) {
+                    for (final AdviceGoalBean e  : adviceGoals) {
                 %>
                 <div class="card text-center mt-2 ">
                     <div class="card-body">
@@ -178,11 +175,11 @@
                     List<EventGoalBean> eventGoals = null;
                     try {
                         eventGoals = ManageGoalController.getEventGoalBeanList();
-                    } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(eventGoals != null){
-                    for (EventGoalBean e  : eventGoals) {
+                    for (final EventGoalBean e  : eventGoals) {
                 %>
                 <div class="card text-center mt-2 ">
                     <div class="card-body">

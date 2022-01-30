@@ -20,7 +20,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%
-    EventGoalBean bean = new EventGoalBean();
+    final EventGoalBean bean = new EventGoalBean();
 
     if (request.getParameter("eventgoal") != null) {
         //stub
@@ -47,7 +47,7 @@
 <jsp:forward page="Profile.jsp"/>
 <%
 
-        } catch(InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
+        } catch(final InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
             e.printStackTrace();
         }
     }else{
@@ -70,7 +70,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-success"
      aria-label="PanLoginNavbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> <img src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png" width="30" height="30"/> Pan
+        <a class="navbar-brand" href="#"> <img src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png" alt="logo" width="30" height="30"/> Pan
         </a>
     </div>
 </nav>
@@ -81,11 +81,11 @@
                 List<EventBean> events = null;
                 try {
                     events = ManageGoalController.getEventBeanList();
-                } catch (UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
+                } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
                     e.printStackTrace();
                 }
                 if(events != null){
-                for (EventBean e  : events) {
+                for (final EventBean e  : events) {
             %>
             <div class="card text-center mt-2 ">
                 <div class="card-body">

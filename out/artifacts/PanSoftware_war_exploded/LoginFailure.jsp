@@ -16,7 +16,6 @@
 </head>
 <body>
 
-<!--  navbar -->
 <nav class="navbar navbar-expand navbar-dark bg-success"
      aria-label="PanLoginNavbar">
     <div class="container-fluid">

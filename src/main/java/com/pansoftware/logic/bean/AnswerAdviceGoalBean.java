@@ -12,7 +12,7 @@ public class AnswerAdviceGoalBean {
     private String answer = "";
 
     public int getAnswerAdviceId() {
-        return this.id;
+        return id;
     }
 
     public void setAnswerAdviceId(final int id) throws InvalidDataException {
@@ -23,7 +23,7 @@ public class AnswerAdviceGoalBean {
     }
 
     public String getGoalUser() {
-        return this.user;
+        return user;
     }
 
     public void setGoalUser(final String user) {
@@ -31,7 +31,7 @@ public class AnswerAdviceGoalBean {
     }
 
     public String getAnswer() {
-        return this.answer;
+        return answer;
     }
 
     public void setAnswer(final String answer) {

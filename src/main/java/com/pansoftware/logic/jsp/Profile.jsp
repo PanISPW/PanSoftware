@@ -19,8 +19,6 @@
 <%
     if (request.getParameter("goal") != null | request.getParameter("advicegoal") != null | request.getParameter("eventgoal") != null) {
 
-        System.out.println("sono entrato");
-
         try {
             final UpdateStepsBean bean = new UpdateStepsBean();
 
@@ -41,8 +39,7 @@
             e.printStackTrace();
         }
 
-    } else
-        System.out.println("non sono entrato");%>
+    }%>
 
 <!DOCTYPE html>
 <html lang="en">

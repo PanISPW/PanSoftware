@@ -52,7 +52,6 @@
 <h1>Events Page</h1>
 <p class="card-duration mb-2 text-muted"> Events:</p>
 
-<!-- display objects -->
 <div class="col-6 d-flex justify-content-center">
 <div class="card-columns">
 <%

@@ -11,7 +11,7 @@ public class AdviceGoalBean extends GoalBean{
     private String adviceActivist = "";
 
     public ProductType getType() {
-        return this.type;
+        return type;
     }
 
     public void setType(final ProductType type) throws InvalidDataException {
@@ -24,17 +24,20 @@ public class AdviceGoalBean extends GoalBean{
     }
 
     public String getAdvice() {
-        return this.advice;
+        return advice;
     }
 
     public void setAdvice(final String advice) throws InvalidDataException {
-        if(advice.length() >= 45)
+        if(advice == null){
+            this.advice = "";
+            return;
+        } else if(advice.length() >= 45)
             throw new InvalidDataException("The Advice should be under 45 characters");
         this.advice = advice;
     }
 
     public String getAdviceActivist() {
-        return this.adviceActivist;
+        return adviceActivist;
     }
 
     public void setAdviceActivist(final String adviceActivist) {

@@ -1,5 +1,8 @@
 <%@ page import="com.pansoftware.logic.GoalFactory" %>
+<%@ page import="com.pansoftware.logic.LoginController" %>
+<%@ page import="com.pansoftware.logic.bean.AdviceGoalBean" %>
 <%@ page import="com.pansoftware.logic.bean.GoalBean" %>
+<%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
 <%@ page import="com.pansoftware.logic.exception.DatabaseException" %>
 <%@ page import="com.pansoftware.logic.exception.EmptyResultSetException" %>
 <%@ page import="com.pansoftware.logic.exception.InvalidDataException" %>
@@ -7,10 +10,6 @@
 <%@ page import="javax.security.auth.login.LoginException" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.time.LocalDate" %>
-<%@ page import="com.pansoftware.logic.bean.EventGoalBean" %>
-<%@ page import="com.pansoftware.logic.bean.AdviceGoalBean" %>
-<%@ page import="com.pansoftware.logic.LoginController" %>
-<%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
 <%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 
@@ -99,7 +98,6 @@
 
 <h1>New Goal Page</h1>
 
-<!-- nav tra tre tipi -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="nav-link active" id="goal-tab" data-bs-toggle="tab" data-bs-target="#goal" type="button" role="tab" aria-controls="goal" aria-selected="true">New Goal</button>
@@ -154,7 +152,6 @@
 
             <select class="form-select" aria-label="Default select example" name="advicegoaltype">
                 <option selected>Product Type</option>
-                <!-- fare programmaticamente -->
                 <option value="0">Makeup</option>
                 <option value="1">Food</option>
                 <option value="2">Lifestyle</option>

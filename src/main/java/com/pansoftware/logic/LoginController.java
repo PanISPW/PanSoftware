@@ -21,7 +21,6 @@ public class LoginController {
         final String password = bean.getPassword();
         final UserRole role;
 
-        // may throw UserNotFoundException
         role  = UserDao.checkUserPassword(user, password);
 
         Session.getSession().setCurrUser(user);

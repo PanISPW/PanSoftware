@@ -57,7 +57,6 @@
 
 <h1>Give Advice Page</h1>
 
-<!-- nav tra quattro tipi -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="nav-link active" id="makeup-tab" data-bs-toggle="tab" data-bs-target="#makeup" type="button" role="tab" aria-controls="makeup" aria-selected="true">Makeup</button>

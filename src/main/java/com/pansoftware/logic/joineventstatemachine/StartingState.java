@@ -36,7 +36,6 @@ public class StartingState extends JoinEventState {
         throw new NoTransitionException(NO_TRANSITION_OCCURS);
     }
 
-    // FATTO
     @Override
     protected EventRequestState getState() {
         return EventRequestState.STARTING;

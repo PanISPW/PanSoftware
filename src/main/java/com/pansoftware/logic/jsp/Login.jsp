@@ -63,7 +63,6 @@
 
 
 <body>
-<!--  navbar -->
 <nav class="navbar navbar-expand navbar-dark bg-success"
      aria-label="PanLoginNavbar">
     <div class="container-fluid">
@@ -74,7 +73,6 @@
 
 <main
         class="d-flex justify-content-center align-items-center form-signin">
-    <!-- action chiama Login.jsp -->
     <form action="Login.jsp" name="loginForm" method="POST">
         <img class="img-fluid center-block" src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png"
              alt="logo" width="72" height="72"/>
@@ -86,7 +84,6 @@
                 type="password" id="password" name="password" class="form-control"
                 placeholder="password" required>
 
-        <!-- La classe LoginBean viene invocata quando viene ricevuto come valore login -->
         <button class="w-100 btn btn-lg btn-primary half-top-buffer"
                 type="submit" name="login" value="login">Login
         </button>

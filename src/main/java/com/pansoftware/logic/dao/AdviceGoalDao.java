@@ -27,6 +27,26 @@ public class AdviceGoalDao {
     private AdviceGoalDao() {
     }
 
+    private static LocalDate setDeadline(ResultSet resultSet){
+        LocalDate deadline;
+        try {
+            deadline = resultSet.getDate(Constants.DEADLINE).toLocalDate();
+        } catch (final Exception e) {
+            deadline = DataValidation.setDefaultDate();
+        }
+        return deadline;
+    }
+
+    private static User setAdviceActivist(ResultSet resultSet){
+        User activistEntity;
+        try {
+            activistEntity = UserDao.getUser(resultSet.getString("adviceActivist"));
+        } catch (final Exception e) {
+            activistEntity = null;
+        }
+        return activistEntity;
+    }
+
     public static List<AdviceGoal> getAdviceGoalList(final String user) throws EmptyResultSetException, DatabaseException {
         try {
             final List<AdviceGoal> goalList;
@@ -46,13 +66,7 @@ public class AdviceGoalDao {
 
                 final User userEntity = UserDao.getUser(user);
                 final ProductType productType = DaoUtils.intToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
-                LocalDate deadline;
-
-                try {
-                    deadline = resultSet.getDate(Constants.DEADLINE).toLocalDate();
-                } catch (final Exception e) {
-                    deadline = DataValidation.setDefaultDate();
-                }
+                LocalDate deadline = setDeadline(resultSet);
 
                 final AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
                         resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
@@ -72,7 +86,6 @@ public class AdviceGoalDao {
     public static AdviceGoal getAdviceGoal(final String user, final int id) throws EmptyResultSetException, DatabaseException {
         try {
             final AdviceGoal goal;
-            User activistEntity;
 
             final String sql = String.format("SELECT * FROM advicegoal WHERE user = '%s' and id=%s;", user, id);
             final ResultSet resultSet = DaoUtils.executeCRUDQuery(sql);
@@ -84,11 +97,7 @@ public class AdviceGoalDao {
             final ProductType productType = DaoUtils.intToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
             final User userEntity = UserDao.getUser(user);
 
-            try {
-                activistEntity = UserDao.getUser(resultSet.getString("adviceActivist"));
-            } catch (final Exception e) {
-                activistEntity = null;
-            }
+            User activistEntity = setAdviceActivist(resultSet);
 
             goal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
                     resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
@@ -115,8 +124,8 @@ public class AdviceGoalDao {
             final int typeInt = DaoUtils.productTypeToInt(goal.getType());
             sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
-            final String insertStatement = String.format("INSERT INTO advicegoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, productType, productBarcode, advice, adviceActivist) "
-                    + "VALUES ('%s','%s',%s,%s,'%s',%s,'%s',%s,NULL,NULL,NULL);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), typeInt);
+            final String insertStatement = String.format("INSERT INTO advicegoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, productType, advice, adviceActivist) "
+                    + "VALUES ('%s','%s',%s,%s,'%s',%s,'%s',%s,NULL,NULL);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), typeInt);
             DaoUtils.executeUpdate(insertStatement);
 
         } catch (final SQLException e) {
@@ -205,13 +214,7 @@ public class AdviceGoalDao {
 
     private static void getAdviceGoalFromResultSet(final ResultSet resultSet, final List<AdviceGoal> goalList, final User userEntity, final ProductType productType) throws DatabaseException {
         try {
-            LocalDate deadline;
-
-            try {
-                deadline = resultSet.getDate(Constants.DEADLINE).toLocalDate();
-            } catch (final Exception e) {
-                deadline = DataValidation.setDefaultDate();
-            }
+            LocalDate deadline = setDeadline(resultSet);
 
             final AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
                     resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
@@ -244,7 +247,7 @@ public class AdviceGoalDao {
 
                 final User userEntity = UserDao.getUser(resultSet.getString("user"));
                 final ProductType productType = ProductType.FOOD;
-                AdviceGoalDao.getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
+                getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
             }
 
             DatabaseConnection.closeResultSet(resultSet);
@@ -305,7 +308,7 @@ public class AdviceGoalDao {
             while (resultSet.next()) {
                 final User userEntity = UserDao.getUser(resultSet.getString("user"));
                 final ProductType productType = DaoUtils.intToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
-                AdviceGoalDao.getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
+                getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
             }
 
             DatabaseConnection.closeResultSet(resultSet);

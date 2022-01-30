@@ -45,7 +45,6 @@ public class GoalCellGraphicalController implements Initializable {
     @FXML
     private Button goalCellItemStepsButton;
 
-    // dovrei passarmi il bean non l'entity
     public GoalCellGraphicalController(final GoalBean goal) {
         item = goal;
     }

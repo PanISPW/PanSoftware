@@ -58,7 +58,6 @@ public class EventGoalGraphicalController implements Initializable {
     @FXML
     private Label eventGoalCellParticipationStatus;
 
-    // dovrei passarmi il bean non l'entity
     public EventGoalGraphicalController(final EventGoalBean goal) {
         item = goal;
     }

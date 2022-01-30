@@ -17,9 +17,7 @@ public class LoginBean {
     private String surname = "";
     private UserRole role = UserRole.USER;
 
-    public LoginBean(){
-        // empty
-    }
+    public LoginBean(){}
 
     public LoginBean(final String username, final String password) {
         setUsername(username);
