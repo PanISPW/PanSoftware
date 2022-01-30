@@ -46,7 +46,6 @@ public class EventDao {
                 User userEntity = UserDao.getUser(resultSet.getString("organizer"));
                 EventType eventType = DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
-
                 Event singleEvent = new Event(userEntity, resultSet.getString("name"), resultSet.getDate("startingDate").toLocalDate(), resultSet.getDate("endingDate").toLocalDate(), eventType, resultSet.getInt("Id"));
                 eventList.add(singleEvent);
             }

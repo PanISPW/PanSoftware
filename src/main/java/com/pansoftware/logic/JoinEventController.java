@@ -1,10 +1,7 @@
 package com.pansoftware.logic;
 
 import com.pansoftware.logic.bean.EventGoalBean;
-import com.pansoftware.logic.bean.GoalBean;
-import com.pansoftware.logic.dao.EventDao;
 import com.pansoftware.logic.dao.EventGoalDao;
-import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.entity.EventGoal;
 import com.pansoftware.logic.enumeration.EventRequestState;
 import com.pansoftware.logic.exception.DatabaseException;

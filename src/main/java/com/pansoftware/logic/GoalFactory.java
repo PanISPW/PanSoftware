@@ -27,10 +27,6 @@ public class GoalFactory {
 
     private static GoalFactory instance = null;
 
-    private int goalId;
-    private int eventGoalId;
-    private int adviceGoalId;
-
     private GoalFactory() {
     }
 
@@ -54,14 +50,12 @@ public class GoalFactory {
 
     private void makeGoal(GoalBean bean) throws DatabaseException, SQLException, UserNotFoundException, LoginException {
 
+        int goalId;
         try {
             goalId = GoalDao.getLastUserGoalId(Session.getSession().getUser());
 
         } catch (Exception e) {
-            if (e instanceof EmptyResultSetException)
-                goalId = 0;
-            else
-                throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
+            throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
         }
 
         goalId = goalId + 1;
@@ -71,13 +65,11 @@ public class GoalFactory {
 
     private void makeAdviceGoal(AdviceGoalBean bean) throws DatabaseException, UserNotFoundException, LoginException, SQLException {
 
+        int adviceGoalId;
         try {
             adviceGoalId = AdviceGoalDao.getLastUserAdviceGoalId(Session.getSession().getUser());
         } catch (Exception e) {
-            if (e instanceof EmptyResultSetException)
-                goalId = 0;
-            else
-                throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
+            throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
         }
 
         adviceGoalId = adviceGoalId + 1;
@@ -90,19 +82,17 @@ public class GoalFactory {
 
     private void makeEventGoal(EventGoalBean bean) throws DatabaseException, UserNotFoundException, EmptyResultSetException, LoginException, SQLException {
 
+        int eventGoalId;
         try {
             eventGoalId = EventGoalDao.getLastUserEventGoalId(Session.getSession().getUser());
         } catch (Exception e) {
-            if (e instanceof EmptyResultSetException)
-                goalId = 0;
-            else
-                throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
+            throw new DatabaseException(Constants.COULD_NOT_RETRIEVE_NEW_ID);
         }
 
         eventGoalId = eventGoalId + 1;
         Event event = EventDao.getEvent(bean.getEventId(), bean.getEventOrganizer());
 
-        EventGoal goal = new EventGoal(bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), goalId, UserDao.getUser(Session.getSession().getUser()), event, EventRequestState.STARTING);
+        EventGoal goal = new EventGoal(bean.getName(), bean.getDescription(), bean.getNumberOfSteps(), bean.getStepsCompleted(), bean.getDeadline(), eventGoalId, UserDao.getUser(Session.getSession().getUser()), event, EventRequestState.STARTING);
 
         EventGoalDao.addEventGoal(goal);
 

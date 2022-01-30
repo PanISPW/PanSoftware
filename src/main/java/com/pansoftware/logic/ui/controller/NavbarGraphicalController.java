@@ -15,6 +15,17 @@ import java.io.IOException;
 
 public class NavbarGraphicalController {
 
+    private static NavbarGraphicalController instance = null;
+
+    private NavbarGraphicalController() {}
+
+    public static NavbarGraphicalController getInstance() {
+        if (instance == null)
+            instance = new NavbarGraphicalController();
+
+        return instance;
+    }
+
     @FXML
     private BorderPane main;
 
@@ -34,7 +45,11 @@ public class NavbarGraphicalController {
     private Button eventParticipationButton;
 
     public void setUserNavbar() {
-        if (Session.getSession().getRole() == UserRole.USER) {
+        if (Session.getSession().getRole() == UserRole.ACTIVIST) {
+            eventParticipationButton.setVisible(false);
+        } else if(Session.getSession().getRole() == UserRole.BRANDMANAGER){
+            adviceButton.setVisible(false);
+        } else{
             adviceButton.setVisible(false);
             eventParticipationButton.setVisible(false);
         }
@@ -105,7 +120,7 @@ public class NavbarGraphicalController {
         changePage(Pages.EVENTPARTICIPATION);
     }
 
-    private void changePage(Pages page) throws IOException {
+    public void changePage(Pages page) throws IOException {
         Stage stage = (Stage) main.getScene().getWindow();
         stage.setScene(FxUtilities.goToPage(page, null));
     }

@@ -5,6 +5,7 @@ import com.pansoftware.logic.dao.UserDao;
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.DatabaseException;
+import com.pansoftware.logic.exception.InvalidDataException;
 import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Session;
 
@@ -34,5 +35,25 @@ public class LoginController {
         } catch (Exception e) {
             throw new DatabaseException("signup failed");
         }
+    }
+
+    public static String getCurrentUser() throws InvalidDataException {
+        try {
+            return Session.getSession().getUser();
+        } catch(Exception e){
+            throw new InvalidDataException("Session data is invalid");
+        }
+    }
+
+    public static UserRole getUserRole() throws InvalidDataException {
+        try {
+            return Session.getSession().getRole();
+        } catch(Exception e){
+            throw new InvalidDataException("Session data is invalid");
+        }
+    }
+
+    public static void invalidateSession() {
+        Session.getSession().invalidate();
     }
 }

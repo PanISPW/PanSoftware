@@ -1,8 +1,8 @@
 package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
+import com.pansoftware.logic.bean.GoalBean;
 import com.pansoftware.logic.bean.UpdateStepsBean;
-import com.pansoftware.logic.entity.Goal;
 import com.pansoftware.logic.enumeration.GoalType;
 import com.pansoftware.logic.util.Session;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class GoalCellGraphicalController implements Initializable {
 
-    Goal item;
+    GoalBean item;
     @FXML
     private VBox eventGoalCellBox;
     @FXML
@@ -46,7 +46,7 @@ public class GoalCellGraphicalController implements Initializable {
     private Button goalCellItemStepsButton;
 
     // dovrei passarmi il bean non l'entity
-    public GoalCellGraphicalController(Goal goal) {
+    public GoalCellGraphicalController(GoalBean goal) {
         this.item = goal;
     }
 

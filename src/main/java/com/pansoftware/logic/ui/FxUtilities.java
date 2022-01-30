@@ -62,6 +62,8 @@ public class FxUtilities {
             case EVENTPARTICIPATION -> new FXMLLoader(MainDesktop.class.getResource("ManageEventParticipation.fxml"));
             case ADVICEITEM -> new FXMLLoader(MainDesktop.class.getResource("AdviceCell.fxml"));
             case EVENTPARTICIPATIONITEM -> new FXMLLoader(MainDesktop.class.getResource("EventParticipationItem.fxml"));
+            case EVENTSELECTIONITEM -> new FXMLLoader(MainDesktop.class.getResource("EventSelectionItem.fxml"));
+            case EVENTSELECTION -> new FXMLLoader(MainDesktop.class.getResource("EventSelection.fxml"));
             default -> new FXMLLoader(MainDesktop.class.getResource("Profile.fxml"));
         };
     }
@@ -70,7 +72,7 @@ public class FxUtilities {
         if (navbar == null) {
             FXMLLoader loader = new FXMLLoader(MainDesktop.class.getResource("Navbar.fxml"));
 
-            navbarController = new NavbarGraphicalController();
+            navbarController = NavbarGraphicalController.getInstance();
 
             loader.setController(navbarController);
             navbar = loader.load();

@@ -1,6 +1,6 @@
 package com.pansoftware.logic.ui.controller;
 
-import com.pansoftware.logic.entity.Event;
+import com.pansoftware.logic.bean.EventBean;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class EventCellGraphicalController implements Initializable {
 
-    Event item;
+    EventBean item;
     @FXML
     private VBox eventItemVBox;
     @FXML
@@ -27,8 +27,7 @@ public class EventCellGraphicalController implements Initializable {
     @FXML
     private Label eventItemType;
 
-    // dovrei passarmi il bean non l'entity
-    public EventCellGraphicalController(Event event) {
+    public EventCellGraphicalController(EventBean event) {
         this.item = event;
     }
 
@@ -37,7 +36,7 @@ public class EventCellGraphicalController implements Initializable {
 
         eventItemTitle.setText(item.getName());
         eventItemId.setText(String.valueOf(item.getId()));
-        eventItemOrganizer.setText(item.getUser().getUsername());
+        eventItemOrganizer.setText(item.getOrganizer());
         eventItemDuration.setText(item.getStartingDate().toString() + " - " + item.getEndingDate().toString());
         eventItemType.setText(item.getType().toString());
     }

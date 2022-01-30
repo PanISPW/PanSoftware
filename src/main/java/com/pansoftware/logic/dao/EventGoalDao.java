@@ -147,7 +147,7 @@ public class EventGoalDao {
         }
     }
 
-    public static int getLastUserEventGoalId(String user) throws EmptyResultSetException, DatabaseException {
+    public static int getLastUserEventGoalId(String user) throws DatabaseException {
         return getLastIdFromSelectedGoalType("eventgoal", user);
     }
 

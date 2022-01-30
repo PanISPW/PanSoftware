@@ -15,7 +15,6 @@ import java.time.LocalDate;
 public class AdviceGoal extends Goal {
 
     private ProductType type;
-    private String productBarcode;
     private String advice;
     private User adviceActivist;
 
@@ -41,14 +40,6 @@ public class AdviceGoal extends Goal {
 
     public void setType(ProductType type) {
         this.type = type;
-    }
-
-    public String getProductBarcode() {
-        return productBarcode;
-    }
-
-    public void setProductBarcode(String productBarcode) {
-        this.productBarcode = productBarcode;
     }
 
     public String getAdvice() {

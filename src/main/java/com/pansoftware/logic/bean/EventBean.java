@@ -49,6 +49,10 @@ public class EventBean {
     }
 
     public void setStartingDate(LocalDate startingDate) throws InvalidDataException {
+        this.startingDate = startingDate;
+    }
+
+    public void setNewStartingDate(LocalDate startingDate) throws InvalidDataException {
         if (DataValidation.isNotPastDate(startingDate))
             this.startingDate = startingDate;
         else throw new InvalidDataException("The starting date must not be a past date");

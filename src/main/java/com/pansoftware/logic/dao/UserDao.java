@@ -29,7 +29,7 @@ public class UserDao {
                 throw new UserNotFoundException("Username or password incorrect");
             }
 
-            return DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
+            return DaoUtils.IntToUserRole(resultSet.getInt("role"));
         } finally {
             DatabaseConnection.closeResultSet(resultSet);
         }
@@ -48,17 +48,17 @@ public class UserDao {
             throw new LoginException("User incorrect");
         }
 
-        role = DaoUtils.databaseIntToUserRole(resultSet.getInt("role"));
+        role = DaoUtils.IntToUserRole(resultSet.getInt("role"));
         userEntity = new User(user, resultSet.getString("password"), resultSet.getString("email"), resultSet.getString("name"), resultSet.getString("surname"), role);
 
         DatabaseConnection.closeResultSet(resultSet);
         return userEntity;
     }
 
-    public static void addUser(String username, String password, String email, String name, String surname, UserRole role) throws DatabaseException, SQLException {
+    public static void addUser(String username, String password, String email, String name, String surname, UserRole role) throws DatabaseException {
 
         try {
-            int roleInt = DaoUtils.userRoleToDatabaseInt(role);
+            int roleInt = DaoUtils.userRoleToInt(role);
             String insertStatement = String.format("INSERT INTO user (username, password, email, name, surname, role) VALUES ('%s','%s','%s','%s','%s',%s);", username, password, email, name, surname, roleInt);
             DaoUtils.executeUpdate(insertStatement);
         } catch (SQLException e) {

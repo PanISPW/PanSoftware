@@ -21,7 +21,7 @@ public class EventGoal extends Goal {
     private Event event;
     private User organizer;
 
-    private StateMachine stateMachine = null;
+    private final StateMachine stateMachine;
 
     public EventGoal(String name, String description, int numberOfSteps, int stepsCompleted, LocalDate deadline, int id, User user, Event event, EventRequestState state) throws DatabaseException {
         super(name, description, numberOfSteps, stepsCompleted, deadline, user, id);

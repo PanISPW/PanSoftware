@@ -69,7 +69,7 @@ public class GoalDao {
         return goal;
     }
 
-    public static int getLastUserGoalId(String user) throws EmptyResultSetException, DatabaseException {
+    public static int getLastUserGoalId(String user) throws DatabaseException {
         return getLastIdFromSelectedGoalType("goal", user);
     }
 

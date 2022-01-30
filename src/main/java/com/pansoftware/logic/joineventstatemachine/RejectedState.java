@@ -15,7 +15,7 @@ public class RejectedState extends JoinEventState {
     }
 
     @Override
-    protected void accept() throws DatabaseException, NoTransitionException {
+    protected void accept() throws NoTransitionException {
         throw new NoTransitionException(NO_TRANSITION_OCCURS);
     }
 

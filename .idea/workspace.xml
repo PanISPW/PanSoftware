@@ -10,242 +10,181 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_servlet_jakarta_servlet_api_5_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/servlet-api.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PanSoftware_Web_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/PanSoftware_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/chromedriver.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/UserBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/BrandNavbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/EventSelection.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/UserNavbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/EventGoalBeanUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventSelectionGraphicalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventSelectionItemGraphicalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/test/selenium/TestNavigation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/EventSelection.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/EventSelectionItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PanSoftware_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/PanSoftware_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_win_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_17_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_win_17_0_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PanSoftware.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PanSoftware.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/Events.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/GiveAdvice.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/Login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/LoginFailure.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/ManageEventParticipations.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/Navbar.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/NewGoal.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/Profile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/AdviceCell.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/EventItem.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/EventParticipationItem.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/Events.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/GiveAdvice.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/GoalCell.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/GoalFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/JoinEventController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/JoinEventController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/Login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/MainDesktop.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ManageEventParticipation.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ManageGoalController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ManageGoalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/Navbar.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/NewGoal.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/Profile.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/barcode/BarcodeScanner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/AdviceGoalBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/AdviceGoalQueryBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/AnswerAdviceGoalBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/BarcodeBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/EventBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/EventGoalBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/EventGoalQueryBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/GoalBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/GoalQueryBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/LoginBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/bean/UpdateStepsBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/dao/AdviceGoalDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/dao/EventDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/dao/EventGoalDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/dao/GoalDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/dao/UserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/entity/AdviceGoal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/entity/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/entity/EventGoal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/entity/Goal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/entity/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/enumeration/EventRequestState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/enumeration/EventType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/enumeration/GoalType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/enumeration/Pages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/enumeration/ProductType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/enumeration/UserRole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/exception/DatabaseException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/exception/EmptyResultSetException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/exception/InvalidDataException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/exception/NoTransitionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/exception/NotEnoughPermissionsException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/exception/UserNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/interfaces/EventOrganizer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/interfaces/StateMachine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/interfaces/UserContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/AcceptedState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/ConcreteStateMachine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/JoinEventState$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/JoinEventState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/PendingState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/RejectedState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/StartingState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/mail/SendMail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/persistance/DatabaseConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/persistance/queries/CRUDQueries.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/persistance/queries/SimpleQueries.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/FxUtilities$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/FxUtilities.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/AdviceCellGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventCellGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventParticipationItemGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventsGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/GiveAdviceGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/GoalCellGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/LoginGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/ManageEventParticipationGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/ProfileGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/util/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/util/DaoUtils$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/util/DaoUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/util/DataValidation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/util/Session.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/com/pansoftware/logic/util/WebURLs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/module-info.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/classes/pictures/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/bootstrapfx-core-0.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/controlsfx-11.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/formsfx-core-11.3.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/ikonli-core-12.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/ikonli-javafx-12.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-base-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-base-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-controls-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-controls-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-fxml-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-fxml-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-graphics-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-graphics-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-media-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-media-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-web-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/javafx-web-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/mysql-connector-java-8.0.26.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/tilesfx-11.48.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/lib/validatorfx-0.1.13.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_Web_exploded/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/AdviceCell.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/EventItem.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/EventParticipationItem.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/Events.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/GiveAdvice.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/GoalCell.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/GoalFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/JoinEventController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/JoinEventController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/Login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/MainDesktop.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ManageEventParticipation.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ManageGoalController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ManageGoalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/Navbar.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/NewGoal.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/Profile.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/barcode/BarcodeScanner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/AdviceGoalQueryBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/AnswerAdviceGoalBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/BarcodeBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/EventBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/EventGoalQueryBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/GoalBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/GoalQueryBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/LoginBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/bean/UpdateStepsBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/dao/AdviceGoalDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/dao/EventDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/dao/EventGoalDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/dao/GoalDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/dao/UserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/entity/AdviceGoal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/entity/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/entity/EventGoal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/entity/Goal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/entity/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/enumeration/EventRequestState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/enumeration/EventType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/enumeration/GoalType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/enumeration/Pages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/enumeration/ProductType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/enumeration/UserRole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/exception/DatabaseException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/exception/EmptyResultSetException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/exception/InvalidDataException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/exception/NoTransitionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/exception/NotEnoughPermissionsException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/exception/UserNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/interfaces/EventOrganizer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/interfaces/StateMachine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/interfaces/UserContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/AcceptedState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/ConcreteStateMachine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/JoinEventState$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/JoinEventState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/PendingState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/RejectedState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/StartingState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/mail/SendMail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/persistance/DatabaseConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/persistance/queries/CRUDQueries.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/persistance/queries/SimpleQueries.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/FxUtilities$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/FxUtilities.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/AdviceCellGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventCellGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventParticipationItemGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventsGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/GiveAdviceGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/GoalCellGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/LoginGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/ManageEventParticipationGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/ui/controller/ProfileGraphicalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/util/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/util/DaoUtils$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/util/DaoUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/util/DataValidation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/util/Session.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/com/pansoftware/logic/util/WebURLs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/module-info.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/classes/pictures/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/bootstrapfx-core-0.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/controlsfx-11.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/formsfx-core-11.3.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/ikonli-core-12.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/ikonli-javafx-12.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-base-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-base-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-controls-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-controls-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-fxml-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-fxml-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-graphics-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-graphics-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-media-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-media-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-web-17.0.1-win.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/javafx-web-17.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/mysql-connector-java-8.0.26.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/tilesfx-11.48.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/panartifact/WEB-INF/lib/validatorfx-0.1.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/Events.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/Events.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/GiveAdvice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/GiveAdvice.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/LoginFailure.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/LoginFailure.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/ManageEventParticipations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/ManageEventParticipations.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/Navbar.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/NewGoal.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/NewGoal.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/Profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/Profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/AdviceCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/AdviceCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/GoalCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/GoalCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/GoalFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/GoalFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/JoinEventController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/JoinEventController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/JoinEventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/JoinEventController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ManageGoalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ManageGoalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/NewGoal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/NewGoal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/barcode/BarcodeScanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/AdviceGoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/AdviceGoalBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/BarcodeBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/EventBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/EventBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/EventGoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/EventGoalBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/GoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/bean/GoalBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/AdviceGoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/AdviceGoalDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/EventDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/EventDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/EventGoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/EventGoalDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/GoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/GoalDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/entity/AdviceGoal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/entity/AdviceGoal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/entity/EventGoal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/entity/EventGoal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/enumeration/Pages.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/enumeration/Pages.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/AcceptedState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/AcceptedState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/RejectedState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/RejectedState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/StartingState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/joineventstatemachine/StartingState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/FxUtilities$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/FxUtilities$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/FxUtilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/FxUtilities.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/AdviceCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/AdviceCellGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventCellGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventParticipationItemGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventParticipationItemGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventsGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/EventsGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/GiveAdviceGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/GiveAdviceGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/GoalCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/GoalCellGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/ManageEventParticipationGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/ManageEventParticipationGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/ProfileGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/ui/controller/ProfileGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/util/DaoUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/util/DaoUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/util/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/com/pansoftware/logic/util/Session.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/classes/pictures/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/PanSoftware_war_exploded/WEB-INF/lib/mysql-connector-java-8.0.26.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/GoalFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/GoalFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/JoinEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/JoinEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ManageGoalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ManageGoalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/barcode/BarcodeScanner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/AdviceGoalBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/AdviceGoalBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/BarcodeBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/EventBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/EventBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/EventGoalBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/EventGoalBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/GoalBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/bean/GoalBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/AdviceGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/AdviceGoalDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/EventDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/EventDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/EventGoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/EventGoalDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/GoalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/GoalDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/entity/AdviceGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/entity/AdviceGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/entity/EventGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/entity/EventGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/enumeration/Pages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/enumeration/Pages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/AcceptedState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/AcceptedState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/RejectedState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/RejectedState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/StartingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/joineventstatemachine/StartingState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Events.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Events.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/GiveAdvice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/GiveAdvice.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/LoginFailure.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/LoginFailure.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/ManageEventParticipations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/ManageEventParticipations.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/ActivistNavbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/NewGoal.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/NewGoal.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/jsp/Profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/mail/SendMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/mail/SendMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/FxUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/FxUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/AdviceCellGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/AdviceCellGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventCellGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventCellGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventParticipationItemGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventParticipationItemGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventsGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/EventsGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/GiveAdviceGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/GiveAdviceGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/GoalCellGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/GoalCellGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/ManageEventParticipationGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/ManageEventParticipationGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/NavbarGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/NavbarGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/ProfileGraphicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/ui/controller/ProfileGraphicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/DaoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/DaoUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/util/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/AdviceCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/AdviceCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/GoalCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/GoalCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/NewGoal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pansoftware/logic/NewGoal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pictures/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/AdviceCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/AdviceCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/GoalCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/GoalCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/GoalFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/GoalFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/JoinEventController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/JoinEventController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/JoinEventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/JoinEventController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ManageGoalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ManageGoalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/NewGoal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/NewGoal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/barcode/BarcodeScanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/AdviceGoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/AdviceGoalBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/BarcodeBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/EventBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/EventBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/EventGoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/EventGoalBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/GoalBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/bean/GoalBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/AdviceGoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/AdviceGoalDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/EventDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/EventDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/EventGoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/EventGoalDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/GoalDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/GoalDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/AdviceGoal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/AdviceGoal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/EventGoal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/EventGoal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/enumeration/Pages.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/enumeration/Pages.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/joineventstatemachine/AcceptedState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/joineventstatemachine/AcceptedState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/joineventstatemachine/RejectedState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/joineventstatemachine/RejectedState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/joineventstatemachine/StartingState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/joineventstatemachine/StartingState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/FxUtilities$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/FxUtilities$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/FxUtilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/FxUtilities.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/AdviceCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/AdviceCellGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/AdviceGoalGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventCellGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventGoalGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventParticipationItemGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventParticipationItemGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventsGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/EventsGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/GiveAdviceGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/GiveAdviceGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/GoalCellGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/GoalCellGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/ManageEventParticipationGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/ManageEventParticipationGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/NavbarGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/NewGoalGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/ProfileGraphicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/ui/controller/ProfileGraphicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/util/DaoUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/util/DaoUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/util/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/util/Session.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pictures/logo.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,12 +195,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -272,6 +220,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="23wB1ZQzm63PMX3Op1TpmzfGMMy" />
   <component name="ProjectViewState">
@@ -284,16 +235,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="D:/intellij-workspace/Netbooks/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.29158005" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\danil\Documents\GitHub\PanSoftware\lib" />
+      <recent name="C:\Users\danil\Documents\GitHub\PanSoftware\src\main\java\com\pansoftware\logic\jsp" />
       <recent name="D:\intellij-workspace\PanSoftware\lib" />
       <recent name="D:\intellij-workspace\PanSoftware\src\main\resources\pictures" />
       <recent name="D:\intellij-workspace\PanSoftware\src\main\java\com\pansoftware\logic\jsp" />
@@ -307,7 +260,20 @@
       <recent name="com.example.pansoftware" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Navbar.jsp">
+  <component name="RunManager" selected="Application.MainDesktop">
+    <configuration name="MainDesktop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.pansoftware.logic.MainDesktop" />
+      <module name="PanSoftware" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pansoftware.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainDesktop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.pansoftware.MainDesktop" />
       <module name="PanSoftware" />
@@ -321,24 +287,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginFailure.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/LoginFailure.jsp">
-      <method v="2" />
-    </configuration>
-    <configuration name="ManageEventParticipations.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/ManageEventParticipations.jsp">
-      <method v="2" />
-    </configuration>
-    <configuration name="Navbar.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Navbar.jsp">
-      <method v="2" />
-    </configuration>
-    <configuration name="NewGoal.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/NewGoal.jsp">
-      <method v="2" />
-    </configuration>
-    <configuration name="Profile.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Profile.jsp">
-      <method v="2" />
-    </configuration>
-    <configuration name="Navbar" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.14" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Navbar.jsp" />
-      <option name="UPDATING_POLICY" value="restart-server" />
+    <configuration name="Login.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 10.0.14" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Login.jsp" />
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <deployment>
         <artifact name="PanSoftware:war exploded">
           <settings>
@@ -347,7 +298,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="5d67654d-03dc-4741-a39b-130d2c9635df" />
+        <option name="BASE_DIRECTORY_NAME" value="1862b6d5-59f8-431f-9bb3-bb2b03706967" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -355,7 +306,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="56014" />
+        <option name="DEBUG_PORT" value="56154" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -426,11 +377,9 @@
     </configuration>
     <configuration name="Smart Tomcat 10.0.14" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY">
       <option name="adminPort" value="8005" />
-      <option name="contextPath" value="" />
+      <option name="contextPath" value="/PanSoftware" />
       <option name="docBase" value="C:\Users\danil\Documents\GitHub\PanSoftware\web" />
-      <option name="envOptions">
-        <map />
-      </option>
+      <option name="envOptions" />
       <option name="passParentEnvironmentVariables" value="true" />
       <option name="port" value="8080" />
       <option name="tomcatInfo">
@@ -447,21 +396,14 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.MainDesktop" />
       <item itemvalue="Smart Tomcat.Smart Tomcat 10.0.14" />
-      <item itemvalue="Tomcat Server.Navbar" />
-      <item itemvalue="JavaScript Debug.LoginFailure.jsp" />
-      <item itemvalue="JavaScript Debug.ManageEventParticipations.jsp" />
-      <item itemvalue="JavaScript Debug.Navbar.jsp" />
-      <item itemvalue="JavaScript Debug.Profile.jsp" />
-      <item itemvalue="JavaScript Debug.NewGoal.jsp" />
+      <item itemvalue="Tomcat Server.Login.jsp" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.Navbar.jsp" />
-        <item itemvalue="JavaScript Debug.NewGoal.jsp" />
-        <item itemvalue="JavaScript Debug.Profile.jsp" />
-        <item itemvalue="JavaScript Debug.ManageEventParticipations.jsp" />
-        <item itemvalue="JavaScript Debug.LoginFailure.jsp" />
+        <item itemvalue="Application.MainDesktop" />
+        <item itemvalue="Tomcat Server.Login.jsp" />
       </list>
     </recent_temporary>
   </component>
@@ -501,7 +443,21 @@
       <workItem from="1643024030460" duration="2577000" />
       <workItem from="1643027594844" duration="527000" />
       <workItem from="1643028139216" duration="3715000" />
-      <workItem from="1643031894210" duration="1485000" />
+      <workItem from="1643031894210" duration="7327000" />
+      <workItem from="1643048989435" duration="5611000" />
+      <workItem from="1643199713366" duration="6825000" />
+      <workItem from="1643237620041" duration="1187000" />
+      <workItem from="1643280661175" duration="5780000" />
+      <workItem from="1643290757295" duration="999000" />
+      <workItem from="1643291887484" duration="3395000" />
+      <workItem from="1643302549637" duration="1629000" />
+      <workItem from="1643304209325" duration="14476000" />
+      <workItem from="1643369418011" duration="2898000" />
+      <workItem from="1643397101193" duration="4501000" />
+      <workItem from="1643473309542" duration="3121000" />
+      <workItem from="1643529837317" duration="5578000" />
+      <workItem from="1643539049886" duration="5724000" />
+      <workItem from="1643551625773" duration="15257000" />
     </task>
     <servers />
   </component>

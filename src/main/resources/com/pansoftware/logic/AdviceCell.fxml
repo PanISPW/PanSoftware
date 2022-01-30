@@ -64,16 +64,6 @@
         </Label>
         <HBox>
             <children>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Label fx:id="adviceCellProductBarcode" text="ProductBarcode">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                    </HBox.margin>
-                </Label>
-            </children>
-        </HBox>
-        <HBox>
-            <children>
                 <TextField fx:id="adviceCellTextField" HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>

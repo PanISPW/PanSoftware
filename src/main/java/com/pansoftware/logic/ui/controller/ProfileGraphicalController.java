@@ -1,12 +1,12 @@
 package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
-import com.pansoftware.logic.entity.AdviceGoal;
-import com.pansoftware.logic.entity.EventGoal;
-import com.pansoftware.logic.entity.Goal;
-import com.pansoftware.logic.entity.User;
+import com.pansoftware.logic.bean.AdviceGoalBean;
+import com.pansoftware.logic.bean.EventGoalBean;
+import com.pansoftware.logic.bean.GoalBean;
+import com.pansoftware.logic.bean.UserBean;
 import com.pansoftware.logic.enumeration.Pages;
-import com.pansoftware.logic.exception.UserNotFoundException;
+import com.pansoftware.logic.ui.FxUtilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,7 +15,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
-import com.pansoftware.logic.ui.FxUtilities;
 
 import java.net.URL;
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class ProfileGraphicalController implements Initializable {
 
-    User user = null;
+    UserBean user = null;
     @FXML
     private Label nameLabel;
     @FXML
@@ -58,10 +57,10 @@ public class ProfileGraphicalController implements Initializable {
         FxUtilities.hideScrollPane(eventGoalPane);
 
         // lista
-        List<Goal> goals = ManageGoalController.getGoalList();
+        List<GoalBean> goals = ManageGoalController.getGoalBeanList();
         goalList.getChildren().clear();
 
-        for (Goal item : goals) {
+        for (GoalBean item : goals) {
 
             GoalCellGraphicalController cell = new GoalCellGraphicalController(item);
 
@@ -82,10 +81,10 @@ public class ProfileGraphicalController implements Initializable {
         FxUtilities.hideScrollPane(eventGoalPane);
 
         // lista
-        List<AdviceGoal> goals = ManageGoalController.getAdviceGoalList();
+        List<AdviceGoalBean> goals = ManageGoalController.getAdviceGoalBeanList();
         adviceGoalList.getChildren().clear();
 
-        for (AdviceGoal item : goals) {
+        for (AdviceGoalBean item : goals) {
 
             AdviceGoalGraphicalController cell = new AdviceGoalGraphicalController(item);
 
@@ -105,10 +104,10 @@ public class ProfileGraphicalController implements Initializable {
         FxUtilities.hideScrollPane(adviceGoalPane);
 
         //lista
-        List<EventGoal> goals = ManageGoalController.getEventGoalList();
+        List<EventGoalBean> goals = ManageGoalController.getEventGoalBeanList();
         eventGoalList.getChildren().clear();
 
-        for (EventGoal item : goals) {
+        for (EventGoalBean item : goals) {
 
             EventGoalGraphicalController cell = new EventGoalGraphicalController(item);
 
@@ -132,7 +131,7 @@ public class ProfileGraphicalController implements Initializable {
         goalListButton.setSelected(true);
 
         try {
-            user = ManageGoalController.getCurrentUser();
+            user = ManageGoalController.getCurrentUserBean();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,8 +1,8 @@
 package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
+import com.pansoftware.logic.bean.AdviceGoalBean;
 import com.pansoftware.logic.bean.AnswerAdviceGoalBean;
-import com.pansoftware.logic.entity.AdviceGoal;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class AdviceCellGraphicalController implements Initializable {
 
-    AdviceGoal item;
+    AdviceGoalBean item;
     @FXML
     private Label adviceCellGoalTitle;
     @FXML
@@ -32,14 +32,11 @@ public class AdviceCellGraphicalController implements Initializable {
     @FXML
     private Label adviceCellGoalDescription;
     @FXML
-    private Label adviceCellProductBarcode;
-    @FXML
     private TextField adviceCellTextField;
     @FXML
     private Button adviceCellSubmitButton;
 
-    // dovrei passarmi il bean non l'entity
-    public AdviceCellGraphicalController(AdviceGoal goal) {
+    public AdviceCellGraphicalController(AdviceGoalBean goal) {
         this.item = goal;
     }
 
@@ -49,7 +46,7 @@ public class AdviceCellGraphicalController implements Initializable {
         AnswerAdviceGoalBean bean = new AnswerAdviceGoalBean();
 
         bean.setAnswerAdviceId(item.getId());
-        bean.setGoalUser(item.getUser().getUsername());
+        bean.setGoalUser(item.getUser());
         bean.setAnswer(adviceCellTextField.getText());
 
         ManageGoalController.answerAdviceGoal(bean);
@@ -61,11 +58,10 @@ public class AdviceCellGraphicalController implements Initializable {
         adviceCellGoalTitle.setText(item.getName());
         adviceCellGoalId.setText(String.valueOf(item.getId()));
         adviceCellGoalDeadline.setText(item.getDeadline().toString());
-        adviceCellGoalUser.setText(item.getUser().getUsername());
+        adviceCellGoalUser.setText(item.getUser());
         adviceCellCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
         adviceCellTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
         adviceCellGoalDescription.setText(item.getDescription());
-        adviceCellProductBarcode.setText(item.getProductBarcode());
     }
 
 }

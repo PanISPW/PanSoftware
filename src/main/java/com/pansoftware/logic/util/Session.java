@@ -25,6 +25,10 @@ public class Session {
         return instance;
     }
 
+    public void invalidate(){
+        instance = null;
+    }
+
     public UserRole getRole() {
         return role;
     }

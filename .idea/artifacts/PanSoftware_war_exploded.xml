@@ -8,7 +8,6 @@
           <element id="library" level="application" name="bootstrap" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="mysql-connector-java-8.0.26" />
           <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:17.0.1" />
           <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:17.0.1" />
           <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:17.0.1" />

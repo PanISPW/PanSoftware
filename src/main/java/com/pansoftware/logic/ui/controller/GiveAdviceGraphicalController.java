@@ -1,16 +1,15 @@
 package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
-import com.pansoftware.logic.entity.AdviceGoal;
+import com.pansoftware.logic.bean.AdviceGoalBean;
 import com.pansoftware.logic.enumeration.Pages;
-import com.pansoftware.logic.exception.UserNotFoundException;
+import com.pansoftware.logic.ui.FxUtilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
-import com.pansoftware.logic.ui.FxUtilities;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,9 +38,9 @@ public class GiveAdviceGraphicalController implements Initializable {
     @FXML
     private VBox adviceBox;
 
-    public void populateBox(List<AdviceGoal> goals) throws IOException {
+    public void populateBox(List<AdviceGoalBean> goals) throws IOException {
 
-        for (AdviceGoal item : goals) {
+        for (AdviceGoalBean item : goals) {
 
             AdviceCellGraphicalController cell = new AdviceCellGraphicalController(item);
 
@@ -59,28 +58,28 @@ public class GiveAdviceGraphicalController implements Initializable {
     @FXML
     public void makeupAdviceRadio() throws Exception {
         adviceBox.getChildren().clear();
-        List<AdviceGoal> goals = ManageGoalController.getUnansweredMakeupAdvice();
+        List<AdviceGoalBean> goals = ManageGoalController.getUnansweredMakeupAdviceBean();
         populateBox(goals);
     }
 
     @FXML
     public void foodAdviceRadio() throws Exception {
         adviceBox.getChildren().clear();
-        List<AdviceGoal> goals = ManageGoalController.getUnansweredFoodAdvice();
+        List<AdviceGoalBean> goals = ManageGoalController.getUnansweredFoodAdviceBean();
         populateBox(goals);
     }
 
     @FXML
     public void lifestyleAdviceRadio() throws Exception {
         adviceBox.getChildren().clear();
-        List<AdviceGoal> goals = ManageGoalController.getUnansweredLifestyleAdvice();
+        List<AdviceGoalBean> goals = ManageGoalController.getUnansweredLifestyleAdviceBean();
         populateBox(goals);
     }
 
     @FXML
     public void otherAdviceRadio() throws Exception {
         adviceBox.getChildren().clear();
-        List<AdviceGoal> goals = ManageGoalController.getUnansweredOtherAdvice();
+        List<AdviceGoalBean> goals = ManageGoalController.getUnansweredOtherAdviceBean();
         populateBox(goals);
     }
 

@@ -1,8 +1,8 @@
 package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
+import com.pansoftware.logic.bean.EventGoalBean;
 import com.pansoftware.logic.bean.UpdateStepsBean;
-import com.pansoftware.logic.entity.EventGoal;
 import com.pansoftware.logic.enumeration.GoalType;
 import com.pansoftware.logic.util.Session;
 import javafx.fxml.FXML;
@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class EventGoalGraphicalController implements Initializable {
 
-    EventGoal item;
+    EventGoalBean item;
 
     @FXML
     private Label goalCellItemTotalSteps;
@@ -59,7 +59,7 @@ public class EventGoalGraphicalController implements Initializable {
     private Label eventGoalCellParticipationStatus;
 
     // dovrei passarmi il bean non l'entity
-    public EventGoalGraphicalController(EventGoal goal) {
+    public EventGoalGraphicalController(EventGoalBean goal) {
         this.item = goal;
     }
 
@@ -75,8 +75,8 @@ public class EventGoalGraphicalController implements Initializable {
         goalCellItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
 
         try {
-            eventGoalCellEvent.setText(item.getEvent().getName());
-            eventGoalCellEventId.setText(item.getOrganizer().getUsername());
+            eventGoalCellEvent.setText(item.getEventName());
+            eventGoalCellEventId.setText(item.getEventOrganizer());
             eventGoalCellParticipationStatus.setText(item.getState().toString());
         } catch (NullPointerException e) {
             eventGoalCellEvent.setText("Event not specified");

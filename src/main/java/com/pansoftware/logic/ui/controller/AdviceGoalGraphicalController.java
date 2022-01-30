@@ -1,8 +1,8 @@
 package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
+import com.pansoftware.logic.bean.AdviceGoalBean;
 import com.pansoftware.logic.bean.UpdateStepsBean;
-import com.pansoftware.logic.entity.AdviceGoal;
 import com.pansoftware.logic.enumeration.GoalType;
 import com.pansoftware.logic.util.Session;
 import javafx.fxml.FXML;
@@ -24,7 +24,7 @@ public class AdviceGoalGraphicalController implements Initializable {
     @FXML
     private VBox eventGoalCellBox;
 
-    AdviceGoal item;
+    AdviceGoalBean item;
 
     @FXML
     private Label goalCellItemTitle;
@@ -51,9 +51,6 @@ public class AdviceGoalGraphicalController implements Initializable {
     private Label goalCellItemTotalSteps;
 
     @FXML
-    private Label adviceGoalCellProductBarcode;
-
-    @FXML
     private Label adviceGoalCellAdvice;
 
     @FXML
@@ -62,7 +59,7 @@ public class AdviceGoalGraphicalController implements Initializable {
     @FXML
     private TextField goalCellItemStepsTextField;
 
-    public AdviceGoalGraphicalController(AdviceGoal goal) {
+    public AdviceGoalGraphicalController(AdviceGoalBean goal) {
         this.item = goal;
     }
 
@@ -81,21 +78,13 @@ public class AdviceGoalGraphicalController implements Initializable {
 
         try {
             adviceGoalCellAdvice.setText(temp);
-            adviceGoalCellActivist.setText(item.getAdviceActivist().getUsername());
+            adviceGoalCellActivist.setText(item.getAdviceActivist());
         } catch(NullPointerException e) {
             adviceGoalCellAdvice.setText("not answered");
             adviceGoalCellActivist.setText("");
         }
 
         adviceGoalCellProductType.setText(item.getType().toString());
-
-        temp = item.getProductBarcode();
-        try{
-            temp = item.getAdvice();
-            adviceGoalCellProductBarcode.setText(temp);
-        } catch(NullPointerException e){
-            adviceGoalCellProductBarcode.setText("");
-        }
 
     }
 

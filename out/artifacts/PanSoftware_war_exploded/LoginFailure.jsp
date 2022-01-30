@@ -5,7 +5,7 @@
   Time: 19:13
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,24 +13,6 @@
     <meta charset="ISO-8859-1">
     <title>Login Failure</title>
 
-    <style>
-        .half-top-buffer {
-            margin-top: 50px;
-        }
-
-        .form-signin {
-            width: 100%;
-            max-width: 330px;
-            padding: 15px;
-            margin: auto;
-        }
-
-        .center-block {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
 </head>
 <body>
 
@@ -38,9 +20,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-success"
      aria-label="PanLoginNavbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> <img src="../pictures/logo.png"
-                                               width="30" height="30" alt=""> Pan
-        </a>
+        <img src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png" width="30" height="30" alt="logo"/>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar">

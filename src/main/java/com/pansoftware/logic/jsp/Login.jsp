@@ -1,32 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 
 <%@page import="com.pansoftware.logic.LoginController" %>
-<%@page import="com.pansoftware.logic.exception.UserNotFoundException" %>
+<%@page import="com.pansoftware.logic.bean.LoginBean" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="com.pansoftware.logic.exception.DatabaseException" %>
+<%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
 
-<!-- dichiarazione e instanziazione di un loginBean !-->
-<jsp:useBean id="LoginBean" scope="request" class="com.pansoftware.logic.bean.LoginBean"/>
-
-<!-- mappare gli attributi di un oggetto sui campi della form -->
-<jsp:setProperty name="LoginBean" property="*"/>
-
-<!-- @author Danilo D'Amico -->
-
-<!-- quando viene chiamata con il valore "login" -->
 <%
     if (request.getParameter("login") != null) {
         try {
-            LoginController.loginUser(LoginBean);
-%>
-<jsp:forward page="Profile.jsp"/>
-<%
-} catch (UserNotFoundException | SQLException e) {
-%>
-<jsp:forward page="LoginFailure.jsp"/>
-<%
+            LoginBean bean = new LoginBean();
+
+            bean.setUsername(request.getParameter("username"));
+            bean.setPassword(request.getParameter("password"));
+
+            LoginController.loginUser(bean);
+
+            %>
+            <jsp:forward page="Profile.jsp"/>
+            <%
+        } catch(SQLException | DatabaseException | UserNotFoundException e){
+            %>
+            <jsp:forward page="LoginFailure.jsp"/>
+            <%
         }
     } %>
+
+<%
+    LoginController.invalidateSession();
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,8 +67,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-success"
      aria-label="PanLoginNavbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> <img src="jetbrains://idea/navigate/reference?project=PanSoftware&path=pictures/logo.png"
-                                               width="30" height="30" alt=""> Pan
+        <a class="navbar-brand" href="#"> <img src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png" width="30" height="30"/> Pan
         </a>
     </div>
 </nav>
@@ -74,8 +76,8 @@
         class="d-flex justify-content-center align-items-center form-signin">
     <!-- action chiama Login.jsp -->
     <form action="Login.jsp" name="loginForm" method="POST">
-        <img class="img-fluid center-block" src="jetbrains://idea/navigate/reference?project=PanSoftware&path=pictures/logo.png"
-             alt="Responsive image" width="72" height="72">
+        <img class="img-fluid center-block" src="https://img.icons8.com/external-filled-outline-icons-pause-08/50/000000/external-flower-farm-and-garden-filled-outline-icons-pause-08.png"
+             alt="Responsive image" width="72" height="72"/>
         <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
 
         <input type="text" id="username" name="username" class="form-control"

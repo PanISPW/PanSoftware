@@ -13,7 +13,6 @@ public class GoalBean {
     private boolean reminder = false;
 
     private String name = "";
-    private String surname = "";
     private String description = "";
     private int numberOfSteps = 1;
     private int stepsCompleted = 0;
@@ -68,13 +67,17 @@ public class GoalBean {
         return deadline;
     }
 
-    public void setDeadline(LocalDate deadline) throws InvalidDataException {
+    public void setNewDeadline(LocalDate deadline) throws InvalidDataException {
         if(deadline == null)
             throw new InvalidDataException("please insert a deadline");
 
         if (DataValidation.isNotPastDate(deadline))
             this.deadline = deadline;
         else throw new InvalidDataException("please insert a future date");
+    }
+
+    public void setDeadline(LocalDate deadline) throws InvalidDataException {
+        this.deadline = deadline;
     }
 
     public int getId() {
@@ -103,11 +106,4 @@ public class GoalBean {
         this.reminder = reminder;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
 }

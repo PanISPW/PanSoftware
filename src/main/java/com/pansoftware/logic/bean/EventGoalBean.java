@@ -6,10 +6,9 @@ import com.pansoftware.logic.exception.InvalidDataException;
 import com.pansoftware.logic.util.DataValidation;
 
 public class EventGoalBean extends GoalBean{
-
-    private ProductType type = ProductType.NOTSPECIFIED;
     private int eventId = -1;
     private String eventOrganizer = "";
+    private String eventName = "";
     private EventRequestState state = EventRequestState.PENDING;
 
     public int getEventId() {
@@ -39,11 +38,11 @@ public class EventGoalBean extends GoalBean{
             this.state = state;
     }
 
-    public ProductType getType() {
-        return type;
+    public String getEventName() {
+        return eventName;
     }
 
-    public void setType(ProductType type) {
-        this.type = type;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 }

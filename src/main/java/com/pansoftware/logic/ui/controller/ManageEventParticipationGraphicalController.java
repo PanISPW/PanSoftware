@@ -1,7 +1,7 @@
 package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
-import com.pansoftware.logic.entity.EventGoal;
+import com.pansoftware.logic.bean.EventGoalBean;
 import com.pansoftware.logic.enumeration.Pages;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,9 +25,9 @@ public class ManageEventParticipationGraphicalController implements Initializabl
         eventsParticipationList.getChildren().clear();
 
         try {
-            List<EventGoal> goals = ManageGoalController.getPendingEventGoalList();
+            List<EventGoalBean> goals = ManageGoalController.getPendingEventGoalBeanList();
 
-            for (EventGoal item : goals) {
+            for (EventGoalBean item : goals) {
                 EventParticipationItemGraphicalController cell = new EventParticipationItemGraphicalController(item);
 
                 FXMLLoader loader = FxUtilities.loadFxml(Pages.EVENTPARTICIPATIONITEM);

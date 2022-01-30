@@ -2,11 +2,7 @@ package com.pansoftware.logic.ui.controller;
 
 import com.pansoftware.logic.ManageGoalController;
 import com.pansoftware.logic.bean.EventGoalBean;
-import com.pansoftware.logic.bean.GoalBean;
-import com.pansoftware.logic.entity.EventGoal;
-import com.pansoftware.logic.enumeration.GoalType;
 import com.pansoftware.logic.exception.InvalidDataException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class EventParticipationItemGraphicalController implements Initializable {
 
-    EventGoal item;
+    EventGoalBean item;
     @FXML
     private Label eventParticipationTitle;
     @FXML
@@ -39,7 +35,7 @@ public class EventParticipationItemGraphicalController implements Initializable 
     @FXML
     private Button eventParticipationReject;
 
-    public EventParticipationItemGraphicalController(EventGoal goal) {
+    public EventParticipationItemGraphicalController(EventGoalBean goal) {
         this.item = goal;
     }
 
@@ -56,12 +52,12 @@ public class EventParticipationItemGraphicalController implements Initializable 
         }
 
         bean.setStepsCompleted(item.getStepsCompleted());
-        bean.setDeadline(item.getDeadline());
+        bean.setNewDeadline(item.getDeadline());
         bean.setId(item.getId());
-        bean.setUser(item.getUser().getUsername());
+        bean.setUser(item.getUser());
 
-        bean.setEventId(item.getEvent().getId());
-        bean.setEventOrganizer(item.getEvent().getUser().getUsername());
+        bean.setEventId(item.getEventId());
+        bean.setEventOrganizer(item.getEventOrganizer());
         bean.setState(item.getState());
 
         return bean;
@@ -85,7 +81,7 @@ public class EventParticipationItemGraphicalController implements Initializable 
         eventParticipationTitle.setText(item.getName());
         eventParticipationId.setText(String.valueOf(item.getId()));
         eventParticipationDeadline.setText(item.getDeadline().toString());
-        eventParticipationUser.setText(item.getUser().getUsername());
+        eventParticipationUser.setText(item.getUser());
         eventParticipationCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
         eventParticipationTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
         eventParticipationDescription.setText(item.getDescription());

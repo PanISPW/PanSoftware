@@ -1,7 +1,5 @@
 package com.pansoftware.logic.util;
 
-import com.pansoftware.logic.entity.EventGoal;
-import com.pansoftware.logic.entity.Goal;
 import com.pansoftware.logic.enumeration.EventRequestState;
 import com.pansoftware.logic.enumeration.EventType;
 import com.pansoftware.logic.enumeration.ProductType;
@@ -9,7 +7,9 @@ import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 // @author Danilo D'Amico
@@ -18,7 +18,7 @@ public class DaoUtils {
 
     private DaoUtils(){}
 
-    public static ProductType databaseIntToProductType(int databaseInt) {
+    public static ProductType IntToProductType(int databaseInt) {
 
         return switch (databaseInt) {
             case 0 -> ProductType.MAKEUP;
@@ -29,7 +29,7 @@ public class DaoUtils {
         };
     }
 
-    public static int productTypeToDatabaseInt(ProductType type) {
+    public static int productTypeToInt(ProductType type) {
 
         return switch (type) {
             case MAKEUP -> 0;
@@ -52,7 +52,7 @@ public class DaoUtils {
         return date;
     }
 
-    public static UserRole databaseIntToUserRole(int databaseInt) {
+    public static UserRole IntToUserRole(int databaseInt) {
 
         return switch (databaseInt) {
             case 1 -> UserRole.ACTIVIST;
@@ -61,7 +61,7 @@ public class DaoUtils {
         };
     }
 
-    public static int userRoleToDatabaseInt(UserRole role) {
+    public static int userRoleToInt(UserRole role) {
         return switch (role) {
             case ACTIVIST -> 1;
             case BRANDMANAGER -> 2;
@@ -106,7 +106,7 @@ public class DaoUtils {
         };
     }
 
-    public static ResultSet executeCRUDQuery(String sql) throws SQLException, DatabaseException {
+    public static ResultSet executeCRUDQuery(String sql) throws SQLException {
         Statement statement;
         DatabaseConnection databaseConnection;
 

@@ -2,11 +2,11 @@ package com.pansoftware.logic.bean;
 
 import com.pansoftware.logic.enumeration.ProductType;
 import com.pansoftware.logic.exception.InvalidDataException;
+import com.pansoftware.logic.util.DaoUtils;
 
 public class AdviceGoalBean extends GoalBean{
 
     private ProductType type = ProductType.NOTSPECIFIED;
-    private String barcode = "";
     private String advice = "";
     private String adviceActivist = "";
 
@@ -19,12 +19,8 @@ public class AdviceGoalBean extends GoalBean{
             this.type = type;
     }
 
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
+    public void setTypeInt(int typeInt) {
+        this.type = DaoUtils.IntToProductType(typeInt);
     }
 
     public String getAdvice() {

@@ -4,20 +4,23 @@ import com.pansoftware.logic.ManageGoalController;
 import com.pansoftware.logic.bean.AdviceGoalBean;
 import com.pansoftware.logic.bean.EventGoalBean;
 import com.pansoftware.logic.bean.GoalBean;
-import com.pansoftware.logic.enumeration.GoalType;
+import com.pansoftware.logic.enumeration.Pages;
 import com.pansoftware.logic.enumeration.ProductType;
-import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.InvalidDataException;
 import com.pansoftware.logic.exception.UserNotFoundException;
+import com.pansoftware.logic.ui.EventGoalBeanUtil;
+import com.pansoftware.logic.ui.FxUtilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import com.pansoftware.logic.ui.FxUtilities;
+import javafx.stage.Stage;
 
 import javax.security.auth.login.LoginException;
 import java.net.URL;
@@ -55,9 +58,6 @@ public class NewGoalGraphicalController implements Initializable {
     private TextField numberOfSteps;
 
     @FXML
-    private TextField stepsCompleted;
-
-    @FXML
     private DatePicker deadline;
 
     @FXML
@@ -67,19 +67,10 @@ public class NewGoalGraphicalController implements Initializable {
     private ComboBox<ProductType> productType;
 
     @FXML
-    private TextField eventId;
-
-    @FXML
-    private TextField eventOrganizer;
-
-    @FXML
-    private Button submitButton;
-
-    @FXML
     private VBox adviceGoal;
 
     @FXML
-    private VBox eventGoal;
+    private Button submitButton;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -98,7 +89,6 @@ public class NewGoalGraphicalController implements Initializable {
         productType.getSelectionModel().selectFirst();
 
         FxUtilities.hideVBox(adviceGoal);
-        FxUtilities.hideVBox(eventGoal);
 
         radioGroup = new ToggleGroup();
         goalButton.setToggleGroup(radioGroup);
@@ -110,19 +100,16 @@ public class NewGoalGraphicalController implements Initializable {
     @FXML
     public void goalRadio() {
         FxUtilities.hideVBox(adviceGoal);
-        FxUtilities.hideVBox(eventGoal);
     }
 
     @FXML
     public void adviceGoalRadio() {
         FxUtilities.showVBox(adviceGoal);
-        FxUtilities.hideVBox(eventGoal);
     }
 
     @FXML
     public void eventGoalRadio() {
         FxUtilities.hideVBox(adviceGoal);
-        FxUtilities.showVBox(eventGoal);
     }
 
     @FXML
@@ -134,37 +121,50 @@ public class NewGoalGraphicalController implements Initializable {
 
         switch (selectedButton) {
             case "EventGoal" -> {
-                EventGoalBean eventGoalBean = new EventGoalBean();
-                eventGoalBean.setEventId(Integer.parseInt(eventId.getText()));
-                eventGoalBean.setEventOrganizer(eventOrganizer.getText());
-                fillBeanAndCreateGoal(eventGoalBean);
+                EventGoalBeanUtil util = EventGoalBeanUtil.getEventGoalBeanUtil();
+
+                util.setName(goalName.getText());
+                util.setDescription(goalDescription.getText());
+
+                util.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
+                util.setStepsCompleted(0);
+
+                util.setDeadline(deadline.getValue());
+                util.setReminder(reminder.isSelected());
+
+                NavbarGraphicalController navbar = NavbarGraphicalController.getInstance();
+                navbar.changePage(Pages.EVENTSELECTION);
             }
             case "AdviceGoal" -> {
                 AdviceGoalBean adviceGoalBean = new AdviceGoalBean();
                 adviceGoalBean.setType(productType.getValue());
-                fillBeanAndCreateGoal(adviceGoalBean);
+                fillBean(adviceGoalBean);
+
+                ManageGoalController.createGoal(adviceGoalBean);
+                resultLabel.setText("Goal Successfully added");
             }
             default -> {
                 GoalBean goalBean = new GoalBean();
-                fillBeanAndCreateGoal(goalBean);
+                fillBean(goalBean);
+
+                ManageGoalController.createGoal(goalBean);
+                resultLabel.setText("Goal Successfully added");
             }
         }
     }
 
-    public void fillBeanAndCreateGoal(GoalBean bean) throws InvalidDataException, UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
+    private void fillBean(GoalBean bean) {
 
         try {
             bean.setName(goalName.getText());
             bean.setDescription(goalDescription.getText());
 
             bean.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
-            bean.setStepsCompleted(Integer.parseInt(stepsCompleted.getText()));
+            bean.setStepsCompleted(0);
 
-            bean.setDeadline(deadline.getValue());
+            bean.setNewDeadline(deadline.getValue());
             bean.setReminder(reminder.isSelected());
 
-            new ManageGoalController().createGoal(bean);
-            resultLabel.setText("Goal Successfully added");
         } catch (InvalidDataException e) {
             resultLabel.setText(e.getMessage());
         }

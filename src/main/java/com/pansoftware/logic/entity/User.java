@@ -26,7 +26,10 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        if(username == null)
+            return "";
+        else
+            return username;
     }
 
     public void setUsername(String username) {
@@ -73,7 +76,7 @@ public class User {
         this.role = role;
     }
 
-    public void save() throws DatabaseException, SQLException {
+    public void save() throws DatabaseException {
         UserDao.addUser(this.username, this.password, this.email, this.name, this.surname, this.role);
     }
 }

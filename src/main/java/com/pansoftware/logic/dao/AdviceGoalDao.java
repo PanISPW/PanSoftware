@@ -14,7 +14,6 @@ import com.pansoftware.logic.util.DatabaseConnection;
 import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,7 @@ public class AdviceGoalDao {
         while (resultSet.next()) {
 
             User userEntity = UserDao.getUser(user);
-            ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
+            ProductType productType = DaoUtils.IntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
             LocalDate deadline;
 
             try {
@@ -79,7 +78,7 @@ public class AdviceGoalDao {
             throw new EmptyResultSetException(Constants.NO_GOAL_RELATED_TO_THE_USER_WAS_FOUND);
         }
 
-        ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
+        ProductType productType = DaoUtils.IntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
         User userEntity = UserDao.getUser(user);
 
         try {
@@ -107,7 +106,7 @@ public class AdviceGoalDao {
 
         try {
 
-            int typeInt = DaoUtils.productTypeToDatabaseInt(goal.getType());
+            int typeInt = DaoUtils.productTypeToInt(goal.getType());
             sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
             String insertStatement = String.format("INSERT INTO advicegoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, productType, productBarcode, advice, adviceActivist) "
@@ -135,24 +134,11 @@ public class AdviceGoalDao {
         }
     }
 
-    public static void insertBarcode(String barcode, int id, String user) throws DatabaseException {
-
-        try {
-            String updateStatement = String.format("UPDATE advicegoal set barcode='%s' WHERE id = %s AND user = '%s';", barcode, id, user);
-            DaoUtils.executeUpdate(updateStatement);
-
-        } catch (SQLException e) {
-
-            throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
-
-        }
-    }
-
     public static void updateProductTypeAdviceGoal(ProductType type, int id, String user) throws DatabaseException {
 
         try {
 
-            int typeInt = DaoUtils.productTypeToDatabaseInt(type);
+            int typeInt = DaoUtils.productTypeToInt(type);
 
             String updateStatement = String.format("UPDATE advicegoal set productType=%s WHERE Id=%s AND user='%s';", typeInt, id, user);
             DaoUtils.executeUpdate(updateStatement);
@@ -291,7 +277,7 @@ public class AdviceGoalDao {
 
         while (resultSet.next()) {
             User userEntity = UserDao.getUser(resultSet.getString("user"));
-            ProductType productType = DaoUtils.databaseIntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
+            ProductType productType = DaoUtils.IntToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
             getAdviceGoalFromResultSet(resultSet, goalList, userEntity, productType);
         }
 
