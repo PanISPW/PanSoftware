@@ -14,6 +14,8 @@ import java.sql.SQLException;
 
 public class LoginController {
 
+    private LoginController(){}
+
     public static void loginUser(final LoginBean bean) throws UserNotFoundException, SQLException, EmptyResultSetException {
         final String user = bean.getUsername();
         final String password = bean.getPassword();

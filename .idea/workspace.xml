@@ -12,9 +12,6 @@
     <list default="true" id="dc57b882-6402-424c-9c8f-d6fab0de00f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pansoftware/logic/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pansoftware/logic/dao/UserDao.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -346,7 +343,7 @@
       <workItem from="1643615621865" duration="12278000" />
       <workItem from="1643637271860" duration="498000" />
       <workItem from="1643638832382" duration="55000" />
-      <workItem from="1643639171664" duration="4317000" />
+      <workItem from="1643639171664" duration="4517000" />
     </task>
     <servers />
   </component>
