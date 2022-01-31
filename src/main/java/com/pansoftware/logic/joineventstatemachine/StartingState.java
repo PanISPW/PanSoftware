@@ -12,21 +12,21 @@ import static com.pansoftware.logic.util.Constants.NO_TRANSITION_OCCURS;
 
 public class StartingState extends JoinEventState {
 
-    private static ConcreteStateMachine stateMachine;
-    private static boolean ISPRIVATE = false;
-    private static Event event;
+    private ConcreteStateMachine stateMachine;
+    private boolean isPrivate = false;
+    private Event event;
 
     public StartingState(final ConcreteStateMachine stateMachine, final Event event) {
         this.stateMachine = stateMachine;
         this.event = event;
         if(event.getType().equals(EventType.PRIVATE)){
-            ISPRIVATE = true;
+            isPrivate = true;
         }
 
     }
 
     public static JoinEventState nextState() throws DatabaseException {
-        if (ISPRIVATE) {
+        if (isPrivate) {
             return new PendingState(stateMachine, event);
         } else {
             return new AcceptedState(event);
