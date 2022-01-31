@@ -1,15 +1,14 @@
-<%@ page import="com.pansoftware.logic.bean.EventGoalBean" %>
-<%@ page import="com.pansoftware.logic.exception.InvalidDataException" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="com.pansoftware.logic.bean.EventBean" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.pansoftware.logic.ManageGoalController" %>
-<%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
-<%@ page import="com.pansoftware.logic.exception.EmptyResultSetException" %>
-<%@ page import="javax.security.auth.login.LoginException" %>
+<%@ page import="com.pansoftware.logic.bean.EventBean" %>
+<%@ page import="com.pansoftware.logic.bean.EventGoalBean" %>
 <%@ page import="com.pansoftware.logic.exception.DatabaseException" %>
-<%@ page import="com.pansoftware.logic.GoalFactory" %>
+<%@ page import="com.pansoftware.logic.exception.EmptyResultSetException" %>
+<%@ page import="com.pansoftware.logic.exception.InvalidDataException" %>
+<%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
+<%@ page import="javax.security.auth.login.LoginException" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: danil
@@ -39,10 +38,7 @@
             bean.setEventId(Integer.parseInt(request.getParameter("eventid")));
             bean.setEventOrganizer(request.getParameter("eventorganizer"));
 
-            System.out.println("Id " + bean.getEventId());
-            System.out.println("Organizer " + bean.getEventOrganizer());
-
-            GoalFactory.getGoalFactory().createGoal(bean);
+            ManageGoalController.createGoal(bean);
 %>
 <jsp:forward page="Profile.jsp"/>
 <%

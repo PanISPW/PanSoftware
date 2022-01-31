@@ -1,5 +1,5 @@
-<%@ page import="com.pansoftware.logic.GoalFactory" %>
 <%@ page import="com.pansoftware.logic.LoginController" %>
+<%@ page import="com.pansoftware.logic.ManageGoalController" %>
 <%@ page import="com.pansoftware.logic.bean.AdviceGoalBean" %>
 <%@ page import="com.pansoftware.logic.bean.GoalBean" %>
 <%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
@@ -28,7 +28,7 @@
                 bean.setReminder(true);
             }
 
-            GoalFactory.getGoalFactory().createGoal(bean);
+            ManageGoalController.createGoal(bean);
         } catch(final InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@
                 bean.setReminder(true);
             }
 
-            GoalFactory.getGoalFactory().createGoal(bean);
+            ManageGoalController.createGoal(bean);
         } catch(final InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
             e.printStackTrace();
         }
