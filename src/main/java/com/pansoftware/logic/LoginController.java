@@ -2,7 +2,6 @@ package com.pansoftware.logic;
 
 import com.pansoftware.logic.bean.LoginBean;
 import com.pansoftware.logic.dao.UserDao;
-import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.InvalidDataException;
@@ -26,16 +25,6 @@ public class LoginController {
         Session.getSession().setRole(role);
     }
 
-    public void signup(final LoginBean bean) throws SQLException {
-
-        final User user = new User(bean.getUsername(), bean.getPassword(), bean.getEmail(), bean.getLoginName(), bean.getLoginSurname(), bean.getLoginRole());
-        try {
-            user.save();
-        } catch (final Exception e) {
-            throw new SQLException("signup failed");
-        }
-    }
-
     public static String getCurrentUser() throws InvalidDataException {
         try {
             return Session.getSession().getUser();
@@ -47,7 +36,7 @@ public class LoginController {
     public static UserRole getUserRole() throws InvalidDataException {
         try {
             return Session.getSession().getRole();
-        } catch(final Exception e){
+        } catch(Exception e){
             throw new InvalidDataException("Session data is invalid");
         }
     }

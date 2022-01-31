@@ -3,6 +3,7 @@ package com.pansoftware.logic.dao;
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.UserRole;
 import com.pansoftware.logic.exception.EmptyResultSetException;
+import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.DaoUtils;
 import com.pansoftware.logic.util.DatabaseConnection;
 
@@ -16,7 +17,7 @@ public class UserDao {
     private UserDao() {
     }
 
-    public static UserRole checkUserPassword(final String user, final String password) throws EmptyResultSetException, SQLException {
+    public static UserRole checkUserPassword(final String user, final String password) throws SQLException, UserNotFoundException {
 
         ResultSet resultSet = null;
         try {
@@ -24,13 +25,13 @@ public class UserDao {
             resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
-                throw new EmptyResultSetException("Username or password incorrect");
+                throw new UserNotFoundException("Username or password incorrect");
             }
 
             return DaoUtils.intToUserRole(resultSet.getInt("role"));
         } catch(final SQLException e){
             throw new SQLException("Can't validate credentials");
-        }finally {
+        } finally {
             DatabaseConnection.closeResultSet(resultSet);
         }
     }
