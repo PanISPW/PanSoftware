@@ -39,7 +39,7 @@ public class JoinEventController {
 
         final EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
 
-        if (Objects.equals(eventGoal.getOrganizer().getUsername(), Session.getSession().getUser()) && eventGoal.getState() == EventRequestState.PENDING) {
+        if (Objects.equals(eventGoal.getEvent().getUser().getUsername(), Session.getSession().getUser()) && eventGoal.getState() == EventRequestState.PENDING) {
             eventGoal.acceptJoinRequest();
         } else {
             throw new NoTransitionException("It is impossible to accept this Join Request");
@@ -50,7 +50,7 @@ public class JoinEventController {
 
         final EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
 
-        if (Objects.equals(eventGoal.getOrganizer().getUsername(), Session.getSession().getUser()) && eventGoal.getState() == EventRequestState.PENDING) {
+        if (Objects.equals(eventGoal.getEvent().getUser().getUsername(), Session.getSession().getUser()) && eventGoal.getState() == EventRequestState.PENDING) {
             eventGoal.rejectJoinRequest();
         } else {
             throw new NoTransitionException("It is impossible to reject this Join Request");

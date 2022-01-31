@@ -22,7 +22,7 @@ public class ManageEventParticipationGraphicalController implements Initializabl
 
     @Override
     public void initialize(final URL arg0, final ResourceBundle arg1) {
-        this.eventsParticipationList.getChildren().clear();
+        eventsParticipationList.getChildren().clear();
 
         try {
             final List<EventGoalBean> goals = ManageGoalController.getPendingEventGoalBeanList();
@@ -36,7 +36,7 @@ public class ManageEventParticipationGraphicalController implements Initializabl
 
                 final VBox vbox = loader.load();
 
-                this.eventsParticipationList.getChildren().add(vbox);
+                eventsParticipationList.getChildren().add(vbox);
             }
         } catch (final Exception e) {
 

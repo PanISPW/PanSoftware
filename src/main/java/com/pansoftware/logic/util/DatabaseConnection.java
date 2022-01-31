@@ -14,7 +14,7 @@ public class DatabaseConnection {
     private static final String DB_PASSWORD = "esameispw";
 
     public DatabaseConnection() throws SQLException {
-        this.connection = DriverManager.getConnection(DatabaseConnection.URL, DatabaseConnection.DBUSER, DatabaseConnection.DB_PASSWORD);
+        this.connection = DriverManager.getConnection(URL, DBUSER, DB_PASSWORD);
     }
 
     public static void closeResultSet(final ResultSet resultSet) throws DatabaseException {

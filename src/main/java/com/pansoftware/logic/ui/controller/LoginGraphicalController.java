@@ -55,18 +55,18 @@ public class LoginGraphicalController implements Initializable {
 
         try {
 
-            final String username = this.usernameField.getText();
-            final String password = this.passwordField.getText();
+            final String username = usernameField.getText();
+            final String password = passwordField.getText();
 
             final LoginBean bean = new LoginBean(username, password);
             LoginController.loginUser(bean);
 
             final Scene newScene = FxUtilities.goToPage(Pages.PROFILE, null);
-            final Stage stage = (Stage) this.outerVBox.getScene().getWindow();
+            final Stage stage = (Stage) outerVBox.getScene().getWindow();
             stage.setScene(newScene);
 
         } catch (final UserNotFoundException e) {
-            this.resultLabel.setText(e.getMessage());
+            resultLabel.setText(e.getMessage());
         } catch(final IOException e){
             e.printStackTrace();
             Platform.exit();

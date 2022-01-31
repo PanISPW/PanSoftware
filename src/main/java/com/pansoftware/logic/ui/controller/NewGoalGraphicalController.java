@@ -123,31 +123,31 @@ public class NewGoalGraphicalController implements Initializable {
             case "EventGoal" -> {
                 final EventGoalBeanUtil util = EventGoalBeanUtil.getEventGoalBeanUtil();
 
-                util.setName(this.goalName.getText());
-                util.setDescription(this.goalDescription.getText());
+                util.setName(goalName.getText());
+                util.setDescription(goalDescription.getText());
 
-                util.setNumberOfSteps(Integer.parseInt(this.numberOfSteps.getText()));
+                util.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
 
-                util.setDeadline(this.deadline.getValue());
-                util.setReminder(this.reminder.isSelected());
+                util.setDeadline(deadline.getValue());
+                util.setReminder(reminder.isSelected());
 
                 final NavbarGraphicalController navbar = NavbarGraphicalController.getInstance();
                 navbar.changePage(Pages.EVENTSELECTION);
             }
             case "AdviceGoal" -> {
                 final AdviceGoalBean adviceGoalBean = new AdviceGoalBean();
-                adviceGoalBean.setType(this.productType.getValue());
-                this.fillBean(adviceGoalBean);
+                adviceGoalBean.setType(productType.getValue());
+                fillBean(adviceGoalBean);
 
                 ManageGoalController.createGoal(adviceGoalBean);
-                this.resultLabel.setText("Goal Successfully added");
+                resultLabel.setText("Goal Successfully added");
             }
             default -> {
                 final GoalBean goalBean = new GoalBean();
-                this.fillBean(goalBean);
+                fillBean(goalBean);
 
                 ManageGoalController.createGoal(goalBean);
-                this.resultLabel.setText("Goal Successfully added");
+                resultLabel.setText("Goal Successfully added");
             }
         }
     }
@@ -155,17 +155,17 @@ public class NewGoalGraphicalController implements Initializable {
     private void fillBean(final GoalBean bean) {
 
         try {
-            bean.setName(this.goalName.getText());
-            bean.setDescription(this.goalDescription.getText());
+            bean.setName(goalName.getText());
+            bean.setDescription(goalDescription.getText());
 
-            bean.setNumberOfSteps(Integer.parseInt(this.numberOfSteps.getText()));
+            bean.setNumberOfSteps(Integer.parseInt(numberOfSteps.getText()));
             bean.setStepsCompleted(0);
 
-            bean.setNewDeadline(this.deadline.getValue());
-            bean.setReminder(this.reminder.isSelected());
+            bean.setNewDeadline(deadline.getValue());
+            bean.setReminder(reminder.isSelected());
 
         } catch (final InvalidDataException e) {
-            this.resultLabel.setText(e.getMessage());
+            resultLabel.setText(e.getMessage());
         }
 
     }

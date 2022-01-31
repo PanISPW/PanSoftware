@@ -24,8 +24,8 @@ public class MainDesktop extends Application {
         try {
 
             primaryStage.setTitle(Session.getSession().getPage().toString().toLowerCase());
-            primaryStage.setWidth(600);
-            primaryStage.setHeight(600);
+            primaryStage.setWidth(720);
+            primaryStage.setHeight(1280);
             primaryStage.centerOnScreen();
             primaryStage.setScene(scene);
             primaryStage.show();

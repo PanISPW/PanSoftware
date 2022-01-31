@@ -12,7 +12,7 @@ public class EventGoalBean extends GoalBean{
     private EventRequestState state = EventRequestState.PENDING;
 
     public int getEventId() {
-        return this.eventId;
+        return eventId;
     }
 
     public void setEventId(final int eventId) throws InvalidDataException {
@@ -22,7 +22,7 @@ public class EventGoalBean extends GoalBean{
     }
 
     public String getEventOrganizer() {
-        return this.eventOrganizer;
+        return eventOrganizer;
     }
 
     public void setEventOrganizer(final String eventOrganizer) {
@@ -30,7 +30,7 @@ public class EventGoalBean extends GoalBean{
     }
 
     public EventRequestState getState() {
-        return this.state;
+        return state;
     }
 
     public void setState(final EventRequestState state) throws InvalidDataException {
@@ -39,7 +39,7 @@ public class EventGoalBean extends GoalBean{
     }
 
     public String getEventName() {
-        return this.eventName;
+        return eventName;
     }
 
     public void setEventName(final String eventName) {

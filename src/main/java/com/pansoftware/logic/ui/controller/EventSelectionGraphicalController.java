@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class EventSelectionGraphicalController implements Initializable {
 
-    ObservableList<EventBean> observableList = FXCollections.observableArrayList();
+    private ObservableList<EventBean> observableList = FXCollections.observableArrayList();
     @FXML
     private VBox eventsList;
 
@@ -37,7 +37,7 @@ public class EventSelectionGraphicalController implements Initializable {
 
                 final VBox vbox = loader.load();
 
-                this.eventsList.getChildren().add(vbox);
+                eventsList.getChildren().add(vbox);
             }
         } catch (final Exception e) {
             Platform.exit();

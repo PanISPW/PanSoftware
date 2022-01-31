@@ -65,35 +65,34 @@ public class AdviceGoalGraphicalController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        final String temp = "";
-        FxUtilities.hideVBox(this.eventGoalCellBox);
 
-        this.goalCellItemTitle.setText(this.item.getName());
-        this.goalCellItemDeadline.setText("Deadline: " + this.item.getDeadline().toString());
-        this.goalCellItemDescription.setText(this.item.getDescription());
-        this.goalCellItemId.setText(String.valueOf(this.item.getId()));
-        this.goalCellItemCompletedSteps.setText(String.valueOf(this.item.getStepsCompleted()));
-        this.goalCellItemTotalSteps.setText(String.valueOf(this.item.getNumberOfSteps()));
+        FxUtilities.hideVBox(eventGoalCellBox);
+
+        goalCellItemTitle.setText(item.getName());
+        goalCellItemDeadline.setText("Deadline: " + item.getDeadline().toString());
+        goalCellItemDescription.setText(item.getDescription());
+        goalCellItemId.setText(String.valueOf(item.getId()));
+        goalCellItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
+        goalCellItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
 
 
         try {
-            this.adviceGoalCellAdvice.setText(temp);
-            this.adviceGoalCellActivist.setText(this.item.getAdviceActivist());
+            adviceGoalCellAdvice.setText(item.getAdvice());
+            adviceGoalCellActivist.setText(item.getAdviceActivist());
         } catch(final NullPointerException e) {
-            this.adviceGoalCellAdvice.setText("not answered");
-            this.adviceGoalCellActivist.setText("");
+            adviceGoalCellAdvice.setText("not answered");
+            adviceGoalCellActivist.setText("");
         }
 
-        this.adviceGoalCellProductType.setText(this.item.getType().toString());
-
+        adviceGoalCellProductType.setText(item.getType().toString());
     }
 
     @FXML
     public void submit() throws Exception {
         final UpdateStepsBean bean = new UpdateStepsBean();
 
-        bean.setUpdateId(this.item.getId());
-        bean.setStepsCompleted(Integer.parseInt(this.goalCellItemStepsTextField.getText()));
+        bean.setUpdateId(item.getId());
+        bean.setStepsCompleted(Integer.parseInt(goalCellItemStepsTextField.getText()));
         bean.setType(GoalType.ADVICEGOAL);
         bean.setUpdateUser(Session.getSession().getUser());
 

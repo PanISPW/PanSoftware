@@ -30,10 +30,6 @@ public class AdviceGoal extends Goal {
         super(name, description, numberOfSteps, stepsCompleted, deadline, user, id);
     }
 
-    public static AdviceGoal getAdviceGoal(final String user, final int id) throws EmptyResultSetException, DatabaseException {
-        return AdviceGoalDao.getAdviceGoal(user, id);
-    }
-
     public ProductType getType() {
         return this.type;
     }

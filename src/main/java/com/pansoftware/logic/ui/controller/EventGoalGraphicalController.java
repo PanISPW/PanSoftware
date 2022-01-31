@@ -32,7 +32,7 @@ public class EventGoalGraphicalController implements Initializable {
     private Label goalCellItemId;
 
     @FXML
-    private Label eventGoalCellEventId;
+    private Label eventGoalCellEventOrganizer;
 
     @FXML
     private Label goalCellItemDescription;
@@ -64,23 +64,23 @@ public class EventGoalGraphicalController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        FxUtilities.hideVBox(this.adviceGoalCellBox);
+        FxUtilities.hideVBox(adviceGoalCellBox);
 
-        this.goalCellItemTitle.setText(this.item.getName());
-        this.goalCellItemDeadline.setText("Deadline: " + this.item.getDeadline().toString());
-        this.goalCellItemDescription.setText(this.item.getDescription());
-        this.goalCellItemId.setText(String.valueOf(this.item.getId()));
-        this.goalCellItemCompletedSteps.setText(String.valueOf(this.item.getStepsCompleted()));
-        this.goalCellItemTotalSteps.setText(String.valueOf(this.item.getNumberOfSteps()));
+        goalCellItemTitle.setText(item.getName());
+        goalCellItemDeadline.setText("Deadline: " + item.getDeadline().toString());
+        goalCellItemDescription.setText(item.getDescription());
+        goalCellItemId.setText(String.valueOf(item.getId()));
+        goalCellItemCompletedSteps.setText(String.valueOf(item.getStepsCompleted()));
+        goalCellItemTotalSteps.setText(String.valueOf(item.getNumberOfSteps()));
 
         try {
-            this.eventGoalCellEvent.setText(this.item.getEventName());
-            this.eventGoalCellEventId.setText(this.item.getEventOrganizer());
-            this.eventGoalCellParticipationStatus.setText(this.item.getState().toString());
+            eventGoalCellEvent.setText(item.getEventName());
+            eventGoalCellEventOrganizer.setText(item.getEventOrganizer());
+            eventGoalCellParticipationStatus.setText(item.getState().toString());
         } catch (final NullPointerException e) {
-            this.eventGoalCellEvent.setText("Event not specified");
-            this.eventGoalCellEventId.setText("");
-            this.eventGoalCellParticipationStatus.setText("");
+            eventGoalCellEvent.setText("Event not specified");
+            eventGoalCellEventOrganizer.setText("");
+            eventGoalCellParticipationStatus.setText("");
         }
     }
 
@@ -88,8 +88,8 @@ public class EventGoalGraphicalController implements Initializable {
     public void submit() throws Exception {
         final UpdateStepsBean bean = new UpdateStepsBean();
 
-        bean.setUpdateId(this.item.getId());
-        bean.setStepsCompleted(Integer.parseInt(this.goalCellItemStepsTextField.getText()));
+        bean.setUpdateId(item.getId());
+        bean.setStepsCompleted(Integer.parseInt(goalCellItemStepsTextField.getText()));
         bean.setType(GoalType.EVENTGOAL);
         bean.setUpdateUser(Session.getSession().getUser());
 

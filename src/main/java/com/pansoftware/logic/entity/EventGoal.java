@@ -19,7 +19,6 @@ import java.time.LocalDate;
 public class EventGoal extends Goal {
 
     private Event event;
-    private User organizer;
 
     private final StateMachine stateMachine;
 
@@ -27,44 +26,26 @@ public class EventGoal extends Goal {
         super(name, description, numberOfSteps, stepsCompleted, deadline, user, id);
         this.event = event;
 
-        try {
-            organizer = event.getUser();
-        } catch (final NullPointerException e) {
-            organizer = null;
-        }
-
         stateMachine = new ConcreteStateMachine(event, this, state);
     }
 
-    public static EventGoal getEventGoal(final String user, final int id) throws UserNotFoundException, EmptyResultSetException, LoginException, DatabaseException {
-        return EventGoalDao.getEventGoal(user, id);
-    }
-
     public Event getEvent() {
-        return this.event;
+        return event;
     }
 
     public void setEvent(final Event event) {
         this.event = event;
     }
 
-    public User getOrganizer() {
-        return this.organizer;
-    }
-
-    public void setOrganizer(final User organizer) {
-        this.organizer = organizer;
-    }
-
     public EventRequestState getState() {
-        return this.stateMachine.getState();
+        return stateMachine.getState();
     }
 
     public void acceptJoinRequest() throws NoTransitionException, DatabaseException {
-        this.stateMachine.answerRequest(EventRequestState.ACCEPTED);
+        stateMachine.answerRequest(EventRequestState.ACCEPTED);
     }
 
     public void rejectJoinRequest() throws NoTransitionException, DatabaseException {
-        this.stateMachine.answerRequest(EventRequestState.REJECTED);
+        stateMachine.answerRequest(EventRequestState.REJECTED);
     }
 }

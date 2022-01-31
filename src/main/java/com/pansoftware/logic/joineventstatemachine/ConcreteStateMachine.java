@@ -19,7 +19,7 @@ public class ConcreteStateMachine implements StateMachine {
         this.event = event;
         this.goal = goal;
 
-        this.currentState = JoinEventState.getMachineState(this, state, event);
+        currentState = JoinEventState.getMachineState(this, state, event);
     }
 
     public EventGoal getGoal() {

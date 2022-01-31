@@ -76,7 +76,7 @@ public class EventGoalDao {
         ResultSet resultSet = null;
         try {
             // 0 = PENDING
-            final String sql = String.format("SELECT * FROM eventgoal WHERE eventOrganizer='%s' AND requestState=0;", user);
+            final String sql = String.format("SELECT * FROM eventgoal WHERE eventOrganizer='%s' AND requestState=1;", user);
             resultSet = DaoUtils.executeCRUDQuery(sql);
 
             if (!resultSet.first()) {
@@ -164,7 +164,7 @@ public class EventGoalDao {
             stateInt = DaoUtils.eventRequestStateToDatabaseInt(goal.getState());
             final Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
 
-            final String insertStatement = String.format("INSERT INTO eventgoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState) VALUES ('%s','%s',%s,%s,'%s',%s,'%s','%s',%s,%s);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), goal.getOrganizer().getUsername(), goal.getEvent().getId(), stateInt);
+            final String insertStatement = String.format("INSERT INTO eventgoal (name, description, numberOfSteps, stepsCompleted, deadline, id, user, eventOrganizer, eventId, requestState) VALUES ('%s','%s',%s,%s,'%s',%s,'%s','%s',%s,%s);", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername(), goal.getEvent().getUser().getUsername(), goal.getEvent().getId(), stateInt);
             DaoUtils.executeUpdate(insertStatement);
 
         } catch (final SQLException e) {
@@ -209,7 +209,7 @@ public class EventGoalDao {
 
         try {
 
-            final String updateStatement = String.format("UPDATE eventgoal SET requestState=1 WHERE id=%s AND user='%s';", id, user);
+            final String updateStatement = String.format("UPDATE eventgoal SET requestState=2 WHERE id=%s AND user='%s';", id, user);
             DaoUtils.executeUpdate(updateStatement);
 
         } catch (final SQLException e) {
@@ -228,7 +228,7 @@ public class EventGoalDao {
 
         try {
 
-            final String updateStatement = String.format("UPDATE eventgoal SET requestState=2 WHERE id=%s AND user = '%s';", id, user);
+            final String updateStatement = String.format("UPDATE eventgoal SET requestState=3 WHERE id=%s AND user = '%s';", id, user);
             DaoUtils.executeUpdate(updateStatement);
         } catch (final SQLException e) {
 

@@ -34,8 +34,12 @@ public class AnswerAdviceGoalBean {
         return answer;
     }
 
-    public void setAnswer(final String answer) {
-        this.answer = answer;
+    public void setAnswer(final String answer) throws InvalidDataException {
+        if(answer.length() <= 45) {
+            this.answer = answer;
+        } else {
+            throw new InvalidDataException("Advices must be under 45 characters");
+        }
     }
 
 }

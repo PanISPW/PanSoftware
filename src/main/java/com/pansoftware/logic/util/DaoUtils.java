@@ -90,19 +90,19 @@ public class DaoUtils {
 
     public static EventRequestState databaseIntToEventRequestState(final int databaseInt) {
         return switch (databaseInt) {
-            case 0 -> EventRequestState.PENDING;
-            case 1 -> EventRequestState.ACCEPTED;
-            case 2 -> EventRequestState.REJECTED;
+            case 1 -> EventRequestState.PENDING;
+            case 2 -> EventRequestState.ACCEPTED;
+            case 3 -> EventRequestState.REJECTED;
             default -> EventRequestState.STARTING;
         };
     }
 
     public static int eventRequestStateToDatabaseInt(final EventRequestState requestState) {
         return switch (requestState) {
-            case PENDING -> 0;
-            case ACCEPTED -> 1;
-            case REJECTED -> 2;
-            default -> 4; // starting
+            case PENDING -> 1;
+            case ACCEPTED -> 2;
+            case REJECTED -> 3;
+            default -> 0; // starting
         };
     }
 

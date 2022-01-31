@@ -93,19 +93,18 @@ public class ProfileGraphicalController implements Initializable {
 
             final VBox vbox = loader.load();
 
-            this.adviceGoalList.getChildren().add(vbox);
+            adviceGoalList.getChildren().add(vbox);
         }
     }
 
     @FXML
     public void eventGoalRadio() throws Exception {
-        FxUtilities.showScrollPane(this.eventGoalPane);
-        FxUtilities.hideScrollPane(this.goalPane);
-        FxUtilities.hideScrollPane(this.adviceGoalPane);
+        FxUtilities.showScrollPane(eventGoalPane);
+        FxUtilities.hideScrollPane(goalPane);
+        FxUtilities.hideScrollPane(adviceGoalPane);
 
-        //lista
         final List<EventGoalBean> goals = ManageGoalController.getEventGoalBeanList();
-        this.eventGoalList.getChildren().clear();
+        eventGoalList.getChildren().clear();
 
         for (final EventGoalBean item : goals) {
 
@@ -116,7 +115,7 @@ public class ProfileGraphicalController implements Initializable {
 
             final VBox vbox = loader.load();
 
-            this.eventGoalList.getChildren().add(vbox);
+            eventGoalList.getChildren().add(vbox);
         }
     }
 
@@ -124,23 +123,23 @@ public class ProfileGraphicalController implements Initializable {
     @Override
     public void initialize(final URL arg0, final ResourceBundle arg1) {
 
-        this.radioGroup = new ToggleGroup();
-        this.goalListButton.setToggleGroup(this.radioGroup);
-        this.adviceListButton.setToggleGroup(this.radioGroup);
-        this.eventListButton.setToggleGroup(this.radioGroup);
-        this.goalListButton.setSelected(true);
+        radioGroup = new ToggleGroup();
+        goalListButton.setToggleGroup(radioGroup);
+        adviceListButton.setToggleGroup(radioGroup);
+        eventListButton.setToggleGroup(radioGroup);
+        goalListButton.setSelected(true);
 
         try {
-            this.user = ManageGoalController.getCurrentUserBean();
+            user = ManageGoalController.getCurrentUserBean();
         } catch (final Exception e) {
             e.printStackTrace();
         }
 
-        this.nameLabel.setText(this.user.getName() + " " + this.user.getSurname());
-        this.usernameLabel.setText("@" + this.user.getUsername());
+        nameLabel.setText(this.user.getName() + " " + user.getSurname());
+        usernameLabel.setText("@" + user.getUsername());
 
         try {
-            this.goalRadio();
+            goalRadio();
         } catch (final Exception e) {
             e.printStackTrace();
         }

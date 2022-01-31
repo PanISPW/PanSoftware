@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class EventSelectionItemGraphicalController implements Initializable {
 
 
-    EventBean item;
+    private EventBean item;
     @FXML
     private VBox eventItemVBox;
     @FXML
@@ -37,11 +37,11 @@ public class EventSelectionItemGraphicalController implements Initializable {
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
 
-        this.eventTitle.setText(this.item.getName());
-        this.eventId.setText(String.valueOf(this.item.getId()));
-        this.eventOrganizer.setText(this.item.getOrganizer());
-        this.eventDuration.setText(this.item.getStartingDate().toString() + " - " + this.item.getEndingDate().toString());
-        this.eventType.setText(this.item.getType().toString());
+        eventTitle.setText(item.getName());
+        eventId.setText(String.valueOf(item.getId()));
+        eventOrganizer.setText(item.getOrganizer());
+        eventDuration.setText(item.getStartingDate().toString() + " - " + item.getEndingDate().toString());
+        eventType.setText(item.getType().toString());
     }
 
     @FXML
@@ -62,8 +62,8 @@ public class EventSelectionItemGraphicalController implements Initializable {
         bean.setReminder(util.isReminder());
 
 
-        bean.setEventId(this.item.getId());
-        bean.setEventOrganizer(this.item.getOrganizer());
+        bean.setEventId(item.getId());
+        bean.setEventOrganizer(item.getOrganizer());
 
         ManageGoalController.createGoal(bean);
         EventGoalBeanUtil.invalidate();

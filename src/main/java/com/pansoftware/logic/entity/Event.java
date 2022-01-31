@@ -39,7 +39,7 @@ public class Event extends UserContent {
     }
 
     public EventType getType() {
-        return this.type;
+        return type;
     }
 
     public void setType(final EventType type) {

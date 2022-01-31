@@ -65,13 +65,21 @@ public class AdviceGoalDao {
             while (resultSet.next()) {
 
                 final User userEntity = UserDao.getUser(user);
+                User adviceActivist;
+
+                try {
+                    adviceActivist = UserDao.getUser(resultSet.getString("adviceActivist"));
+                } catch(Exception e){
+                    adviceActivist = null;
+                }
+
                 final ProductType productType = DaoUtils.intToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
                 LocalDate deadline = setDeadline(resultSet);
 
                 final AdviceGoal singleGoal = new AdviceGoal(resultSet.getString("name"), resultSet.getString(Constants.DESCRIPTION),
                         resultSet.getInt(Constants.NUMBER_OF_STEPS), resultSet.getInt(Constants.STEPS_COMPLETED),
                         deadline, resultSet.getInt("Id"), userEntity, productType,
-                        resultSet.getString(Constants.ADVICE), null /*activist*/);
+                        resultSet.getString(Constants.ADVICE), adviceActivist);
                 goalList.add(singleGoal);
             }
 

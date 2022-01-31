@@ -15,6 +15,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pansoftware.logic.util.Constants.NO_TRANSITION_OCCURS;
+
 // @author Danilo D'Amico
 
 public class ManageGoalController {
@@ -62,17 +64,18 @@ public class ManageGoalController {
 
         for (final AdviceGoal e : goalList){
             final AdviceGoalBean bean = new AdviceGoalBean();
-            ManageGoalController.populateGoalBean(e, bean);
+            populateGoalBean(e, bean);
 
-            final String adviceActivist;
+            String adviceActivist;
 
             bean.setType(e.getType());
             bean.setAdvice(e.getAdvice());
 
-            if(e.getAdviceActivist() != null)
+            try {
                 adviceActivist = e.getAdviceActivist().getUsername();
-            else
-                adviceActivist = "NOT SPECIFIED";
+            } catch(NullPointerException exception) {
+                adviceActivist = "";
+            }
 
             bean.setAdviceActivist(adviceActivist);
 
@@ -168,7 +171,7 @@ public class ManageGoalController {
             bean.setEventId(e.getEvent().getId());
             bean.setEventOrganizer(e.getEvent().getUser().getUsername());
             bean.setState(e.getState());
-            bean.setEventName(e.getName());
+            bean.setEventName(e.getEvent().getName());
 
             beanList.add(bean);
         }
@@ -219,7 +222,7 @@ public class ManageGoalController {
 
             bean.setEventId(e.getEvent().getId());
             bean.setState(EventRequestState.PENDING);
-            bean.setEventOrganizer(e.getOrganizer().getUsername());
+            bean.setEventOrganizer(e.getEvent().getUser().getUsername());
 
             beanList.add(bean);
         }
@@ -250,7 +253,7 @@ public class ManageGoalController {
             JoinEventController.acceptJoinRequest(bean);
             EventGoalDao.acceptEventGoal(bean.getId(), bean.getUser());
         } catch(final NoTransitionException e){
-            throw new NoTransitionException("Event Goal not accepted");
+            throw new NoTransitionException(NO_TRANSITION_OCCURS + ": Goal not accepted");
         }
     }
 
@@ -260,7 +263,7 @@ public class ManageGoalController {
             JoinEventController.rejectJoinRequest(bean);
             EventGoalDao.rejectEventGoal(bean.getId(), bean.getUser());
         } catch(final NoTransitionException e){
-            throw new NoTransitionException("Event Goal not rejected");
+            throw new NoTransitionException(NO_TRANSITION_OCCURS + ": Goal not rejected");
         }
     }
 
