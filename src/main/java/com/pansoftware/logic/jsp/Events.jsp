@@ -2,12 +2,10 @@
 <%@ page import="com.pansoftware.logic.ManageGoalController" %>
 <%@ page import="com.pansoftware.logic.bean.EventBean" %>
 <%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
-<%@ page import="com.pansoftware.logic.exception.DatabaseException" %>
 <%@ page import="com.pansoftware.logic.exception.EmptyResultSetException" %>
 <%@ page import="com.pansoftware.logic.exception.InvalidDataException" %>
 <%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
-<%@ page import="javax.security.auth.login.LoginException" %>
-        <%@ page import="java.util.List" %>
+<%@ page import="java.util.List" %>
         <%@ page contentType="text/html; charset=ISO-8859-1"
                  pageEncoding="ISO-8859-1" %>
 
@@ -58,7 +56,7 @@
     List<EventBean> events = null;
     try {
         events = ManageGoalController.getEventBeanList();
-    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException| InvalidDataException e) {
+    } catch (final UserNotFoundException | EmptyResultSetException | InvalidDataException e) {
         e.printStackTrace();
     }
     assert events != null;

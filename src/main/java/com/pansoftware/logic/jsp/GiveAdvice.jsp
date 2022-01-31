@@ -3,8 +3,10 @@
 <%@ page import="com.pansoftware.logic.bean.AdviceGoalBean" %>
 <%@ page import="com.pansoftware.logic.bean.AnswerAdviceGoalBean" %>
 <%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
-<%@ page import="com.pansoftware.logic.exception.*" %>
-<%@ page import="javax.security.auth.login.LoginException" %>
+<%@ page import="com.pansoftware.logic.exception.EmptyResultSetException" %>
+<%@ page import="com.pansoftware.logic.exception.InvalidDataException" %>
+<%@ page import="com.pansoftware.logic.exception.NotEnoughPermissionsException" %>
+<%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=ISO-8859-1"
@@ -21,7 +23,7 @@
 
             ManageGoalController.answerAdviceGoal(bean);
 
-        } catch (final InvalidDataException | UserNotFoundException | LoginException | DatabaseException | NotEnoughPermissionsException | SQLException e) {
+        } catch (final InvalidDataException | UserNotFoundException | NotEnoughPermissionsException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -80,7 +82,7 @@
                     List<AdviceGoalBean> goals = null;
                     try {
                         goals = ManageGoalController.getUnansweredMakeupAdviceBean();
-                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(goals != null){
@@ -121,7 +123,7 @@
                     List<AdviceGoalBean> foodGoals = null;
                     try {
                         foodGoals = ManageGoalController.getUnansweredFoodAdviceBean();
-                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(foodGoals != null){
@@ -161,7 +163,7 @@
                     List<AdviceGoalBean> lifestyleGoals = null;
                     try {
                         lifestyleGoals = ManageGoalController.getUnansweredLifestyleAdviceBean();
-                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(lifestyleGoals != null){
@@ -200,7 +202,7 @@
                     List<AdviceGoalBean> otherGoals = null;
                     try {
                         otherGoals = ManageGoalController.getUnansweredOtherAdviceBean();
-                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | SQLException e) {
                         e.printStackTrace();
                     }
                     if(otherGoals != null){

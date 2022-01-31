@@ -4,7 +4,6 @@ import com.pansoftware.logic.bean.LoginBean;
 import com.pansoftware.logic.dao.UserDao;
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.UserRole;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.InvalidDataException;
 import com.pansoftware.logic.exception.UserNotFoundException;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 
 public class LoginController {
 
-    public static void loginUser(final LoginBean bean) throws UserNotFoundException, SQLException, DatabaseException, EmptyResultSetException {
+    public static void loginUser(final LoginBean bean) throws UserNotFoundException, SQLException, EmptyResultSetException {
         final String user = bean.getUsername();
         final String password = bean.getPassword();
         final UserRole role;
@@ -27,13 +26,13 @@ public class LoginController {
         Session.getSession().setRole(role);
     }
 
-    public void signup(final LoginBean bean) throws DatabaseException {
+    public void signup(final LoginBean bean) throws SQLException {
 
         final User user = new User(bean.getUsername(), bean.getPassword(), bean.getEmail(), bean.getLoginName(), bean.getLoginSurname(), bean.getLoginRole());
         try {
             user.save();
         } catch (final Exception e) {
-            throw new DatabaseException("signup failed");
+            throw new SQLException("signup failed");
         }
     }
 

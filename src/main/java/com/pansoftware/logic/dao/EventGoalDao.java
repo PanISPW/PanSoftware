@@ -4,15 +4,12 @@ import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.entity.EventGoal;
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.EventRequestState;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.NoTransitionException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 import com.pansoftware.logic.util.DatabaseConnection;
 
-import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,7 +26,7 @@ public class EventGoalDao {
     private EventGoalDao() {
     }
 
-    public static List<EventGoal> getEventGoalList(final String user) throws DatabaseException, EmptyResultSetException {
+    public static List<EventGoal> getEventGoalList(final String user) throws EmptyResultSetException, SQLException {
         final List<EventGoal> goalList;
         ResultSet resultSet = null;
         try {
@@ -63,14 +60,14 @@ public class EventGoalDao {
             return goalList;
 
         } catch (final SQLException e) {
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
+            throw new SQLException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
         } finally {
             DatabaseConnection.closeResultSet(resultSet);
         }
 
     }
 
-    public static List<EventGoal> getPendingEventGoalList(final String user) throws EmptyResultSetException, DatabaseException {
+    public static List<EventGoal> getPendingEventGoalList(final String user) throws EmptyResultSetException, SQLException {
         final List<EventGoal> goalList;
 
         ResultSet resultSet = null;
@@ -104,13 +101,13 @@ public class EventGoalDao {
             return goalList;
 
         } catch (final SQLException e) {
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
+            throw new SQLException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
         } finally {
             DatabaseConnection.closeResultSet(resultSet);
         }
     }
 
-    public static EventGoal getEventGoal(final String user, final int id) throws EmptyResultSetException, DatabaseException {
+    public static EventGoal getEventGoal(final String user, final int id) throws EmptyResultSetException, SQLException {
 
         final EventGoal goal;
         final Event event;
@@ -140,23 +137,23 @@ public class EventGoalDao {
             return goal;
 
         } catch (final SQLException e) {
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
+            throw new SQLException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
         } finally {
             DatabaseConnection.closeResultSet(resultSet);
         }
     }
 
-    public static int getLastUserEventGoalId(final String user) throws DatabaseException {
+    public static int getLastUserEventGoalId(final String user) throws SQLException {
         return getLastIdFromSelectedGoalType("eventgoal", user);
     }
 
-    public static EventRequestState getEventParticipationState(final String user, final int id) throws EmptyResultSetException, DatabaseException {
+    public static EventRequestState getEventParticipationState(final String user, final int id) throws EmptyResultSetException, SQLException {
 
         final EventGoal goal = EventGoalDao.getEventGoal(user, id);
         return goal.getState();
     }
 
-    public static void addEventGoal(final EventGoal goal) throws DatabaseException {
+    public static void addEventGoal(final EventGoal goal) throws SQLException {
 
         final int stateInt;
 
@@ -169,12 +166,12 @@ public class EventGoalDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException("Can't insert new Event Goal in database");
+            throw new SQLException("Can't insert new Event Goal in database");
 
         }
     }
 
-    public static void updateStepsEventGoal(final int stepsCompleted, final int id, final String user) throws DatabaseException {
+    public static void updateStepsEventGoal(final int stepsCompleted, final int id, final String user) throws SQLException {
 
         try {
 
@@ -183,12 +180,12 @@ public class EventGoalDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
+            throw new SQLException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         }
     }
 
-    public static void joinEvent(final Event event, final EventRequestState requestState, final int id, final String user) throws DatabaseException {
+    public static void joinEvent(final Event event, final EventRequestState requestState, final int id, final String user) throws SQLException {
 
         final int requestStateInt;
 
@@ -200,12 +197,12 @@ public class EventGoalDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
+            throw new SQLException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         }
     }
 
-    public static void acceptEventGoal(final int id, final String user) throws DatabaseException {
+    public static void acceptEventGoal(final int id, final String user) throws SQLException {
 
         try {
 
@@ -214,13 +211,13 @@ public class EventGoalDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
+            throw new SQLException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         }
 
     }
 
-    public static void rejectEventGoal(final int id, final String user) throws EmptyResultSetException, DatabaseException, NoTransitionException {
+    public static void rejectEventGoal(final int id, final String user) throws EmptyResultSetException, NoTransitionException, SQLException {
 
         if (!getEventParticipationState(user, id).equals(EventRequestState.PENDING)) {
             throw new NoTransitionException(NO_TRANSITION_OCCURS);
@@ -232,12 +229,12 @@ public class EventGoalDao {
             DaoUtils.executeUpdate(updateStatement);
         } catch (final SQLException e) {
 
-            throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
+            throw new SQLException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         }
     }
 
-    public static void pendingEventGoal(final int id, final String user) throws DatabaseException {
+    public static void pendingEventGoal(final int id, final String user) throws SQLException {
 
         try {
 
@@ -246,7 +243,7 @@ public class EventGoalDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
+            throw new SQLException(Constants.CAN_T_UPDATE_EVENT_GOAL_IN_DATABASE);
 
         }
     }

@@ -2,8 +2,10 @@
 <%@ page import="com.pansoftware.logic.ManageGoalController" %>
 <%@ page import="com.pansoftware.logic.bean.EventGoalBean" %>
 <%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
-<%@ page import="com.pansoftware.logic.exception.*" %>
-<%@ page import="javax.security.auth.login.LoginException" %>
+<%@ page import="com.pansoftware.logic.exception.EmptyResultSetException" %>
+<%@ page import="com.pansoftware.logic.exception.InvalidDataException" %>
+<%@ page import="com.pansoftware.logic.exception.NoTransitionException" %>
+<%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
@@ -21,7 +23,7 @@ if (request.getParameter("accept") != null | request.getParameter("reject") != n
         else
             ManageGoalController.acceptEventGoal(bean);
 
-    } catch (final InvalidDataException | UserNotFoundException | LoginException | DatabaseException | NoTransitionException | EmptyResultSetException e) {
+    } catch (final InvalidDataException | UserNotFoundException | NoTransitionException | EmptyResultSetException e) {
         e.printStackTrace();
     }
 
@@ -63,7 +65,7 @@ if (request.getParameter("accept") != null | request.getParameter("reject") != n
             List<EventGoalBean> goals = null;
             try {
                 goals = ManageGoalController.getPendingEventGoalBeanList();
-            } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
+            } catch (final UserNotFoundException | EmptyResultSetException | InvalidDataException e) {
                 e.printStackTrace();
             }
             if(goals != null){

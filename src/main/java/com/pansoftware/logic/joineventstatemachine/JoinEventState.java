@@ -2,8 +2,9 @@ package com.pansoftware.logic.joineventstatemachine;
 
 import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.enumeration.EventRequestState;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.NoTransitionException;
+
+import java.sql.SQLException;
 
 // abstract state of the join event state machine
 
@@ -11,7 +12,7 @@ import com.pansoftware.logic.exception.NoTransitionException;
 
 public abstract class JoinEventState {
 
-    public static JoinEventState getMachineState(final ConcreteStateMachine stateMachine, final EventRequestState state, final Event event) throws DatabaseException {
+    public static JoinEventState getMachineState(final ConcreteStateMachine stateMachine, final EventRequestState state, final Event event) throws SQLException {
 
         switch (state) {
             case PENDING:
@@ -27,9 +28,9 @@ public abstract class JoinEventState {
 
     }
 
-    protected abstract void accept() throws DatabaseException, NoTransitionException;
+    protected abstract void accept() throws NoTransitionException;
 
-    protected abstract void reject() throws DatabaseException, NoTransitionException;
+    protected abstract void reject() throws NoTransitionException;
 
     protected abstract EventRequestState getState();
 }

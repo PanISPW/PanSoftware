@@ -3,11 +3,9 @@
 <%@ page import="com.pansoftware.logic.bean.AdviceGoalBean" %>
 <%@ page import="com.pansoftware.logic.bean.GoalBean" %>
 <%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
-<%@ page import="com.pansoftware.logic.exception.DatabaseException" %>
 <%@ page import="com.pansoftware.logic.exception.EmptyResultSetException" %>
 <%@ page import="com.pansoftware.logic.exception.InvalidDataException" %>
 <%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
-<%@ page import="javax.security.auth.login.LoginException" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page contentType="text/html; charset=ISO-8859-1"
@@ -29,7 +27,7 @@
             }
 
             ManageGoalController.createGoal(bean);
-        } catch(final InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
+        } catch(final InvalidDataException | SQLException | UserNotFoundException | EmptyResultSetException e){
             e.printStackTrace();
         }
     } %>
@@ -52,7 +50,7 @@
             }
 
             ManageGoalController.createGoal(bean);
-        } catch(final InvalidDataException | SQLException | DatabaseException | UserNotFoundException | EmptyResultSetException | LoginException e){
+        } catch(final InvalidDataException | SQLException | UserNotFoundException | EmptyResultSetException e){
             e.printStackTrace();
         }
     } %>

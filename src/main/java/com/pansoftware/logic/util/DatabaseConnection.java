@@ -1,7 +1,5 @@
 package com.pansoftware.logic.util;
 
-import com.pansoftware.logic.exception.DatabaseException;
-
 import java.sql.*;
 
 // @author Danilo D'Amico
@@ -14,16 +12,16 @@ public class DatabaseConnection {
     private static final String DB_PASSWORD = "esameispw";
 
     public DatabaseConnection() throws SQLException {
-        this.connection = DriverManager.getConnection(URL, DBUSER, DB_PASSWORD);
+        connection = DriverManager.getConnection(URL, DBUSER, DB_PASSWORD);
     }
 
-    public static void closeResultSet(final ResultSet resultSet) throws DatabaseException {
+    public static void closeResultSet(final ResultSet resultSet) throws SQLException {
         if (resultSet != null)
             try {
                 resultSet.close();
             } catch (final SQLException e) {
 
-                throw new DatabaseException("Failure during result set closure");
+                throw new SQLException("Failure during result set closure");
             }
     }
 
@@ -31,12 +29,12 @@ public class DatabaseConnection {
         return this.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
     }
 
-    public static void closeStatement(final Statement statement) throws DatabaseException {
+    public static void closeStatement(final Statement statement) throws SQLException {
         try {
             if (statement != null)
                 statement.close();
         } catch (final SQLException e) {
-            throw new DatabaseException("Failure during statement closure");
+            throw new SQLException("Failure during statement closure");
         }
     }
 }

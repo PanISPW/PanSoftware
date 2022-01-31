@@ -4,14 +4,12 @@ import com.pansoftware.logic.bean.EventGoalBean;
 import com.pansoftware.logic.dao.EventGoalDao;
 import com.pansoftware.logic.entity.EventGoal;
 import com.pansoftware.logic.enumeration.EventRequestState;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.NoTransitionException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.mail.SendMail;
 import com.pansoftware.logic.util.Session;
 
-import javax.security.auth.login.LoginException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,11 +29,11 @@ public class JoinEventController {
         SendMail.send(message, email);
     }
 
-    public static List<EventGoal> getPendingEventGoalList() throws EmptyResultSetException, DatabaseException {
+    public static List<EventGoal> getPendingEventGoalList() throws EmptyResultSetException, SQLException {
         return EventGoalDao.getPendingEventGoalList(Session.getSession().getUser());
     }
 
-    public static void acceptJoinRequest(final EventGoalBean bean) throws EmptyResultSetException, DatabaseException, NoTransitionException {
+    public static void acceptJoinRequest(final EventGoalBean bean) throws EmptyResultSetException, NoTransitionException, SQLException {
 
         final EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
 
@@ -46,7 +44,7 @@ public class JoinEventController {
         }
     }
 
-    public static void rejectJoinRequest(final EventGoalBean bean) throws EmptyResultSetException, DatabaseException, NoTransitionException {
+    public static void rejectJoinRequest(final EventGoalBean bean) throws EmptyResultSetException, NoTransitionException, SQLException {
 
         final EventGoal eventGoal = EventGoalDao.getEventGoal(bean.getUser(), bean.getId());
 

@@ -3,7 +3,8 @@ package com.pansoftware.logic.joineventstatemachine;
 import com.pansoftware.logic.dao.EventGoalDao;
 import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.enumeration.EventRequestState;
-import com.pansoftware.logic.exception.DatabaseException;
+
+import java.sql.SQLException;
 
 // @author Danilo D'Amico
 
@@ -12,7 +13,7 @@ public class PendingState extends JoinEventState {
     ConcreteStateMachine stateMachine;
     Event event;
 
-    public PendingState(final ConcreteStateMachine stateMachine, final Event event) throws DatabaseException {
+    public PendingState(final ConcreteStateMachine stateMachine, final Event event) throws SQLException {
         this.stateMachine = stateMachine;
         this.event = event;
         EventGoalDao.pendingEventGoal(event.getId(), event.getUser().getUsername());

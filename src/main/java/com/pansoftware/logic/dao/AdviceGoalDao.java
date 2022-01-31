@@ -3,15 +3,12 @@ package com.pansoftware.logic.dao;
 import com.pansoftware.logic.entity.AdviceGoal;
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.ProductType;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 import com.pansoftware.logic.util.DataValidation;
 import com.pansoftware.logic.util.DatabaseConnection;
 
-import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -47,7 +44,7 @@ public class AdviceGoalDao {
         return activistEntity;
     }
 
-    public static List<AdviceGoal> getAdviceGoalList(final String user) throws EmptyResultSetException, DatabaseException {
+    public static List<AdviceGoal> getAdviceGoalList(final String user) throws EmptyResultSetException, SQLException {
         try {
             final List<AdviceGoal> goalList;
 
@@ -80,12 +77,12 @@ public class AdviceGoalDao {
             DatabaseConnection.closeResultSet(resultSet);
             return goalList;
         } catch(final SQLException e){
-            throw new DatabaseException("can't retrieve list of Advice Goals");
+            throw new SQLException("can't retrieve list of Advice Goals");
         }
 
     }
 
-    public static AdviceGoal getAdviceGoal(final String user, final int id) throws EmptyResultSetException, DatabaseException {
+    public static AdviceGoal getAdviceGoal(final String user, final int id) throws EmptyResultSetException, SQLException {
         try {
             final AdviceGoal goal;
 
@@ -109,15 +106,15 @@ public class AdviceGoalDao {
             DatabaseConnection.closeResultSet(resultSet);
             return goal;
         } catch(final SQLException e){
-            throw new DatabaseException("Can't retrieve Advice Goal");
+            throw new SQLException("Can't retrieve Advice Goal");
         }
     }
 
-    public static int getLastUserAdviceGoalId(final String user) throws DatabaseException {
+    public static int getLastUserAdviceGoalId(final String user) throws SQLException {
         return getLastIdFromSelectedGoalType("advicegoal", user);
     }
 
-    public static void addAdviceGoal(final AdviceGoal goal) throws DatabaseException {
+    public static void addAdviceGoal(final AdviceGoal goal) throws SQLException {
 
         final java.sql.Date sqlDeadline;
 
@@ -132,12 +129,12 @@ public class AdviceGoalDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException("Can't insert new Goal in database");
+            throw new SQLException("Can't insert new Goal in database");
 
         }
     }
 
-    public static void updateStepsAdviceGoal(final int stepsCompleted, final int id, final String user) throws DatabaseException {
+    public static void updateStepsAdviceGoal(final int stepsCompleted, final int id, final String user) throws SQLException {
 
         try {
 
@@ -146,12 +143,12 @@ public class AdviceGoalDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
+            throw new SQLException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
         }
     }
 
-    public static void updateProductTypeAdviceGoal(final ProductType type, final int id, final String user) throws DatabaseException {
+    public static void updateProductTypeAdviceGoal(final ProductType type, final int id, final String user) throws SQLException {
 
         try {
 
@@ -162,23 +159,23 @@ public class AdviceGoalDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
+            throw new SQLException(Constants.CAN_T_UPDATE_ADVICE_GOAL_IN_DATABASE);
 
         }
     }
 
-    public static void answerAdviceGoal(final int id, final String user, final String activist, final String advice) throws DatabaseException {
+    public static void answerAdviceGoal(final int id, final String user, final String activist, final String advice) throws SQLException {
         try {
             final String updateStatement = String.format("UPDATE advicegoal SET advice='%s', adviceActivist='%s' WHERE id=%s AND user='%s';", advice, activist, id, user);
             DaoUtils.executeUpdate(updateStatement);
         } catch(final SQLException e){
-            throw new DatabaseException("can't answer advice");
+            throw new SQLException("can't answer advice");
             }
         }
 
 
     // MAKEUP
-    public static List<AdviceGoal> getUnansweredMakeupAdvice() throws EmptyResultSetException, DatabaseException {
+    public static List<AdviceGoal> getUnansweredMakeupAdvice() throws EmptyResultSetException, SQLException {
         try {
             final List<AdviceGoal> goalList;
 
@@ -210,11 +207,11 @@ public class AdviceGoalDao {
             DatabaseConnection.closeResultSet(resultSet);
             return goalList;
         } catch(final SQLException e){
-            throw new DatabaseException("can't retrieve Makeup-related Advice Goals");
+            throw new SQLException("can't retrieve Makeup-related Advice Goals");
         }
     }
 
-    private static void getAdviceGoalFromResultSet(final ResultSet resultSet, final List<AdviceGoal> goalList, final User userEntity, final ProductType productType) throws DatabaseException {
+    private static void getAdviceGoalFromResultSet(final ResultSet resultSet, final List<AdviceGoal> goalList, final User userEntity, final ProductType productType) throws SQLException {
         try {
             LocalDate deadline = setDeadline(resultSet);
 
@@ -224,12 +221,12 @@ public class AdviceGoalDao {
                     null, null);
             goalList.add(singleGoal);
         } catch(final SQLException e){
-            throw new DatabaseException("can't map Advice Goal to appropriate object");
+            throw new SQLException("can't map Advice Goal to appropriate object");
         }
     }
 
     // FOOD
-    public static List<AdviceGoal> getUnansweredFoodAdvice() throws EmptyResultSetException, DatabaseException {
+    public static List<AdviceGoal> getUnansweredFoodAdvice() throws EmptyResultSetException, SQLException {
         try {
 
             final List<AdviceGoal> goalList;
@@ -255,12 +252,12 @@ public class AdviceGoalDao {
             DatabaseConnection.closeResultSet(resultSet);
             return goalList;
         } catch(final SQLException e){
-            throw new DatabaseException("can't retrieve Food-related Advice Goals");
+            throw new SQLException("can't retrieve Food-related Advice Goals");
         }
     }
 
     // LIFESTYLE
-    public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws EmptyResultSetException, DatabaseException {
+    public static List<AdviceGoal> getUnansweredLifestyleAdvice() throws EmptyResultSetException, SQLException {
         try {
 
             final List<AdviceGoal> goalList;
@@ -286,12 +283,12 @@ public class AdviceGoalDao {
             DatabaseConnection.closeResultSet(resultSet);
             return goalList;
         } catch (final SQLException e){
-            throw new DatabaseException("can't retrieve Lifestyle-related Advice Goals");
+            throw new SQLException("can't retrieve Lifestyle-related Advice Goals");
         }
     }
 
     // OTHER & NOTSPECIFIED
-    public static List<AdviceGoal> getUnansweredOtherAdvice() throws EmptyResultSetException, DatabaseException {
+    public static List<AdviceGoal> getUnansweredOtherAdvice() throws EmptyResultSetException, SQLException {
         try {
 
             final List<AdviceGoal> goalList;
@@ -316,7 +313,7 @@ public class AdviceGoalDao {
             DatabaseConnection.closeResultSet(resultSet);
             return goalList;
         }catch (final SQLException e){
-            throw new DatabaseException("can't retrieve Other Advice Goals");
+            throw new SQLException("can't retrieve Other Advice Goals");
         }
     }
 }

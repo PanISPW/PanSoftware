@@ -1,6 +1,6 @@
 package com.pansoftware.logic.exception;
 
-// eccezione gestita
+// Exception for the Login Use Case
 
 // @author Danilo D'Amico
 

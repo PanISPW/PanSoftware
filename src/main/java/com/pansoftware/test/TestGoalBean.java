@@ -18,7 +18,7 @@ public class TestGoalBean {
 
         assertThrows(InvalidDataException.class, () -> {
             final GoalBean bean = new GoalBean();
-            bean.setName(TestGoalBean.TEST_INPUT);
+            bean.setName(TEST_INPUT);
         });
     }
 

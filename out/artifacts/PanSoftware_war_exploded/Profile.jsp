@@ -1,18 +1,16 @@
 <%@ page import="com.pansoftware.logic.LoginController" %>
 <%@ page import="com.pansoftware.logic.ManageGoalController" %>
+<%@ page import="com.pansoftware.logic.bean.AdviceGoalBean" %>
+<%@ page import="com.pansoftware.logic.bean.EventGoalBean" %>
+<%@ page import="com.pansoftware.logic.bean.GoalBean" %>
 <%@ page import="com.pansoftware.logic.bean.UpdateStepsBean" %>
 <%@ page import="com.pansoftware.logic.enumeration.GoalType" %>
 <%@ page import="com.pansoftware.logic.enumeration.UserRole" %>
-<%@ page import="com.pansoftware.logic.exception.DatabaseException" %>
 <%@ page import="com.pansoftware.logic.exception.EmptyResultSetException" %>
 <%@ page import="com.pansoftware.logic.exception.InvalidDataException" %>
 <%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
-<%@ page import="javax.security.auth.login.LoginException" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.pansoftware.logic.bean.GoalBean" %>
-<%@ page import="com.pansoftware.logic.bean.AdviceGoalBean" %>
-<%@ page import="com.pansoftware.logic.bean.EventGoalBean" %>
 <%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 
@@ -35,7 +33,7 @@
 
             ManageGoalController.updateSteps(bean);
 
-        } catch(final InvalidDataException | UserNotFoundException | EmptyResultSetException | DatabaseException |SQLException | LoginException e){
+        } catch(final InvalidDataException | UserNotFoundException | EmptyResultSetException |SQLException e){
             e.printStackTrace();
         }
 
@@ -95,7 +93,7 @@
                     List<GoalBean> goals = null;
                     try {
                         goals = ManageGoalController.getGoalBeanList();
-                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(goals != null){
@@ -134,7 +132,7 @@
                     List<AdviceGoalBean> adviceGoals = null;
                     try {
                         adviceGoals = ManageGoalController.getAdviceGoalBeanList();
-                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | SQLException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | SQLException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(adviceGoals != null){
@@ -175,7 +173,7 @@
                     List<EventGoalBean> eventGoals = null;
                     try {
                         eventGoals = ManageGoalController.getEventGoalBeanList();
-                    } catch (final UserNotFoundException | EmptyResultSetException | LoginException | DatabaseException | InvalidDataException e) {
+                    } catch (final UserNotFoundException | EmptyResultSetException | InvalidDataException e) {
                         e.printStackTrace();
                     }
                     if(eventGoals != null){

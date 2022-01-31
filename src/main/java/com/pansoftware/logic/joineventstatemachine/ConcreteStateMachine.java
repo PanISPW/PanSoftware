@@ -3,9 +3,10 @@ package com.pansoftware.logic.joineventstatemachine;
 import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.entity.EventGoal;
 import com.pansoftware.logic.enumeration.EventRequestState;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.NoTransitionException;
 import com.pansoftware.logic.interfaces.StateMachine;
+
+import java.sql.SQLException;
 
 // @author Danilo D'Amico
 
@@ -15,7 +16,7 @@ public class ConcreteStateMachine implements StateMachine {
     private EventGoal goal;
     private JoinEventState currentState; // abstract state
 
-    public ConcreteStateMachine(final Event event, final EventGoal goal, final EventRequestState state) throws DatabaseException {
+    public ConcreteStateMachine(final Event event, final EventGoal goal, final EventRequestState state) throws SQLException {
         this.event = event;
         this.goal = goal;
 
@@ -31,7 +32,7 @@ public class ConcreteStateMachine implements StateMachine {
     }
 
     @Override
-    public void answerRequest(final EventRequestState state) throws DatabaseException, NoTransitionException {
+    public void answerRequest(final EventRequestState state) throws NoTransitionException {
 
         if(state == EventRequestState.REJECTED){
             this.currentState.reject();

@@ -2,7 +2,6 @@ package com.pansoftware.logic.joineventstatemachine;
 
 import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.enumeration.EventRequestState;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.NoTransitionException;
 
 import static com.pansoftware.logic.util.Constants.NO_TRANSITION_OCCURS;
@@ -20,7 +19,7 @@ public class RejectedState extends JoinEventState {
     }
 
     @Override
-    protected void reject() throws DatabaseException, NoTransitionException {
+    protected void reject() throws NoTransitionException {
         throw new NoTransitionException(NO_TRANSITION_OCCURS);
     }
 

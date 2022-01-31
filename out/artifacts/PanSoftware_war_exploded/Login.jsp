@@ -4,7 +4,6 @@
 <%@page import="com.pansoftware.logic.LoginController" %>
 <%@page import="com.pansoftware.logic.bean.LoginBean" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="com.pansoftware.logic.exception.DatabaseException" %>
 <%@ page import="com.pansoftware.logic.exception.UserNotFoundException" %>
 
 <%
@@ -20,7 +19,7 @@
             %>
             <jsp:forward page="Profile.jsp"/>
             <%
-        } catch(final SQLException | DatabaseException | UserNotFoundException e){
+        } catch(final SQLException | UserNotFoundException e){
             %>
             <jsp:forward page="LoginFailure.jsp"/>
             <%

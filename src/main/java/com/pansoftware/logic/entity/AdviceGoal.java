@@ -1,13 +1,7 @@
 package com.pansoftware.logic.entity;
 
-import com.pansoftware.logic.dao.AdviceGoalDao;
 import com.pansoftware.logic.enumeration.ProductType;
-import com.pansoftware.logic.exception.DatabaseException;
-import com.pansoftware.logic.exception.EmptyResultSetException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 
-import javax.security.auth.login.LoginException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 // @author Danilo D'Amico

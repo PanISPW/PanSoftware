@@ -3,8 +3,9 @@ package com.pansoftware.logic.joineventstatemachine;
 import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.enumeration.EventRequestState;
 import com.pansoftware.logic.enumeration.EventType;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.NoTransitionException;
+
+import java.sql.SQLException;
 
 import static com.pansoftware.logic.util.Constants.NO_TRANSITION_OCCURS;
 
@@ -25,7 +26,7 @@ public class StartingState extends JoinEventState {
 
     }
 
-    public JoinEventState nextState() throws DatabaseException {
+    public JoinEventState nextState() throws SQLException {
         if (isPrivate) {
             return new PendingState(stateMachine, event);
         } else {
@@ -39,7 +40,7 @@ public class StartingState extends JoinEventState {
     }
 
     @Override
-    protected void reject() throws DatabaseException, NoTransitionException {
+    protected void reject() throws NoTransitionException {
         throw new NoTransitionException(NO_TRANSITION_OCCURS);
     }
 

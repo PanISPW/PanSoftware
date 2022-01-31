@@ -4,7 +4,6 @@ import com.pansoftware.logic.LoginController;
 import com.pansoftware.logic.bean.LoginBean;
 import com.pansoftware.logic.enumeration.Pages;
 import com.pansoftware.logic.enumeration.UserRole;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 import com.pansoftware.logic.exception.UserNotFoundException;
 import javafx.application.Platform;
@@ -51,7 +50,7 @@ public class LoginGraphicalController implements Initializable {
     }
 
     @FXML
-    public void login() throws SQLException, DatabaseException, EmptyResultSetException {
+    public void login() throws SQLException, EmptyResultSetException {
 
         try {
 
@@ -66,7 +65,7 @@ public class LoginGraphicalController implements Initializable {
             stage.setScene(newScene);
 
         } catch (final UserNotFoundException e) {
-            resultLabel.setText(e.getMessage());
+            resultLabel.setText("User not found");
         } catch(final IOException e){
             e.printStackTrace();
             Platform.exit();

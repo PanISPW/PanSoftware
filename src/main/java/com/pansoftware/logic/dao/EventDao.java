@@ -3,14 +3,11 @@ package com.pansoftware.logic.dao;
 import com.pansoftware.logic.entity.Event;
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.EventType;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 import com.pansoftware.logic.util.DatabaseConnection;
 
-import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +22,7 @@ public class EventDao {
     private EventDao() {
     }
 
-    public static List<Event> getEventList() throws EmptyResultSetException, DatabaseException {
+    public static List<Event> getEventList() throws EmptyResultSetException, SQLException {
 
         final List<Event> eventList;
 
@@ -52,14 +49,14 @@ public class EventDao {
             return eventList;
 
         } catch (final SQLException e) {
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
+            throw new SQLException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally{
             DatabaseConnection.closeResultSet(resultSet);
         }
     }
 
-    public static Event getEvent(final int id, final String organizer) throws EmptyResultSetException, DatabaseException {
+    public static Event getEvent(final int id, final String organizer) throws EmptyResultSetException, SQLException {
 
         final Event event;
 
@@ -82,14 +79,14 @@ public class EventDao {
 
 
         } catch (final SQLException e) {
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
+            throw new SQLException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
         } finally {
             DatabaseConnection.closeResultSet(resultSet);
         }
     }
 
 
-    public static void addEvent(final Event event) throws DatabaseException {
+    public static void addEvent(final Event event) throws SQLException {
 
         final int typeInt;
 
@@ -104,13 +101,13 @@ public class EventDao {
 
         } catch (final SQLException e) {
 
-            throw new DatabaseException("Can't insert new Goal in database");
+            throw new SQLException("Can't insert new Goal in database");
 
         }
     }
 
 
-    public static EventType getEventType(final String organizer, final int id) throws DatabaseException {
+    public static EventType getEventType(final String organizer, final int id) throws SQLException {
 
         ResultSet resultSet = null;
         try {
@@ -120,7 +117,7 @@ public class EventDao {
             return DaoUtils.databaseIntToEventType(resultSet.getInt(Constants.PRIVATE));
 
         } catch (final SQLException e) {
-            throw new DatabaseException("Can't update Goal in database");
+            throw new SQLException("Can't update Goal in database");
         } finally {
             DatabaseConnection.closeResultSet(resultSet);
         }

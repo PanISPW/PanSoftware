@@ -2,7 +2,6 @@ package com.pansoftware.logic.entity;
 
 import com.pansoftware.logic.dao.UserDao;
 import com.pansoftware.logic.enumeration.UserRole;
-import com.pansoftware.logic.exception.DatabaseException;
 
 import java.sql.SQLException;
 
@@ -26,10 +25,10 @@ public class User {
     }
 
     public String getUsername() {
-        if(this.username == null)
+        if(username == null)
             return "";
         else
-            return this.username;
+            return username;
     }
 
     public void setUsername(final String username) {
@@ -37,7 +36,7 @@ public class User {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public void setPassword(final String password) {
@@ -45,7 +44,7 @@ public class User {
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(final String email) {
@@ -53,7 +52,7 @@ public class User {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(final String name) {
@@ -61,7 +60,7 @@ public class User {
     }
 
     public String getSurname() {
-        return this.surname;
+        return surname;
     }
 
     public void setSurname(final String surname) {
@@ -69,14 +68,14 @@ public class User {
     }
 
     public UserRole getRole() {
-        return this.role;
+        return role;
     }
 
     public void setRole(final UserRole role) {
         this.role = role;
     }
 
-    public void save() throws DatabaseException {
+    public void save() throws SQLException {
         UserDao.addUser(username, password, email, name, surname, role);
     }
 }

@@ -1,13 +1,7 @@
 package com.pansoftware.logic.entity;
 
-import com.pansoftware.logic.dao.GoalDao;
-import com.pansoftware.logic.exception.DatabaseException;
-import com.pansoftware.logic.exception.EmptyResultSetException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.interfaces.UserContent;
 
-import javax.security.auth.login.LoginException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 // @author Danilo D'Amico
@@ -28,10 +22,6 @@ public class Goal extends UserContent {
         this.deadline = deadline;
         this.user = user;
         this.id = id;
-    }
-
-    public static Goal getGoal(final String user, final int id) throws UserNotFoundException, SQLException, EmptyResultSetException, LoginException, DatabaseException {
-        return GoalDao.getGoal(user, id);
     }
 
     public String getDescription() {

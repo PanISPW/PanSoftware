@@ -4,7 +4,6 @@ import com.pansoftware.logic.enumeration.EventRequestState;
 import com.pansoftware.logic.enumeration.EventType;
 import com.pansoftware.logic.enumeration.ProductType;
 import com.pansoftware.logic.enumeration.UserRole;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
 
 import java.sql.ResultSet;
@@ -116,7 +115,7 @@ public class DaoUtils {
         return statement.executeQuery(sql);
     }
 
-    public static void executeUpdate(final String sql) throws SQLException, DatabaseException {
+    public static void executeUpdate(final String sql) throws SQLException {
         final DatabaseConnection databaseConnection;
         final Statement statement;
 
@@ -127,7 +126,7 @@ public class DaoUtils {
         DatabaseConnection.closeStatement(statement);
     }
 
-    public static int getLastIdFromSelectedGoalType(final String goalType, final String user) throws DatabaseException {
+    public static int getLastIdFromSelectedGoalType(final String goalType, final String user) throws SQLException {
         final int lastId;
 
         ResultSet resultSet = null;
@@ -145,7 +144,7 @@ public class DaoUtils {
 
         } catch (final SQLException | EmptyResultSetException e) {
 
-            throw new DatabaseException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
+            throw new SQLException(Constants.CAN_T_RETRIEVE_DATA_FROM_DATABASE);
 
         } finally {
             DatabaseConnection.closeResultSet(resultSet);

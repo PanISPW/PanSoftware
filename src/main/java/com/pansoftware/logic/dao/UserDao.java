@@ -2,13 +2,10 @@ package com.pansoftware.logic.dao;
 
 import com.pansoftware.logic.entity.User;
 import com.pansoftware.logic.enumeration.UserRole;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.DaoUtils;
 import com.pansoftware.logic.util.DatabaseConnection;
 
-import javax.security.auth.login.LoginException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -19,7 +16,7 @@ public class UserDao {
     private UserDao() {
     }
 
-    public static UserRole checkUserPassword(final String user, final String password) throws EmptyResultSetException, DatabaseException {
+    public static UserRole checkUserPassword(final String user, final String password) throws EmptyResultSetException, SQLException {
 
         ResultSet resultSet = null;
         try {
@@ -32,14 +29,14 @@ public class UserDao {
 
             return DaoUtils.intToUserRole(resultSet.getInt("role"));
         } catch(final SQLException e){
-            throw new DatabaseException("SQL error");
+            throw new SQLException("Can't validate credentials");
         }finally {
             DatabaseConnection.closeResultSet(resultSet);
         }
     }
 
 
-    public static User getUser(final String user) throws DatabaseException, EmptyResultSetException {
+    public static User getUser(final String user) throws EmptyResultSetException, SQLException {
         try {
             final User userEntity;
             final UserRole role;
@@ -57,18 +54,18 @@ public class UserDao {
             DatabaseConnection.closeResultSet(resultSet);
             return userEntity;
         } catch(final SQLException e){
-            throw new DatabaseException("SQL error");
+            throw new SQLException("SQL error");
         }
     }
 
-    public static void addUser(final String username, final String password, final String email, final String name, final String surname, final UserRole role) throws DatabaseException {
+    public static void addUser(final String username, final String password, final String email, final String name, final String surname, final UserRole role) throws SQLException {
 
         try {
             final int roleInt = DaoUtils.userRoleToInt(role);
             final String insertStatement = String.format("INSERT INTO user (username, password, email, name, surname, role) VALUES ('%s','%s','%s','%s','%s',%s);", username, password, email, name, surname, roleInt);
             DaoUtils.executeUpdate(insertStatement);
         } catch (final SQLException e) {
-            throw new DatabaseException("Can't insert new Goal in database");
+            throw new SQLException("Can't insert new Goal in database");
         }
 
     }

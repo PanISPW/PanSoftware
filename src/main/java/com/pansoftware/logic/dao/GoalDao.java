@@ -2,14 +2,11 @@ package com.pansoftware.logic.dao;
 
 import com.pansoftware.logic.entity.Goal;
 import com.pansoftware.logic.entity.User;
-import com.pansoftware.logic.exception.DatabaseException;
 import com.pansoftware.logic.exception.EmptyResultSetException;
-import com.pansoftware.logic.exception.UserNotFoundException;
 import com.pansoftware.logic.util.Constants;
 import com.pansoftware.logic.util.DaoUtils;
 import com.pansoftware.logic.util.DatabaseConnection;
 
-import javax.security.auth.login.LoginException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +21,7 @@ public class GoalDao {
 
     private GoalDao(){}
 
-    public static List<Goal> getGoalList(final String user) throws EmptyResultSetException, DatabaseException {
+    public static List<Goal> getGoalList(final String user) throws EmptyResultSetException, SQLException {
         try {
             final List<Goal> goalList;
 
@@ -50,11 +47,11 @@ public class GoalDao {
             DatabaseConnection.closeResultSet(resultSet);
             return goalList;
         } catch(final SQLException e){
-            throw new DatabaseException("SQL error");
+            throw new SQLException("SQL error");
         }
     }
 
-    public static Goal getGoal(final String user, final int id) throws EmptyResultSetException, DatabaseException {
+    public static Goal getGoal(final String user, final int id) throws EmptyResultSetException, SQLException {
 
         try {
             final Goal goal;
@@ -72,26 +69,26 @@ public class GoalDao {
             DatabaseConnection.closeResultSet(resultSet);
             return goal;
         } catch(final SQLException e){
-            throw new DatabaseException("SQL error");
+            throw new SQLException("SQL error");
         }
     }
 
-    public static int getLastUserGoalId(final String user) throws DatabaseException {
+    public static int getLastUserGoalId(final String user) throws SQLException {
         return getLastIdFromSelectedGoalType("goal", user);
     }
 
-    public static void addGoal(final Goal goal) throws DatabaseException {
+    public static void addGoal(final Goal goal) throws SQLException {
 
         try {
             final Date sqlDeadline = DaoUtils.localDateToSqlDateOrDefault(goal.getDeadline());
             final String insertStatement = String.format("INSERT INTO goal (name, description, numberOfSteps, stepsCompleted, deadline, id, user) VALUES ('%s','%s',%s,%s,'%s',%s,'%s');", goal.getName(), goal.getDescription(), goal.getNumberOfSteps(), goal.getStepsCompleted(), sqlDeadline, goal.getId(), goal.getUser().getUsername());
             DaoUtils.executeUpdate(insertStatement);
         } catch(final SQLException e){
-            throw new DatabaseException("Can't add Goal to Database");
+            throw new SQLException("Can't add Goal to Database");
         }
     }
 
-    public static void updateStepsGoal(final int stepsCompleted, final int id, final String user) throws DatabaseException {
+    public static void updateStepsGoal(final int stepsCompleted, final int id, final String user) throws SQLException {
 
         try {
 
@@ -99,7 +96,7 @@ public class GoalDao {
             DaoUtils.executeUpdate(updateStatement);
 
         } catch (final SQLException e) {
-            throw new DatabaseException("Can't update Goal in database");
+            throw new SQLException("Can't update Goal in database");
         }
     }
 }
