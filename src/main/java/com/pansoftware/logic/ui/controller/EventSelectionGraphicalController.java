@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 
 public class EventSelectionGraphicalController implements Initializable {
 
-    private ObservableList<EventBean> observableList = FXCollections.observableArrayList();
     @FXML
     private VBox eventsList;
 

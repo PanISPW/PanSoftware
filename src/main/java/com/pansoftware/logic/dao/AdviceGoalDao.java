@@ -65,13 +65,7 @@ public class AdviceGoalDao {
             while (resultSet.next()) {
 
                 final User userEntity = UserDao.getUser(user);
-                User adviceActivist;
-
-                try {
-                    adviceActivist = UserDao.getUser(resultSet.getString("adviceActivist"));
-                } catch(Exception e){
-                    adviceActivist = null;
-                }
+                User adviceActivist = setAdviceActivist(resultSet);
 
                 final ProductType productType = DaoUtils.intToProductType(resultSet.getInt(Constants.PRODUCT_TYPE));
                 LocalDate deadline = setDeadline(resultSet);

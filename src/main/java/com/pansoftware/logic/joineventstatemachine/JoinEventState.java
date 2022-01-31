@@ -21,8 +21,8 @@ public abstract class JoinEventState {
             case REJECTED:
                 return new RejectedState(event);
             default:
-                new StartingState(stateMachine, event);
-                return StartingState.nextState();
+                StartingState newState = new StartingState(stateMachine, event);
+                return newState.nextState();
         }
 
     }

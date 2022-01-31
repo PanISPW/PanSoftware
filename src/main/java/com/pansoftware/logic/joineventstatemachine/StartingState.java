@@ -20,12 +20,12 @@ public class StartingState extends JoinEventState {
         this.stateMachine = stateMachine;
         this.event = event;
         if(event.getType().equals(EventType.PRIVATE)){
-            isPrivate = true;
+            this.isPrivate = true;
         }
 
     }
 
-    public static JoinEventState nextState() throws DatabaseException {
+    public JoinEventState nextState() throws DatabaseException {
         if (isPrivate) {
             return new PendingState(stateMachine, event);
         } else {
