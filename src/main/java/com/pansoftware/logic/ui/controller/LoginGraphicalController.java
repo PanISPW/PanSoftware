@@ -46,7 +46,9 @@ public class LoginGraphicalController implements Initializable {
     private VBox outerVBox;
 
     @Override
-    public void initialize(final URL arg0, final ResourceBundle arg1) {}
+    public void initialize(final URL arg0, final ResourceBundle arg1) {
+        // empty
+    }
 
     @FXML
     public void login() throws SQLException, DatabaseException, EmptyResultSetException {
